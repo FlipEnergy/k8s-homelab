@@ -1,0 +1,21 @@
+# save to ~/.kube/config
+
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: <Get from microk8s config on server>
+    server: https://myserver.tgp:16443
+  name: my-k8s-cluster
+contexts:
+- context:
+    cluster: my-k8s-cluster
+    user: my-k8s-admin
+  name: my-k8s-cluster
+current-context: my-k8s-cluster
+kind: Config
+preferences: {}
+users:
+- name: my-k8s-admin
+  user:
+    password: <Get from microk8s config on server>
+    username: admin
