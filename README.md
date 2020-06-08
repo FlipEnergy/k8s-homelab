@@ -8,14 +8,19 @@ Just repo that holds stuff for my personal homelab k8s environment.
     - must haves:
         - helm3
         - dns
-            - update resolver with `microk8s kubectl -n kube-system edit configmap/coredns`
         - ingress
     - blog about k8s dashboard and fluentd logging: https://logz.io/blog/getting-started-with-kubernetes-using-microk8s/
 - remote kubectl access to cluster: https://microk8s.io/docs/ports
-    - update alt_names with domain (will auto-apply upon save)
+
+# MicroK8s
+## update cluster DNS upstream nameserver
+```microk8s kubectl -n kube-system edit configmap/coredns```
+
+## add custom DNS name for node to alt_names
+```vi /var/snap/microk8s/current/certs/csr.conf.template```
 
 # Install Helm Charts
-# K8s Dashboards
+## K8s Dashboards
 https://kubernetes.github.io/dashboard/
 https://github.com/kubernetes/dashboard
 ```
