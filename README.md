@@ -9,6 +9,7 @@ Just repo that holds stuff for my personal homelab k8s environment.
         - helm3
         - dns
         - ingress
+        - metrics-server
     - blog about k8s dashboard and fluentd logging: https://logz.io/blog/getting-started-with-kubernetes-using-microk8s/
 - remote kubectl access to cluster: https://microk8s.io/docs/ports
 
@@ -37,9 +38,13 @@ microk8s kubectl create namespace kubernetes-dashboard
 microk8s helm -n kubernetes-dashboard upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -f helm-charts/k8s-dashboard-values.yaml --install --wait
 ```
 
-Get token and copy to clipboard on windows ubuntu WSL:
+Get token and copy to login:
 ```
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}') | grep token: | awk '{print $2}' | clip.exe
+make token
+
+# or as the full one-line command
+
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}') | grep token: | awk '{print $2}'
 ```
 
 Go to website and login using token
