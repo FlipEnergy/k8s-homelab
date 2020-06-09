@@ -23,13 +23,18 @@ Just repo that holds stuff for my personal homelab k8s environment.
 ## K8s Dashboards
 https://kubernetes.github.io/dashboard/
 https://github.com/kubernetes/dashboard
+
+Simply run `make`
+
+OR
+
 ```
 # install helm repo
-helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+microk8s helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
 
 # install it with ingress
-kubectl create namespace kubernetes-dashboard
-helm -n kubernetes-dashboard upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -f helm-charts/k8s-dashboard-values.yaml --install --wait
+microk8s kubectl create namespace kubernetes-dashboard
+microk8s helm -n kubernetes-dashboard upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -f helm-charts/k8s-dashboard-values.yaml --install --wait
 ```
 
 Get token and copy to clipboard on windows ubuntu WSL:
