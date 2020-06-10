@@ -1,0 +1,12 @@
+## Configuration for kube ops dashboard values
+
+replicaCount: 2
+
+ingress:
+  enabled: true
+  path: /
+  hostname: kube-ops-dash.tgp
+  tls:
+    - secretName: kube-ops-view-tls
+      hosts:
+        - kube-ops-dash.tgp

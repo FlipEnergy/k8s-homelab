@@ -1,6 +1,6 @@
 ## Configuration for k8s dashboard values
 
-replicaCount: 1
+replicaCount: 2
 
 ingress:
   enabled: true
@@ -9,14 +9,14 @@ ingress:
   # Kubernetes Dashboard Ingress hostnames
   # Must be provided if Ingress is enabled
   hosts:
-    - myserver.tgp
+    - my-k8s-dashboard.tgp
   # Kubernetes Dashboard Ingress TLS configuration
   # Secrets must be manually created in the namespace
   #
   tls:
     - secretName: kubernetes-dashboard-tls
       hosts:
-        - myserver.tgp
+        - my-k8s-dashboard.tgp
 
 metricsScraper:
   enabled: true

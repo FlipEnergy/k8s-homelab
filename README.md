@@ -25,26 +25,20 @@ Just repo that holds stuff for my personal homelab k8s environment.
 https://kubernetes.github.io/dashboard/
 https://github.com/kubernetes/dashboard
 
-Simply run `make`
-
-OR
-
+Initial install
 ```
-# install helm repo
-microk8s helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-
-# install it with ingress
-microk8s kubectl create namespace kubernetes-dashboard
-microk8s helm -n kubernetes-dashboard upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -f helm-charts/k8s-dashboard-values.yaml --install --wait
+make add-repos
+make k8s-dashboard-init
 ```
 
-Get token and copy to login:
+Go to website and login using token.
+
+# Install Kubernetes Operational View
+https://github.com/hjacobs/kube-ops-view
+https://hub.kubeapps.com/charts/stable/kube-ops-view
+
+Initial install
 ```
-make token
-
-# or as the full one-line command
-
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}') | grep token: | awk '{print $2}'
+make add-repos
+make kube-ops-view-init
 ```
-
-Go to website and login using token
