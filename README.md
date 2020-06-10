@@ -6,7 +6,6 @@ Just repo that holds stuff for my personal homelab k8s environment.
 - install MicroK8s: https://microk8s.io/docs
 - MicroK8s Add ons: https://microk8s.io/docs/addons#heading--list
     - must haves:
-        - helm3
         - dns
         - ingress
         - metrics-server
@@ -14,9 +13,6 @@ Just repo that holds stuff for my personal homelab k8s environment.
 - remote kubectl access to cluster: https://microk8s.io/docs/ports
 
 # MicroK8s
-
-## add custom DNS name for node to alt_names
-```vi /var/snap/microk8s/current/certs/csr.conf.template```
 
 # Get Kubectl config
 ```microk8s kubectl config view --raw```
