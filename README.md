@@ -20,6 +20,16 @@ Just repo that holds stuff for my personal homelab k8s environment.
 ## add custom DNS name for node to alt_names
 ```vi /var/snap/microk8s/current/certs/csr.conf.template```
 
+# Get Kubectl config
+```sudo microk8s kubectl config view --raw```
+
+Change `server: https://127.0.0.1:16443` to the ip or hostname of the node
+
+# Install all Helm Charts
+```
+make
+```
+
 # Install Helm Charts
 ## K8s Dashboards
 https://kubernetes.github.io/dashboard/
@@ -28,6 +38,7 @@ https://github.com/kubernetes/dashboard
 Initial install
 ```
 make add-repos
+kubectl create namespace kubernetes-manage
 make k8s-dashboard-init
 ```
 
@@ -40,5 +51,6 @@ https://hub.kubeapps.com/charts/stable/kube-ops-view
 Initial install
 ```
 make add-repos
+kubectl create namespace kubernetes-manage
 make kube-ops-view-init
 ```

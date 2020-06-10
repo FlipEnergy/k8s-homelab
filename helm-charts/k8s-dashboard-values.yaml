@@ -23,6 +23,6 @@ metricsScraper:
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # The name of the service account to use.
-  name: admin-user
+  name: default
