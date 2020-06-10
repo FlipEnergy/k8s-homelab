@@ -4,6 +4,7 @@ kubectl := microk8s kubectl
 manage_namespace := kubernetes-manage
 
 init:
+	$(kubectl) apply -f config-maps/coredns.yml 
 	make add-repos
 	$(kubectl) create namespace $(manage_namespace)
 	make k8s-dashboard-upgrade

@@ -14,14 +14,12 @@ Just repo that holds stuff for my personal homelab k8s environment.
 - remote kubectl access to cluster: https://microk8s.io/docs/ports
 
 # MicroK8s
-## update cluster DNS upstream nameserver
-```microk8s kubectl -n kube-system edit configmap/coredns```
 
 ## add custom DNS name for node to alt_names
 ```vi /var/snap/microk8s/current/certs/csr.conf.template```
 
 # Get Kubectl config
-```sudo microk8s kubectl config view --raw```
+```microk8s kubectl config view --raw```
 
 Change `server: https://127.0.0.1:16443` to the ip or hostname of the node
 
