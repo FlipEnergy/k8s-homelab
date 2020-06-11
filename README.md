@@ -2,8 +2,6 @@
 Just repo that holds stuff for my personal homelab k8s environment.
 
 # Documentation Resources
-- Docker Post-install: https://docs.docker.com/engine/install/linux-postinstall/
-- install MicroK8s: https://microk8s.io/docs
 - MicroK8s Add ons: https://microk8s.io/docs/addons#heading--list
     - must haves:
         - dns

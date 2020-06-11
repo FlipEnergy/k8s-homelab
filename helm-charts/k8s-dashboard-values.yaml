@@ -12,7 +12,6 @@ ingress:
     - my-k8s-dashboard.tgp
   # Kubernetes Dashboard Ingress TLS configuration
   # Secrets must be manually created in the namespace
-  #
   tls:
     - secretName: kubernetes-dashboard-tls
       hosts:
