@@ -11,8 +11,8 @@ Just repo that holds stuff for my personal homelab k8s environment.
 - MicroK8s Add ons: https://microk8s.io/docs/addons#heading--list
     - must haves:
         - dns
-        - ingress
         - metrics-server
+        - metallb
 - remote kubectl access to cluster: https://microk8s.io/docs/ports
 
 # Get Kubectl config

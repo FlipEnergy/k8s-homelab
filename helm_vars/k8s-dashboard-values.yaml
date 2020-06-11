@@ -1,21 +1,14 @@
-## Configuration for k8s dashboard values
+# Configuration for k8s dashboard values
 
 replicaCount: 1
 
-ingress:
-  enabled: true
-  labels:
-    name: dash-ingress
-  # Kubernetes Dashboard Ingress hostnames
-  # Must be provided if Ingress is enabled
-  hosts:
-    - my-k8s-dashboard.tgp
-  # Kubernetes Dashboard Ingress TLS configuration
-  # Secrets must be manually created in the namespace
-  tls:
-    - secretName: kubernetes-dashboard-tls
-      hosts:
-        - my-k8s-dashboard.tgp
+protocolHttp: true
+
+# Loadbalanced by Metallb
+service:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.50
+  externalPort: 80
 
 metricsScraper:
   enabled: true

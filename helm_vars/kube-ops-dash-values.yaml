@@ -1,12 +1,8 @@
-## Configuration for kube ops dashboard values
+# Configuration for kube ops dashboard values
 
 replicaCount: 1
 
-ingress:
-  enabled: true
-  path: /
-  hostname: kube-ops-dash.tgp
-  tls:
-    - secretName: kube-ops-view-tls
-      hosts:
-        - kube-ops-dash.tgp
+# Loadbalanced by Metallb
+service:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.51
