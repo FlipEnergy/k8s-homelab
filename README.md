@@ -1,16 +1,19 @@
 # Dennis' Homelab k8s playground
 Just repo that holds stuff for my personal homelab k8s environment.
 
-# Documentation Resources
+# Client requirements
+- Kubectl
+- Helm3
+- Helm-secrets https://github.com/zendesk/helm-secrets
+
+# K8s Node requirements
+- MicroK8s
 - MicroK8s Add ons: https://microk8s.io/docs/addons#heading--list
     - must haves:
         - dns
         - ingress
         - metrics-server
-    - blog about k8s dashboard and fluentd logging: https://logz.io/blog/getting-started-with-kubernetes-using-microk8s/
 - remote kubectl access to cluster: https://microk8s.io/docs/ports
-
-# MicroK8s
 
 # Get Kubectl config
 ```microk8s kubectl config view --raw```
@@ -25,6 +28,7 @@ make
 # Install Helm Charts
 ## K8s Dashboards
 https://kubernetes.github.io/dashboard/
+
 https://github.com/kubernetes/dashboard
 
 Initial install
@@ -38,6 +42,7 @@ Go to website and login using token.
 
 # Install Kubernetes Operational View
 https://github.com/hjacobs/kube-ops-view
+
 https://hub.kubeapps.com/charts/stable/kube-ops-view
 
 Initial install
