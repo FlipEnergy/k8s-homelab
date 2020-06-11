@@ -20,9 +20,6 @@ dash:
 	kubectl get namespace $(manage_namespace) || kubectl create namespace $(manage_namespace)
 	helm upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -n $(manage_namespace) -f helm_vars/k8s-dashboard-values.yaml --install --wait
 
-token:
-	@kubectl  describe secret -n $(manage_namespace) $$(kubectl -n $(manage_namespace) get secret | grep default-token | awk '{print $$1}') | grep token: | awk '{print $$2}' | clip.exe
-
 kube:
 	kubectl get namespace $(manage_namespace) || kubectl create namespace $(manage_namespace)
 	helm upgrade my-kube-ops-dash stable/kube-ops-view -n $(manage_namespace) -f helm_vars/kube-ops-dash-values.yaml --install --wait
