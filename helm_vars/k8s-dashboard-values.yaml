@@ -1,6 +1,6 @@
 # Configuration for k8s dashboard values
 
-replicaCount: 1
+replicaCount: 2
 
 protocolHttp: true
 

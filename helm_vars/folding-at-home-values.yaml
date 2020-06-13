@@ -1,6 +1,6 @@
 # Configuration for folding-at-home
 
-replicaCount: 1
+replicaCount: 2
 
 resources:
   limits:
