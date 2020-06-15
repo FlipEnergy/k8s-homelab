@@ -53,7 +53,7 @@ gen_vpn_keys:
 
 vpn:
 	kubectl get namespace $(vpn_namespace) || kubectl create namespace $(vpn_namespace)
-	helm upgrade my-openvpn stable/openvpn -n $(vpn_namespace) -f helm_vars/openvpn-values.yaml --install --wait --timeout=10m0s
+	helm upgrade my-openvpn stable/openvpn -n $(vpn_namespace) -f helm_vars/openvpn-values.yaml --install --wait --timeout=15m0s
 	make gen_vpn_keys
 
 uninstall-vpn:

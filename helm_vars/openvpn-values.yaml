@@ -13,8 +13,8 @@ ipForwardInitContainer: false
 
 resources:
   limits:
-    cpu: 300m
-    memory: 128Mi
+    cpu: 1000m
+    memory: 256Mi
   requests:
     cpu: 300m
     memory: 128Mi
