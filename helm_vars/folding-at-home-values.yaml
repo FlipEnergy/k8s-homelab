@@ -4,8 +4,8 @@ replicaCount: 2
 
 resources:
   limits:
-    cpu: 2000m
+    cpu: 1800m
     memory: 512Mi
   requests:
-    cpu: 2000m
+    cpu: 1700m
     memory: 128Mi
