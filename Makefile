@@ -31,7 +31,7 @@ uninstall-kube:
 	helm uninstall -n $(kube_namespace) my-kube-ops-view
 
 dash:
-	helm upgrade my-k8s-dashboard my-helm-charts-repo/kubernetes-dashboard -n $(dash_namespace) -f helm_vars/k8s-dashboard-values.yaml --install --create-namespace --wait
+	helm upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -n $(dash_namespace) -f helm_vars/k8s-dashboard-values.yaml --install --create-namespace --wait
 
 uninstall-dash:
 	helm uninstall -n $(dash_namespace) my-k8s-dashboard
