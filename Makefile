@@ -50,6 +50,14 @@ gen-vpn-keys:
 	openvpn_scripts/generate_openvpn_client_key.sh $(vpn_device1) $(vpn_namespace) my-openvpn
 	openvpn_scripts/generate_openvpn_client_key.sh $(vpn_device2) $(vpn_namespace) my-openvpn
 
+freeze_vpn_certs:
+	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/private/server.key server.key
+	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/ca.crt ca.crt
+	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/issued/server.crt server.crt
+	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/dh.pem dh.pem
+	kubectl create secret generic -n $(vpn_namespace) openvpn-keystore-secret --from-file=./server.key --from-file=./ca.crt --from-file=./server.crt --from-file=./dh.pem
+	rm -fv *.key *.crt *.pem
+
 vpn:
 	helm upgrade my-openvpn stable/openvpn -n $(vpn_namespace) -f helm_vars/openvpn-values.yaml --install --create-namespace --wait --timeout=15m0s
 
