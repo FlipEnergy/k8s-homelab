@@ -1,11 +1,11 @@
 # Configuration for folding-at-home
 
-replicaCount: 2
+replicaCount: 1
 
 resources:
   limits:
-    cpu: 1800m
+    cpu: 1000m
     memory: 512Mi
   requests:
-    cpu: 1700m
+    cpu: 800m
     memory: 128Mi
