@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "flipenergy.fullname" . }}
+  name: {{ include "airsonic.fullname" . }}
   labels:
-    {{- include "flipenergy.labels" . | nindent 4 }}
+    {{- include "airsonic.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.service.targetPort }}
       protocol: TCP
       name: http
   selector:
-    {{- include "flipenergy.selectorLabels" . | nindent 4 }}
+    {{- include "airsonic.selectorLabels" . | nindent 4 }}
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}

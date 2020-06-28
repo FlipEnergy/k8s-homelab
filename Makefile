@@ -6,16 +6,17 @@ vpn_namespace := openvpn
 vpn_device1 := pixel3
 vpn_device2 := surfacego2
 site_namespace := dennis-site
+airsonic_namespace := airsonic
 
 init:
 	kubectl apply -f config_maps/coredns.yml
-	make add-repos
+	make add-update-repos
 	make vpn
 	make kube
 	make dash
 	make f@h
 
-add-repos:
+add-update-repos:
 	helm repo add my-helm-charts-repo https://flipenergy.github.io/helm-charts-repo/
 	helm repo add stable https://kubernetes-charts.storage.googleapis.com
 	helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
@@ -69,6 +70,12 @@ site:
 
 uninstall-site:
 	helm uninstall -n $(site_namespace) dennis-site
+
+air:
+	helm upgrade airsonic ./airsonic -n $(airsonic_namespace) --install --create-namespace --wait
+
+uninstall-air:
+	helm uninstall -n $(airsonic_namespace) airsonic
 
 clean:
 	kubectl delete namespace $(dash_namespace)
