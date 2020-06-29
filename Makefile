@@ -6,7 +6,7 @@ vpn_namespace := openvpn
 vpn_device1 := pixel3
 vpn_device2 := surfacego2
 site_namespace := dennis-site
-statping_namespace := default
+statping_namespace := statping
 airsonic_namespace := airsonic
 
 init:
