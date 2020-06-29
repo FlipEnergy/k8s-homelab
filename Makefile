@@ -6,6 +6,7 @@ vpn_namespace := openvpn
 vpn_device1 := pixel3
 vpn_device2 := surfacego2
 site_namespace := dennis-site
+statping_namespace := default
 airsonic_namespace := airsonic
 
 init:
@@ -70,6 +71,12 @@ site:
 
 uninstall-site:
 	helm uninstall -n $(site_namespace) dennis-site
+
+stat:
+	helm upgrade statping ./statping -n $(statping_namespace) --install --create-namespace --wait
+
+uninstall-stat:
+	helm uninstall -n $(statping_namespace) statping
 
 air:
 	helm upgrade airsonic ./airsonic -n $(airsonic_namespace) --install --create-namespace --wait
