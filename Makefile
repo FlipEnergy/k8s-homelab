@@ -55,7 +55,7 @@ gen-vpn-keys:
 	openvpn/generate_openvpn_client_key.sh $(vpn_device1) $(vpn_namespace) my-openvpn
 	openvpn/generate_openvpn_client_key.sh $(vpn_device2) $(vpn_namespace) my-openvpn
 
-freeze_vpn_certs:
+freeze-vpn-certs:
 	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/private/server.key server.key
 	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/ca.crt ca.crt
 	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/issued/server.crt server.crt
@@ -75,11 +75,22 @@ site:
 uninstall-site:
 	helm uninstall -n $(site_namespace) dennis-site
 
+save-stat-db:
+	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
+	rm -vf app/logs/*
+	mv -v app ~/
+
 stat:
 	helm upgrade statping ./statping -n $(statping_namespace) --install --create-namespace --wait
 
 uninstall-stat:
 	helm uninstall -n $(statping_namespace) statping
+
+save-sync-config:
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config config
+	rm -fv config/index-v0.14.0.db/LOG config/index-v0.14.0.db/LOCK
+	gpg-zip --encrypt --output ~/syncthing_config --recipient $$USER config
+	rm -rf config
 
 sync:
 	helm upgrade syncthing ./syncthing -n $(syncthing_namespace) --install --create-namespace --wait
