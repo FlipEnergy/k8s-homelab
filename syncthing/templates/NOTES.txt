@@ -1,0 +1,3 @@
+My helm chart for Syncthing using loadbalancer.
+
+Hit the website through http://{{ .Values.service.website.loadBalancerIP }}

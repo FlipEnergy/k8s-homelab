@@ -18,6 +18,7 @@ init:
 	make f@h
 	make site
 	make stat
+	make sync
 
 add-update-repos:
 	helm repo add my-helm-charts-repo https://flipenergy.github.io/helm-charts-repo/
