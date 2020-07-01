@@ -16,7 +16,6 @@ init:
 	make vpn
 	make kube
 	make dash
-	make f@h
 	make site
 	make stat
 	make sync
