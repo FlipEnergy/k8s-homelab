@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: {{ include "statping.fullname" . }}
   labels:
-    type: local
+    {{- include "statping.labels" . | nindent 4 }}
 spec:
   storageClassName: manual
   capacity:

@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: {{ include "syncthing.fullname" . }}
   labels:
-    type: local
+    {{- include "syncthing.labels" . | nindent 4 }}
 spec:
   storageClassName: manual
   capacity:

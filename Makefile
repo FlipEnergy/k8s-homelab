@@ -8,6 +8,7 @@ vpn_device2 := surfacego2
 site_namespace := dennis-site
 statping_namespace := statping
 syncthing_namespace := syncthing
+monitoring_namespace := monitoring
 
 init:
 	kubectl apply -f coredns/coredns.yml
@@ -28,7 +29,6 @@ add-update-repos:
 	helm repo update
 
 # Dashboards
-
 kube:
 	helm upgrade my-kube-ops-view my-helm-charts-repo/kube-ops-view -n $(kube_namespace) -f kube-ops-view/kube-ops-view-values.yaml --install --create-namespace --wait
 
@@ -42,7 +42,6 @@ uninstall-dash:
 	helm uninstall -n $(dash_namespace) my-k8s-dashboard
 
 # Compute
-
 f@h:
 	helm secrets upgrade folding-at-home brannon/folding-at-home -n $(folding_namespace) -f folding-at-home/folding-at-home-values.yaml -f folding-at-home/secrets.folding-at-home.yaml --install --create-namespace --wait
 
@@ -50,7 +49,6 @@ uninstall-f@h:
 	helm uninstall -n $(folding_namespace) folding-at-home
 
 # OpenVPN
-
 gen-vpn-keys:
 	openvpn/generate_openvpn_client_key.sh $(vpn_device1) $(vpn_namespace) my-openvpn
 	openvpn/generate_openvpn_client_key.sh $(vpn_device2) $(vpn_namespace) my-openvpn
@@ -64,13 +62,12 @@ freeze-vpn-certs:
 	rm -fv *.key *.crt *.pem
 
 vpn:
-	helm upgrade my-openvpn stable/openvpn -n $(vpn_namespace) -f openvpn/openvpn-values.yaml --install --create-namespace --wait --timeout=15m0s
+	helm upgrade my-openvpn my-helm-charts-repo/openvpn -n $(vpn_namespace) -f openvpn/openvpn-values.yaml --install --create-namespace --wait --timeout=15m0s
 
 uninstall-vpn:
 	helm uninstall -n $(vpn_namespace) my-openvpn
 
 # My website
-
 site:
 	helm upgrade dennis-site ./flipenergy -n $(site_namespace) --install --create-namespace --wait
 
@@ -78,7 +75,6 @@ uninstall-site:
 	helm uninstall -n $(site_namespace) dennis-site
 
 # Statping
-
 save-stat-db:
 	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
 	rm -vf app/logs/*
@@ -91,11 +87,12 @@ uninstall-stat:
 	helm uninstall -n $(statping_namespace) statping
 
 # Syncthing
-
 save-sync-config:
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config config
-	rm -fv config/index-v0.14.0.db/LOG config/index-v0.14.0.db/LOCK
-	gpg-zip --encrypt --output ~/syncthing_config --recipient $$USER config
+	mkdir -p config
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
+	gpg-zip --encrypt --output syncthing/syncthing_config --recipient $$USER config
 	rm -rf config
 
 sync:
@@ -104,8 +101,37 @@ sync:
 uninstall-sync:
 	helm uninstall -n $(syncthing_namespace) syncthing
 
-# clean
+# InfluxDB
+influx:
+	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
+	kubectl apply -n $(monitoring_namespace) -f influxdb/persistencevolume.yaml -f influxdb/persistencevolumeclaim.yaml
+	helm secrets dec influxdb/secrets.influxdb-creds.yaml
+	kubectl apply -n $(monitoring_namespace) -f influxdb/secrets.influxdb-creds.yaml.dec
+	rm -fv influxdb/secrets.influxdb-creds.yaml.dec
+	helm upgrade influxdb my-helm-charts-repo/influxdb -n $(monitoring_namespace) -f influxdb/influxdb-values.yaml --install --wait
 
+uninstall-influx:
+	helm uninstall -n $(monitoring_namespace) influxdb
+	kubectl delete secret -n $(monitoring_namespace) influxdb-creds
+	kubectl delete persistentvolumeclaim -n $(monitoring_namespace) influxdb
+	kubectl delete persistentvolume influxdb
+
+# Grafana
+graf:
+	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
+	kubectl apply -n $(monitoring_namespace) -f grafana/persistencevolume.yaml -f grafana/persistencevolumeclaim.yaml
+	helm secrets dec grafana/secrets.grafana-creds.yaml
+	kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
+	rm -fv grafana/secrets.grafana-creds.yaml.dec
+	helm secrets upgrade grafana stable/grafana -n $(monitoring_namespace) -f grafana/grafana-values.yaml -f grafana/secrets.grafana-datasource.yaml  --install --create-namespace --wait
+
+uninstall-graf:
+	helm uninstall -n $(monitoring_namespace) grafana
+	kubectl delete secret -n $(monitoring_namespace) grafana-creds
+	kubectl delete persistentvolumeclaim -n $(monitoring_namespace) grafana
+	kubectl delete persistentvolume grafana
+
+# clean
 clean:
 	kubectl delete namespace $(dash_namespace)
 	kubectl delete namespace $(kube_namespace)

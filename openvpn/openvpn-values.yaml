@@ -27,5 +27,3 @@ openvpn:
   # Protocol used by openvpn tcp or udp (default: udp).
   OVPN_PROTO: tcp
   keystoreSecret: openvpn-keystore-secret
-  clientConf: |
-    dhcp-option DNS 192.168.1.11

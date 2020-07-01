@@ -1,0 +1,68 @@
+serviceAccount:
+  create: false
+
+service:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.56
+
+## Persist data to a persistent volume
+##
+persistence:
+  enabled: true
+  # A manually managed Persistent Volume and Claim
+  # Requires persistence.enabled: true
+  # If defined, PVC must be created manually before volume will be bound
+  existingClaim: influxdb
+  ## influxdb data Persistent Volume Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # storageClass: "-"
+  annotations:
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+## Deploy InfluxDB Enterprise - License required
+## ref: https://www.influxdata.com/products/influxdb-enterprise/
+enterprise:
+  enabled: false
+
+user:
+  # The user name and password are obtained from an existing secret. The expected
+  # keys are `influxdb-user` and `influxdb-password`.
+  # If set, the username and password values above are ignored.
+  existingSecret: influxdb-creds
+
+  ## User privileges
+  ## Default: "WITH ALL PRIVILEGES"
+  privileges: "WITH ALL PRIVILEGES"
+
+## Configure resource requests and limits
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+resources:
+ requests:
+   memory: 256Mi
+   cpu: 100m
+ limits:
+   memory: 2Gi
+   cpu: 1000m
+
+## Node labels for pod assignment
+## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+##
+nodeSelector:
+  kubernetes.io/hostname: myserver.tgp
+
+# Allow executing custom init scripts
+#
+# If the container finds any files with the extensions .sh or .iql inside of the
+# /docker-entrypoint-initdb.d folder, it will execute them. The order they are
+# executed in is determined by the shell. This is usually alphabetical order.
+initScripts:
+  enabled: true
+  scripts:
+    init.iql: |+
+      CREATE DATABASE "homelab" WITH DURATION 30d REPLICATION 1 NAME "rp_30d"
