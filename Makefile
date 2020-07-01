@@ -69,11 +69,15 @@ vpn:
 uninstall-vpn:
 	helm uninstall -n $(vpn_namespace) my-openvpn
 
+# My website
+
 site:
 	helm upgrade dennis-site ./flipenergy -n $(site_namespace) --install --create-namespace --wait
 
 uninstall-site:
 	helm uninstall -n $(site_namespace) dennis-site
+
+# Statping
 
 save-stat-db:
 	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
@@ -86,6 +90,8 @@ stat:
 uninstall-stat:
 	helm uninstall -n $(statping_namespace) statping
 
+# Syncthing
+
 save-sync-config:
 	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config config
 	rm -fv config/index-v0.14.0.db/LOG config/index-v0.14.0.db/LOCK
@@ -97,6 +103,8 @@ sync:
 
 uninstall-sync:
 	helm uninstall -n $(syncthing_namespace) syncthing
+
+# clean
 
 clean:
 	kubectl delete namespace $(dash_namespace)
