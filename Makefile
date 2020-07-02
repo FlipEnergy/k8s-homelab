@@ -76,8 +76,8 @@ uninstall-site:
 # Statping
 save-stat-db:
 	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
-	rm -vf app/logs/*
-	mv -v app ~/
+	rm -vrf app/logs/* ~/ansible-playground/roles/site_node/files/statping-app-data
+	mv -v app ~/ansible-playground/roles/site_node/files/statping-app-data
 
 stat:
 	helm upgrade statping ./statping -n $(statping_namespace) --install --create-namespace --wait
