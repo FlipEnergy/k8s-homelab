@@ -20,34 +20,14 @@ Just repo that holds stuff for my personal homelab k8s environment.
 
 Change `server: https://127.0.0.1:16443` to the ip or hostname of the node
 
-# Install all Helm Charts
+# Install all Helm Charts  (Except folding-at-home)
 ```
 make
 ```
 
-# Install Helm Charts
-## K8s Dashboards
-https://kubernetes.github.io/dashboard/
+See Makefile for individual helm chart commands
 
-https://github.com/kubernetes/dashboard
+# Grafana
+Run the make command will provision Grafana but then you need to manually add/import a dashboard.
 
-Initial install
-```
-make add-repos
-kubectl create namespace kubernetes-manage
-make k8s-dashboard-init
-```
-
-Go to website and login using token.
-
-# Install Kubernetes Operational View
-https://github.com/hjacobs/kube-ops-view
-
-https://hub.kubeapps.com/charts/stable/kube-ops-view
-
-Initial install
-```
-make add-repos
-kubectl create namespace kubernetes-manage
-make kube-ops-view-init
-```
+I like https://grafana.com/grafana/dashboards/61

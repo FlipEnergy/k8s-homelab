@@ -122,7 +122,7 @@ graf:
 	helm secrets dec grafana/secrets.grafana-creds.yaml
 	kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
 	rm -fv grafana/secrets.grafana-creds.yaml.dec
-	helm secrets upgrade grafana stable/grafana -n $(monitoring_namespace) -f grafana/grafana-values.yaml -f grafana/secrets.grafana-datasource.yaml  --install --create-namespace --wait
+	helm secrets upgrade grafana stable/grafana -n $(monitoring_namespace) -f grafana/grafana-values.yaml -f grafana/secrets.grafana-datasource.yaml --install --create-namespace --wait
 
 uninstall-graf:
 	helm uninstall -n $(monitoring_namespace) grafana
