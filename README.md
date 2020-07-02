@@ -26,8 +26,3 @@ make
 ```
 
 See Makefile for individual helm chart commands
-
-# Grafana
-Run the make command will provision Grafana but then you need to manually add/import a dashboard.
-
-I like https://grafana.com/grafana/dashboards/61
