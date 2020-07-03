@@ -4,6 +4,15 @@
 
 replicaCount: 1
 
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: false
+  runAsNonRoot: true
+  runAsUser: 502
+  runAsGroup: 502
+
 storageClassName: folding-at-home
 
 # set to some sane defaults to prevent interference

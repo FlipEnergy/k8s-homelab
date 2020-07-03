@@ -5,6 +5,10 @@ service:
   type: LoadBalancer
   loadBalancerIP: 192.168.1.56
 
+securityContext:
+  runAsUser: 501
+  runAsGroup: 501
+
 ## Persist data to a persistent volume
 ##
 persistence:
