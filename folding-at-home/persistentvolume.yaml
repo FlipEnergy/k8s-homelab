@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: influxdb
+  name: folding-at-home
   labels:
     type: local
 spec:
-  storageClassName: influxdb
+  storageClassName: folding-at-home
   capacity:
-    storage: 8Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/influxdb
+    path: /mnt/folding-at-home

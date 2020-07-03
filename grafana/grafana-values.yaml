@@ -3282,15 +3282,13 @@ nodeSelector:
 persistence:
   type: pvc
   enabled: true
-  # storageClassName: default
+  storageClassName: grafana
   accessModes:
     - ReadWriteOnce
   size: 2Gi
   # annotations: {}
   finalizers:
     - kubernetes.io/pvc-protection
-  # subPath: ""
-  existingClaim: grafana
 
 # Use an existing secret for the admin user.
 admin:

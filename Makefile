@@ -24,7 +24,7 @@ add-update-repos:
 	helm repo add my-helm-charts-repo https://flipenergy.github.io/helm-charts-repo/
 	helm repo add stable https://kubernetes-charts.storage.googleapis.com
 	helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-	helm repo add brannon https://helm.brannon.online
+	helm repo add pcktdmp https://pcktdmp.github.io/charts
 	helm repo update
 
 # Dashboards
@@ -42,10 +42,12 @@ uninstall-dash:
 
 # Compute
 f@h:
-	helm secrets upgrade folding-at-home brannon/folding-at-home -n $(folding_namespace) -f folding-at-home/folding-at-home-values.yaml -f folding-at-home/secrets.folding-at-home.yaml --install --create-namespace --wait
+	kubectl apply -f folding-at-home/persistentvolume.yaml
+	helm secrets upgrade folding-at-home pcktdmp/fahclient -n $(folding_namespace) -f folding-at-home/folding-at-home-values.yaml -f folding-at-home/secrets.folding-at-home.yaml --install --create-namespace --wait
 
 uninstall-f@h:
 	helm uninstall -n $(folding_namespace) folding-at-home
+	kubectl delete pv folding-at-home
 
 # OpenVPN
 gen-vpn-keys:
@@ -103,7 +105,7 @@ uninstall-sync:
 # InfluxDB
 influx:
 	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -n $(monitoring_namespace) -f influxdb/persistencevolume.yaml -f influxdb/persistencevolumeclaim.yaml
+	kubectl apply -n $(monitoring_namespace) -f influxdb/persistencevolume.yaml
 	helm secrets dec influxdb/secrets.influxdb-creds.yaml
 	kubectl apply -n $(monitoring_namespace) -f influxdb/secrets.influxdb-creds.yaml.dec
 	rm -fv influxdb/secrets.influxdb-creds.yaml.dec
@@ -112,13 +114,12 @@ influx:
 uninstall-influx:
 	helm uninstall -n $(monitoring_namespace) influxdb
 	kubectl delete secret -n $(monitoring_namespace) influxdb-creds
-	kubectl delete persistentvolumeclaim -n $(monitoring_namespace) influxdb
 	kubectl delete persistentvolume influxdb
 
 # Grafana
 graf:
 	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -n $(monitoring_namespace) -f grafana/persistencevolume.yaml -f grafana/persistencevolumeclaim.yaml
+	kubectl apply -n $(monitoring_namespace) -f grafana/persistencevolume.yaml
 	helm secrets dec grafana/secrets.grafana-creds.yaml
 	kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
 	rm -fv grafana/secrets.grafana-creds.yaml.dec
@@ -127,7 +128,6 @@ graf:
 uninstall-graf:
 	helm uninstall -n $(monitoring_namespace) grafana
 	kubectl delete secret -n $(monitoring_namespace) grafana-creds
-	kubectl delete persistentvolumeclaim -n $(monitoring_namespace) grafana
 	kubectl delete persistentvolume grafana
 
 # clean

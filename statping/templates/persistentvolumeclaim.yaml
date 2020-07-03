@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "statping.labels" . | nindent 4 }}
 spec:
-  storageClassName: manual
+  storageClassName: {{ include "statping.fullname" . }}
   accessModes:
     - ReadWriteOnce
   resources:

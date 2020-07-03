@@ -1,11 +1,17 @@
-# Configuration for folding-at-home
+# Default values for fahclient.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
 
 replicaCount: 1
 
+storageClassName: folding-at-home
+
+# set to some sane defaults to prevent interference
+# of your other workload.
 resources:
   limits:
-    cpu: 1000m
-    memory: 512Mi
+    cpu: 1.0
+    memory: 256Mi
   requests:
-    cpu: 800m
+    cpu: 1.0
     memory: 128Mi
