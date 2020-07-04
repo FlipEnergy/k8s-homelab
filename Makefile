@@ -47,6 +47,7 @@ f@h:
 
 uninstall-f@h:
 	helm uninstall -n $(folding_namespace) folding-at-home
+	kubectl delete -n $(folding_namespace) pvc fah-folding-at-home-fahclient-0
 	kubectl delete pv folding-at-home
 
 # OpenVPN
@@ -113,8 +114,9 @@ influx:
 
 uninstall-influx:
 	helm uninstall -n $(monitoring_namespace) influxdb
-	kubectl delete secret -n $(monitoring_namespace) influxdb-creds
-	kubectl delete persistentvolume influxdb
+	kubectl delete -n $(monitoring_namespace) secret influxdb-creds
+	kubectl delete -n $(monitoring_namespace) pvc influxdb-data-influxdb-0
+	kubectl delete pv influxdb
 
 # Grafana
 graf:
@@ -127,7 +129,7 @@ graf:
 
 uninstall-graf:
 	helm uninstall -n $(monitoring_namespace) grafana
-	kubectl delete secret -n $(monitoring_namespace) grafana-creds
+	kubectl delete -n $(monitoring_namespace) secret grafana-creds
 	kubectl delete persistentvolume grafana
 
 # clean
