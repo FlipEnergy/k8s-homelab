@@ -5,6 +5,8 @@ Just repo that holds stuff for my personal homelab k8s environment.
 - Kubectl
 - Helm3
 - Helm-secrets https://github.com/zendesk/helm-secrets
+- Helm-diff https://github.com/databus23/helm-diff
+- Helmsman https://github.com/Praqma/helmsman
 
 # K8s Node requirements
 - MicroK8s
@@ -13,7 +15,7 @@ Just repo that holds stuff for my personal homelab k8s environment.
         - dns
         - metrics-server
         - metallb
-- remote kubectl access to cluster: https://microk8s.io/docs/ports
+- remote kubectl access to cluster: `microk8s config`
 
 # Get Kubectl config
 ```microk8s kubectl config view --raw```
