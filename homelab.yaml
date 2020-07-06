@@ -13,7 +13,7 @@ namespaces:
   openvpn:
   dennis-site:
   syncthing:
-  
+
 helmRepos:
   my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
   stable: "https://kubernetes-charts.storage.googleapis.com"
@@ -26,20 +26,31 @@ apps:
     enabled: true
     chart: "kubernetes-dashboard/kubernetes-dashboard"
     version: "2.2.0"
-    valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
+    valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
   my-kube-ops-view:
     namespace: "monitoring"
     enabled: true
     chart: "my-helm-charts-repo/kube-ops-view"
     version: "1.3.0"
-    valuesFile: kube-ops-view/kube-ops-view-values.yaml
+    valuesFile: "kube-ops-view/kube-ops-view-values.yaml"
   statping:
     namespace: "monitoring"
     enabled: true
     chart: "./statping"
     version: "0.1.0"
   influxdb:
+    namespace: "monitoring"
+    enabled: true
+    chart: "my-helm-charts-repo/influxdb"
+    version: "4.8.0"
+    valuesFile: "influxdb/influxdb-values.yaml"
   grafana:
+    namespace: "monitoring"
+    enabled: true
+    chart: "stable/grafana"
+    version: "5.3.3"
+    valuesFile: "grafana/grafana-values.yaml"
+    secretsFile: "grafana/secrets.grafana-datasource.yaml"
   folding-at-home:
     namespace: "folding-at-home"
     enabled: false
@@ -63,4 +74,3 @@ apps:
     enabled: true
     chart: "./syncthing"
     version: "0.1.0"
-  

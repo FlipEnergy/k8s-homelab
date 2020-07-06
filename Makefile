@@ -1,52 +1,70 @@
 SHELL := /bin/bash
-dash_namespace := kubernetes-dashboard
-kube_namespace := kube-ops-view
+monitoring_namespace := monitoring
 folding_namespace := folding-at-home
 vpn_namespace := openvpn
 vpn_device1 := pixel3
 vpn_device2 := surfacego2
 site_namespace := dennis-site
-statping_namespace := statping
 syncthing_namespace := syncthing
-monitoring_namespace := monitoring
+
+up:
+	make init
+	make deploy
 
 init:
 	kubectl apply -f coredns/coredns.yml
-	make add-update-repos
-	make vpn
-	make kube
-	make dash
-	make site
-	make stat
-	make sync
+	make influx-init
+	make graf-init
+	make f@h-init
 
-add-update-repos:
-	helm repo add my-helm-charts-repo https://flipenergy.github.io/helm-charts-repo/
-	helm repo add stable https://kubernetes-charts.storage.googleapis.com
-	helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-	helm repo add pcktdmp https://pcktdmp.github.io/charts
-	helm repo update
+deploy:
+	helmsman --apply -f homelab.yaml
 
-# Dashboards
-kube:
-	helm upgrade my-kube-ops-view my-helm-charts-repo/kube-ops-view -n $(kube_namespace) -f kube-ops-view/kube-ops-view-values.yaml --install --create-namespace --wait
+# Statping
+save-stat-db:
+	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
+	rm -vrf app/logs/* ~/ansible-playground/roles/site_node/files/statping-app-data
+	mv -v app ~/ansible-playground/roles/site_node/files/statping-app-data
 
-uninstall-kube:
-	helm uninstall -n $(kube_namespace) my-kube-ops-view
+# Syncthing
+save-sync-config:
+	mkdir -p config
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
+	gpg-zip --encrypt --output syncthing/syncthing_config --recipient $$USER config
+	rm -rf config
 
-dash:
-	helm upgrade my-k8s-dashboard kubernetes-dashboard/kubernetes-dashboard -n $(dash_namespace) -f kubernetes-dashboard/k8s-dashboard-values.yaml --install --create-namespace --wait
+# InfluxDB
+influx-init:
+	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
+	kubectl apply -f influxdb/persistencevolume.yaml
+	helm secrets dec influxdb/secrets.influxdb-creds.yaml
+	kubectl apply -n $(monitoring_namespace) -f influxdb/secrets.influxdb-creds.yaml.dec
+	rm -fv influxdb/secrets.influxdb-creds.yaml.dec
 
-uninstall-dash:
-	helm uninstall -n $(dash_namespace) my-k8s-dashboard
+clean-influx:
+	kubectl delete -n $(monitoring_namespace) secret influxdb-creds
+	kubectl delete -n $(monitoring_namespace) pvc influxdb-data-influxdb-0
+	kubectl delete pv influxdb
+
+# Grafana
+graf-init:
+	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
+	kubectl apply -n $(monitoring_namespace) -f grafana/persistencevolume.yaml
+	helm secrets dec grafana/secrets.grafana-creds.yaml
+	kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
+	rm -fv grafana/secrets.grafana-creds.yaml.dec
+
+clean-graf:
+	kubectl delete -n $(monitoring_namespace) secret grafana-creds
+	kubectl delete pv grafana
 
 # Compute
-f@h:
+f@h-init:
 	kubectl apply -f folding-at-home/persistentvolume.yaml
-	helm secrets upgrade folding-at-home pcktdmp/fahclient -n $(folding_namespace) -f folding-at-home/folding-at-home-values.yaml -f folding-at-home/secrets.folding-at-home.yaml --install --create-namespace --wait
 
-uninstall-f@h:
-	helm uninstall -n $(folding_namespace) folding-at-home
+clean-f@h:
 	kubectl delete -n $(folding_namespace) pvc fah-folding-at-home-fahclient-0
 	kubectl delete pv folding-at-home
 
@@ -63,77 +81,11 @@ freeze-vpn-certs:
 	kubectl create secret generic -n $(vpn_namespace) openvpn-keystore-secret --from-file=./server.key --from-file=./ca.crt --from-file=./server.crt --from-file=./dh.pem
 	rm -fv *.key *.crt *.pem
 
-vpn:
-	helm upgrade my-openvpn my-helm-charts-repo/openvpn -n $(vpn_namespace) -f openvpn/openvpn-values.yaml --install --create-namespace --wait --timeout=15m0s
-
-uninstall-vpn:
-	helm uninstall -n $(vpn_namespace) my-openvpn
-
-# My website
-site:
-	helm upgrade dennis-site ./flipenergy -n $(site_namespace) --install --create-namespace --wait
-
-uninstall-site:
-	helm uninstall -n $(site_namespace) dennis-site
-
-# Statping
-save-stat-db:
-	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
-	rm -vrf app/logs/* ~/ansible-playground/roles/site_node/files/statping-app-data
-	mv -v app ~/ansible-playground/roles/site_node/files/statping-app-data
-
-stat:
-	helm upgrade statping ./statping -n $(statping_namespace) --install --create-namespace --wait
-
-uninstall-stat:
-	helm uninstall -n $(statping_namespace) statping
-
-# Syncthing
-save-sync-config:
-	mkdir -p config
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
-	gpg-zip --encrypt --output syncthing/syncthing_config --recipient $$USER config
-	rm -rf config
-
-sync:
-	helm upgrade syncthing ./syncthing -n $(syncthing_namespace) --install --create-namespace --wait
-
-uninstall-sync:
-	helm uninstall -n $(syncthing_namespace) syncthing
-
-# InfluxDB
-influx:
-	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -n $(monitoring_namespace) -f influxdb/persistencevolume.yaml
-	helm secrets dec influxdb/secrets.influxdb-creds.yaml
-	kubectl apply -n $(monitoring_namespace) -f influxdb/secrets.influxdb-creds.yaml.dec
-	rm -fv influxdb/secrets.influxdb-creds.yaml.dec
-	helm upgrade influxdb my-helm-charts-repo/influxdb -n $(monitoring_namespace) -f influxdb/influxdb-values.yaml --install --wait
-
-uninstall-influx:
-	helm uninstall -n $(monitoring_namespace) influxdb
-	kubectl delete -n $(monitoring_namespace) secret influxdb-creds
-	kubectl delete -n $(monitoring_namespace) pvc influxdb-data-influxdb-0
-	kubectl delete pv influxdb
-
-# Grafana
-graf:
-	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -n $(monitoring_namespace) -f grafana/persistencevolume.yaml
-	helm secrets dec grafana/secrets.grafana-creds.yaml
-	kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
-	rm -fv grafana/secrets.grafana-creds.yaml.dec
-	helm secrets upgrade grafana stable/grafana -n $(monitoring_namespace) -f grafana/grafana-values.yaml -f grafana/secrets.grafana-datasource.yaml --install --create-namespace --wait
-
-uninstall-graf:
-	helm uninstall -n $(monitoring_namespace) grafana
-	kubectl delete -n $(monitoring_namespace) secret grafana-creds
-	kubectl delete persistentvolume grafana
-
 # clean
 clean:
+	make clean-influx
+	make clean-graf
+	make clean-f@h
 	kubectl delete namespace $(dash_namespace)
 	kubectl delete namespace $(kube_namespace)
 	kubectl delete namespace $(folding_namespace)
