@@ -53,7 +53,7 @@ apps:
     secretsFile: "grafana/secrets.grafana-datasource.yaml"
   folding-at-home:
     namespace: "folding-at-home"
-    enabled: false
+    enabled: true
     chart: "pcktdmp/fahclient"
     version: "2.5.2"
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
