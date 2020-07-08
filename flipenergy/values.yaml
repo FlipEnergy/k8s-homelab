@@ -7,8 +7,6 @@ replicaCount: 2
 image:
   repository: flipenergy/flipenergy
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: 2.1
 
 imagePullSecrets: []
 nameOverride: ""
