@@ -36,6 +36,7 @@ dashboardProviders:
      type: file
      disableDeletion: false
      editable: true
+     allowUiUpdates: true
      options:
        path: /var/lib/grafana/dashboards/default
 
@@ -67,8 +68,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 2,
-          "iteration": 1593653523495,
+          "id": 1,
+          "iteration": 1594312205292,
           "links": [],
           "panels": [
             {
@@ -273,7 +274,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1593653523495,
+              "repeatIteration": 1594312205292,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -524,7 +525,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1593653523495,
+              "repeatIteration": 1594312205292,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -773,7 +774,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1593653523495,
+              "repeatIteration": 1594312205292,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -3145,7 +3146,7 @@ dashboards:
               {
                 "allValue": null,
                 "current": {
-                  "selected": true,
+                  "selected": false,
                   "text": "myserver.tgp + mysurface3.tgp",
                   "value": [
                     "myserver.tgp",
@@ -3176,9 +3177,9 @@ dashboards:
                 "auto_count": 100,
                 "auto_min": "30s",
                 "current": {
-                  "selected": true,
-                  "text": "1m",
-                  "value": "1m"
+                  "selected": false,
+                  "text": "auto",
+                  "value": "$__auto_interval"
                 },
                 "datasource": null,
                 "hide": 0,
@@ -3188,7 +3189,7 @@ dashboards:
                 "name": "inter",
                 "options": [
                   {
-                    "selected": false,
+                    "selected": true,
                     "text": "auto",
                     "value": "$__auto_interval"
                   },
@@ -3198,7 +3199,7 @@ dashboards:
                     "value": "30s"
                   },
                   {
-                    "selected": true,
+                    "selected": false,
                     "text": "1m",
                     "value": "1m"
                   },
@@ -3237,7 +3238,7 @@ dashboards:
             ]
           },
           "time": {
-            "from": "now-3h",
+            "from": "now-24h",
             "to": "now"
           },
           "timepicker": {
@@ -3267,7 +3268,7 @@ dashboards:
           "timezone": "browser",
           "title": "Telegraf metrics",
           "uid": "H6MPdDGGz",
-          "version": 2
+          "version": 3
         }
 
 ## Node labels for pod assignment
