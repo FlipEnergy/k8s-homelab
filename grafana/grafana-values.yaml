@@ -6302,6 +6302,7 @@ dashboards:
               }
             }
           ],
+          "refresh": "5m",
           "schemaVersion": 25,
           "style": "dark",
           "tags": [],
@@ -6309,7 +6310,7 @@ dashboards:
             "list": []
           },
           "time": {
-            "from": "now-6h",
+            "from": "now-24h",
             "to": "now"
           },
           "timepicker": {
@@ -6340,7 +6341,7 @@ dashboards:
           "timezone": "",
           "title": "Fail2ban",
           "uid": "uTWqKmQmk",
-          "version": 5
+          "version": 7
         }
 
 ## Node labels for pod assignment
