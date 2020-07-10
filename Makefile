@@ -60,7 +60,10 @@ clean-graf:
 	kubectl delete -n $(monitoring_namespace) secret grafana-creds
 	kubectl delete pv grafana
 
-# Compute
+# Folding-at-home
+f@h-send-term:
+	@kubectl exec -n $(folding_namespace) `kubectl get pod -n $(folding_namespace) -o jsonpath='{.items..metadata.name}'` -- /usr/bin/FAHClient --send-command shutdown
+
 f@h-init:
 	kubectl apply -f folding-at-home/persistentvolume.yaml
 
