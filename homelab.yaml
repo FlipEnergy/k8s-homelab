@@ -54,8 +54,8 @@ apps:
   folding-at-home:
     namespace: "folding-at-home"
     enabled: true
-    chart: "pcktdmp/fahclient"
-    version: "2.5.2"
+    chart: "my-helm-charts-repo/fahclient"
+    version: "2.5.3"
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
     secretsFile: "folding-at-home/secrets.folding-at-home.yaml"
   my-openvpn:
