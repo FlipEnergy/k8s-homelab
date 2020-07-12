@@ -24,8 +24,8 @@ storageClassName: folding-at-home
 # of your other workload.
 resources:
   limits:
-    cpu: 1.0
+    cpu: 1500m
     memory: 256Mi
   requests:
-    cpu: 900m
+    cpu: 1400m
     memory: 128Mi
