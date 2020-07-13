@@ -14,12 +14,12 @@ service:
   portName: service
 
 resources:
- limits:
-   cpu: 100m
-   memory: 128Mi
- requests:
-   cpu: 100m
-   memory: 128Mi
+  limits:
+    cpu: 50m
+    memory: 64Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
 
 ## Configure grafana dashboard providers
 ## ref: http://docs.grafana.org/administration/provisioning/#dashboards

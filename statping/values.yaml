@@ -58,21 +58,11 @@ ingress:
 
 resources:
   limits:
-    cpu: 100m
+    cpu: 50m
     memory: 64Mi
   requests:
     cpu: 10m
     memory: 32Mi
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
-
-nodeSelector:
-  kubernetes.io/hostname: myserver.tgp
 
 tolerations: []
 

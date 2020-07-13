@@ -8,5 +8,10 @@ service:
   loadBalancerIP: 192.168.1.51
   externalPort: 80
 
-nodeSelector:
-  kubernetes.io/hostname: myserver.tgp
+resources:
+  limits:
+    cpu: 50m
+    memory: 64Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
