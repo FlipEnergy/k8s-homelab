@@ -1,9 +1,6 @@
 SHELL := /bin/bash
 monitoring_namespace := monitoring
 folding_namespace := folding-at-home
-vpn_namespace := openvpn
-vpn_device1 := pixel3
-vpn_device2 := surfacego2
 site_namespace := dennis-site
 syncthing_namespace := syncthing
 
@@ -68,19 +65,6 @@ clean-f@h:
 	kubectl delete -n $(folding_namespace) pvc fah-folding-at-home-fahclient-0
 	kubectl delete pv folding-at-home
 
-# OpenVPN
-gen-vpn-keys:
-	openvpn/generate_openvpn_client_key.sh $(vpn_device1) $(vpn_namespace) my-openvpn
-	openvpn/generate_openvpn_client_key.sh $(vpn_device2) $(vpn_namespace) my-openvpn
-
-freeze-vpn-certs:
-	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/private/server.key server.key
-	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/ca.crt ca.crt
-	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/issued/server.crt server.crt
-	kubectl cp -n $(vpn_namespace) `kubectl get pod -n $(vpn_namespace) -o jsonpath='{.items..metadata.name}'`:/etc/openvpn/certs/pki/dh.pem dh.pem
-	kubectl create secret generic -n $(vpn_namespace) openvpn-keystore-secret --from-file=./server.key --from-file=./ca.crt --from-file=./server.crt --from-file=./dh.pem
-	rm -fv *.key *.crt *.pem
-
 # clean
 clean:
 	make clean-influx
@@ -89,7 +73,6 @@ clean:
 	kubectl delete namespace $(dash_namespace)
 	kubectl delete namespace $(kube_namespace)
 	kubectl delete namespace $(folding_namespace)
-	kubectl delete namespace $(vpn_namespace)
 	kubectl delete namespace $(site_namespace)
 	kubectl delete namespace $(statping_namespace)
 	kubectl delete namespace $(syncthing_namespace)

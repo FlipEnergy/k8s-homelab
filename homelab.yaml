@@ -10,7 +10,6 @@ settings:
 namespaces:
   monitoring:
   folding-at-home:
-  openvpn:
   dennis-site:
   syncthing:
 
@@ -58,12 +57,6 @@ apps:
     version: "2.5.3"
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
     secretsFile: "folding-at-home/secrets.folding-at-home.yaml"
-  my-openvpn:
-    namespace: "openvpn"
-    enabled: true
-    chart: "my-helm-charts-repo/openvpn"
-    version: "4.2.4"
-    valuesFile: "openvpn/openvpn-values.yaml"
   dennis-site:
     namespace: "dennis-site"
     enabled: true
