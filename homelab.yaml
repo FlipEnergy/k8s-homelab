@@ -14,10 +14,11 @@ namespaces:
   syncthing:
 
 helmRepos:
-  my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
-  stable: "https://kubernetes-charts.storage.googleapis.com"
+  influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
+  my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
   pcktdmp: "https://pcktdmp.github.io/charts"
+  stable: "https://kubernetes-charts.storage.googleapis.com"
 
 apps:
   my-k8s-dashboard:
@@ -40,8 +41,8 @@ apps:
   influxdb:
     namespace: "monitoring"
     enabled: true
-    chart: "my-helm-charts-repo/influxdb"
-    version: "4.8.0"
+    chart: "influxdata/influxdb"
+    version: "4.8.1"
     valuesFile: "influxdb/influxdb-values.yaml"
   grafana:
     namespace: "monitoring"
