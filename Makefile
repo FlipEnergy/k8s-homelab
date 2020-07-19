@@ -19,16 +19,16 @@ deploy:
 
 # Statping
 save-stat-db:
-	kubectl cp -n $(statping_namespace) `kubectl get pod -n $(statping_namespace) -o jsonpath='{.items..metadata.name}'`:/app app
+	kubectl cp -n $(monitoring_namespace) `kubectl get pod -n $(monitoring_namespace) -l app.kubernetes.io/name=statping -o jsonpath='{.items..metadata.name}'`:/app app
 	rm -vrf app/logs/* ~/ansible-playground/roles/site_node/files/statping-app-data
 	mv -v app ~/ansible-playground/roles/site_node/files/statping-app-data
 
 # Syncthing
 save-sync-config:
 	mkdir -p config
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
 	gpg-zip --encrypt --output syncthing/syncthing_config --recipient $$USER config
 	rm -rf config
 
