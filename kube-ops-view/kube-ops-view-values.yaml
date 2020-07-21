@@ -2,6 +2,11 @@
 
 replicaCount: 1
 
+image:
+  repository: hjacobs/kube-ops-view
+  tag: latest
+  pullPolicy: Always
+
 # Loadbalanced by Metallb
 service:
   type: LoadBalancer

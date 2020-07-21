@@ -25,7 +25,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "kubernetes-dashboard/kubernetes-dashboard"
-    version: "2.2.0"
+    version: "2.3.0"
     valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
   my-kube-ops-view:
     namespace: "monitoring"
@@ -48,7 +48,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "stable/grafana"
-    version: "5.3.3"
+    version: "5.4.1"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-datasource.yaml"
   folding-at-home:

@@ -6,7 +6,8 @@ replicaCount: 1
 
 image:
   repository: syncthing/syncthing
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
