@@ -3,6 +3,7 @@ monitoring_namespace := monitoring
 folding_namespace := folding-at-home
 site_namespace := dennis-site
 syncthing_namespace := syncthing
+wireguard_namespace := wireguard
 
 up:
 	make init
@@ -48,7 +49,7 @@ clean-influx:
 # Grafana
 graf-init:
 	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -n $(monitoring_namespace) -f grafana/persistencevolume.yaml
+	kubectl apply -f grafana/persistencevolume.yaml
 	helm secrets dec grafana/secrets.grafana-creds.yaml
 	-kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
 	rm -fv grafana/secrets.grafana-creds.yaml.dec
@@ -56,6 +57,15 @@ graf-init:
 clean-graf:
 	kubectl delete -n $(monitoring_namespace) secret grafana-creds
 	kubectl delete pv grafana
+
+# WireGuard
+
+wire-init:
+	kubectl get ns $(wireguard_namespace) > /dev/null || kubectl create ns $(wireguard_namespace)
+	kubectl apply -f wireguard/persistencevolume.yaml
+
+clean-wire:
+	kubectl delete pv wireguard
 
 # Folding-at-home
 f@h-init:
