@@ -1,7 +1,7 @@
 # wg-access-server config
 config:
   wireguard:
-    externalHost: "wireguard.pleasenoddos.com"
+    externalHost: "pleasenoddos.com"
 
 web:
   service:
