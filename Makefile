@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 monitoring_namespace := monitoring
+bitwarden_namespace := bitwarden
 folding_namespace := folding-at-home
 site_namespace := dennis-site
 syncthing_namespace := syncthing
@@ -58,14 +59,13 @@ clean-graf:
 	kubectl delete -n $(monitoring_namespace) secret grafana-creds
 	kubectl delete pv grafana
 
-# WireGuard
+# Bitwarden
+bit-init:
+	kubectl get ns $(bitwarden_namespace) > /dev/null || kubectl create ns $(bitwarden_namespace)
+	kubectl apply -f bitwarden/persistencevolume.yaml
 
-wire-init:
-	kubectl get ns $(wireguard_namespace) > /dev/null || kubectl create ns $(wireguard_namespace)
-	kubectl apply -f wireguard/persistencevolume.yaml
-
-clean-wire:
-	kubectl delete pv wireguard
+clean-bit:
+	kubectl delete pv bitwarden
 
 # Folding-at-home
 f@h-init:
@@ -74,6 +74,14 @@ f@h-init:
 clean-f@h:
 	kubectl delete -n $(folding_namespace) pvc fah-folding-at-home-fahclient-0
 	kubectl delete pv folding-at-home
+
+# WireGuard
+wire-init:
+	kubectl get ns $(wireguard_namespace) > /dev/null || kubectl create ns $(wireguard_namespace)
+	kubectl apply -f wireguard/persistencevolume.yaml
+
+clean-wire:
+	kubectl delete pv wireguard
 
 # clean
 clean:

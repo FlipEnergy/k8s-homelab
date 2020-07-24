@@ -9,6 +9,7 @@ settings:
 
 namespaces:
   monitoring:
+  bitwarden:
   folding-at-home:
   dennis-site:
   syncthing:
@@ -53,6 +54,12 @@ apps:
     version: "5.4.1"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-datasource.yaml"
+  bitwarden:
+    namespace: "bitwarden"
+    enabled: true
+    chart: "my-helm-charts-repo/bitwarden-k8s"
+    version: "0.1.5"
+    valuesFile: "bitwarden/bitwarden-values.yaml"
   folding-at-home:
     namespace: "folding-at-home"
     enabled: true
