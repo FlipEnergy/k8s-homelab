@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 1,
-          "iteration": 1595484494706,
+          "iteration": 1595567600991,
           "links": [],
           "panels": [
             {
@@ -275,7 +275,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1595484494706,
+              "repeatIteration": 1595567600991,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -517,7 +517,7 @@ dashboards:
               },
               "pluginVersion": "7.0.5",
               "repeat": null,
-              "repeatIteration": 1595484494706,
+              "repeatIteration": 1595567600991,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -743,7 +743,7 @@ dashboards:
               },
               "pluginVersion": "7.0.5",
               "repeat": null,
-              "repeatIteration": 1595484494706,
+              "repeatIteration": 1595567600991,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -968,7 +968,7 @@ dashboards:
               },
               "pluginVersion": "7.0.5",
               "repeat": null,
-              "repeatIteration": 1595484494706,
+              "repeatIteration": 1595567600991,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2407,7 +2407,7 @@ dashboards:
               "steppedLine": false,
               "targets": [
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -2457,7 +2457,7 @@ dashboards:
                   "tags": []
                 },
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -2606,7 +2606,7 @@ dashboards:
               "steppedLine": false,
               "targets": [
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -2656,7 +2656,7 @@ dashboards:
                   "tags": []
                 },
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -2801,7 +2801,7 @@ dashboards:
               "steppedLine": false,
               "targets": [
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -2851,7 +2851,7 @@ dashboards:
                   "tags": []
                 },
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -2996,7 +2996,7 @@ dashboards:
               "steppedLine": false,
               "targets": [
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -3046,7 +3046,7 @@ dashboards:
                   "tags": []
                 },
                 {
-                  "alias": "$tag_host: $tag_interface: $col",
+                  "alias": "$tag_host: $col",
                   "dsType": "influxdb",
                   "function": "derivative",
                   "groupBy": [
@@ -3168,11 +3168,10 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "tags": [],
-                  "text": "mysurface3.tgp + myserver.tgp",
+                  "text": "myserver.tgp + mysurface3.tgp",
                   "value": [
-                    "mysurface3.tgp",
-                    "myserver.tgp"
+                    "myserver.tgp",
+                    "mysurface3.tgp"
                   ]
                 },
                 "datasource": "HomeLab InfluxDB",
@@ -3290,9 +3289,9 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 11
+          "version": 15
         }
-    HAproxy:
+    Nginx:
       json: |
         {
           "annotations": {
@@ -3308,385 +3307,50 @@ dashboards:
               }
             ]
           },
-          "description": "",
+          "description": "Performance metrics for Nginx",
           "editable": true,
-          "gnetId": 1234,
+          "gnetId": 5063,
           "graphTooltip": 0,
-          "id": 3,
-          "iteration": 1594338515459,
+          "id": 1,
+          "iteration": 1595568948304,
           "links": [],
           "panels": [
             {
-              "collapsed": false,
-              "datasource": null,
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$datasource",
+              "editable": true,
+              "error": false,
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "grid": {},
               "gridPos": {
-                "h": 1,
+                "h": 8,
                 "w": 24,
                 "x": 0,
                 "y": 0
               },
-              "id": 18,
-              "panels": [],
-              "repeat": null,
-              "title": "Frontend",
-              "type": "row"
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 0,
-                "y": 1
-              },
               "hiddenSeries": false,
-              "id": 1,
+              "id": 8,
+              "isNew": true,
               "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
+                "alignAsTable": true,
+                "avg": true,
+                "current": true,
+                "max": true,
                 "min": false,
+                "rightSide": true,
                 "show": true,
                 "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"req_rate\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "req_rate"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "last"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Requests Rate",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 12,
-                "y": 1
-              },
-              "hiddenSeries": false,
-              "id": 2,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"rate\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "rate"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "last"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Sessions Created Rate",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 8
-              },
-              "hiddenSeries": false,
-              "id": 4,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
+                "values": true
               },
               "lines": true,
               "linewidth": 1,
@@ -3706,14 +3370,7 @@ dashboards:
               "targets": [
                 {
                   "alias": "",
-                  "application": {
-                    "filter": ""
-                  },
                   "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
                   "groupBy": [
                     {
                       "params": [
@@ -3723,752 +3380,183 @@ dashboards:
                     },
                     {
                       "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
                         "null"
                       ],
                       "type": "fill"
                     }
                   ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
+                  "measurement": "nginx",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(\"ereq\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
                   "select": [
                     [
                       {
                         "params": [
-                          "ereq"
+                          "accepts"
                         ],
                         "type": "field"
                       },
                       {
                         "params": [],
                         "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Client Request Errors",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "collapsed": false,
-              "datasource": null,
-              "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 15
-              },
-              "id": 19,
-              "panels": [],
-              "repeat": null,
-              "title": "Backend",
-              "type": "row"
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 16
-              },
-              "hiddenSeries": false,
-              "id": 5,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "hideEmpty": true,
-                "hideZero": true,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"rtime\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "rtime"
-                        ],
-                        "type": "field"
                       },
                       {
-                        "params": [],
-                        "type": "last"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average Response Time",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "ms",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 0,
-                "y": 23
-              },
-              "hiddenSeries": false,
-              "id": 6,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "hideEmpty": true,
-                "hideZero": true,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"econ\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
                         "params": [
-                          "econ"
+                          "10s"
                         ],
-                        "type": "field"
+                        "type": "non_negative_derivative"
                       },
                       {
-                        "params": [],
-                        "type": "last"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Requests with Backend Connection Errors",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 12,
-                "y": 23
-              },
-              "hiddenSeries": false,
-              "id": 8,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "hideEmpty": true,
-                "hideZero": true,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"eresp\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
                         "params": [
-                          "eresp"
+                          "accepts"
                         ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "last"
+                        "type": "alias"
                       }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Requests with Backend Errors",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "collapsed": false,
-              "datasource": null,
-              "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 30
-              },
-              "id": 20,
-              "panels": [],
-              "repeat": null,
-              "title": "Frontend_hrps",
-              "type": "row"
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 31
-              },
-              "hiddenSeries": false,
-              "id": 9,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "alias": "1xx",
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"http_response.1xx\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
+                    ],
                     [
                       {
                         "params": [
-                          "http_response.1xx"
+                          "active"
                         ],
                         "type": "field"
                       },
                       {
                         "params": [],
                         "type": "mean"
+                      },
+                      {
+                        "params": [
+                          "10s"
+                        ],
+                        "type": "non_negative_derivative"
+                      },
+                      {
+                        "params": [
+                          "active"
+                        ],
+                        "type": "alias"
+                      }
+                    ],
+                    [
+                      {
+                        "params": [
+                          "handled"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      },
+                      {
+                        "params": [
+                          "10s"
+                        ],
+                        "type": "non_negative_derivative"
+                      },
+                      {
+                        "params": [
+                          "handled"
+                        ],
+                        "type": "alias"
+                      }
+                    ],
+                    [
+                      {
+                        "params": [
+                          "reading"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      },
+                      {
+                        "params": [
+                          "10s"
+                        ],
+                        "type": "non_negative_derivative"
+                      },
+                      {
+                        "params": [
+                          "reading"
+                        ],
+                        "type": "alias"
+                      }
+                    ],
+                    [
+                      {
+                        "params": [
+                          "requests"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      },
+                      {
+                        "params": [
+                          "10s"
+                        ],
+                        "type": "non_negative_derivative"
+                      },
+                      {
+                        "params": [
+                          "requests"
+                        ],
+                        "type": "alias"
+                      }
+                    ],
+                    [
+                      {
+                        "params": [
+                          "waiting"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      },
+                      {
+                        "params": [
+                          "10s"
+                        ],
+                        "type": "non_negative_derivative"
+                      },
+                      {
+                        "params": [
+                          "waiting"
+                        ],
+                        "type": "alias"
+                      }
+                    ],
+                    [
+                      {
+                        "params": [
+                          "writing"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      },
+                      {
+                        "params": [
+                          "10s"
+                        ],
+                        "type": "non_negative_derivative"
+                      },
+                      {
+                        "params": [
+                          "writing"
+                        ],
+                        "type": "alias"
                       }
                     ]
                   ],
@@ -4477,35 +3565,105 @@ dashboards:
                       "key": "host",
                       "operator": "=~",
                       "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
                     }
                   ]
+                }
+              ],
+              "thresholds": [],
+              "timeFrom": null,
+              "timeRegions": [],
+              "timeShift": null,
+              "title": "Workers",
+              "tooltip": {
+                "msResolution": false,
+                "shared": true,
+                "sort": 0,
+                "value_type": "cumulative"
+              },
+              "type": "graph",
+              "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+              },
+              "yaxes": [
+                {
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
                 },
                 {
-                  "alias": "2xx",
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
+                  "format": "short",
+                  "label": null,
+                  "logBase": 1,
+                  "max": null,
+                  "min": null,
+                  "show": true
+                }
+              ],
+              "yaxis": {
+                "align": false,
+                "alignLevel": null
+              }
+            },
+            {
+              "aliasColors": {},
+              "bars": false,
+              "dashLength": 10,
+              "dashes": false,
+              "datasource": "$datasource",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {}
+                },
+                "overrides": []
+              },
+              "fill": 1,
+              "fillGradient": 0,
+              "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 8
+              },
+              "hiddenSeries": false,
+              "id": 17,
+              "legend": {
+                "avg": true,
+                "current": true,
+                "max": true,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": true
+              },
+              "lines": true,
+              "linewidth": 1,
+              "links": [],
+              "nullPointMode": "null",
+              "options": {
+                "dataLinks": []
+              },
+              "percentage": false,
+              "pointradius": 5,
+              "points": false,
+              "renderer": "flot",
+              "seriesOverrides": [],
+              "spaceLength": 10,
+              "stack": false,
+              "steppedLine": false,
+              "targets": [
+                {
+                  "alias": "activeopens",
                   "groupBy": [
                     {
                       "params": [
-                        "$interval"
+                        "$__interval"
                       ],
                       "type": "time"
                     },
@@ -4516,34 +3674,73 @@ dashboards:
                       "type": "fill"
                     }
                   ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
+                  "measurement": "net",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(\"http_response.2xx\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "tcp_activeopens"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      },
+                      {
+                        "params": [],
+                        "type": "non_negative_difference"
+                      }
+                    ]
+                  ],
+                  "tags": [
+                    {
+                      "key": "host",
+                      "operator": "=~",
+                      "value": "/^$host$/"
+                    }
+                  ]
+                },
+                {
+                  "alias": "estabresets",
+                  "groupBy": [
+                    {
+                      "params": [
+                        "$__interval"
+                      ],
+                      "type": "time"
+                    },
+                    {
+                      "params": [
+                        "null"
+                      ],
+                      "type": "fill"
+                    }
+                  ],
+                  "measurement": "net",
+                  "orderByTime": "ASC",
+                  "policy": "default",
                   "refId": "B",
                   "resultFormat": "time_series",
                   "select": [
                     [
                       {
                         "params": [
-                          "http_response.2xx"
+                          "tcp_estabresets"
                         ],
                         "type": "field"
                       },
                       {
                         "params": [],
                         "type": "mean"
+                      },
+                      {
+                        "params": [],
+                        "type": "non_negative_difference"
                       }
                     ]
                   ],
@@ -4552,243 +3749,6 @@ dashboards:
                       "key": "host",
                       "operator": "=~",
                       "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                },
-                {
-                  "alias": "3xx",
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"http_response.3xx\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "C",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "http_response.3xx"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                },
-                {
-                  "alias": "4xx",
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"http_response.4xx\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "D",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "http_response.4xx"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                },
-                {
-                  "alias": "5xx",
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"http_response.5xx\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "E",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "http_response.5xx"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
                     }
                   ]
                 }
@@ -4797,193 +3757,7 @@ dashboards:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "HTTP responses",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "collapsed": false,
-              "datasource": null,
-              "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 38
-              },
-              "id": 21,
-              "panels": [],
-              "repeat": null,
-              "title": "Frontend_byte",
-              "type": "row"
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 39
-              },
-              "hiddenSeries": false,
-              "id": 10,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "hideEmpty": true,
-                "hideZero": true,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": true,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"bin\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "bin"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "front_recv_byte",
+              "title": "TCP",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5025,7 +3799,7 @@ dashboards:
               "bars": false,
               "dashLength": 10,
               "dashes": false,
-              "datasource": "HomeLab InfluxDB",
+              "datasource": "$datasource",
               "fieldConfig": {
                 "defaults": {
                   "custom": {}
@@ -5035,383 +3809,26 @@ dashboards:
               "fill": 1,
               "fillGradient": 0,
               "gridPos": {
-                "h": 7,
-                "w": 24,
-                "x": 0,
-                "y": 46
-              },
-              "hiddenSeries": false,
-              "id": 11,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "hideEmpty": true,
-                "hideZero": true,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": true,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"bout\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "bout"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "front_sent_byte",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "collapsed": false,
-              "datasource": null,
-              "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 53
-              },
-              "id": 22,
-              "panels": [],
-              "repeat": null,
-              "title": "Backend_request",
-              "type": "row"
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 0,
-                "y": 54
-              },
-              "hiddenSeries": false,
-              "id": 13,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "hideEmpty": true,
-                "hideZero": true,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "proxy"
-                      ],
-                      "type": "tag"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"qtime\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval), \"proxy\" fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "qtime"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "last"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Average Queue Time",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "ms",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
+                "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 54
+                "y": 8
               },
               "hiddenSeries": false,
-              "id": 14,
+              "id": 29,
               "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
+                "avg": true,
+                "current": true,
+                "max": true,
                 "min": false,
                 "show": true,
                 "total": false,
-                "values": false
+                "values": true
               },
               "lines": true,
               "linewidth": 1,
               "links": [],
-              "nullPointMode": "connected",
+              "nullPointMode": "null",
               "options": {
                 "dataLinks": []
               },
@@ -5425,18 +3842,11 @@ dashboards:
               "steppedLine": false,
               "targets": [
                 {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
+                  "alias": "recv",
                   "groupBy": [
                     {
                       "params": [
-                        "$interval"
+                        "$__interval"
                       ],
                       "type": "time"
                     },
@@ -5447,197 +3857,28 @@ dashboards:
                       "type": "fill"
                     }
                   ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
+                  "measurement": "net",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"wredis\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
+                  "query": "SELECT non_negative_difference(mean(\"bytes_recv\")) FROM \"net\" WHERE (\"host\" =~ /^$host$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+                  "rawQuery": false,
                   "refId": "A",
                   "resultFormat": "time_series",
                   "select": [
                     [
                       {
                         "params": [
-                          "wredis"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "last"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
-                    }
-                  ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Redispatched Requests",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 0,
-                "y": 61
-              },
-              "hiddenSeries": false,
-              "id": 12,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"qcur\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "qcur"
+                          "bytes_recv"
                         ],
                         "type": "field"
                       },
                       {
                         "params": [],
                         "type": "mean"
+                      },
+                      {
+                        "params": [],
+                        "type": "non_negative_difference"
                       }
                     ]
                   ],
@@ -5646,123 +3887,15 @@ dashboards:
                       "key": "host",
                       "operator": "=~",
                       "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
                     }
                   ]
-                }
-              ],
-              "thresholds": [],
-              "timeFrom": null,
-              "timeRegions": [],
-              "timeShift": null,
-              "title": "Unassigned Requests in Queue",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
                 },
                 {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "custom": {}
-                },
-                "overrides": []
-              },
-              "fill": 1,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 12,
-                "x": 12,
-                "y": 61
-              },
-              "hiddenSeries": false,
-              "id": 15,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "connected",
-              "options": {
-                "dataLinks": []
-              },
-              "percentage": false,
-              "pointradius": 5,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "application": {
-                    "filter": ""
-                  },
-                  "dsType": "influxdb",
-                  "functions": [],
-                  "group": {
-                    "filter": ""
-                  },
+                  "alias": "sent",
                   "groupBy": [
                     {
                       "params": [
-                        "$interval"
+                        "$__interval"
                       ],
                       "type": "time"
                     },
@@ -5773,34 +3906,26 @@ dashboards:
                       "type": "fill"
                     }
                   ],
-                  "host": {
-                    "filter": ""
-                  },
-                  "item": {
-                    "filter": ""
-                  },
-                  "measurement": "haproxy",
-                  "mode": 0,
-                  "options": {
-                    "showDisabledItems": false
-                  },
+                  "measurement": "net",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(\"wretr\") FROM \"haproxy\" WHERE (\"host\" =~ /^$host$/ AND \"proxy\" =~ /^$proxy$/) AND $timeFilter GROUP BY time($interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
+                  "refId": "B",
                   "resultFormat": "time_series",
                   "select": [
                     [
                       {
                         "params": [
-                          "wretr"
+                          "bytes_sent"
                         ],
                         "type": "field"
                       },
                       {
                         "params": [],
                         "type": "mean"
+                      },
+                      {
+                        "params": [],
+                        "type": "non_negative_difference"
                       }
                     ]
                   ],
@@ -5809,18 +3934,6 @@ dashboards:
                       "key": "host",
                       "operator": "=~",
                       "value": "/^$host$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "proxy",
-                      "operator": "=~",
-                      "value": "/^$proxy$/"
-                    },
-                    {
-                      "condition": "AND",
-                      "key": "sv",
-                      "operator": "=~",
-                      "value": "/^$sv$/"
                     }
                   ]
                 }
@@ -5829,7 +3942,7 @@ dashboards:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "Retried Connections",
+              "title": "Traffic",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -5845,7 +3958,7 @@ dashboards:
               },
               "yaxes": [
                 {
-                  "format": "short",
+                  "format": "Bps",
                   "label": null,
                   "logBase": 1,
                   "max": null,
@@ -5867,63 +3980,56 @@ dashboards:
               }
             }
           ],
-          "refresh": "5m",
+          "refresh": "30s",
           "schemaVersion": 25,
           "style": "dark",
           "tags": [],
           "templating": {
             "list": [
               {
-                "allValue": null,
                 "current": {
                   "selected": false,
-                  "text": "mysurface3.tgp",
-                  "value": "mysurface3.tgp"
+                  "text": "HomeLab InfluxDB",
+                  "value": "HomeLab InfluxDB"
                 },
-                "datasource": "HomeLab InfluxDB",
-                "definition": "",
+                "datasource": null,
                 "hide": 0,
                 "includeAll": false,
                 "label": "",
                 "multi": false,
-                "name": "host",
+                "name": "datasource",
                 "options": [],
-                "query": "SHOW TAG VALUES FROM \"haproxy\" WITH KEY = \"host\"",
+                "query": "influxdb",
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 0,
-                "tagValuesQuery": null,
-                "tags": [],
-                "tagsQuery": null,
-                "type": "query",
-                "useTags": false
+                "type": "datasource"
               },
               {
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "text": "All",
+                  "text": "mysurface3.tgp",
                   "value": [
-                    "$__all"
+                    "mysurface3.tgp"
                   ]
                 },
-                "datasource": "HomeLab InfluxDB",
+                "datasource": "$datasource",
                 "definition": "",
                 "hide": 0,
-                "includeAll": true,
-                "label": "",
+                "includeAll": false,
+                "label": null,
                 "multi": true,
-                "name": "proxy",
+                "name": "host",
                 "options": [],
-                "query": "SHOW TAG VALUES FROM \"haproxy\" WITH KEY = \"proxy\"",
+                "query": "SHOW TAG VALUES FROM \"nginx\" WITH KEY = \"host\"",
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
                 "sort": 0,
-                "tagValuesQuery": null,
+                "tagValuesQuery": "",
                 "tags": [],
-                "tagsQuery": null,
+                "tagsQuery": "",
                 "type": "query",
                 "useTags": false
               }
@@ -5958,9 +4064,9 @@ dashboards:
             ]
           },
           "timezone": "browser",
-          "title": "HAproxy",
-          "uid": "g6ggPCMMk",
-          "version": 3
+          "title": "Nginx",
+          "uid": "GqFjuAgmk",
+          "version": 2
         }
     fail2ban:
       json: |
