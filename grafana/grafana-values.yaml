@@ -12,6 +12,7 @@ replicas: 1
 service:
   type: LoadBalancer
   portName: service
+  loadBalancerIP: 192.168.1.53
 
 resources:
   limits:

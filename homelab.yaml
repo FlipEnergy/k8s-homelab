@@ -12,12 +12,14 @@ namespaces:
   folding-at-home:
   dennis-site:
   syncthing:
+  wireguard:
 
 helmRepos:
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
   pcktdmp: "https://pcktdmp.github.io/charts"
+  place1: "https://place1.github.io/wg-access-server"
   stable: "https://kubernetes-charts.storage.googleapis.com"
 
 apps:
@@ -68,3 +70,10 @@ apps:
     enabled: true
     chart: "./syncthing"
     version: "0.1.0"
+  wireguard:
+    namespace: "wireguard"
+    enabled: true
+    chart: "place1/wg-access-server"
+    version: "0.2.5"
+    valuesFile: "wireguard/wireguard-values.yaml"
+    secretsFile: "wireguard/secrets.wireguard-creds.yaml"

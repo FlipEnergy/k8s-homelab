@@ -1,0 +1,31 @@
+# wg-access-server config
+config:
+  wireguard:
+    externalHost: "wireguard.pleasenoddos.com"
+
+web:
+  service:
+    type: LoadBalancer
+    loadBalancerIP: 192.168.1.58
+
+wireguard:
+  service:
+    type: LoadBalancer
+    loadBalancerIP: 192.168.1.59
+
+image:
+  repository: place1/wg-access-server
+  pullPolicy: IfNotPresent
+
+strategy:
+  type: Recreate
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
