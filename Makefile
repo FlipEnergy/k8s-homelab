@@ -87,10 +87,12 @@ clean-wire:
 clean:
 	make clean-influx
 	make clean-graf
+	make clean-bit
 	make clean-f@h
-	kubectl delete namespace $(dash_namespace)
-	kubectl delete namespace $(kube_namespace)
+	make clean-wire
+	kubectl delete namespace $(bitwarden_namespace)
 	kubectl delete namespace $(folding_namespace)
 	kubectl delete namespace $(site_namespace)
-	kubectl delete namespace $(statping_namespace)
 	kubectl delete namespace $(syncthing_namespace)
+	kubectl delete namespace $(wireguard_namespace)
+	kubectl delete namespace $(monitoring_namespace)
