@@ -27,16 +27,10 @@ serviceAccount:
 
 podAnnotations: {}
 
+# Note: Syncthing Docker image by default runs as UID and GID 1000, which happens to be me
 podSecurityContext: {}
-  # fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   website:

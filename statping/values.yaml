@@ -26,8 +26,9 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  runAsUser: 500
+  fsGroup: 500
 
 securityContext:
   capabilities:
@@ -63,6 +64,11 @@ resources:
   requests:
     cpu: 10m
     memory: 32Mi
+
+autoscaling:
+  enabled: false
+
+nodeSelector: {}
 
 tolerations: []
 
