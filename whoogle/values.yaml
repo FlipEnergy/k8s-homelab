@@ -1,10 +1,14 @@
-# Default values for flipenergy.
+# Default values for whoogle.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+replicaCount: 1
+
 image:
-  repository: flipenergy/flipenergy
-  pullPolicy: IfNotPresent
+  repository: benbusby/whoogle-search
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
@@ -34,8 +38,7 @@ securityContext: {}
 service:
   type: LoadBalancer
   port: 80
-  loadBalancerIP: 192.168.1.52
-
+  loadBalancerIP: 192.168.1.60
 
 ingress:
   enabled: false
@@ -51,6 +54,10 @@ ingress:
   #      - chart-example.local
 
 resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 100m
     memory: 128Mi
@@ -59,10 +66,11 @@ resources:
     memory: 128Mi
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: 100
   targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 

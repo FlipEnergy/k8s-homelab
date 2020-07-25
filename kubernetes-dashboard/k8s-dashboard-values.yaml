@@ -12,7 +12,7 @@ service:
 
 securityContext:
   runAsUser: 1002
-  fsGroup: 2002
+  fsGroup: 1002
 
 metricsScraper:
   enabled: true

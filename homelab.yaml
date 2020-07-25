@@ -14,6 +14,7 @@ namespaces:
   dennis-site:
   syncthing:
   wireguard:
+  whoogle:
 
 helmRepos:
   influxdata: "https://helm.influxdata.com/"
@@ -79,3 +80,8 @@ apps:
     version: "0.2.5"
     valuesFile: "wireguard/wireguard-values.yaml"
     secretsFile: "wireguard/secrets.wireguard-creds.yaml"
+  whoogle:
+    namespace: "whoogle"
+    enabled: true
+    chart: "./whoogle"
+    version: "0.1.0"

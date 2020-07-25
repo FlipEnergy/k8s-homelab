@@ -19,7 +19,7 @@ securityContext: {}
 # Add securityContext at pod level:
 podSecurityContext:
   runAsUser: 1001
-  fsGroup: 2001
+  fsGroup: 1001
 
 resources:
   limits:
