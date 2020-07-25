@@ -43,12 +43,12 @@ user:
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
- requests:
-   memory: 256Mi
-   cpu: 100m
- limits:
-   memory: 2Gi
-   cpu: 1000m
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    memory: 128Mi
+    cpu: 50m
 
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
