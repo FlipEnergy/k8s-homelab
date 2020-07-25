@@ -19,12 +19,6 @@ init:
 deploy:
 	helmsman --apply -f homelab.yaml
 
-# Statping
-save-stat-db:
-	kubectl cp -n $(monitoring_namespace) `kubectl get pod -n $(monitoring_namespace) -l app.kubernetes.io/name=statping -o jsonpath='{.items..metadata.name}'`:/app app
-	rm -vrf app/logs/* ~/ansible-playground/roles/site_node/files/statping-app-data
-	mv -v app ~/ansible-playground/roles/site_node/files/statping-app-data
-
 # Syncthing
 save-sync-config:
 	mkdir -p config

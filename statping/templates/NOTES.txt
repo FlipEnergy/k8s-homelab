@@ -1,3 +1,0 @@
-My helm chart for Statping using loadbalancer.
-
-Hit the website through http://{{ .Values.service.loadBalancerIP }}
