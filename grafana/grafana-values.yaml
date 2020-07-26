@@ -69,8 +69,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 1,
-          "iteration": 1595567600991,
+          "id": 3,
+          "iteration": 1595788749196,
           "links": [],
           "panels": [
             {
@@ -121,7 +121,7 @@ dashboards:
               },
               "height": "150px",
               "id": 54758,
-              "interval": "$inter",
+              "interval": "1m",
               "links": [],
               "mappingType": 1,
               "mappingTypes": [
@@ -177,6 +177,7 @@ dashboards:
                     }
                   ],
                   "measurement": "system_uptime",
+                  "orderByTime": "ASC",
                   "policy": "default",
                   "query": "SELECT last(\"uptime\") AS \"value\" FROM \"system\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
@@ -245,8 +246,8 @@ dashboards:
                 "y": 1
               },
               "height": "150px",
-              "id": 65066,
-              "interval": "$inter",
+              "id": 65067,
+              "interval": "1m",
               "links": [],
               "mappingType": 1,
               "mappingTypes": [
@@ -275,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1595567600991,
+              "repeatIteration": 1595788749196,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -372,7 +373,7 @@ dashboards:
                       }
                     ]
                   },
-                  "unit": "percent"
+                  "unit": "celsius"
                 },
                 "overrides": []
               },
@@ -382,8 +383,226 @@ dashboards:
                 "x": 0,
                 "y": 5
               },
+              "id": 65066,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                }
+              },
+              "pluginVersion": "7.0.5",
+              "repeat": "server",
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "myserver.tgp",
+                  "value": "myserver.tgp"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "title": "CPU Core Temp: $server",
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "orange",
+                        "value": 75
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "celsius"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 12,
+                "x": 12,
+                "y": 5
+              },
+              "id": 65068,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                }
+              },
+              "pluginVersion": "7.0.5",
+              "repeat": null,
+              "repeatIteration": 1595788749196,
+              "repeatPanelId": 65066,
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "mysurface3.tgp",
+                  "value": "mysurface3.tgp"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "title": "CPU Core Temp: $server",
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "orange",
+                        "value": 75
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "percent"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 6,
+                "w": 12,
+                "x": 0,
+                "y": 11
+              },
               "id": 65065,
-              "interval": "$inter",
+              "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
               "options": {
@@ -395,7 +614,7 @@ dashboards:
                 "orientation": "horizontal",
                 "reduceOptions": {
                   "calcs": [
-                    "mean"
+                    "lastNotNull"
                   ],
                   "fields": "",
                   "values": false
@@ -492,10 +711,10 @@ dashboards:
                 "h": 6,
                 "w": 12,
                 "x": 12,
-                "y": 5
+                "y": 11
               },
-              "id": 65067,
-              "interval": "$inter",
+              "id": 65069,
+              "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
               "options": {
@@ -507,7 +726,7 @@ dashboards:
                 "orientation": "horizontal",
                 "reduceOptions": {
                   "calcs": [
-                    "mean"
+                    "lastNotNull"
                   ],
                   "fields": "",
                   "values": false
@@ -517,7 +736,7 @@ dashboards:
               },
               "pluginVersion": "7.0.5",
               "repeat": null,
-              "repeatIteration": 1595567600991,
+              "repeatIteration": 1595788749196,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -606,10 +825,10 @@ dashboards:
                 "h": 6,
                 "w": 12,
                 "x": 0,
-                "y": 11
+                "y": 17
               },
               "id": 2165,
-              "interval": "$inter",
+              "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
               "options": {
@@ -718,10 +937,10 @@ dashboards:
                 "h": 6,
                 "w": 12,
                 "x": 12,
-                "y": 11
+                "y": 17
               },
-              "id": 65068,
-              "interval": "$inter",
+              "id": 65070,
+              "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
               "options": {
@@ -743,7 +962,7 @@ dashboards:
               },
               "pluginVersion": "7.0.5",
               "repeat": null,
-              "repeatIteration": 1595567600991,
+              "repeatIteration": 1595788749196,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -832,10 +1051,10 @@ dashboards:
                 "h": 6,
                 "w": 12,
                 "x": 0,
-                "y": 17
+                "y": 23
               },
               "id": 2092,
-              "interval": "$inter",
+              "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
               "options": {
@@ -943,10 +1162,10 @@ dashboards:
                 "h": 6,
                 "w": 12,
                 "x": 12,
-                "y": 17
+                "y": 23
               },
-              "id": 65069,
-              "interval": "$inter",
+              "id": 65071,
+              "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
               "options": {
@@ -968,7 +1187,7 @@ dashboards:
               },
               "pluginVersion": "7.0.5",
               "repeat": null,
-              "repeatIteration": 1595567600991,
+              "repeatIteration": 1595788749196,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1022,7 +1241,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 23
+                "y": 29
               },
               "id": 65060,
               "panels": [],
@@ -1050,11 +1269,11 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 24
+                "y": 30
               },
               "hiddenSeries": false,
               "id": 28239,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -1190,11 +1409,11 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 33
+                "y": 39
               },
               "hiddenSeries": false,
               "id": 65064,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -1330,11 +1549,11 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 42
+                "y": 48
               },
               "hiddenSeries": false,
               "id": 54694,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -1464,11 +1683,11 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 42
+                "y": 48
               },
               "hiddenSeries": false,
               "id": 12054,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -1607,11 +1826,11 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 51
+                "y": 57
               },
               "hiddenSeries": false,
               "id": 52240,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -1758,11 +1977,11 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 51
+                "y": 57
               },
               "hiddenSeries": false,
               "id": 60200,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -1957,11 +2176,11 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 60
+                "y": 66
               },
               "hiddenSeries": false,
               "id": 13782,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -2156,11 +2375,11 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 60
+                "y": 66
               },
               "hiddenSeries": false,
               "id": 56720,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -2341,7 +2560,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 69
+                "y": 75
               },
               "id": 65059,
               "panels": [],
@@ -2369,11 +2588,11 @@ dashboards:
                 "h": 8,
                 "w": 24,
                 "x": 0,
-                "y": 70
+                "y": 76
               },
               "hiddenSeries": false,
               "id": 42026,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -2568,11 +2787,11 @@ dashboards:
                 "h": 8,
                 "w": 24,
                 "x": 0,
-                "y": 78
+                "y": 84
               },
               "hiddenSeries": false,
               "id": 28572,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -2768,11 +2987,11 @@ dashboards:
                 "h": 8,
                 "w": 12,
                 "x": 0,
-                "y": 86
+                "y": 92
               },
               "hiddenSeries": false,
               "id": 58901,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -2963,11 +3182,11 @@ dashboards:
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 86
+                "y": 92
               },
               "hiddenSeries": false,
               "id": 50643,
-              "interval": "$inter",
+              "interval": "1m",
               "legend": {
                 "alignAsTable": true,
                 "avg": true,
@@ -3138,7 +3357,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "5m",
+          "refresh": "1m",
           "schemaVersion": 25,
           "style": "dark",
           "tags": [],
@@ -3192,69 +3411,6 @@ dashboards:
                 "tagsQuery": "",
                 "type": "query",
                 "useTags": false
-              },
-              {
-                "auto": true,
-                "auto_count": 100,
-                "auto_min": "30s",
-                "current": {
-                  "selected": true,
-                  "text": "5m",
-                  "value": "5m"
-                },
-                "datasource": null,
-                "hide": 0,
-                "includeAll": false,
-                "label": "Interval",
-                "multi": false,
-                "name": "inter",
-                "options": [
-                  {
-                    "selected": false,
-                    "text": "auto",
-                    "value": "$__auto_interval"
-                  },
-                  {
-                    "selected": false,
-                    "text": "30s",
-                    "value": "30s"
-                  },
-                  {
-                    "selected": false,
-                    "text": "1m",
-                    "value": "1m"
-                  },
-                  {
-                    "selected": false,
-                    "text": "2m",
-                    "value": "2m"
-                  },
-                  {
-                    "selected": true,
-                    "text": "5m",
-                    "value": "5m"
-                  },
-                  {
-                    "selected": false,
-                    "text": "10m",
-                    "value": "10m"
-                  },
-                  {
-                    "selected": false,
-                    "text": "30m",
-                    "value": "30m"
-                  },
-                  {
-                    "selected": false,
-                    "text": "1h",
-                    "value": "1h"
-                  }
-                ],
-                "query": "30s,1m,2m,5m,10m,30m,1h",
-                "queryValue": "",
-                "refresh": 0,
-                "skipUrlSync": false,
-                "type": "interval"
               }
             ]
           },
@@ -3289,7 +3445,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 15
+          "version": 4
         }
     Nginx:
       json: |
@@ -3312,7 +3468,7 @@ dashboards:
           "gnetId": 5063,
           "graphTooltip": 0,
           "id": 1,
-          "iteration": 1595568948304,
+          "iteration": 1595788664238,
           "links": [],
           "panels": [
             {
@@ -3980,7 +4136,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "30s",
+          "refresh": "1m",
           "schemaVersion": 25,
           "style": "dark",
           "tags": [],
@@ -4066,7 +4222,7 @@ dashboards:
           "timezone": "browser",
           "title": "Nginx",
           "uid": "GqFjuAgmk",
-          "version": 2
+          "version": 4
         }
     fail2ban:
       json: |
@@ -4430,7 +4586,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "5m",
+          "refresh": "1m",
           "schemaVersion": 25,
           "style": "dark",
           "tags": [],
@@ -4469,7 +4625,7 @@ dashboards:
           "timezone": "",
           "title": "Fail2ban",
           "uid": "uTWqKmQmk",
-          "version": 7
+          "version": 2
         }
 
 ## Node labels for pod assignment
