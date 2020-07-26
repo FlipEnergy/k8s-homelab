@@ -10,6 +10,16 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
 
+# whoogle config
+config: |
+  {
+    "ctry": "",
+    "lang": "lang_en",
+    "near": "",
+    "dark": "on",
+    "url": "https://whoogle.pleasenoddos.com/"
+  }
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
