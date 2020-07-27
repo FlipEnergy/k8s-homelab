@@ -44,7 +44,7 @@ user:
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   limits:
-    cpu: 100m
+    cpu: 300m
     memory: 256Mi
   requests:
     memory: 128Mi
