@@ -10,7 +10,7 @@ image:
   pullPolicy: IfNotPresent
 
 env:
-  SIGNUPS_ALLOWED: true
+  SIGNUPS_ALLOWED: false
   INVITATIONS_ALLOWED: true
   # SERVER_ADMIN_EMAIL
   # DOMAIN
