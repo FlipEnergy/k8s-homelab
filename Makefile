@@ -2,10 +2,9 @@ SHELL := /bin/bash
 monitoring_namespace := monitoring
 bitwarden_namespace := bitwarden
 folding_namespace := folding-at-home
-site_namespace := dennis-site
+my_site_namespace := dennis-site
 syncthing_namespace := syncthing
 wireguard_namespace := wireguard
-rocketchat_namespace := rocketchat
 
 up:
 	make init
@@ -78,14 +77,6 @@ wire-init:
 clean-wire:
 	kubectl delete pv wireguard
 
-# RocketChat
-rocket-init:
-	kubectl get ns $(rocketchat_namespace) > /dev/null || kubectl create ns $(rocketchat_namespace)
-	kubectl apply -f rocketchat/persistencevolume.yaml
-
-clean-rocket:
-	kubectl delete pv rocketchat-mongodb
-
 # clean
 clean:
 	make clean-influx
@@ -95,7 +86,7 @@ clean:
 	make clean-wire
 	kubectl delete namespace $(bitwarden_namespace)
 	kubectl delete namespace $(folding_namespace)
-	kubectl delete namespace $(site_namespace)
+	kubectl delete namespace $(my_site_namespace)
 	kubectl delete namespace $(syncthing_namespace)
 	kubectl delete namespace $(wireguard_namespace)
 	kubectl delete namespace $(monitoring_namespace)
