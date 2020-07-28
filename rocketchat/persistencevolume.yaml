@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: grafana
+  name: rocketchat-mongodb
   labels:
     type: local
 spec:
-  storageClassName: grafana
+  storageClassName: rocketchat-mongodb
   capacity:
     storage: 8Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/grafana
+    path: /mnt/rocketchat-mongodb

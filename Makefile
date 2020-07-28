@@ -5,6 +5,7 @@ folding_namespace := folding-at-home
 site_namespace := dennis-site
 syncthing_namespace := syncthing
 wireguard_namespace := wireguard
+rocketchat_namespace := rocketchat
 
 up:
 	make init
@@ -76,6 +77,14 @@ wire-init:
 
 clean-wire:
 	kubectl delete pv wireguard
+
+# RocketChat
+rocket-init:
+	kubectl get ns $(rocketchat_namespace) > /dev/null || kubectl create ns $(rocketchat_namespace)
+	kubectl apply -f rocketchat/persistencevolume.yaml
+
+clean-rocket:
+	kubectl delete pv rocketchat-mongodb
 
 # clean
 clean:

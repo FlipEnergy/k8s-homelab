@@ -1,0 +1,94 @@
+# Host for the application
+#
+host: rocketchat.pleasenoddos.com
+
+replicaCount: 1
+minAvailable: 1
+
+## Assign custom affinity rules to the RocketChat instance
+## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+##
+affinity: {}
+nodeAffinity:
+  requiredDuringSchedulingIgnoredDuringExecution:
+    nodeSelectorTerms:
+    - matchExpressions:
+      - key: kubernetes.io/hostname
+        operator: In
+        values:
+        - myserver.tgp
+
+##
+## MongoDB chart configuration
+### ref https://github.com/helm/charts/tree/master/stable/mongodb#configuration
+##
+mongodb:
+  ## Enable or disable MongoDB dependency completely.
+  enabled: true
+  replicaSet:
+    enabled: disable
+    replicas:
+      secondary: 0
+      arbiter: 0
+    pdb:
+      minAvailable:
+        secondary: 0
+        arbiter: 0
+
+  securityContext:
+    enabled: true
+    runAsUser: 503
+    fsGroup: 503
+
+  persistence:
+    enabled: true
+    # mongodb data Persistent Volume Storage Class
+    # If defined, storageClassName: <storageClass>
+    # If set to "-", storageClassName: "", which disables dynamic provisioning
+    # If undefined (the default) or set to null, no storageClassName spec is
+    #   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    #   GKE, AWS & OpenStack)
+    
+    storageClass: rocketchat-mongodb
+    accessMode: ReadWriteOnce
+    size: 8Gi
+
+# Configure resource requests and limits
+# ref: http://kubernetes.io/docs/user-guide/compute-resources/
+#
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  requests:
+    memory: 512Mi
+    cpu: 500m
+
+securityContext:
+  enabled: true
+  runAsUser: 503
+  fsGroup: 503
+
+serviceAccount:
+  # Specifies whether a ServiceAccount should be created
+  create: false
+
+service:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.56
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 90
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 3
+  successThreshold: 1

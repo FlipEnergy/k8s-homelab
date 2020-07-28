@@ -12,6 +12,7 @@ namespaces:
   bitwarden:
   folding-at-home:
   dennis-site:
+  rocketchat:
   syncthing:
   wireguard:
   whoogle:
@@ -85,3 +86,10 @@ apps:
     enabled: true
     chart: "./whoogle"
     version: "0.2.1"
+  rocketchat:
+    namespace: rocketchat
+    enabled: true
+    chart: "my-helm-charts-repo/rocketchat"
+    version: "2.1.0"
+    valuesFile: "rocketchat/rocketchat-values.yaml"
+    secretsFile: "rocketchat/secrets.rocketchat-mongo.yaml"
