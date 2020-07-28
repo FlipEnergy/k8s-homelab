@@ -40,4 +40,5 @@ resources:
     cpu: 50m
     memory: 64Mi
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/hostname: myserver.tgp

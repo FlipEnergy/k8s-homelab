@@ -13,4 +13,7 @@ spec:
       name: http
   selector:
     {{- include "whoogle.selectorLabels" . | nindent 4 }}
+{{- if .Values.service.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+{{- end }}
+

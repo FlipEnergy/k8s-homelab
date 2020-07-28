@@ -13,7 +13,9 @@ spec:
       name: http
   selector:
     {{- include "syncthing.selectorLabels" . | nindent 4 }}
+{{- if .Values.service.website.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.website.loadBalancerIP }}
+{{- end }}
 
 ---
 
@@ -36,3 +38,6 @@ spec:
       name: discovery
   selector:
     {{- include "syncthing.selectorLabels" . | nindent 4 }}
+{{- if .Values.service.backend.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.service.backend.loadBalancerIP }}
+{{- end }}
