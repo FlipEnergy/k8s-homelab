@@ -12,12 +12,12 @@ namespaces:
   bitwarden:
   folding-at-home:
   dennis-site:
-  rocketchat:
   syncthing:
   wireguard:
   whoogle:
 
 helmRepos:
+  dacruz21: "https://dacruz21.github.io/helm-charts"
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
