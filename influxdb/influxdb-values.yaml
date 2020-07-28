@@ -60,7 +60,7 @@ resources:
     memory: 256Mi
   requests:
     memory: 128Mi
-    cpu: 50m
+    cpu: 150m
 
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
