@@ -12,12 +12,12 @@ namespaces:
   bitwarden:
   folding-at-home:
   dennis-site:
+  mattermost:
   syncthing:
   wireguard:
   whoogle:
 
 helmRepos:
-  dacruz21: "https://dacruz21.github.io/helm-charts"
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
@@ -86,3 +86,10 @@ apps:
     enabled: true
     chart: "./whoogle"
     version: "0.2.1"
+  mattermost:
+    namespace: "mattermost"
+    enabled: true
+    chart: "my-helm-charts-repo/mattermost-team-edition"
+    version: "3.14.0"
+    valuesFile: "mattermost/mattermost-values.yaml"
+    secretsFile: "mattermost/secrets.mattermost-secrets.yaml"

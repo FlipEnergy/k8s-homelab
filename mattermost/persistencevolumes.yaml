@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mattermost-data
+  labels:
+    type: local
+spec:
+  storageClassName: mattermost-data
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/mattermost-data
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mattermost-plugins
+  labels:
+    type: local
+spec:
+  storageClassName: mattermost-plugins
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/mattermost-plugins
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mattermost-mysql
+  labels:
+    type: local
+spec:
+  storageClassName: mattermost-mysql
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/mattermost-mysql

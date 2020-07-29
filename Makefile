@@ -1,7 +1,8 @@
 SHELL := /bin/bash
-monitoring_namespace := monitoring
 bitwarden_namespace := bitwarden
 folding_namespace := folding-at-home
+mattermost_namespace := mattermost
+monitoring_namespace := monitoring
 my_site_namespace := dennis-site
 syncthing_namespace := syncthing
 wireguard_namespace := wireguard
@@ -55,7 +56,6 @@ clean-graf:
 
 # Bitwarden
 bit-init:
-	kubectl get ns $(bitwarden_namespace) > /dev/null || kubectl create ns $(bitwarden_namespace)
 	kubectl apply -f bitwarden/persistencevolume.yaml
 
 clean-bit:
@@ -71,11 +71,19 @@ clean-f@h:
 
 # WireGuard
 wire-init:
-	kubectl get ns $(wireguard_namespace) > /dev/null || kubectl create ns $(wireguard_namespace)
 	kubectl apply -f wireguard/persistencevolume.yaml
 
 clean-wire:
 	kubectl delete pv wireguard
+
+# Mattermost
+mattermost-init:
+	kubectl apply -f mattermost/persistencevolumes.yaml
+
+clean-mattermost:
+	kubectl delete pv mattermost-data
+	kubectl delete pv mattermost-plugins
+	kubectl delete pv mattermost-mysql
 
 # clean
 clean:
@@ -86,7 +94,8 @@ clean:
 	make clean-wire
 	kubectl delete namespace $(bitwarden_namespace)
 	kubectl delete namespace $(folding_namespace)
+	kubectl delete namespace $(mattermost_namespace)
+	kubectl delete namespace $(monitoring_namespace)
 	kubectl delete namespace $(my_site_namespace)
 	kubectl delete namespace $(syncthing_namespace)
 	kubectl delete namespace $(wireguard_namespace)
-	kubectl delete namespace $(monitoring_namespace)
