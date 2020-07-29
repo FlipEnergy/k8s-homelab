@@ -78,7 +78,7 @@ configJSON: {
     "EnableCommands": true,
     "EnablePostUsernameOverride": false,
     "EnablePostIconOverride": false,
-    "EnableBotAccountCreation": false,
+    "EnableBotAccountCreation": true,
     "EnableUserAccessTokens": false,
     "EnableLinkPreviews": true,
     "EnableTesting": false,
@@ -266,10 +266,10 @@ configJSON: {
     "Plugins": {},
     "PluginStates": {
       "com.mattermost.nps": {
-          "Enable": false
+        "Enable": false
       },
       "jitsi": {
-          "Enable": true
+        "Enable": true
       },
       "github": {
         "Enable": true
