@@ -270,6 +270,9 @@ configJSON: {
       },
       "jitsi": {
           "Enable": true
+      },
+      "github": {
+        "Enable": true
       }
     }
   }
