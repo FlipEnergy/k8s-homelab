@@ -264,6 +264,13 @@ configJSON: {
     "Directory": "./plugins",
     "ClientDirectory": "./client/plugins",
     "Plugins": {},
-    "PluginStates": {}
+    "PluginStates": {
+      "com.mattermost.nps": {
+          "Enable": false
+      },
+      "jitsi": {
+          "Enable": true
+      }
+    }
   }
 }
