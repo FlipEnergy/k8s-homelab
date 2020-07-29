@@ -186,7 +186,7 @@ configJSON: {
     "InviteSalt": "overriden by secrets",
     "SendPushNotifications": true,
     "PushNotificationServer": "https://push-test.mattermost.com",
-    "PushNotificationContents": "generic",
+    "PushNotificationContents": "full",
     "EnableEmailBatching": false,
     "EmailBatchingBufferSize": 256,
     "EmailBatchingInterval": 30,
