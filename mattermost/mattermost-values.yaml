@@ -263,7 +263,11 @@ configJSON: {
     "EnableUploads": true,
     "Directory": "./plugins",
     "ClientDirectory": "./client/plugins",
-    "Plugins": {},
+    "Plugins": {
+      "jitsi": {
+        "JitsiNamingScheme": "uuid"
+      }
+    },
     "PluginStates": {
       "com.mattermost.nps": {
         "Enable": false
