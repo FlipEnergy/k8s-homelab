@@ -56,11 +56,11 @@ user:
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   limits:
-    cpu: 1
+    cpu: 500m
     memory: 1Gi
   requests:
     memory: 256Mi
-    cpu: 500m
+    cpu: 100m
 
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
