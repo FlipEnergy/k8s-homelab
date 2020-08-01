@@ -1,7 +1,17 @@
 # wg-access-server config
+
+# Note: on your phone, to allow chromecast to work and allow access to your local network,
+#   in the peer section, add your subnet to the front and check Exclude private IPs.
+
 config:
   wireguard:
     externalHost: "pleasenoddos.com"
+  vpn:
+    cidr: "10.44.0.0/24"
+  dns:
+    enabled: true
+    upstream:
+      - 192.168.1.11
 
 web:
   service:
