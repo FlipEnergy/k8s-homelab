@@ -48,7 +48,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "stable/grafana"
-    version: "5.4.1"
+    version: "5.5.2"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-datasource.yaml"
   bitwarden:
