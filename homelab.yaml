@@ -59,7 +59,7 @@ apps:
     valuesFile: "bitwarden/bitwarden-values.yaml"
   folding-at-home:
     namespace: "folding-at-home"
-    enabled: true
+    enabled: false
     chart: "my-helm-charts-repo/fahclient"
     version: "2.5.3"
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
