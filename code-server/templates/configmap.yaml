@@ -1,0 +1,10 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "code-server.fullname" . }}-config
+  labels:
+    {{- include "code-server.labels" . | nindent 4 }}
+data: 
+  config.yaml: {{ .Values.config | quote }}
+{{- end }}

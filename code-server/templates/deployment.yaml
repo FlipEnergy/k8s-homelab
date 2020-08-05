@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "whoogle.fullname" . }}
+  name: {{ include "code-server.fullname" . }}
   labels:
-    {{- include "whoogle.labels" . | nindent 4 }}
+    {{- include "code-server.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "whoogle.selectorLabels" . | nindent 6 }}
+      {{- include "code-server.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,20 +18,23 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "whoogle.selectorLabels" . | nindent 8 }}
+        {{- include "code-server.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "whoogle.serviceAccountName" . }}
+      serviceAccountName: {{ include "code-server.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-{{- if .Values.config }}
       volumes:
-        - name: {{ include "whoogle.fullname" . }}
+        - name: {{ include "code-server.fullname" . }}
+          persistentVolumeClaim:
+            claimName: {{ include "code-server.fullname" . }}
+{{- if .Values.config }}
+        - name: {{ include "code-server.fullname" . }}-config
           configMap:
-            name: {{ include "whoogle.fullname" . }}
+            name: {{ include "code-server.fullname" . }}-config
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -39,15 +42,17 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- if .Values.config }}
           volumeMounts:
-            - name: {{ include "whoogle.fullname" . }}
-              mountPath: /config/config.json
-              subPath: config.json
+            - mountPath: /home/coder/project
+              name: {{ include "code-server.fullname" . }}
+{{- if .Values.config }}
+            - name: {{ include "code-server.fullname" . }}-config
+              mountPath: /home/coder/.config/code-server/config.yaml
+              subPath: config.yaml
 {{- end }}
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:

@@ -8,6 +8,7 @@ settings:
   kubeContext: "microk8s"
 
 namespaces:
+  vscode:
   monitoring:
   bitwarden:
   folding-at-home:
@@ -93,3 +94,9 @@ apps:
     version: "3.14.0"
     valuesFile: "mattermost/mattermost-values.yaml"
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
+  vscode:
+    namespace: "vscode"
+    enabled: true
+    chart: "./code-server"
+    version: "0.1.0"
+    secretsFile: "code-server/secrets.code-server-config.yaml"
