@@ -21,6 +21,7 @@ namespaces:
 helmRepos:
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
+  mattermost: "https://helm.mattermost.com"
   my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
   pcktdmp: "https://pcktdmp.github.io/charts"
   place1: "https://place1.github.io/wg-access-server"
@@ -90,7 +91,7 @@ apps:
   mattermost:
     namespace: "mattermost"
     enabled: true
-    chart: "my-helm-charts-repo/mattermost-team-edition"
+    chart: "mattermost/mattermost-team-edition"
     version: "3.14.0"
     valuesFile: "mattermost/mattermost-values.yaml"
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
