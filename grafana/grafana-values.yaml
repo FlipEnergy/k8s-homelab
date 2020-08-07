@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1596781251946,
+          "iteration": 1596821348761,
           "links": [],
           "panels": [
             {
@@ -276,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -513,7 +513,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -739,7 +739,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -965,7 +965,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1190,7 +1190,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1390,7 +1390,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1807,7 +1807,7 @@ dashboards:
               "renderer": "flot",
               "repeat": null,
               "repeatDirection": "h",
-              "repeatIteration": 1596781251946,
+              "repeatIteration": 1596821348761,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -2061,7 +2061,7 @@ dashboards:
                 },
                 "overrides": []
               },
-              "fill": 0,
+              "fill": 1,
               "fillGradient": 0,
               "grid": {},
               "gridPos": {
@@ -2118,6 +2118,7 @@ dashboards:
                     }
                   ],
                   "measurement": "system_load1",
+                  "orderByTime": "ASC",
                   "policy": "default",
                   "query": "SELECT mean(load1) as load1,mean(load5) as load5,mean(load15) as load15 FROM \"system\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval), * ORDER BY asc",
                   "rawQuery": true,
@@ -2525,53 +2526,7 @@ dashboards:
               "steppedLine": false,
               "targets": [
                 {
-                  "alias": "$tag_host: $col",
-                  "dsType": "influxdb",
-                  "groupBy": [
-                    {
-                      "params": [
-                        "$interval"
-                      ],
-                      "type": "time"
-                    },
-                    {
-                      "params": [
-                        "null"
-                      ],
-                      "type": "fill"
-                    }
-                  ],
-                  "measurement": "kernel",
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(\"file-max\") as max FROM \"linux_sysctl_fs\" WHERE \"host\" =~ /^$server$/ AND $timeFilter GROUP BY time($interval), host fill(null)",
-                  "rawQuery": true,
-                  "refId": "B",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "processes_forked"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": [
-                    {
-                      "key": "host",
-                      "operator": "=~",
-                      "value": "/^$server$/"
-                    }
-                  ]
-                },
-                {
-                  "alias": "$tag_host: $col",
+                  "alias": "$tag_host",
                   "dsType": "influxdb",
                   "groupBy": [
                     {
@@ -2621,7 +2576,7 @@ dashboards:
               "timeFrom": null,
               "timeRegions": [],
               "timeShift": null,
-              "title": "File descriptors",
+              "title": "Open File descriptors",
               "tooltip": {
                 "msResolution": false,
                 "shared": true,
@@ -3487,7 +3442,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 33
+          "version": 36
         }
     network:
       json: |
