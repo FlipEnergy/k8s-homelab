@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1596821348761,
+          "iteration": 1597018594385,
           "links": [],
           "panels": [
             {
@@ -276,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -513,7 +513,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -739,7 +739,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -965,7 +965,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1190,7 +1190,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1390,7 +1390,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1587,8 +1587,8 @@ dashboards:
                 {
                   "format": "percent",
                   "logBase": 1,
-                  "max": 100,
-                  "min": 0,
+                  "max": null,
+                  "min": null,
                   "show": true
                 },
                 {
@@ -1596,7 +1596,7 @@ dashboards:
                   "logBase": 1,
                   "max": null,
                   "min": null,
-                  "show": true
+                  "show": false
                 }
               ],
               "yaxis": {
@@ -1807,7 +1807,7 @@ dashboards:
               "renderer": "flot",
               "repeat": null,
               "repeatDirection": "h",
-              "repeatIteration": 1596821348761,
+              "repeatIteration": 1597018594385,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -2029,8 +2029,8 @@ dashboards:
                 {
                   "format": "percent",
                   "logBase": 1,
-                  "max": 100,
-                  "min": 0,
+                  "max": null,
+                  "min": null,
                   "show": true
                 },
                 {
@@ -2038,7 +2038,7 @@ dashboards:
                   "logBase": 1,
                   "max": null,
                   "min": null,
-                  "show": true
+                  "show": false
                 }
               ],
               "yaxis": {
@@ -3442,7 +3442,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 36
+          "version": 39
         }
     network:
       json: |
