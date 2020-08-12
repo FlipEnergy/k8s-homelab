@@ -35,7 +35,6 @@ mysql:
   enabled: true
 
   repository: mysql
-  imageTag: '8.0.18'
 
   persistence:
     enabled: true
