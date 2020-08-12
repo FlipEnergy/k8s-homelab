@@ -44,7 +44,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "influxdata/influxdb"
-    version: "4.8.1"
+    version: "4.8.2"
     valuesFile: "influxdb/influxdb-values.yaml"
   grafana:
     namespace: "monitoring"
