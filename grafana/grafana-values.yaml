@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1597018594385,
+          "iteration": 1597683309272,
           "links": [],
           "panels": [
             {
@@ -114,7 +114,7 @@ dashboards:
                 "thresholdMarkers": true
               },
               "gridPos": {
-                "h": 4,
+                "h": 3,
                 "w": 12,
                 "x": 0,
                 "y": 1
@@ -240,7 +240,7 @@ dashboards:
                 "thresholdMarkers": true
               },
               "gridPos": {
-                "h": 4,
+                "h": 3,
                 "w": 12,
                 "x": 12,
                 "y": 1
@@ -276,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -379,10 +379,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 0,
-                "y": 5
+                "y": 4
               },
               "id": 65066,
               "interval": "1m",
@@ -488,10 +488,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 12,
-                "y": 5
+                "y": 4
               },
               "id": 65108,
               "interval": "1m",
@@ -513,7 +513,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -599,10 +599,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 0,
-                "y": 11
+                "y": 9
               },
               "id": 65065,
               "interval": "1m",
@@ -711,10 +711,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 12,
-                "y": 11
+                "y": 9
               },
               "id": 65109,
               "interval": "1m",
@@ -739,7 +739,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -825,10 +825,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 0,
-                "y": 17
+                "y": 14
               },
               "id": 2165,
               "interval": "1m",
@@ -937,10 +937,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 12,
-                "y": 17
+                "y": 14
               },
               "id": 65110,
               "interval": "1m",
@@ -965,7 +965,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1051,10 +1051,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 0,
-                "y": 23
+                "y": 19
               },
               "id": 2092,
               "interval": "1m",
@@ -1162,10 +1162,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 12,
-                "y": 23
+                "y": 19
               },
               "id": 65111,
               "interval": "1m",
@@ -1190,7 +1190,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1259,10 +1259,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 0,
-                "y": 29
+                "y": 24
               },
               "id": 65073,
               "interval": null,
@@ -1365,10 +1365,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 6,
+                "h": 5,
                 "w": 12,
                 "x": 12,
-                "y": 29
+                "y": 24
               },
               "id": 65112,
               "interval": null,
@@ -1390,7 +1390,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1458,7 +1458,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 35
+                "y": 29
               },
               "id": 65060,
               "panels": [],
@@ -1487,7 +1487,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 36
+                "y": 30
               },
               "hiddenSeries": false,
               "id": 28239,
@@ -1626,7 +1626,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 45
+                "y": 39
               },
               "hiddenSeries": false,
               "id": 65081,
@@ -1776,7 +1776,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 45
+                "y": 39
               },
               "hiddenSeries": false,
               "id": 65113,
@@ -1807,7 +1807,7 @@ dashboards:
               "renderer": "flot",
               "repeat": null,
               "repeatDirection": "h",
-              "repeatIteration": 1597018594385,
+              "repeatIteration": 1597683309272,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -1928,7 +1928,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 55
+                "y": 49
               },
               "hiddenSeries": false,
               "id": 65064,
@@ -2068,7 +2068,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 64
+                "y": 58
               },
               "hiddenSeries": false,
               "id": 54694,
@@ -2202,7 +2202,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 64
+                "y": 58
               },
               "hiddenSeries": false,
               "id": 12054,
@@ -2344,7 +2344,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 74
+                "y": 68
               },
               "hiddenSeries": false,
               "id": 65104,
@@ -2484,7 +2484,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 84
+                "y": 78
               },
               "height": "",
               "hiddenSeries": false,
@@ -2636,7 +2636,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 94
+                "y": 88
               },
               "hiddenSeries": false,
               "id": 52240,
@@ -2775,7 +2775,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 94
+                "y": 88
               },
               "hiddenSeries": false,
               "id": 60200,
@@ -2975,7 +2975,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 103
+                "y": 97
               },
               "hiddenSeries": false,
               "id": 13782,
@@ -3175,7 +3175,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 103
+                "y": 97
               },
               "hiddenSeries": false,
               "id": 56720,
@@ -3384,6 +3384,7 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
+                  "tags": [],
                   "text": "myserver.tgp + mysurface3.tgp",
                   "value": [
                     "myserver.tgp",
@@ -3442,7 +3443,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 39
+          "version": 41
         }
     network:
       json: |
