@@ -276,6 +276,9 @@ configJSON: {
       },
       "github": {
         "Enable": true
+      },
+      "com.mattermost.plugin-todo": {
+        "Enable": true
       }
     }
   }
