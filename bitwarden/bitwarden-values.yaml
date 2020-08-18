@@ -6,8 +6,8 @@ replicaCount: 1
 
 image:
   repository: bitwardenrs/server
-  tag: latest
   pullPolicy: IfNotPresent
+  tag: 1.16.3
 
 env:
   SIGNUPS_ALLOWED: false
