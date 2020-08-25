@@ -69,13 +69,6 @@ clean-f@h:
 	kubectl delete -n $(folding_namespace) pvc fah-folding-at-home-fahclient-0
 	kubectl delete pv folding-at-home
 
-# WireGuard
-wire-init:
-	kubectl apply -f wireguard/persistencevolume.yaml
-
-clean-wire:
-	kubectl delete pv wireguard
-
 # Mattermost
 mattermost-init:
 	kubectl apply -f mattermost/persistencevolumes.yaml
@@ -84,6 +77,13 @@ clean-mattermost:
 	kubectl delete pv mattermost-data
 	kubectl delete pv mattermost-plugins
 	kubectl delete pv mattermost-mysql
+
+# WireGuard
+wire-init:
+	kubectl apply -f wireguard/persistencevolume.yaml
+
+clean-wire:
+	kubectl delete pv wireguard
 
 # clean
 clean:
