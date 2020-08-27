@@ -44,7 +44,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "influxdata/influxdb"
-    version: "4.8.2"
+    version: "4.8.4"
     valuesFile: "influxdb/influxdb-values.yaml"
   grafana:
     namespace: "monitoring"
@@ -75,7 +75,7 @@ apps:
     namespace: "mattermost"
     enabled: true
     chart: "mattermost/mattermost-team-edition"
-    version: "3.15.0"
+    version: "3.15.1"
     valuesFile: "mattermost/mattermost-values.yaml"
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
   syncthing:
