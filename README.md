@@ -11,20 +11,14 @@ Just repo that holds stuff for my personal homelab k8s environment.
 # K8s Node requirements
 - MicroK8s
 - MicroK8s Add ons: https://microk8s.io/docs/addons#heading--list
-    - must haves:
+    - enabled:
         - dns
         - metrics-server
         - metallb
-- remote kubectl access to cluster: `microk8s config`
+        - storage
 
 # Get Kubectl config
-```microk8s kubectl config view --raw```
+```sudo microk8s config```
 
-Change `server: https://127.0.0.1:16443` to the ip or hostname of the node
-
-# Install all Helm Charts  (Except folding-at-home)
-```
-make
-```
-
-See Makefile for individual helm chart commands
+# Bring all charts up according to helmsman file
+```make```
