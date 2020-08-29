@@ -957,7 +957,7 @@ worker:
 
   ## Number of replicas.
   ##
-  replicas: 1
+  replicas: 2
 
   ## Array of extra containers to run alongside the Concourse worker
   ## container.
@@ -1062,7 +1062,7 @@ persistence:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: concourse-worker
+    storageClass:
 
     ## Persistent Volume Access Mode.
     ##

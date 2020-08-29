@@ -20,8 +20,7 @@ init:
 	make mattermost-init
 	make wire-init
 
-# clean
-clean:
+destroy:
 	make clean-influx
 	make clean-graf
 	make clean-concourse
@@ -74,19 +73,10 @@ clean-bit:
 
 # Concourse
 concourse-init:
-	kubectl apply -f concourse/persistencevolumes.yaml
+	kubectl apply -f concourse/persistencevolume.yaml
 
 clean-concourse:
-	kubectl delete pv concourse-worker
 	kubectl delete pv concourse-postgresql
-
-# Folding-at-home
-f@h-init:
-	kubectl apply -f folding-at-home/persistentvolume.yaml
-
-clean-f@h:
-	kubectl delete -n $(folding_namespace) pvc fah-folding-at-home-fahclient-0
-	kubectl delete pv folding-at-home
 
 # Mattermost
 mattermost-init:

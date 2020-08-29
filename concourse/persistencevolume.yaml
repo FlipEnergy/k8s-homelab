@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: folding-at-home
+  name: concourse-postgresql
   labels:
     type: local
 spec:
-  storageClassName: folding-at-home
+  storageClassName: concourse-postgresql
   capacity:
-    storage: 500Mi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/folding-at-home
+    path: /mnt/concourse-postgresql

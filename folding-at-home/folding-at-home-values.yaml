@@ -18,7 +18,7 @@ securityContext:
   runAsUser: 502
   runAsGroup: 502
 
-storageClassName: folding-at-home
+storageClassName:
 
 # set to some sane defaults to prevent interference
 # of your other workload.
