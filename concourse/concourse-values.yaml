@@ -1,0 +1,1172 @@
+## Default values for Concourse Helm Chart.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+## Concourse image tag.
+## ps.: release candidates are published under `concourse/concourse-rc` instead
+##      of `concourse/concourse`.
+## Ref: https://hub.docker.com/r/concourse/concourse/tags/
+##
+imageTag: "6.5.1"
+
+## Configuration values for the Concourse application (worker and web components).
+## The values specified here are almost direct references to the flags under the
+## `concourse web` and `concourse worker` commands.
+##
+concourse:
+  ## Configurations for the `web` component based on the possible flags configurable
+  ## through the `concourse web` command.
+  ##
+  web:
+    ## A name for this Concourse cluster, to be displayed on the dashboard page.
+    ##
+    clusterName: Homelab-concourse
+
+    ## Enable this flag in order to customize the `client_id` and
+    ## `client_secret` used when logging into the Concourse UI.
+    ##
+    ## Enabling this requires setting `secrets.clientId` and #
+    ## `secrets.clientSecret` (or filling the equivalent fields in the Secret).
+    ##
+    clientConfig:
+      enabled: false
+
+    ## Interval on which runners are kicked off for builds, locks, scans, and
+    ## checks.
+    ##
+    ## Example: 10s
+    ##
+    componentRunnerInterval:
+
+    ## The maximum number of open connections for the API connection pool.
+    ##
+    apiMaxConns:
+
+    ## The maximum number of open connections for the backend connection pool.
+    ##
+    backendMaxConns:
+
+    ## Enable equivalent resources across pipelines and teams to share a single version history.
+    ## Ref: https://concourse-ci.org/global-resources.html
+    ##
+    enableGlobalResources: true
+
+    ## Enable automatic rerunning of builds when worker disappears
+    ##
+    enableBuildRerunWhenWorkerDisappears: false
+
+    ## Enable the experimental across step to be used in jobs. The API is subject to change.
+    ##
+    enableAcrossStep: false
+
+    ## Maximum number of jobs to be scheduling at the same time.
+    ##
+    jobSchedulingMaxInFlight:
+
+    ## Interval on which the resource scanner will run to see if new checks need
+    ## to be scheduled.
+    ##
+    lidarScannerInterval:
+
+    ## Interval on which the resource checker runs any scheduled checks.
+    ##
+    lidarCheckerInterval:
+
+    ## Limit the number of concurrent requests to an API endpoint.
+    ##
+    ## Example:
+    ##   ListAllJobs: 5
+    ##
+    concurrentRequestLimits:
+
+    ## Enable auditing for all api requests connected to builds.
+    ##
+    enableBuildAuditing: false
+
+    ## Enable auditing for all api requests connected to containers.
+    ##
+    enableContainerAuditing: false
+
+    ## Enable auditing for all api requests connected to jobs.
+    ##
+    enableJobAuditing: false
+
+    ## Enable auditing for all api requests connected to pipelines.
+    ##
+    enablePipelineAuditing: false
+
+    ## Enable auditing for all api requests connected to resources.
+    ##
+    enableResourceAuditing: false
+
+    ## Enable auditing for all api requests connected to system transactions.
+    ##
+    enableSystemAuditing: false
+
+    ## Enable auditing for all api requests connected to teams.
+    ##
+    enableTeamAuditing: false
+
+    ## Enable auditing for all api requests connected to workers.
+    ##
+    enableWorkerAuditing: false
+
+    ## Enable auditing for all api requests connected to volumes.
+    ##
+    enableVolumeAuditing: false
+
+    ## Enable redacting secrets in build logs.
+    ##
+    enableRedactSecrets:
+
+    ## The number of attempts secret will be retried to be fetched,
+    ## in case a retryable error happens.
+    ##
+    secretRetryAttempts: 5
+
+    ## The interval between secret retry retieval attempts.
+    ##
+    secretRetryInterval: 1s
+
+    ## Enable in-memory cache for secrets.
+    ##
+    secretCacheEnabled: false
+
+    ## If the cache is enabled, secret values will be cached for not longer
+    ## than this duration (it can be less, if underlying secret lease time
+    ## is smaller).
+    ##
+    secretCacheDuration:
+
+    ## If the cache is enabled, secret not found responses will be cached for
+    ## this duration.
+    ##
+    secretCacheDurationNotFound:
+
+    ## If the cache is enabled, expired items will be removed on this internal.
+    ##
+    secretCachePurgeInterval:
+
+    ## Minimum level of logs to see. Possible options: debug, info, error.
+    ##
+    logLevel: info
+
+    ## IP address on which to listen for HTTP traffic (web UI and API).
+    ##
+    bindIp: 0.0.0.0
+
+    ## Port on which to listen for HTTP traffic (web UI and API).
+    ##
+    bindPort: 80
+
+    ## TLS configuration for the web component to be able to serve HTTPS traffic.
+    ## Once enabled, consumes the certificates set via secrets (`web-tls-cert` and
+    ## `web-tls-key`).
+    ##
+    tls:
+
+      ## Enable serving HTTPS traffic directly through the web component.
+      ##
+      enabled: false
+
+      ## Port on which to listen for HTTPS traffic.
+      ##
+      bindPort: 443
+
+    ## URL used to reach any ATC from the outside world.
+    ## This is *very* important for a proper authentication workflow as
+    ## browser redirects are based on the value set here.
+    ##
+    ## Example: http://ci.concourse-ci.org
+    ##
+    externalUrl: http://concourse.tgp
+
+    encryption:
+      ## Enable encryption of pipeline configuration. Encryption keys can be set via secrets
+      ## (`encryption-key` and `old-encryption-key` fields).
+      ## Ref: https://concourse-ci.org/encryption.html
+      ##
+      enabled: false
+
+    localAuth:
+      ## Enable the use of local authentication (basic auth).
+      ## Once enabled, users configured through `local-users` (secret)
+      ## are able to authenticate.
+      ##
+      ## Local users can be individually added to the `main` team by setting
+      ## `concourse.web.auth.mainTeam.localUser` with a comma-separated list
+      ## of ids.
+      ##
+      ## Ref: https://concourse-ci.org/install.html#local-auth-config
+      ##
+      enabled: true
+
+    ## IP address on which to listen for the pprof debugger endpoints.
+    ##
+    debugBindIp: 127.0.0.1
+
+    ## Port on which to listen for the pprof debugger endpoints.
+    ##
+    debugBindPort: 8079
+
+    ## Length of time for a intercepted session to be idle before terminating.
+    ##
+    interceptIdleTimeout: 0m
+
+    ## Time limit on checking for new versions of resources.
+    ##
+    globalResourceCheckTimeout: 1h
+
+    ## Maximum number of checks that can be started per second. If not
+    ## specified, # this will be calculated as (# of resources)/(resource
+    ## checking interval). # -1 value will remove this maximum limit of checks
+    ## per second.
+    maxChecksPerSecond: 0
+
+    ## Interval on which to check for new versions of resources.
+    ##
+    resourceCheckingInterval: 1m
+
+    ## Interval on which to check for new versions of any resources that have
+    ## configured a webhook token
+    ##
+    resourceWithWebhookCheckingInterval: 1m
+
+    ## Compression to use when streaming artifacts (values: zstd, gzip)
+    ##
+    streamingArtifactsCompression:
+
+    ## Method by which a worker is selected during container placement.
+    ## Possible values: volume-locality | random | fewest-build-containers| limit-active-tasks
+    containerPlacementStrategy: volume-locality
+
+    ## Maximum allowed number of active build tasks per worker.
+    ##
+    ## Has effect only when containerPlacementStrategy is set to use
+    ## limit-active-tasks placement strategy.
+    ##
+    ## ps.: 0 means no limit.
+    ##
+    ## ref: https://concourse-ci.org/container-placement.html#limit-active-tasks-strategy
+    ##
+    limitActiveTasks:
+
+    ## How long to wait for requests to Garden to complete. 0 means no timeout.
+    ##
+    gardenRequestTimeout:
+
+    ## How long to wait for Baggageclaim to send the response header.
+    ##
+    baggageclaimResponseHeaderTimeout: 1m
+
+    ## Directory containing downloadable CLI binaries.
+    ## By default, Concourse will try to find the assets
+    ## path relative to the executable.
+    ##
+    cliArtifactsDir:
+
+    ## Log database queries.
+    ##
+    logDbQueries: false
+
+    ## Log cluster name.
+    ##
+    logClusterName:
+
+
+    ## Interval on which to run build tracking.
+    ##
+    buildTrackerInterval: 10s
+
+    ## Default number of build logs to retain. 0 means all.
+    ##
+    defaultBuildLogsToRetain:
+
+    ## Maximum build logs to retain, 0 means not specified. Will override values configured in jobs.
+    ##
+    maxBuildLogsToRetain:
+
+    ## Default days to retain build logs. 0 means unlimited.
+    ##
+    defaultDaysToRetainBuildLogs:
+
+    ## Maximum days to retain build logs, 0 means not specified. Will override values configured in jobs.
+    ##
+    maxDaysToRetainBuildLogs:
+
+    ## Default max number of cpu shares per task, 0 means unlimited.
+    ##
+    defaultTaskCpuLimit:
+
+    ## Default maximum memory per task, 0 means unlimited.
+    ##
+    defaultTaskMemoryLimit:
+
+    ## Network address of this web node, reachable by other web nodes. Used for forwarded worker addresses. (default: $POD_IP)
+    ##
+    peerAddress:
+
+    ## Configurations regarding how the web component is able to connect to a postgres
+    ## instance.
+    ##
+    postgres:
+      ## The host to connect to.
+      ##
+      host:
+
+      ## The port to connect to.
+      ##
+      port: 5432
+
+      ## Path to a UNIX domain socket to connect to.
+      ##
+      socket:
+
+      ## Whether or not to use SSL.
+      ##
+      sslmode: disable
+
+      ## Dialing timeout. (0 means wait indefinitely)
+      ##
+      connectTimeout: 5m
+
+      ## The name of the database to use.
+      ##
+      database: atc
+
+
+    kubernetes:
+      ## Enable the use of Kubernetes Secrets as the credential provider for
+      ## concourse pipelines.
+      ##
+      enabled: true
+
+      ## Prefix to use for Kubernetes namespaces under which secrets will be looked up.
+      ## Defaults to the Release name hyphen, e.g. "my-release-" produces namespace "my-release-main"
+      ## for the "main" Concourse team.
+      ##
+      namespacePrefix:
+
+      ## Teams to create namespaces for to hold secrets.
+      ## This property only has effect if `createTeamNamespaces` is set to `true`.
+      ##
+      teams:
+        - main
+
+      ## Create the Kubernetes namespace for each team listed under `concourse.web.kubernetes.teams`.
+      ##
+      createTeamNamespaces: true
+
+      ## When true, namespaces are not deleted when the release is deleted.
+      ## Irrelevant if the namespaces are not created by this chart.
+      ##
+      keepNamespaces: true
+
+      ## Path to Kubernetes config when running ATC outside Kubernetes.
+      ##
+      configPath:
+
+    influxdb:
+      enabled: false
+
+      ## Number of points to batch together when emitting to InfluxDB
+      ##
+      batchSize:
+
+      ## The duration to wait before emitting a batch of points to InfluxDB,
+      ## disregarding # the batch size.
+      ##
+      batchDuration:
+
+      ## InfluxDB server address to emit points to.
+      ## Example: http://127.0.0.1:8086
+      ##
+      url: http://192.168.1.54
+
+      ## InfluxDB database to write points to.
+      ##
+      database: concourse
+
+      ## InfluxDB server username.
+      ##
+      username:
+
+      ## Skip SSL verification when emitting to InfluxDB.
+      ##
+      insecureSkipVerify: false
+
+    ## Emit metrics to logs instead of an actual metrics system.
+    ##
+    emitToLogs: false
+
+    gc:
+      ## Interval on which to perform garbage collection.
+      ##
+      interval: 30s
+
+      ## Grace period before reaping oneOff task containers
+      ##
+      oneOffGracePeriod: 5m
+
+      ## Period after which to reap containers and volumes that were created but
+      ## went missing from the worker.
+      ##
+      missingGracePeriod: 5m
+
+      ## Period after which hijacked containers will be garbage collected
+      ##
+      hijackGracePeriod:
+
+      ## Period after which failed containers will be garbage collected
+      ##
+      failedGracePeriod:
+
+      ## Period after which to reap checks that are completed.
+      ##
+      checkRecyclePeriod:
+
+      ## Open Policy Agent policy check endpoint.
+      ##
+      ## Example: https://opa.example.com:8181/v1/data/concourse/allow
+      ##
+      url:
+
+      ## Open Policy Agent API request timeout, in Go duration format.
+      ##
+      ## Example: 5s for 5 seconds
+      ##
+      timeout:
+
+    policyCheck:
+      ## Array of HTTP methods to filter through policy checking.
+      ##
+      ## Example: ["PUT", "POST"]
+      ##
+      filterHttpMethods:
+
+      ## Array of ATC API actions to filter through policy checking.
+      ##
+      ## Example: ["SaveConfig", "UseImage"]
+      ##
+      filterActions:
+
+      ## Array of ATC API actions to skip policy checking.
+      ##
+      ## Example: ["PausePipeline", "UnpausePipeline"]
+      ##
+      skipActions:
+
+    ## Customize RBAC role-action mapping. Pass in as a multi-line YAML string
+    ## Ref: https://concourse-ci.org/user-roles.html#configuring-rbac
+    ## Example:
+    ## configRBAC: |
+    ##   owner:
+    ##   - SetTeam
+    ##   member:
+    ##   - CreateBuild
+    ##
+    configRBAC: ""
+
+    auth:
+      ## Force sending secure flag on http cookies
+      ##
+      cookieSecure: false
+
+      ## Length of time for which tokens are valid. Afterwards, users will have to log back in.
+      ## The value must be specified as Go duration values (e.g.: 30m or 24h).
+      duration: 24h
+
+      mainTeam:
+
+        ## Configuration file for specifying the main teams params.
+        ## Ref: https://concourse-ci.org/managing-teams.html#setting-roles
+        ## Example:
+        ## config: |
+        ##   roles:
+        ##   - name: owner
+        ##     local:
+        ##       users: ["admin"]
+        ##   - name: member
+        ##     local:
+        ##       users: ["test"]
+        ##
+        config: ""
+
+        ## List of local Concourse users to be included as members of the `main` team.
+        ## Make sure you have local users support enabled (`concourse.web.localAuth.enabled`) and
+        ## that the users were added (`local-users` secret).
+        ##
+        localUser: "test"
+
+        ## Authentication (Main Team) (GitHub)
+        ##
+        github:
+          ## List of whitelisted GitHub users
+          ##
+          user:
+
+          ## List of whitelisted GitHub orgs
+          ##
+          org:
+
+          ## List of whitelisted GitHub teams
+          ##
+          team:
+
+
+      ## Authentication (GitHub)
+      ##
+      github:
+        enabled: false
+
+        ## Hostname of GitHub Enterprise deployment (No scheme, No trailing slash)
+        ##
+        host:
+
+        ## CA certificate of GitHub Enterprise deployment
+        ##
+        useCaCert: false
+
+    tsa:
+      ## Enable this flag in order to customize the `client_id` and
+      ## `client_secret` used when the TSA needs to communicate with the ATC.
+      ##
+      ## Enabling this requires setting `secrets.tsaClientId` and
+      ## `secrets.tsaClientSecret` (or filling the equivalent fields in the Secret).
+      ##
+      clientConfig:
+        enabled: false
+
+      ## Minimum level of logs to see. Possible values: debug, info, error.
+      ##
+      logLevel: info
+
+      ## IP address on which to listen for SSH.
+      ##
+      bindIp: 0.0.0.0
+
+      ## Port on which to listen for SSH.
+      ##
+      bindPort: 2222
+
+      ## IP address on which to listen for the pprof debugger endpoints (default: 127.0.0.1)
+      ##
+      debugBindIp: 127.0.0.1
+
+      ## Port on which to listen for TSA pprof server.
+      ##
+      debugBindPort: 2221
+
+      ## Path to private key to use for the SSH server.
+      ##
+      hostKey:
+
+      ## ATC API endpoints to which workers will be registered.
+      ##
+      atcUrl:
+
+      ## Interval on which to heartbeat workers to the ATC.
+      ##
+      heartbeatInterval: 30s
+
+      ## How long to wait for requests to Garden to complete. 0 means no timeout.
+      ##
+      gardenRequestTimeout:
+
+  worker:
+    ## Signal to send to the worker container when shutting down.
+    ## Possible values:
+    ##
+    ## - SIGUSR1: land the worker, and
+    ## - SIGUSR2: retire the worker.
+    ##
+    ## Note.: using SIGUSR2 with persistence enabled implies the use of an
+    ## initContainer that removes any data the existed previously under
+    ## `concourse.worker.workDir` as the action of `retire`ing a worker implies
+    ## that no state comes back with it when re-registering.
+    ##
+    ## Ref: https://concourse-ci.org/concourse-worker.html
+    ## Ref: https://concourse-ci.org/worker-internals.html
+    ##
+    shutdownSignal: SIGUSR2
+
+    ## Duration after which the registration should be swapped to another random SSH gateway.
+    ##
+    rebalanceInterval:
+
+    ## Duration after which a worker should give up draining forwarded connections on shutdown.
+    ##
+    connectionDrainTimeout: 1h
+
+    ## IP address on which to listen for health checking requests.
+    ##
+    healthcheckBindIp: 0.0.0.0
+
+    ## Port on which to listen for health checking requests.
+    ##
+    healthcheckBindPort: 8888
+
+    ## HTTP timeout for the full duration of health checking.
+    ##
+    healthcheckTimeout: 5s
+
+    ## The name to set for the worker during registration. If not specified, the hostname will be used.
+    ##
+    name:
+
+    ## A tag to set during registration. Can be specified multiple times.
+    ##
+    tag:
+
+    ## The name of the team that this worker will be assigned to.
+    ##
+    team:
+
+    ## HTTP proxy endpoint to use for containers.
+    ##
+    http_proxy:
+
+    ## HTTPS proxy endpoint to use for containers.
+    ##
+    https_proxy:
+
+    ## Blacklist of addresses to skip the proxy when reaching.
+    ##
+    no_proxy:
+
+    ## If set, the worker will be immediately removed upon stalling.
+    ## Ignored for kind: Deployment and set to "true"
+    ##
+    ephemeral:
+
+    ## IP address on which to listen for the pprof debugger endpoints.
+    ##
+    debugBindIp: 127.0.0.1
+
+    ## Port on which to listen for beacon pprof server.
+    ##
+    debugBindPort: 7776
+
+    ## Version of the worker. This is normally baked in to the binary, so this flag is hidden.
+    ##
+    version:
+
+    ## Directory in which to place container data.
+    ##
+    workDir: /concourse-work-dir
+
+    ## IP address on which to listen for the Garden server.
+    ##
+    bindIp: 127.0.0.1
+
+    ## Port on which to listen for the Garden server.
+    ##
+    bindPort: 7777
+
+    ## IP used to reach this worker from the ATC nodes.
+    ##
+    peerIp:
+
+    ## Interval on which containers and volumes will be garbage collected from the worker.
+    ##
+    sweepInterval: 30s
+
+    ## Minimum level of logs to see. Possible options: debug, info, error.
+    ##
+    logLevel: info
+
+    ## Maximum number of containers which can be swept in parallel.
+    ##
+    containerSweeperMaxInFlight: 5
+
+    ## Maximum number of volumes which can be swept in parallel.
+    ##
+    volumeSweeperMaxInFlight: 5
+
+    ## Runtime to use with the worker. Possible values: guardian, containerd, houdini.
+    ## Please note that Houdini is insecure and doesn't run 'tasks' in containers.
+    runtime:
+
+    tsa:
+
+      ## TSA host(s) to forward the worker through.
+      ## Only used for worker-only deployments.
+      ## Example:
+      ## hosts:
+      ##   - 1.1.1.1:2222
+      ##   - 2.2.2.2:2222
+      ##
+      hosts: []
+
+      ## File containing a public key to expect from the TSA.
+      ##
+      publicKey:
+
+      ## File containing the private key to use when authenticating to the TSA.
+      ##
+      workerPrivateKey:
+
+    # The following refers to configuration for the Guardian runtime. For historical reasons
+    # it is referred to as "garden" which is the server wrapping Guardian and the interface
+    # that Guardian implements.
+    garden:
+      ## Path to a guardian executable (non-absolute names get resolved from $PATH).
+      ## This defaults to the gdn binary bundled with Concourse.
+      bin:
+
+      ## Path to a config file to use for Garden in INI format.
+      ##
+      ## For example, in a ConfigMap:
+      ##
+      ##   [server]
+      ##     max-containers = 100
+      ##
+      ## For information about the possible values:
+      ## Ref: https://bosh.io/jobs/garden?source=github.com/cloudfoundry/garden-runc-release
+      ##
+      config:
+
+      ## Enable a proxy DNS server for Garden
+      ##
+      dnsProxyEnable:
+
+      ## How long to wait for requests to Garden to complete. 0 means no timeout.
+      ##
+      requestTimeout:
+
+    containerd:
+
+      ## Path to a containerd executable (non-absolute names get resolved from $PATH)."`
+      bin:
+
+      ## Path to a config file to use for the Containerd daemon.
+      config:
+
+      ## Enable a proxy DNS server for Garden
+      dnsProxyEnable:
+
+      ## List of DNS server IP addresses to use instead of automatically determined servers.
+      ## Example:
+      ## dnsServers:
+      ##   - 1.1.1.1
+      ##   - 2.2.2.2
+      dnsServers: []
+
+      ## List of network ranges to which traffic from containers will be restricted.
+      ## Example:
+      ## restrictedNetworks:
+      ##   - 1.1.1.1
+      ##   - 2.2.2.2
+      restrictedNetworks: []
+
+      ## Max container capacity. 0 means no limit.
+      maxContainers:
+
+      ## Network range to use for dynamically allocated container subnets, defaults to "10.80.0.0/16"
+      ##
+      networkPool:
+
+      ## Time to wait for requests to Containerd to complete. 0 means no timeout.
+      requestTimeout:
+
+
+    ## API endpoint of an externally managed Garden server to use instead of
+    ## running the embedded Garden server.
+    ##
+    externalGardenUrl:
+
+    baggageclaim:
+      ## Minimum level of logs to see. Possible values: debug, info, error
+      ##
+      logLevel: info
+
+      ## IP address on which to listen for API traffic.
+      ##
+      bindIp: 127.0.0.1
+
+      ## Port on which to listen for API traffic.
+      ##
+      bindPort: 7788
+
+      ## IP address on which to listen for the pprof debugger endpoints.
+      ##
+      debugBindIp: 127.0.0.1
+
+      ## Port on which to listen for baggageclaim pprof server.
+      ##
+      debugBindPort: 7787
+
+      ## Disable remapping of user/group IDs in unprivileged volumes.
+      ##
+      disableUserNamespaces:
+
+      ## Directory in which to place volume data.
+      ##
+      volumes:
+
+      ## Driver to use for managing volumes.
+      ## Possible values: detect, naive, btrfs, and overlay.
+      ##
+      driver: naive
+
+      ## Path to btrfs binary
+      ##
+      btrfsBin: btrfs
+
+      ## Path to mkfs.btrfs binary
+      ##
+      mkfsBin: mkfs.btrfs
+
+      ## Path to directory in which to store overlay data
+      ##
+      overlaysDir:
+
+      ## Interval on which to reap expired volumes.
+      ##
+      reapInterval: 10s
+
+    ## Enable Horizontal Pod Autoscaling
+    ## to use this, ephemeral worker with
+    ## worker.kind: Deployment is recommended
+    ##
+    ## see. https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+    ## for custom metrics see.
+    ##   https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-custom-metrics
+    ##
+    ## To disable autoscaling set it to an empty map: { }
+    autoscaling: { }
+      # maxReplicas is required to for auto scaling
+      # see the following example for scaling on CPU_Utilization and on
+      # a custom metric 'concourse_workers_containers'
+      # for this to work you need to configure the metric eg. with prometheus adapter
+#      maxReplicas: 1
+#      minReplicas: 1
+#      builtInMetrics:
+#        - type: Resource
+#          resource:
+#            name: cpu
+#            target:
+#              type: Utilization
+#              averageUtilization: 80
+#      customMetrics:
+#        - type: Pods
+#          pods:
+#            metric:
+#              name: concourse_workers_containers
+#            target:
+#              type: AverageValue
+#              averageValue: 180
+
+## Configuration values for Concourse Web components.
+## For more information regarding the characteristics of
+## Concourse Web nodes, see https://concourse-ci.org/concourse-web.html.
+##
+web:
+
+  ## Enable or disable the web component.
+  ## This allows the creation of worker-only releases by setting this to false.
+  ##
+  enabled: true
+
+  ## Override the components name (defaults to web).
+  ##
+  nameOverride:
+
+  ## Number of replicas.
+  ##
+  replicas: 1
+
+  ## Startup command for the web component.
+  ## Allows to override the docker image command
+  # command: ["dumb-init", "/usr/local/concourse/bin/concourse"]
+
+  ## Args of the startup command for the web component.
+  ##
+  args: ["web"]
+
+  ## Configure resource requests and limits.
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+
+  ## Configure additional environment variables for the
+  ## web containers.
+  ## Example:
+  ##
+  ##   - name: CONCOURSE_LOG_LEVEL
+  ##     value: "debug"
+  ##   - name: CONCOURSE_TSA_LOG_LEVEL
+  ##     value: "debug"
+  ##
+  env:
+
+  ## Node selector for web nodes.
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+  ##
+  nodeSelector:
+    kubernetes.io/hostname: myserver.tgp
+
+  ## Service configuration.
+  ## Ref: https://kubernetes.io/docs/user-guide/services/
+  ##
+  service:
+    api:
+      ## For minikube, set this to ClusterIP, elsewhere use LoadBalancer or NodePort
+      ## Ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
+      ##
+      type: LoadBalancer
+
+      ## When using `web.service.api.type: LoadBalancer`, sets the user-specified load balancer IP.
+      ## Example: 172.217.1.174
+      ##
+      loadBalancerIP: 192.168.1.62
+
+    workerGateway:
+      ## For minikube, set this to ClusterIP, elsewhere use LoadBalancer or NodePort
+      ## Ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
+      ##
+      type: ClusterIP
+
+## Configuration values for Concourse Worker components.
+## For more information regarding the characteristics of
+## Concourse Workers, see https://concourse-ci.org/concourse-worker.html
+##
+worker:
+
+  ## Enable or disable the worker component.
+  ## This can allow users to create web only releases by setting this to false
+  ##
+  enabled: true
+
+  ## Selects kind of Deployment. Valid Options are: StatefulSet | Deployment
+  ## Using Deployment leads to ephemeral workers. Meaning workers do not
+  ## share state between restarts
+  ##
+  kind: StatefulSet
+
+  ## Override the components name (defaults to worker).
+  ##
+  nameOverride:
+
+  ## Removes any previous state created in `concourse.worker.workDir`.
+  ##
+  cleanUpWorkDirOnStart: true
+
+  ## Number of replicas.
+  ##
+  replicas: 1
+
+  ## Array of extra containers to run alongside the Concourse worker
+  ## container.
+  ##
+  ## Example:
+  ##
+  ## - name: myapp-container
+  ##   image: busybox
+  ##   command: ['sh', '-c', 'echo Hello && sleep 3600']
+  ##
+  sidecarContainers: []
+
+  ## Array of extra initContainers to run alongside the Concourse worker
+  ## container.
+  ##
+  ## Example:
+  ## - name: myapp-init-container
+  ##   image: busybox
+  ##   command: ['sh', '-c', 'echo Hello && sleep 3600']
+  ##
+  extraInitContainers: []
+
+  ## Minimum number of workers available after an eviction
+  ## Ref: https://kubernetes.io/docs/admin/disruptions/
+  ##
+  minAvailable: 1
+
+  ## Configure resource requests and limits.
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "512Mi"
+
+  ## Configure additional environment variables for the
+  ## worker container(s)
+  ##
+  ## Example:
+  ##
+  ##   - name: CONCOURSE_NAME
+  ##     value: "anything"
+  ##
+  env: []
+
+  ## Node selector for the worker nodes.
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+  ##
+  nodeSelector:
+    kubernetes.io/hostname: myserver.tgp
+
+  ## Time to allow the pod to terminate before being forcefully terminated. This should provide time for
+  ## the worker to retire, i.e. drain its tasks. See https://concourse-ci.org/worker-internals.html for worker
+  ## lifecycle semantics.
+  ##
+  terminationGracePeriodSeconds: 60
+
+  ## Strategy for StatefulSet updates (requires Kubernetes 1.6+)
+  ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset
+  ##
+  ## Strategy for Deployment updates
+  ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
+  ##
+  updateStrategy:
+    type: RollingUpdate
+#    rollingUpdate:
+#      maxSurge: 25%
+#      maxUnavailable: 1
+
+  ## Pod Management strategy (requires Kubernetes 1.7+)
+  ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
+  ##
+  ## "OrderedReady" is default. "Parallel" means worker pods will launch or terminate
+  ## in parallel.
+  ##
+  ## Ignored for Kind Deployment
+  podManagementPolicy: Parallel
+
+  ## When persistance is disabled this value will be used to limit the emptyDir volume size
+  ## Ref: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+  ##
+  ## Example: 20Gi
+  ##
+  emptyDirSize:
+
+## Persistent Volume Storage configuration.
+## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes
+##
+persistence:
+  ## Enable persistence using Persistent Volume Claims.
+  ## Ignored for Kind: Deployment. If persistence is needed use kind: StatefulSet
+  ##
+  enabled: true
+
+  ## Worker Persistence configuration.
+  ##
+  worker:
+    ## concourse data Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    storageClass: concourse-worker
+
+    ## Persistent Volume Access Mode.
+    ##
+    accessMode: ReadWriteOnce
+
+    ## Persistent Volume Storage Size.
+    ##
+    size: 10Gi
+
+## Configuration values for the postgresql dependency.
+## Ref: https://github.com/helm/charts/blob/master/stable/postgresql/README.md
+##
+postgresql:
+
+  ## Use the PostgreSQL chart dependency.
+  ##
+  ## Set to false if bringing your own PostgreSQL, and set the corresponding `secrets`
+  ## fields that correspond to the PostgreSQL variables that `concourse web` should use
+  ## to connect to.
+  ##
+  ## Should be set to false if using the chart as a worker only deployment.
+  ##
+  enabled: true
+
+  ## PostgreSQL Database to create.
+  ##
+  postgresqlDatabase: concourse
+
+  ## Persistent Volume Storage configuration for PostgreSQL.
+  ##
+  ## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes
+  ##
+  persistence:
+    ## Enable PostgreSQL persistence using Persistent Volume Claims.
+    ##
+    enabled: true
+
+    ## Persistent Volume Storage Class to be used by PersistentVolumes created
+    ## for PostgreSQL.
+    ##
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    storageClass: concourse-postgresql
+
+    ## Persistent Volume Access Mode.
+    ##
+    accessModes:
+      - ReadWriteOnce
+
+    ## Persistent Volume Storage Size.
+    ##
+    size: 5Gi
+
+## For Kubernetes RBAC support:
+##
+rbac:
+  ## Enable the creation of RBAC resources.
+  ##
+  create: false
+
+  ## RBAC Version
+  ##
+  apiVersion: v1beta1
+
+  ## The name of the service account to use for web pods if rbac.create is false
+  ##
+  webServiceAccountName: default
+
+  ## The name of the service account to use for worker pods if rbac.create is false
+  ##
+  workerServiceAccountName: default
+
+## For managing podSecurityPolicies. To make sure rbac objects are also created
+## for the use of the podsecuritypolicy objects,
+## set rbac.create to 'true' (this is the default value)
+##
+podSecurityPolicy:
+  ## Create podSecurityPolicy objects for concourse. Set this to false if
+  ## objects are not needed, or if they are managed outside helm.
+  ##
+  create: false
+
+  ## By default use the recommended minimum set of volumes in kubernetes.
+  ## Possible to overwrite if other types are used.
+  ##
+  allowedWorkerVolumes:
+  - 'secret'
+  - 'persistentVolumeClaim'
+  - 'configMap'
+  - 'downwardAPI'
+  - 'emptyDir'
+  - 'projected'
+
+  ## By default use the recommended minimum set of volumes in kubernetes.
+  ## Possible to overwrite if other types are used.
+  ##
+  allowedWebVolumes:
+  - 'secret'
+  - 'persistentVolumeClaim'
+  - 'configMap'
+  - 'downwardAPI'
+  - 'emptyDir'
+  - 'projected'

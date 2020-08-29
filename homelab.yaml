@@ -8,17 +8,19 @@ settings:
   kubeContext: "microk8s"
 
 namespaces:
-  vscode:
   monitoring:
   bitwarden:
+  concourse:
   folding-at-home:
   dennis-site:
   mattermost:
   syncthing:
+  vscode:
   wireguard:
   whoogle:
 
 helmRepos:
+  concourse: https://concourse-charts.storage.googleapis.com/
   gissilabs: https://gissilabs.github.io/charts/
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
@@ -54,17 +56,28 @@ apps:
     version: "5.5.5"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-datasource.yaml"
+
   bitwarden:
     namespace: "bitwarden"
     enabled: true
     chart: "gissilabs/bitwardenrs"
     version: "0.1.3"
     valuesFile: "bitwarden/bitwarden-values.yaml"
+
+  concourse:
+    namespace: "concourse"
+    enabled: true
+    chart: "concourse/concourse"
+    version: "12.0.2"
+    valuesFile: "concourse/concourse-values.yaml"
+    secretsFile: "concourse/secret.concourse-creds.yaml"
+
   dennis-site:
     namespace: "dennis-site"
     enabled: true
     chart: "./flipenergy"
     version: "0.1.0"
+
   folding-at-home:
     namespace: "folding-at-home"
     enabled: false
@@ -72,6 +85,7 @@ apps:
     version: "2.5.3"
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
     secretsFile: "folding-at-home/secrets.folding-at-home.yaml"
+
   mattermost:
     namespace: "mattermost"
     enabled: true
@@ -79,11 +93,13 @@ apps:
     version: "3.15.1"
     valuesFile: "mattermost/mattermost-values.yaml"
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
+
   syncthing:
     namespace: "syncthing"
     enabled: true
     chart: "./syncthing"
     version: "0.1.0"
+
   wireguard:
     namespace: "wireguard"
     enabled: true
@@ -91,11 +107,13 @@ apps:
     version: "0.2.5"
     valuesFile: "wireguard/wireguard-values.yaml"
     secretsFile: "wireguard/secrets.wireguard-creds.yaml"
+
   whoogle:
     namespace: "whoogle"
     enabled: true
     chart: "./whoogle"
     version: "0.2.1"
+
   vscode:
     namespace: "vscode"
     enabled: true

@@ -15,6 +15,7 @@ init:
 	make influx-init
 	make graf-init
 	make bit-init
+	make concourse-init
 	make f@h-init
 	make mattermost-init
 	make wire-init
@@ -23,6 +24,7 @@ init:
 clean:
 	make clean-influx
 	make clean-graf
+	make clean-concourse
 	make clean-bit
 	make clean-f@h
 	make clean-mattermost
@@ -35,18 +37,8 @@ clean:
 	kubectl delete namespace $(syncthing_namespace)
 	kubectl delete namespace $(wireguard_namespace)
 
-
 deploy:
 	helmsman --apply -f homelab.yaml
-
-# Syncthing
-save-sync-config:
-	mkdir -p config
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
-	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
-	gpg-zip --encrypt --output syncthing/syncthing_config --recipient $$USER config
-	rm -rf config
 
 # InfluxDB
 influx-init:
@@ -80,6 +72,14 @@ bit-init:
 clean-bit:
 	kubectl delete pv bitwarden
 
+# Concourse
+concourse-init:
+	kubectl apply -f concourse/persistencevolumes.yaml
+
+clean-concourse:
+	kubectl delete pv concourse-worker
+	kubectl delete pv concourse-postgresql
+
 # Folding-at-home
 f@h-init:
 	kubectl apply -f folding-at-home/persistentvolume.yaml
@@ -96,6 +96,15 @@ clean-mattermost:
 	kubectl delete pv mattermost-data
 	kubectl delete pv mattermost-plugins
 	kubectl delete pv mattermost-mysql
+
+# Syncthing
+save-sync-config:
+	mkdir -p config
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/config.xml config/config.xml
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/cert.pem config/cert.pem
+	kubectl cp -n $(syncthing_namespace) `kubectl get pod -n $(syncthing_namespace) -l app.kubernetes.io/name=syncthing -o jsonpath='{.items..metadata.name}'`:/var/syncthing/config/key.pem config/key.pem
+	gpg-zip --encrypt --output syncthing/syncthing_config --recipient $$USER config
+	rm -rf config
 
 # WireGuard
 wire-init:
