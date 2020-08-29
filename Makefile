@@ -15,10 +15,26 @@ init:
 	make influx-init
 	make graf-init
 	make bit-init
-	make fire-init
 	make f@h-init
 	make mattermost-init
 	make wire-init
+
+# clean
+clean:
+	make clean-influx
+	make clean-graf
+	make clean-bit
+	make clean-f@h
+	make clean-mattermost
+	make clean-wire
+	kubectl delete namespace $(bitwarden_namespace)
+	kubectl delete namespace $(folding_namespace)
+	kubectl delete namespace $(mattermost_namespace)
+	kubectl delete namespace $(monitoring_namespace)
+	kubectl delete namespace $(my_site_namespace)
+	kubectl delete namespace $(syncthing_namespace)
+	kubectl delete namespace $(wireguard_namespace)
+
 
 deploy:
 	helmsman --apply -f homelab.yaml
@@ -64,13 +80,6 @@ bit-init:
 clean-bit:
 	kubectl delete pv bitwarden
 
-# Firefly III
-fire-init:
-	kubectl apply -f firefly-iii/persistencevolume.yaml
-
-clean-fire:
-	kubectl delete pv firefly
-
 # Folding-at-home
 f@h-init:
 	kubectl apply -f folding-at-home/persistentvolume.yaml
@@ -94,18 +103,3 @@ wire-init:
 
 clean-wire:
 	kubectl delete pv wireguard
-
-# clean
-clean:
-	make clean-influx
-	make clean-graf
-	make clean-bit
-	make clean-f@h
-	make clean-wire
-	kubectl delete namespace $(bitwarden_namespace)
-	kubectl delete namespace $(folding_namespace)
-	kubectl delete namespace $(mattermost_namespace)
-	kubectl delete namespace $(monitoring_namespace)
-	kubectl delete namespace $(my_site_namespace)
-	kubectl delete namespace $(syncthing_namespace)
-	kubectl delete namespace $(wireguard_namespace)
