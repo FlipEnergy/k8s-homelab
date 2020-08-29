@@ -306,35 +306,6 @@ concourse:
     ##
     peerAddress:
 
-    ## Configurations regarding how the web component is able to connect to a postgres
-    ## instance.
-    ##
-    postgres:
-      ## The host to connect to.
-      ##
-      host:
-
-      ## The port to connect to.
-      ##
-      port: 5432
-
-      ## Path to a UNIX domain socket to connect to.
-      ##
-      socket:
-
-      ## Whether or not to use SSL.
-      ##
-      sslmode: disable
-
-      ## Dialing timeout. (0 means wait indefinitely)
-      ##
-      connectTimeout: 5m
-
-      ## The name of the database to use.
-      ##
-      database: atc
-
-
     kubernetes:
       ## Enable the use of Kubernetes Secrets as the credential provider for
       ## concourse pipelines.
@@ -367,7 +338,7 @@ concourse:
       configPath:
 
     influxdb:
-      enabled: false
+      enabled: true
 
       ## Number of points to batch together when emitting to InfluxDB
       ##
@@ -385,11 +356,7 @@ concourse:
 
       ## InfluxDB database to write points to.
       ##
-      database: concourse
-
-      ## InfluxDB server username.
-      ##
-      username:
+      database: homelab
 
       ## Skip SSL verification when emitting to InfluxDB.
       ##
@@ -496,36 +463,7 @@ concourse:
         ## Make sure you have local users support enabled (`concourse.web.localAuth.enabled`) and
         ## that the users were added (`local-users` secret).
         ##
-        localUser: "test"
-
-        ## Authentication (Main Team) (GitHub)
-        ##
-        github:
-          ## List of whitelisted GitHub users
-          ##
-          user:
-
-          ## List of whitelisted GitHub orgs
-          ##
-          org:
-
-          ## List of whitelisted GitHub teams
-          ##
-          team:
-
-
-      ## Authentication (GitHub)
-      ##
-      github:
-        enabled: false
-
-        ## Hostname of GitHub Enterprise deployment (No scheme, No trailing slash)
-        ##
-        host:
-
-        ## CA certificate of GitHub Enterprise deployment
-        ##
-        useCaCert: false
+        localUser: "FlipEnergy"
 
     tsa:
       ## Enable this flag in order to customize the `client_id` and
