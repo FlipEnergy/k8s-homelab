@@ -12,10 +12,13 @@ up:
 	make deploy
 
 init:
-	kubectl apply -f coredns/coredns.yml
 	make influx-init
 	make graf-init
+	make bit-init
+	make fire-init
 	make f@h-init
+	make mattermost-init
+	make wire-init
 
 deploy:
 	helmsman --apply -f homelab.yaml
@@ -60,6 +63,13 @@ bit-init:
 
 clean-bit:
 	kubectl delete pv bitwarden
+
+# Firefly III
+fire-init:
+	kubectl apply -f firefly-iii/persistencevolume.yaml
+
+clean-fire:
+	kubectl delete pv firefly
 
 # Folding-at-home
 f@h-init:

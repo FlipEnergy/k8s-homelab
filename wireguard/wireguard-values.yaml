@@ -26,7 +26,7 @@ wireguard:
 persistence:
   enabled: true
   storageClass: "wireguard"
-  size: 100Mi
+  size: 25Mi
 
 image:
   repository: place1/wg-access-server

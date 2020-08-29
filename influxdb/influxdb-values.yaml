@@ -35,7 +35,7 @@ persistence:
   storageClass: influxdb
   annotations:
   accessMode: ReadWriteOnce
-  size: 8Gi
+  size: 5Gi
 
 ## Deploy InfluxDB Enterprise - License required
 ## ref: https://www.influxdata.com/products/influxdb-enterprise/

@@ -34,8 +34,6 @@ service:
 mysql:
   enabled: true
 
-  repository: mysql
-
   persistence:
     enabled: true
     # If defined, storageClassName: <storageClass>

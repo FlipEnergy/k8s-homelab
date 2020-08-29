@@ -62,5 +62,5 @@ deploymentAnnotations: {}
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
-  size: 800Mi
+  size: 25Mi
   storageClass: bitwarden
