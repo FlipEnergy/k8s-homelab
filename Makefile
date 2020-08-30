@@ -7,6 +7,9 @@ my_site_namespace := dennis-site
 syncthing_namespace := syncthing
 wireguard_namespace := wireguard
 
+deploy:
+	helmsman --apply -f homelab.yaml
+
 up:
 	make init
 	make deploy
@@ -35,9 +38,6 @@ destroy:
 	kubectl delete namespace $(my_site_namespace)
 	kubectl delete namespace $(syncthing_namespace)
 	kubectl delete namespace $(wireguard_namespace)
-
-deploy:
-	helmsman --apply -f homelab.yaml
 
 # InfluxDB
 influx-init:
