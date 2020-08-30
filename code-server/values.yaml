@@ -77,8 +77,11 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector:
-  kubernetes.io/hostname: myserver.tgp
+persistence:
+  enabled: false
+  # storageClassName: ""
+
+nodeSelector: {}
 
 tolerations: []
 
