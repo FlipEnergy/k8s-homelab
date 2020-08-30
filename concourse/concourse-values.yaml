@@ -352,7 +352,7 @@ concourse:
       ## InfluxDB server address to emit points to.
       ## Example: http://127.0.0.1:8086
       ##
-      url: http://192.168.1.54
+      url: http://192.168.1.54:8086
 
       ## InfluxDB database to write points to.
       ##
@@ -360,7 +360,7 @@ concourse:
 
       ## Skip SSL verification when emitting to InfluxDB.
       ##
-      insecureSkipVerify: false
+      insecureSkipVerify: true
 
     ## Emit metrics to logs instead of an actual metrics system.
     ##
