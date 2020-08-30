@@ -8,23 +8,14 @@ image:
   repository: foldingathome/fah-gpu
   tag: 7.6.13
 
-securityContext:
-  capabilities:
-    drop:
-    - ALL
-  readOnlyRootFilesystem: false
-  runAsNonRoot: true
-  runAsUser: 502
-  runAsGroup: 502
-
 storageClassName:
 
 # set to some sane defaults to prevent interference
 # of your other workload.
 resources:
   limits:
-    cpu: 2000m
+    cpu: 1
     memory: 256Mi
   requests:
-    cpu: 1900m
+    cpu: 900m
     memory: 128Mi
