@@ -20,7 +20,7 @@ concourse:
   web:
     ## A name for this Concourse cluster, to be displayed on the dashboard page.
     ##
-    clusterName: Homelab-concourse
+    clusterName: Homelab
 
     ## Enable this flag in order to customize the `client_id` and
     ## `client_secret` used when logging into the Concourse UI.
