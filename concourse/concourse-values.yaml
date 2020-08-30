@@ -356,7 +356,7 @@ concourse:
 
       ## InfluxDB database to write points to.
       ##
-      database: homelab
+      database: concourse
 
       ## Skip SSL verification when emitting to InfluxDB.
       ##
