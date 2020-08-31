@@ -81,7 +81,7 @@ apps:
   folding-at-home:
     namespace: "folding-at-home"
     enabled: false
-    chart: "my-helm-charts-repo/fahclient"
+    chart: "pcktdmp/fahclient"
     version: "2.5.4"
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
     secretsFile: "folding-at-home/secrets.folding-at-home.yaml"
