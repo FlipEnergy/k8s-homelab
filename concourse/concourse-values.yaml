@@ -844,8 +844,7 @@ web:
   ## Node selector for web nodes.
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
-  nodeSelector:
-    kubernetes.io/hostname: myserver.tgp
+  nodeSelector: {}
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/
@@ -944,8 +943,7 @@ worker:
   ## Node selector for the worker nodes.
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
   ##
-  nodeSelector:
-    kubernetes.io/hostname: myserver.tgp
+  nodeSelector: {}
 
   ## Time to allow the pod to terminate before being forcefully terminated. This should provide time for
   ## the worker to retire, i.e. drain its tasks. See https://concourse-ci.org/worker-internals.html for worker
