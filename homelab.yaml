@@ -12,7 +12,6 @@ namespaces:
   bitwarden:
   concourse:
   folding-at-home:
-  dennis-site:
   mattermost:
   syncthing:
   vscode:
@@ -71,14 +70,6 @@ apps:
     version: "12.0.2"
     valuesFile: "concourse/concourse-values.yaml"
     secretsFile: "concourse/secret.concourse-creds.yaml"
-
-  dennis-site:
-    namespace: "dennis-site"
-    enabled: true
-    chart: "./flipenergy"
-    version: "0.1.0"
-    set:
-      "image.tag": "$DENNIS_SITE_VERSION"
 
   folding-at-home:
     namespace: "folding-at-home"
