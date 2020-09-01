@@ -4,6 +4,7 @@
 
 image:
   repository: flipenergy/flipenergy
+  tag: $DENNIS_SITE_VERSION
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
