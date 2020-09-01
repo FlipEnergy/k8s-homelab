@@ -4,7 +4,7 @@
 
 image:
   repository: flipenergy/flipenergy
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
