@@ -77,6 +77,8 @@ apps:
     enabled: true
     chart: "./flipenergy"
     version: "0.1.0"
+    set:
+      "image.tag": "$DENNIS_SITE_VERSION"
 
   folding-at-home:
     namespace: "folding-at-home"
