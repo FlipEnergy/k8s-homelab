@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1598816918847,
+          "iteration": 1598938396872,
           "links": [],
           "panels": [
             {
@@ -276,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -513,7 +513,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -739,7 +739,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -965,7 +965,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1190,7 +1190,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1390,7 +1390,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1807,7 +1807,7 @@ dashboards:
               "renderer": "flot",
               "repeat": null,
               "repeatDirection": "h",
-              "repeatIteration": 1598816918847,
+              "repeatIteration": 1598938396872,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -2496,7 +2496,7 @@ dashboards:
                 "current": true,
                 "max": true,
                 "min": true,
-                "rightSide": true,
+                "rightSide": false,
                 "show": true,
                 "total": false,
                 "values": true
@@ -3442,7 +3442,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 43
+          "version": 45
         }
     network:
       json: |
@@ -3465,7 +3465,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 6,
-          "iteration": 1598816983325,
+          "iteration": 1598938457223,
           "links": [],
           "panels": [
             {
@@ -3515,7 +3515,7 @@ dashboards:
                 "current": true,
                 "max": true,
                 "min": true,
-                "rightSide": true,
+                "rightSide": false,
                 "show": true,
                 "total": false,
                 "values": true
@@ -3713,7 +3713,7 @@ dashboards:
                 "current": true,
                 "max": true,
                 "min": true,
-                "rightSide": true,
+                "rightSide": false,
                 "show": true,
                 "total": false,
                 "values": true
@@ -4314,7 +4314,7 @@ dashboards:
                 "current": true,
                 "max": true,
                 "min": false,
-                "rightSide": true,
+                "rightSide": false,
                 "show": true,
                 "total": false,
                 "values": true
@@ -5486,7 +5486,7 @@ dashboards:
           "timezone": "browser",
           "title": "Network",
           "uid": "H6MPuNHks",
-          "version": 10
+          "version": 12
         }
     Nginx:
       json: |
