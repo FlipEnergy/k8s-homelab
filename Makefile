@@ -55,7 +55,6 @@ clean-influx:
 # Grafana
 graf-init:
 	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -f grafana/persistencevolume.yaml
 	helm secrets dec grafana/secrets.grafana-creds.yaml
 	-kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
 	rm -fv grafana/secrets.grafana-creds.yaml.dec
