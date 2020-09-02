@@ -6,16 +6,13 @@ replicaCount: 1
 
 image:
   repository: codercom/code-server
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
+  # tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
-persistenVolume:
-  path: /mnt/code-server
 
 serviceAccount:
   # Specifies whether a service account should be created

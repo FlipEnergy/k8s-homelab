@@ -28,9 +28,11 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
+{{- if .Values.persistence.enabled }}
         - name: {{ include "code-server.fullname" . }}
           persistentVolumeClaim:
             claimName: {{ include "code-server.fullname" . }}
+{{- end }}
 {{- if .Values.config }}
         - name: {{ include "code-server.fullname" . }}-config
           configMap:
@@ -43,8 +45,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
+{{- if .Values.persistence.enabled }}
             - mountPath: /home/coder/project
               name: {{ include "code-server.fullname" . }}
+{{- end }}
 {{- if .Values.config }}
             - name: {{ include "code-server.fullname" . }}-config
               mountPath: /home/coder/.config/code-server/config.yaml
