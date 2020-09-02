@@ -35,11 +35,11 @@ image:
 replicaCount: 1
 
 podSecurityContext:
-  fsGroup: 504
+  fsGroup: 503
 
 securityContext:
-  runAsUser: 504
-  runAsGroup: 504
+  runAsUser: 503
+  runAsGroup: 503
 
 resources:
   limits:
