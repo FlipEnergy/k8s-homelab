@@ -106,10 +106,3 @@ apps:
     enabled: true
     chart: "./whoogle"
     version: "0.2.1"
-
-  vscode:
-    namespace: "vscode"
-    enabled: true
-    chart: "./code-server"
-    version: "0.1.0"
-    secretsFile: "code-server/secrets.code-server-config.yaml"
