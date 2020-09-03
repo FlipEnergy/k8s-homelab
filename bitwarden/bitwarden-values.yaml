@@ -1,16 +1,33 @@
 # Default values for bitwarden_rs.
 
-# Set Bitwarden_rs application variables
-bitwardenrs:
-  # Set Bitwarden URL, mandatory for invitations over email. Recommended if using a reverse proxy / ingress. Format is https://name or http://name
-  domain: https://bitwarden.pleasenoddos.com
-  # Allow any user to sign-up: https://github.com/dani-garcia/bitwarden_rs/wiki/Disable-registration-of-new-users
-  allowSignups: false
-  # Show password hints: https://github.com/dani-garcia/bitwarden_rs/wiki/Password-hint-display
-  showPasswordHint: true
-  # Enable Websockets for notification. https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-WebSocket-notifications
-  # Redirect HTTP path "/notifications/hub" to port 3012. Ingress/IngressRoute controllers are automatically configured.
-  enableWebsockets: false
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+  tag: 1.16.3
+
+env:
+  SIGNUPS_ALLOWED: false
+  INVITATIONS_ALLOWED: false
+  # SERVER_ADMIN_EMAIL:
+  DOMAIN: https://bitwarden.pleasenoddos.com
+  # YUBICO_CLIENT_ID
+  # YUBICO_SECRET_KEY
+  # DATA_FOLDER
+  # DATABASE_URL
+  # ATTACHMENTS_FOLDER
+  # ICON_CACHE_FOLDER
+  # ROCKET_LIMITS
+  # ROCKET_WORKERS
+  # SMTP_HOST
+  # SMTP_FROM
+  # SMTP_PORT
+  # SMTP_SSL
+  # SMTP_EXPLICIT_TLS
+  # SMTP_USERNAME
+  # SMTP_PASSWORD
+  SHOW_PASSWORD_HINT: true
+  WEB_VAULT_ENABLED: true
 
 service:
   type: LoadBalancer
@@ -18,21 +35,8 @@ service:
   externalTrafficPolicy: Cluster
   loadBalancerIP: 192.168.1.57
 
-persistence:
-  enabled: true
-  size: 25Mi
-  accessMode: ReadWriteOnce
-  # Persistent Volume storage class
-  storageClass: bitwarden
-  ## Use existing Persistent Volume Claim
-  # existingClaim:
-
-image:
-  pullPolicy: IfNotPresent
-  tag: 1.16.3
-
-
-replicaCount: 1
+ingress:
+  enabled: false
 
 podSecurityContext:
   fsGroup: 503
@@ -51,3 +55,12 @@ resources:
 
 nodeSelector:
   kubernetes.io/hostname: myserver.tgp
+
+persistence:
+  enabled: true
+  size: 25Mi
+  accessMode: ReadWriteOnce
+  # Persistent Volume storage class
+  storageClass: bitwarden
+  ## Use existing Persistent Volume Claim
+  # existingClaim:

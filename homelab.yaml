@@ -20,7 +20,7 @@ namespaces:
 
 helmRepos:
   concourse: https://concourse-charts.storage.googleapis.com/
-  gissilabs: https://gissilabs.github.io/charts/
+  cdwv: https://cdwv.github.io/bitwarden-k8s
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   mattermost: "https://helm.mattermost.com"
@@ -59,8 +59,8 @@ apps:
   bitwarden:
     namespace: "bitwarden"
     enabled: true
-    chart: "gissilabs/bitwardenrs"
-    version: "0.1.3"
+    chart: "cdwv/bitwarden-k8s"
+    version: "0.1.5"
     valuesFile: "bitwarden/bitwarden-values.yaml"
 
   concourse:
