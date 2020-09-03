@@ -24,7 +24,7 @@ helmRepos:
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   mattermost: "https://helm.mattermost.com"
-  my-helm-charts-repo: "https://flipenergy.github.io/helm-charts-repo/"
+  k8s-homelab: "https://flipenergy.github.io/k8s-homelab/"
   pcktdmp: "https://pcktdmp.github.io/charts"
   place1: "https://place1.github.io/wg-access-server"
   stable: "https://kubernetes-charts.storage.googleapis.com"
@@ -39,7 +39,7 @@ apps:
   my-kube-ops-view:
     namespace: "monitoring"
     enabled: true
-    chart: "my-helm-charts-repo/kube-ops-view"
+    chart: "k8s-homelab/kube-ops-view"
     version: "1.3.0"
     valuesFile: "kube-ops-view/kube-ops-view-values.yaml"
   influxdb:
