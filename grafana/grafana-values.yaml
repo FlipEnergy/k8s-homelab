@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1598938396872,
+          "iteration": 1599149732969,
           "links": [],
           "panels": [
             {
@@ -276,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -426,7 +426,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -513,7 +513,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -537,7 +537,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -649,7 +649,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT 100 - last(\"usage_idle\") AS \"value\" FROM \"cpu\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT 100 - mean(\"usage_idle\") AS \"value\" FROM \"cpu\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -739,7 +739,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -763,7 +763,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT 100 - last(\"usage_idle\") AS \"value\" FROM \"cpu\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT 100 - mean(\"usage_idle\") AS \"value\" FROM \"cpu\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -875,7 +875,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"used_percent\") AS \"value\" FROM \"mem\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(\"used_percent\") AS \"value\" FROM \"mem\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -965,7 +965,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -989,7 +989,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"used_percent\") AS \"value\" FROM \"mem\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(\"used_percent\") AS \"value\" FROM \"mem\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -1100,7 +1100,7 @@ dashboards:
                   ],
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"used\")/(last(\"used\") + last(\"free\"))*100 AS \"value\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND \"path\" = '/' AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(\"used\")/(last(\"used\") + last(\"free\"))*100 AS \"value\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND \"path\" = '/' AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -1190,7 +1190,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1213,7 +1213,7 @@ dashboards:
                   ],
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"used\")/(last(\"used\") + last(\"free\"))*100 AS \"value\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND \"path\" = '/' AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(\"used\")/(last(\"used\") + last(\"free\"))*100 AS \"value\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND \"path\" = '/' AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -1311,7 +1311,7 @@ dashboards:
                   "measurement": "processes",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"total_threads\") FROM \"processes\" WHERE \"host\" =~ /^$server/ AND $timeFilter GROUP BY time($interval) fill(null)",
+                  "query": "SELECT mean(\"total_threads\") FROM \"processes\" WHERE \"host\" =~ /^$server/ AND $timeFilter GROUP BY time($interval) fill(null)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -1390,7 +1390,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1419,7 +1419,7 @@ dashboards:
                   "measurement": "processes",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT last(\"total_threads\") FROM \"processes\" WHERE \"host\" =~ /^$server/ AND $timeFilter GROUP BY time($interval) fill(null)",
+                  "query": "SELECT mean(\"total_threads\") FROM \"processes\" WHERE \"host\" =~ /^$server/ AND $timeFilter GROUP BY time($interval) fill(null)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -1807,7 +1807,7 @@ dashboards:
               "renderer": "flot",
               "repeat": null,
               "repeatDirection": "h",
-              "repeatIteration": 1598938396872,
+              "repeatIteration": 1599149732969,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -3384,6 +3384,7 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
+                  "tags": [],
                   "text": "myserver.tgp + mysurface3.tgp",
                   "value": [
                     "myserver.tgp",
@@ -3442,7 +3443,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 45
+          "version": 3
         }
     network:
       json: |
