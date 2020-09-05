@@ -9380,7 +9380,7 @@ nodeSelector:
 ##
 persistence:
   type: pvc
-  enabled: true
+  enabled: false
   # storageClassName:
   accessModes:
     - ReadWriteOnce
@@ -9388,9 +9388,3 @@ persistence:
   # annotations: {}
   finalizers:
     - kubernetes.io/pvc-protection
-
-# Use an existing secret for the admin user.
-admin:
-  existingSecret: grafana-creds
-  userKey: username
-  passwordKey: password

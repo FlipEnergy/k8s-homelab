@@ -1,0 +1,36 @@
+replicaCount: 1
+
+image:
+  repository: omarroth/invidious
+  tag: latest
+  pullPolicy: Always
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+   cpu: 50m
+   memory: 64Mi
+
+securityContext:
+  allowPrivilegeEscalation: false
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+# See https://github.com/helm/charts/tree/master/stable/postgresql
+postgresql:
+  initdbScriptsConfigMap: invidious-postgresql-init
+
+# Adapted from ../config/config.yml
+config:
+  channel_threads: 1
+  feed_threads: 1
+  db:
+    host: invidious-postgresql
+    port: 5432
+    dbname: invidious
+  full_refresh: false
+  https_only: false
+  domain:

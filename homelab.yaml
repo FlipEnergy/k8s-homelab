@@ -12,6 +12,7 @@ namespaces:
   bitwarden:
   concourse:
   folding-at-home:
+  invidious:
   mattermost:
   syncthing:
   vscode:
@@ -21,13 +22,13 @@ namespaces:
 helmRepos:
   concourse: https://concourse-charts.storage.googleapis.com/
   cdwv: https://cdwv.github.io/bitwarden-k8s
+  grafana: https://grafana.github.io/helm-charts
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   mattermost: "https://helm.mattermost.com"
   k8s-homelab: "https://flipenergy.github.io/k8s-homelab/"
   pcktdmp: "https://pcktdmp.github.io/charts"
   place1: "https://place1.github.io/wg-access-server"
-  stable: "https://kubernetes-charts.storage.googleapis.com"
 
 apps:
   my-k8s-dashboard:
@@ -48,13 +49,16 @@ apps:
     chart: "influxdata/influxdb"
     version: "4.8.4"
     valuesFile: "influxdb/influxdb-values.yaml"
+    secretsFile: "influxdb/secrets.influxdb-creds.yaml"
+    hooks:
+      preInstall: "influxdb/persistencevolume.yaml"
   grafana:
     namespace: "monitoring"
     enabled: true
-    chart: "stable/grafana"
-    version: "5.5.5"
+    chart: "grafana/grafana"
+    version: "5.6.1"
     valuesFile: "grafana/grafana-values.yaml"
-    secretsFile: "grafana/secrets.grafana-datasource.yaml"
+    secretsFile: "grafana/secrets.grafana-secrets.yaml"
 
   bitwarden:
     namespace: "bitwarden"
@@ -62,6 +66,8 @@ apps:
     chart: "cdwv/bitwarden-k8s"
     version: "0.1.5"
     valuesFile: "bitwarden/bitwarden-values.yaml"
+    hooks:
+      preInstall: "bitwarden/persistencevolume.yaml"
 
   concourse:
     namespace: "concourse"
@@ -70,6 +76,8 @@ apps:
     version: "12.0.2"
     valuesFile: "concourse/concourse-values.yaml"
     secretsFile: "concourse/secret.concourse-creds.yaml"
+    hooks:
+      preInstall: "concourse/persistencevolume.yaml"
 
   folding-at-home:
     namespace: "folding-at-home"
@@ -79,6 +87,16 @@ apps:
     valuesFile: "folding-at-home/folding-at-home-values.yaml"
     secretsFile: "folding-at-home/secrets.folding-at-home.yaml"
 
+  invidious:
+    namespace: "invidious"
+    enabled: false
+    chart: "k8s-homelab/invidious"
+    version: "1.0.0"
+    valuesFile: "invidious/invidious-values.yaml"
+    secretsFile: "invidious/secrets.indsidious-secrets.yaml"
+    hooks:
+      preInstall: "invidious/sql_migrations_configmap.yaml"
+
   mattermost:
     namespace: "mattermost"
     enabled: true
@@ -86,6 +104,8 @@ apps:
     version: "3.15.1"
     valuesFile: "mattermost/mattermost-values.yaml"
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
+    hooks:
+      preInstall: "mattermost/persistencevolumes.yaml"
 
   syncthing:
     namespace: "syncthing"
@@ -100,6 +120,8 @@ apps:
     version: "0.2.5"
     valuesFile: "wireguard/wireguard-values.yaml"
     secretsFile: "wireguard/secrets.wireguard-creds.yaml"
+    hooks:
+      preInstall: "wireguard/persistencevolume.yaml"
 
   whoogle:
     namespace: "whoogle"

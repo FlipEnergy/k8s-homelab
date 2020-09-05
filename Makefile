@@ -10,25 +10,10 @@ wireguard_namespace := wireguard
 deploy:
 	helmsman --apply -f homelab.yaml
 
-up:
-	make init
-	make deploy
-
-init:
-	make influx-init
-	make graf-init
-	make bit-init
-	make concourse-init
-	make f@h-init
-	make mattermost-init
-	make wire-init
-
 destroy:
 	make clean-influx
-	make clean-graf
-	make clean-concourse
 	make clean-bit
-	make clean-f@h
+	make clean-concourse
 	make clean-mattermost
 	make clean-wire
 	kubectl delete namespace $(bitwarden_namespace)
@@ -40,47 +25,21 @@ destroy:
 	kubectl delete namespace $(wireguard_namespace)
 
 # InfluxDB
-influx-init:
-	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	kubectl apply -f influxdb/persistencevolume.yaml
-	helm secrets dec influxdb/secrets.influxdb-creds.yaml
-	-kubectl apply -n $(monitoring_namespace) -f influxdb/secrets.influxdb-creds.yaml.dec
-	rm -fv influxdb/secrets.influxdb-creds.yaml.dec
 
 clean-influx:
-	kubectl delete -n $(monitoring_namespace) secret influxdb-creds
 	kubectl delete -n $(monitoring_namespace) pvc influxdb-data-influxdb-0
 	kubectl delete pv influxdb
 
-# Grafana
-graf-init:
-	kubectl get ns $(monitoring_namespace) > /dev/null || kubectl create ns $(monitoring_namespace)
-	helm secrets dec grafana/secrets.grafana-creds.yaml
-	-kubectl apply -n $(monitoring_namespace) -f grafana/secrets.grafana-creds.yaml.dec
-	rm -fv grafana/secrets.grafana-creds.yaml.dec
-
-clean-graf:
-	kubectl delete -n $(monitoring_namespace) secret grafana-creds
-	kubectl delete pv grafana
-
 # Bitwarden
-bit-init:
-	kubectl apply -f bitwarden/persistencevolume.yaml
 
 clean-bit:
 	kubectl delete pv bitwarden
 
 # Concourse
-concourse-init:
-	kubectl apply -f concourse/persistencevolume.yaml
-
 clean-concourse:
 	kubectl delete pv concourse-postgresql
 
 # Mattermost
-mattermost-init:
-	kubectl apply -f mattermost/persistencevolumes.yaml
-
 clean-mattermost:
 	kubectl delete pv mattermost-data
 	kubectl delete pv mattermost-plugins
@@ -96,8 +55,5 @@ save-sync-config:
 	rm -rf config
 
 # WireGuard
-wire-init:
-	kubectl apply -f wireguard/persistencevolume.yaml
-
 clean-wire:
 	kubectl delete pv wireguard
