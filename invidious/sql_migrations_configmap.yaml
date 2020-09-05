@@ -1,4 +1,9 @@
 apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: invidious-postgresql-init
+
 data:
   annotations.sql: |
     -- Table: public.annotations
@@ -220,30 +225,3 @@ data:
       ON public.videos
       USING btree
       (id COLLATE pg_catalog."default");
-
-kind: ConfigMap
-metadata:
-  creationTimestamp: "2020-09-05T19:51:25Z"
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:data:
-        .: {}
-        f:annotations.sql: {}
-        f:channel_videos.sql: {}
-        f:channels.sql: {}
-        f:nonces.sql: {}
-        f:playlist_videos.sql: {}
-        f:playlists.sql: {}
-        f:session_ids.sql: {}
-        f:users.sql: {}
-        f:videos.sql: {}
-    manager: kubectl
-    operation: Update
-    time: "2020-09-05T19:51:25Z"
-  name: invidious-postgresql-init
-  namespace: dennis-site
-  resourceVersion: "17119444"
-  selfLink: /api/v1/namespaces/dennis-site/configmaps/invidious-postgresql-init
-  uid: d46f3a15-d8b6-4e85-8de6-a9850d0cdd7f

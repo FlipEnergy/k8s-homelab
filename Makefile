@@ -1,11 +1,5 @@
-SHELL := /bin/bash
-bitwarden_namespace := bitwarden
-folding_namespace := folding-at-home
-mattermost_namespace := mattermost
 monitoring_namespace := monitoring
-my_site_namespace := dennis-site
 syncthing_namespace := syncthing
-wireguard_namespace := wireguard
 
 deploy:
 	helmsman --apply -f homelab.yaml
@@ -16,13 +10,15 @@ destroy:
 	make clean-concourse
 	make clean-mattermost
 	make clean-wire
-	kubectl delete namespace $(bitwarden_namespace)
-	kubectl delete namespace $(folding_namespace)
-	kubectl delete namespace $(mattermost_namespace)
-	kubectl delete namespace $(monitoring_namespace)
-	kubectl delete namespace $(my_site_namespace)
+	kubectl delete namespace bitwarden
+	kubectl delete namespace concourse
+	kubectl delete namespace folding-at-home
+	kubectl delete namespace invidious
+	kubectl delete namespace mattermost
 	kubectl delete namespace $(syncthing_namespace)
-	kubectl delete namespace $(wireguard_namespace)
+	kubectl delete namespace wireguard
+	kubectl delete namespace whoogle
+	kubectl delete namespace $(monitoring_namespace)
 
 # InfluxDB
 

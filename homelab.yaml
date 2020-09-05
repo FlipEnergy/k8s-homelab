@@ -15,7 +15,6 @@ namespaces:
   invidious:
   mattermost:
   syncthing:
-  vscode:
   wireguard:
   whoogle:
 
@@ -89,9 +88,9 @@ apps:
 
   invidious:
     namespace: "invidious"
-    enabled: false
+    enabled: true
     chart: "k8s-homelab/invidious"
-    version: "1.0.0"
+    version: "1.1.0"
     valuesFile: "invidious/invidious-values.yaml"
     secretsFile: "invidious/secrets.indsidious-secrets.yaml"
     hooks:
