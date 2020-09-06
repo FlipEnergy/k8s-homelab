@@ -37,14 +37,6 @@ postgresql:
     nodeSelector:
       kubernetes.io/hostname: myserver.tgp
 
-  # livenessProbe:
-  #   enabled: true
-  #   initialDelaySeconds: 60
-  #   periodSeconds: 10
-  #   timeoutSeconds: 5
-  #   failureThreshold: 6
-  #   successThreshold: 1
-
 # https://github.com/iv-org/invidious/wiki/Configuration
 config:
   channel_threads: 1
