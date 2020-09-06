@@ -22,7 +22,7 @@ data:
           fallthrough in-addr.arpa ip6.arpa
         }
         prometheus :9153
-        forward . 192.168.1.11 8.8.8.8
+        forward . 192.168.2.1 192.168.1.11
         cache 30
         loop
         reload
