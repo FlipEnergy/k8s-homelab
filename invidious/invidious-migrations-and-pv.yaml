@@ -225,3 +225,19 @@ data:
       ON public.videos
       USING btree
       (id COLLATE pg_catalog."default");
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: invidious-postgresql
+  labels:
+    type: local
+spec:
+  storageClassName: invidious-postgresql
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/invidious-postgresql

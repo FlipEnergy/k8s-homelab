@@ -94,7 +94,7 @@ apps:
     valuesFile: "invidious/invidious-values.yaml"
     secretsFile: "invidious/secrets.indsidious-secrets.yaml"
     hooks:
-      preInstall: "invidious/sql_migrations_configmap.yaml"
+      preInstall: "invidious/invidious-migrations-and-pv.yaml"
 
   mattermost:
     namespace: "mattermost"

@@ -28,7 +28,24 @@ securityContext:
 postgresql:
   initdbScriptsConfigMap: invidious-postgresql-init
 
-# Adapted from ../config/config.yml
+  persistence:
+    enabled: true
+    size: 250Mi
+    storageClass: invidious-postgresql
+
+  master:
+    nodeSelector:
+      kubernetes.io/hostname: myserver.tgp
+
+  # livenessProbe:
+  #   enabled: true
+  #   initialDelaySeconds: 60
+  #   periodSeconds: 10
+  #   timeoutSeconds: 5
+  #   failureThreshold: 6
+  #   successThreshold: 1
+
+# https://github.com/iv-org/invidious/wiki/Configuration
 config:
   channel_threads: 1
   feed_threads: 1
@@ -38,4 +55,9 @@ config:
     dbname: invidious
   full_refresh: false
   https_only: false
-  domain:
+  domain: invidious.pleasenoddos.com
+  captcha_enabled: false
+  registration_enabled: false
+  default_user_preferences:
+    default_home: "Subscriptions"
+    feed_menu: ["Subscriptions", "Top", "Trending"]
