@@ -2,6 +2,7 @@ monitoring_namespace := monitoring
 syncthing_namespace := syncthing
 
 deploy:
+	kubectl apply -f coredns_configmap.yaml
 	helmsman --apply -f homelab.yaml
 
 destroy:
