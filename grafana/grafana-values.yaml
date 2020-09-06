@@ -69,7 +69,7 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 3,
+          "id": 0,
           "iteration": 1599149732969,
           "links": [],
           "panels": [
@@ -3465,7 +3465,7 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 6,
+          "id": 1,
           "iteration": 1598938457223,
           "links": [],
           "panels": [
@@ -5509,7 +5509,7 @@ dashboards:
           "editable": true,
           "gnetId": 5063,
           "graphTooltip": 0,
-          "id": 1,
+          "id": 2,
           "iteration": 1599084433217,
           "links": [],
           "panels": [
@@ -6406,7 +6406,7 @@ dashboards:
           "editable": true,
           "gnetId": null,
           "graphTooltip": 0,
-          "id": 1,
+          "id": 3,
           "links": [],
           "panels": [
             {
