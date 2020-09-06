@@ -69,8 +69,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 0,
-          "iteration": 1599149732969,
+          "id": 4,
+          "iteration": 1599412343579,
           "links": [],
           "panels": [
             {
@@ -276,7 +276,7 @@ dashboards:
                 }
               ],
               "repeat": null,
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -513,7 +513,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -739,7 +739,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -965,7 +965,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1190,7 +1190,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1390,7 +1390,7 @@ dashboards:
               },
               "pluginVersion": "7.1.1",
               "repeat": null,
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1807,7 +1807,7 @@ dashboards:
               "renderer": "flot",
               "repeat": null,
               "repeatDirection": "h",
-              "repeatIteration": 1599149732969,
+              "repeatIteration": 1599412343579,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -3354,7 +3354,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "5m",
+          "refresh": "10s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
@@ -3384,7 +3384,6 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "tags": [],
                   "text": "myserver.tgp + mysurface3.tgp",
                   "value": [
                     "myserver.tgp",
@@ -3443,7 +3442,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 3
+          "version": 2
         }
     network:
       json: |
@@ -3465,8 +3464,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 1,
-          "iteration": 1598938457223,
+          "id": 3,
+          "iteration": 1599413114389,
           "links": [],
           "panels": [
             {
@@ -5399,7 +5398,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "5m",
+          "refresh": "10s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
@@ -5487,7 +5486,7 @@ dashboards:
           "timezone": "browser",
           "title": "Network",
           "uid": "H6MPuNHks",
-          "version": 12
+          "version": 2
         }
     Nginx:
       json: |
@@ -5510,7 +5509,7 @@ dashboards:
           "gnetId": 5063,
           "graphTooltip": 0,
           "id": 2,
-          "iteration": 1599084433217,
+          "iteration": 1599413092484,
           "links": [],
           "panels": [
             {
@@ -6299,7 +6298,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "1m",
+          "refresh": "10s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
@@ -6406,7 +6405,7 @@ dashboards:
           "editable": true,
           "gnetId": null,
           "graphTooltip": 0,
-          "id": 3,
+          "id": 1,
           "links": [],
           "panels": [
             {
@@ -9340,6 +9339,7 @@ dashboards:
               }
             }
           ],
+          "refresh": "10s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
