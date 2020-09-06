@@ -6406,7 +6406,7 @@ dashboards:
           "editable": true,
           "gnetId": null,
           "graphTooltip": 0,
-          "id": 7,
+          "id": 1,
           "links": [],
           "panels": [
             {
@@ -6513,7 +6513,7 @@ dashboards:
               },
               "yaxes": [
                 {
-                  "format": "short",
+                  "format": "ms",
                   "label": null,
                   "logBase": 1,
                   "max": null,
@@ -6521,12 +6521,12 @@ dashboards:
                   "show": true
                 },
                 {
-                  "format": "short",
+                  "format": "ms",
                   "label": null,
                   "logBase": 1,
                   "max": null,
                   "min": null,
-                  "show": true
+                  "show": false
                 }
               ],
               "yaxis": {
@@ -9366,7 +9366,7 @@ dashboards:
           "timezone": "",
           "title": "Concourse",
           "uid": "FcKaZZvGz",
-          "version": 5
+          "version": 2
         }
 
 ## Node labels for pod assignment
