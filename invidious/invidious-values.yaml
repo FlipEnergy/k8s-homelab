@@ -39,8 +39,8 @@ postgresql:
 
 # https://github.com/iv-org/invidious/wiki/Configuration
 config:
-  channel_threads: 1
-  feed_threads: 1
+  channel_threads: 2
+  feed_threads: 2
   db:
     host: invidious-postgresql
     port: 5432
