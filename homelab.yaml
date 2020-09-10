@@ -34,7 +34,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "kubernetes-dashboard/kubernetes-dashboard"
-    version: "2.3.0"
+    version: "2.5.0"
     valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
   my-kube-ops-view:
     namespace: "monitoring"
