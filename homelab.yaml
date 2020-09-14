@@ -55,7 +55,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "grafana/grafana"
-    version: "5.6.4"
+    version: "5.6.5"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-secrets.yaml"
 
