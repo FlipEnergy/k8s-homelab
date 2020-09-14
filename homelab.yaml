@@ -12,7 +12,6 @@ namespaces:
   bitwarden:
   concourse:
   folding-at-home:
-  invidious:
   mattermost:
   syncthing:
   wireguard:
