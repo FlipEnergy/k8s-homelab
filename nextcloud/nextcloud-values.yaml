@@ -3,18 +3,10 @@
 ##
 
 nextcloud:
-  host: nextcloud.tgp nextcloud.pleasenoddos.com mysurface3.tgp
+  host: nextcloud.pleasenoddos.com
   mail:
-    enabled: true
-    fromAddress: dennis.zhang.nrg
-    domain: gmail.com
-    smtp:
-      host: smtp.gmail.com
-      secure: ssl
-      port: 587
-      authtype: STARTTLS
-      name: dennis.zhang.nrg@gmail.com
-      password: overridden
+    enabled: false
+
   # PHP Configuration files
   # Will be injected in /usr/local/etc/php/conf.d
   phpConfigs: {}
@@ -109,7 +101,7 @@ persistence:
   # existingClaim:
 
   accessMode: ReadWriteOnce
-  size: 8Gi
+  size: 5Gi
 
 resources:
   limits:
