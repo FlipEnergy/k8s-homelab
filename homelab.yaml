@@ -13,6 +13,7 @@ namespaces:
   concourse:
   folding-at-home:
   mattermost:
+  nextcloud:
   syncthing:
   wireguard:
   whoogle:
@@ -24,6 +25,7 @@ helmRepos:
   influxdata: "https://helm.influxdata.com/"
   kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
   mattermost: "https://helm.mattermost.com"
+  nextcloud: "https://nextcloud.github.io/helm/"
   k8s-homelab: "https://flipenergy.github.io/k8s-homelab/"
   pcktdmp: "https://pcktdmp.github.io/charts"
   place1: "https://place1.github.io/wg-access-server"
@@ -102,6 +104,17 @@ apps:
     wait: true
     hooks:
       preInstall: "mattermost/persistencevolumes.yaml"
+
+  nextcloud:
+    namespace: "nextcloud"
+    enabled: true
+    chart: "nextcloud/nextcloud"
+    version: "2.2.0"
+    valuesFile: "nextcloud/nextcloud-values.yaml"
+    secretsFile: "nextcloud/secrets.nextcloud-secrets.yaml"
+    wait: true
+    hooks:
+      preInstall: "nextcloud/persistencevolume.yaml"
 
   syncthing:
     namespace: "syncthing"
