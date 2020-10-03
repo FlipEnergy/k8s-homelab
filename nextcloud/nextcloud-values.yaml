@@ -6,8 +6,8 @@ nextcloud:
   host: nextcloud.tgp nextcloud.pleasenoddos.com mysurface3.tgp
   mail:
     enabled: true
-    fromAddress: dennis.zhang.nrg@gmail.com
-    domain: pleasenoddos.com
+    fromAddress: dennis.zhang.nrg
+    domain: gmail.com
     smtp:
       host: smtp.gmail.com
       secure: ssl
