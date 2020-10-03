@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "whoogle.fullname" . }}
+  name: {{ include "pretend-youre-xyzzy.fullname" . }}
   labels:
-    {{- include "whoogle.labels" . | nindent 4 }}
+    {{- include "pretend-youre-xyzzy.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "whoogle.selectorLabels" . | nindent 6 }}
+      {{- include "pretend-youre-xyzzy.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,45 +18,34 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "whoogle.selectorLabels" . | nindent 8 }}
+        {{- include "pretend-youre-xyzzy.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "whoogle.serviceAccountName" . }}
+      serviceAccountName: {{ include "pretend-youre-xyzzy.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-{{- if .Values.config }}
-      volumes:
-        - name: {{ include "whoogle.fullname" . }}
-          configMap:
-            name: {{ include "whoogle.fullname" . }}
-{{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-{{- if .Values.config }}
-          volumeMounts:
-            - name: {{ include "whoogle.fullname" . }}
-              mountPath: /config/config.json
-              subPath: config.json
-{{- end }}
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 8080
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          #   initialDelaySeconds: 180
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

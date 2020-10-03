@@ -13,6 +13,7 @@ namespaces:
   concourse:
   folding-at-home:
   mattermost:
+  pretend-youre-xyzzy:
   nextcloud:
   syncthing:
   wireguard:
@@ -115,6 +116,13 @@ apps:
     wait: true
     hooks:
       preInstall: "nextcloud/persistencevolume.yaml"
+
+  pretend-youre-xyzzy:
+    namespace: "pretend-youre-xyzzy"
+    enabled: false
+    chart: "./pretend-youre-xyzzy"
+    version: "0.1.0"
+    wait: true
 
   syncthing:
     namespace: "syncthing"
