@@ -1,6 +1,10 @@
 ## Official nextcloud image version
 ## ref: https://hub.docker.com/r/library/nextcloud/tags/
 ##
+image:
+  repository: nextcloud
+  tag: 20.0.0-rc-apache
+  pullPolicy: IfNotPresent
 
 nextcloud:
   host: nextcloud.pleasenoddos.com
