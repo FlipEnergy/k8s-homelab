@@ -22,9 +22,7 @@ data:
           fallthrough in-addr.arpa ip6.arpa
         }
         prometheus :9153
-        forward . /etc/resolv.conf {
-          expire 60s
-        }
+        forward . /etc/resolv.conf
         cache
         loop
         reload

@@ -9,7 +9,14 @@ image:
 nextcloud:
   host: nextcloud.pleasenoddos.com
   mail:
-    enabled: false
+    enabled: true
+    fromAddress: dennis.zhang.nrg
+    domain: gmail.com
+    smtp:
+      host: smtp.gmail.com
+      secure: tls
+      port: 587
+      authtype: LOGIN
 
   # PHP Configuration files
   # Will be injected in /usr/local/etc/php/conf.d
