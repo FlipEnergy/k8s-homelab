@@ -119,7 +119,7 @@ apps:
 
   pretend-youre-xyzzy:
     namespace: "pretend-youre-xyzzy"
-    enabled: false
+    enabled: true
     chart: "./pretend-youre-xyzzy"
     version: "0.1.0"
     wait: true
