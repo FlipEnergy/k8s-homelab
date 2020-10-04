@@ -23,7 +23,7 @@ data:
         }
         prometheus :9153
         forward . /etc/resolv.conf {
-          expire 30s
+          expire 60s
         }
         cache
         loop
