@@ -110,7 +110,7 @@ apps:
     namespace: "nextcloud"
     enabled: true
     chart: "nextcloud/nextcloud"
-    version: "2.2.0"
+    version: "2.2.1"
     valuesFile: "nextcloud/nextcloud-values.yaml"
     secretsFile: "nextcloud/secrets.nextcloud-secrets.yaml"
     wait: true
