@@ -6,7 +6,8 @@ replicaCount: 1
 
 image:
   repository: benbusby/whoogle-search
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
+  tag: beta
 
 # whoogle config
 config: |
