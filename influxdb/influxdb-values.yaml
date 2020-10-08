@@ -56,7 +56,7 @@ resources:
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
 nodeSelector:
-  kubernetes.io/hostname: myserver.tgp
+  kubernetes.io/hostname: k8s-node-1.tgp
 
 # Allow executing custom init scripts
 #
