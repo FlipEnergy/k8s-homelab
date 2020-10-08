@@ -39,6 +39,7 @@ apps:
     version: "2.5.0"
     valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
     wait: true
+    priority : -98
   my-kube-ops-view:
     namespace: "monitoring"
     enabled: true
@@ -46,6 +47,7 @@ apps:
     version: "1.3.0"
     valuesFile: "kube-ops-view/kube-ops-view-values.yaml"
     wait: true
+    priority : -99
   influxdb:
     namespace: "monitoring"
     enabled: true
@@ -56,6 +58,7 @@ apps:
     wait: true
     hooks:
       preInstall: "influxdb/persistencevolume.yaml"
+    priority : -97
   grafana:
     namespace: "monitoring"
     enabled: true
@@ -64,6 +67,7 @@ apps:
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-secrets.yaml"
     wait: true
+    priority : -96
 
   bitwarden:
     namespace: "bitwarden"
