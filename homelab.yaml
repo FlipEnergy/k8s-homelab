@@ -63,7 +63,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "grafana/grafana"
-    version: "5.7.2"
+    version: "5.7.3"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-secrets.yaml"
     wait: true
