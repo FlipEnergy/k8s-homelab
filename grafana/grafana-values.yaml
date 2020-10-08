@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1602126924165,
+          "iteration": 1602127468925,
           "links": [],
           "panels": [
             {
@@ -275,7 +275,7 @@ dashboards:
                   "to": "null"
                 }
               ],
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -402,7 +402,7 @@ dashboards:
                   "to": "null"
                 }
               ],
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -552,7 +552,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /(coretemp_core\\d_input)|(soc-thermal)/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -638,7 +638,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -662,7 +662,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /(coretemp_core\\d_input)|(soc-thermal)/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -748,7 +748,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -772,7 +772,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /(coretemp_core\\d_input)|(soc-thermal)/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -973,7 +973,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1086,7 +1086,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1311,7 +1311,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1424,7 +1424,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1648,7 +1648,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1760,7 +1760,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1959,7 +1959,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -2066,7 +2066,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.2.0",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -2491,7 +2491,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -2645,7 +2645,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1602126924165,
+              "repeatIteration": 1602127468925,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -3510,6 +3510,9 @@ dashboards:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "connected",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
               "pluginVersion": "7.2.0",
               "pointradius": 5,
@@ -3651,6 +3654,9 @@ dashboards:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "connected",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
               "pluginVersion": "7.2.0",
               "pointradius": 5,
@@ -3851,6 +3857,9 @@ dashboards:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "connected",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
               "pluginVersion": "7.2.0",
               "pointradius": 5,
@@ -4051,6 +4060,9 @@ dashboards:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "connected",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
               "pluginVersion": "7.2.0",
               "pointradius": 5,
@@ -4207,7 +4219,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "10s",
+          "refresh": "5m",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
