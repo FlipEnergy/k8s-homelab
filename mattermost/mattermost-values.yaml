@@ -103,16 +103,17 @@ configJSON: {
   "TeamSettings": {
     "SiteName": "Dennis' Homelab Mattermost",
     "MaxUsersPerTeam": 50000,
+    "EnableTeamCreation": false,
     "EnableUserCreation": true,
     "EnableOpenServer": false,
     "RestrictCreationToDomains": "",
     "EnableCustomBrand": false,
-    "CustomBrandText": "",
+    "CustomBrandText": "Please no DDoS",
     "CustomDescriptionText": "Dennis' homelab Mattermost instance.",
     "RestrictDirectMessage": "any",
     "TeammateNameDisplay": "full_name",
     "UserStatusAwayTimeout": 300,
-    "MaxChannelsPerTeam": 50000,
+    "MaxChannelsPerTeam": 50,
     "MaxNotificationsPerChannel": 1000
   },
   "SqlSettings": {
