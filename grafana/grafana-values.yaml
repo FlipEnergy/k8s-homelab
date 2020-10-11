@@ -3447,8 +3447,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 3,
-          "iteration": 1602127002304,
+          "id": 2,
+          "iteration": 1602382132489,
           "links": [],
           "panels": [
             {
@@ -4523,6 +4523,9 @@ dashboards:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "connected",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
               "pluginVersion": "7.2.0",
               "pointradius": 5,
@@ -4731,6 +4734,9 @@ dashboards:
               "linewidth": 1,
               "links": [],
               "nullPointMode": "connected",
+              "options": {
+                "alertThreshold": true
+              },
               "percentage": false,
               "pluginVersion": "7.2.0",
               "pointradius": 5,
@@ -5429,12 +5435,10 @@ dashboards:
                   "tags": [],
                   "text": [
                     "k8s-node-1.tgp",
-                    "k8s-node-2.tgp",
                     "load-balancer-1.tgp"
                   ],
                   "value": [
                     "k8s-node-1.tgp",
-                    "k8s-node-2.tgp",
                     "load-balancer-1.tgp"
                   ]
                 },
