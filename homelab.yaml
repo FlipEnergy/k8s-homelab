@@ -63,7 +63,7 @@ apps:
     namespace: "monitoring"
     enabled: true
     chart: "grafana/grafana"
-    version: "5.8.15"
+    version: "5.8.14"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-secrets.yaml"
     wait: true
@@ -81,7 +81,7 @@ apps:
 
   concourse:
     namespace: "concourse"
-    enabled: true
+    enabled: false
     chart: "concourse/concourse"
     version: "12.0.2"
     valuesFile: "concourse/concourse-values.yaml"
