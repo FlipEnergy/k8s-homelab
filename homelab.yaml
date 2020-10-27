@@ -81,7 +81,7 @@ apps:
 
   concourse:
     namespace: "concourse"
-    enabled: false
+    enabled: true
     chart: "concourse/concourse"
     version: "12.0.2"
     valuesFile: "concourse/concourse-values.yaml"
