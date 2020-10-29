@@ -83,7 +83,7 @@ apps:
     namespace: "concourse"
     enabled: true
     chart: "concourse/concourse"
-    version: "12.0.2"
+    version: "14.1.0"
     valuesFile: "concourse/concourse-values.yaml"
     secretsFile: "concourse/secret.concourse-creds.yaml"
     wait: true
