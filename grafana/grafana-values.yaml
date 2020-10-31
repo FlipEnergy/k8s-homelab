@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 1,
-          "iteration": 1602174241962,
+          "iteration": 1604178451835,
           "links": [],
           "panels": [
             {
@@ -140,7 +140,7 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -241,8 +241,8 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.2.0",
-              "repeatIteration": 1602174241962,
+              "pluginVersion": "7.2.1",
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -351,7 +351,7 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -460,8 +460,8 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.2.0",
-              "repeatIteration": 1602174241962,
+              "pluginVersion": "7.2.1",
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -573,7 +573,7 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -685,8 +685,8 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.2.0",
-              "repeatIteration": 1602174241962,
+              "pluginVersion": "7.2.1",
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -798,7 +798,7 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -910,8 +910,8 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.2.0",
-              "repeatIteration": 1602174241962,
+              "pluginVersion": "7.2.1",
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1023,7 +1023,7 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -1134,8 +1134,8 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.2.0",
-              "repeatIteration": 1602174241962,
+              "pluginVersion": "7.2.1",
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1227,7 +1227,7 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -1333,8 +1333,8 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.2.0",
-              "repeatIteration": 1602174241962,
+              "pluginVersion": "7.2.1",
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1458,7 +1458,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -1601,7 +1601,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -1754,12 +1754,12 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1602174241962,
+              "repeatIteration": 1604178451835,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -1908,7 +1908,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2046,7 +2046,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2185,7 +2185,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2333,7 +2333,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2473,7 +2473,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2628,7 +2628,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2663,7 +2663,7 @@ dashboards:
                   ],
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(total) AS \"total\", mean(used) as \"used\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND \"path\" = '/' AND $timeFilter GROUP BY time($interval), \"host\", \"path\"",
+                  "query": "SELECT mean(total) AS \"total\", mean(used) as \"used\" FROM \"disk\" WHERE \"host\" =~ /$server$/ AND (\"path\" = '/' OR \"path\" = '/mnt/data') AND $timeFilter GROUP BY time($interval), \"host\", \"path\"",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -2772,7 +2772,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2975,7 +2975,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3178,7 +3178,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.2.0",
+              "pluginVersion": "7.2.1",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3363,7 +3363,6 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "tags": [],
                   "text": [
                     "k8s-node-1.tgp",
                     "load-balancer-1.tgp"
