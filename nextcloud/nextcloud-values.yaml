@@ -3,7 +3,7 @@
 ##
 image:
   repository: nextcloud
-  tag: 20.0.0-rc-apache
+  tag: 20.0.1
   pullPolicy: IfNotPresent
 
 nextcloud:
