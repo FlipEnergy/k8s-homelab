@@ -7,8 +7,8 @@ metadata:
 spec:
   storageClassName: wireguard
   capacity:
-    storage: 50Mi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/wireguard
+    path: /mnt/data/wireguard

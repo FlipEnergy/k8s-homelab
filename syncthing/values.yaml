@@ -15,7 +15,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 persistenVolume:
-  path: /mnt/syncthing-data
+  path: /mnt/data/syncthing-data
 
 serviceAccount:
   # Specifies whether a service account should be created

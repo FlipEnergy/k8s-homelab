@@ -11,4 +11,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/concourse-postgresql
+    path: /mnt/data/concourse-postgresql

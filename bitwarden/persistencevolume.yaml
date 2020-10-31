@@ -7,8 +7,8 @@ metadata:
 spec:
   storageClassName: bitwarden
   capacity:
-    storage: 50Mi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/bitwarden
+    path: /mnt/data/bitwarden

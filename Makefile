@@ -3,7 +3,7 @@ syncthing_namespace := syncthing
 
 deploy:
 	kubectl apply -f coredns_configmap.yaml
-	helmsman --apply -f homelab.yaml
+	helmsman -p 3 --apply -f homelab.yaml
 
 destroy:
 	make clean-influx

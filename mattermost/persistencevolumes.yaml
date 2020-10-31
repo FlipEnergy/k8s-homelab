@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/mattermost-data
+    path: /mnt/data/mattermost-data
 
 ---
 
@@ -28,7 +28,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/mattermost-plugins
+    path: /mnt/data/mattermost-plugins
 
 ---
 
@@ -45,4 +45,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/mattermost-mysql
+    path: /mnt/data/mattermost-mysql
