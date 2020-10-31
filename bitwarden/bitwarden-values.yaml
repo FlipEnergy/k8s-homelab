@@ -38,13 +38,6 @@ service:
 ingress:
   enabled: false
 
-podSecurityContext:
-  fsGroup: 503
-
-securityContext:
-  runAsUser: 503
-  runAsGroup: 503
-
 resources:
   limits:
     cpu: 100m
