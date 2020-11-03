@@ -34,6 +34,12 @@ service:
 mysql:
   enabled: true
 
+  securityContext:
+    enabled: true
+    runAsUser: 2001
+    fsGroup: 2001
+  
+
   persistence:
     enabled: true
     # If defined, storageClassName: <storageClass>

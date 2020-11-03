@@ -10,5 +10,6 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  nfs:
     path: /mnt/data/influxdb
+    server: k8s-node-1.tgp

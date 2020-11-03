@@ -10,5 +10,6 @@ spec:
     storage: 500Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  nfs:
     path: {{ .Values.persistenVolume.path }}
+    server: k8s-node-1.tgp

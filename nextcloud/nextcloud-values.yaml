@@ -112,7 +112,7 @@ persistence:
   # existingClaim:
 
   accessMode: ReadWriteOnce
-  size: 5Gi
+  size: 10Gi
 
 resources:
   limits:

@@ -10,5 +10,6 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  nfs:
     path: /mnt/data/bitwarden
+    server: k8s-node-1.tgp

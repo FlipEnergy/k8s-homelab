@@ -10,8 +10,9 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  nfs:
     path: /mnt/data/mattermost-data
+    server: k8s-node-1.tgp
 
 ---
 
@@ -27,8 +28,9 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  nfs:
     path: /mnt/data/mattermost-plugins
+    server: k8s-node-1.tgp
 
 ---
 
@@ -44,5 +46,6 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
+  nfs:
     path: /mnt/data/mattermost-mysql
+    server: k8s-node-1.tgp
