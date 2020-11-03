@@ -70,8 +70,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-1.tgp
+nodeSelector: {}
 
 tolerations: []
 

@@ -55,8 +55,7 @@ resources:
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-1.tgp
+nodeSelector: {}
 
 # Allow executing custom init scripts
 #

@@ -46,8 +46,7 @@ resources:
     cpu: 50m
     memory: 64Mi
 
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-1.tgp
+nodeSelector: {}
 
 persistence:
   enabled: true

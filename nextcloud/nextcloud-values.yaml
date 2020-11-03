@@ -140,5 +140,4 @@ readinessProbe:
   failureThreshold: 3
   successThreshold: 1
 
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-1.tgp
+nodeSelector: {}
