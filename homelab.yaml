@@ -92,7 +92,7 @@ apps:
     valuesFile: "concourse/concourse-values.yaml"
     secretsFile: "concourse/secret.concourse-creds.yaml"
     hooks:
-      preInstall: "concourse/persistencevolumes.yaml"
+      preInstall: "concourse/persistencevolume.yaml"
 
   folding-at-home:
     <<: *default
