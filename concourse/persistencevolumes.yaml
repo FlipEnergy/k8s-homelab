@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mattermost-data
+  name: concourse-postgresql
 spec:
-  storageClassName: mattermost-data
+  storageClassName: concourse-postgresql
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/mattermost-data
+    path: /mnt/data/concourse-postgresql
     server: k8s-node-1.tgp
 
 ---
@@ -17,15 +17,15 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mattermost-plugins
+  name: concourse-tmp1
 spec:
-  storageClassName: mattermost-plugins
+  storageClassName: concourse-tmp
   capacity:
-    storage: 1Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/mattermost-plugins
+    path: /mnt/data/concourse-tmp/1
     server: k8s-node-1.tgp
 
 ---
@@ -33,13 +33,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mattermost-mysql
+  name: concourse-tmp2
 spec:
-  storageClassName: mattermost-mysql
+  storageClassName: concourse-tmp
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/mattermost-mysql
+    path: /mnt/data/concourse-tmp/2
     server: k8s-node-1.tgp
