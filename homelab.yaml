@@ -119,7 +119,7 @@ apps:
     namespace: "nextcloud"
     enabled: true
     chart: "nextcloud/nextcloud"
-    version: "2.2.1"
+    version: "2.3.2"
     valuesFile: "nextcloud/nextcloud-values.yaml"
     secretsFile: "nextcloud/secrets.nextcloud-secrets.yaml"
     hooks:
