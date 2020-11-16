@@ -108,7 +108,7 @@ apps:
     namespace: "mattermost"
     enabled: true
     chart: "mattermost/mattermost-team-edition"
-    version: "3.18.0"
+    version: "3.19.0"
     valuesFile: "mattermost/mattermost-values.yaml"
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
     hooks:
