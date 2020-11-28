@@ -68,7 +68,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: "grafana/grafana"
-    version: "6.1.8"
+    version: "6.1.10"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-secrets.yaml"
     priority : -96
