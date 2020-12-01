@@ -58,7 +58,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: "influxdata/influxdb"
-    version: "4.8.9"
+    version: "4.8.10"
     valuesFile: "influxdb/influxdb-values.yaml"
     secretsFile: "influxdb/secrets.influxdb-creds.yaml"
     hooks:
