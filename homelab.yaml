@@ -44,7 +44,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: "kubernetes-dashboard/kubernetes-dashboard"
-    version: "2.5.0"
+    version: "3.0.0"
     valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
     priority : -98
   my-kube-ops-view:
