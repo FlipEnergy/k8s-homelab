@@ -44,7 +44,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: "kubernetes-dashboard/kubernetes-dashboard"
-    version: "3.0.0"
+    version: "3.0.2"
     valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
     priority : -98
   my-kube-ops-view:
@@ -68,7 +68,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: "grafana/grafana"
-    version: "6.1.13"
+    version: "6.1.15"
     valuesFile: "grafana/grafana-values.yaml"
     secretsFile: "grafana/secrets.grafana-secrets.yaml"
     priority : -96
