@@ -16,7 +16,6 @@ spec:
 {{- if .Values.service.website.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.website.loadBalancerIP }}
 {{- end }}
-
 ---
 
 apiVersion: v1

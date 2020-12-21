@@ -13,6 +13,7 @@ namespaces:
   concourse:
   folding-at-home:
   mattermost:
+  owncast:
   pretend-youre-xyzzy:
   nextcloud:
   syncthing:
@@ -124,6 +125,15 @@ apps:
     secretsFile: "nextcloud/secrets.nextcloud-secrets.yaml"
     hooks:
       preInstall: "nextcloud/persistencevolume.yaml"
+  
+  owncast:
+    <<: *default
+    namespace: "owncast"
+    enabled: true
+    chart: "./owncast"
+    version: "0.1.0"
+    valuesFile: "owncast/values-override.yaml"
+    secretsFile: "owncast/secrets.owncast-config.yaml"
 
   pretend-youre-xyzzy:
     <<: *default
@@ -131,6 +141,7 @@ apps:
     enabled: true
     chart: "./pretend-youre-xyzzy"
     version: "0.1.0"
+    valuesFile: "pretend-youre-xyzzy/values-override.yaml"
 
   syncthing:
     <<: *default
@@ -138,6 +149,7 @@ apps:
     enabled: true
     chart: "./syncthing"
     version: "0.1.0"
+    valuesFile: "syncthing/values-override.yaml"
 
   wireguard:
     <<: *default
@@ -156,3 +168,4 @@ apps:
     enabled: true
     chart: "./whoogle"
     version: "0.2.1"
+    valuesFile: "whoogle/values-override.yaml"

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "owncast.fullname" . }}
+  labels:
+    {{- include "owncast.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.httpPort }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: {{ .Values.service.rtmpPort }}
+      targetPort: rtmp
+      protocol: TCP
+      name: rtmp
+  selector:
+    {{- include "owncast.selectorLabels" . | nindent 4 }}
+{{- if .Values.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+{{- end }}
