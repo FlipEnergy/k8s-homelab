@@ -138,7 +138,7 @@ apps:
   pretend-youre-xyzzy:
     <<: *default
     namespace: "pretend-youre-xyzzy"
-    enabled: true
+    enabled: false
     chart: "./pretend-youre-xyzzy"
     version: "0.1.0"
     valuesFile: "pretend-youre-xyzzy/values-override.yaml"

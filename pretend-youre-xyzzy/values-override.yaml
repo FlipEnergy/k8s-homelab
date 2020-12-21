@@ -24,7 +24,7 @@ securityContext: {}
 service:
   type: LoadBalancer
   port: 80
-  loadBalancerIP: 192.168.1.63
+  loadBalancerIP: 192.168.1.xx
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
