@@ -70,7 +70,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1606153879551,
+          "iteration": 1608569847296,
           "links": [],
           "panels": [
             {
@@ -140,7 +140,7 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -241,8 +241,8 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -343,14 +343,14 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "targets": [
@@ -453,7 +453,7 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -562,8 +562,8 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -672,14 +672,14 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "targets": [
@@ -785,7 +785,7 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -897,8 +897,8 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1010,14 +1010,14 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "targets": [
@@ -1123,7 +1123,7 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -1235,8 +1235,8 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -1348,14 +1348,14 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "targets": [
@@ -1461,7 +1461,7 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -1572,8 +1572,8 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -1684,14 +1684,14 @@ dashboards:
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "targets": [
@@ -1777,7 +1777,7 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "repeat": "server",
               "scopedVars": {
                 "server": {
@@ -1883,8 +1883,8 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -1990,14 +1990,14 @@ dashboards:
                 },
                 "textMode": "auto"
               },
-              "pluginVersion": "7.3.3",
-              "repeatIteration": 1606153879551,
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "targets": [
@@ -2115,7 +2115,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2258,7 +2258,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2411,12 +2411,12 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1606153879551,
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -2565,18 +2565,18 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1606153879551,
+              "repeatIteration": 1608569847296,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
                   "selected": true,
-                  "text": "surface-pihole.tgp",
-                  "value": "surface-pihole.tgp"
+                  "text": "pi.hole",
+                  "value": "pi.hole"
                 }
               },
               "seriesOverrides": [
@@ -2719,7 +2719,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2857,7 +2857,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -2996,7 +2996,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3144,7 +3144,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3284,7 +3284,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3439,7 +3439,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3583,7 +3583,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3786,7 +3786,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -3989,7 +3989,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -4179,12 +4179,12 @@ dashboards:
                   "text": [
                     "k8s-node-1.tgp",
                     "load-balancer-1.tgp",
-                    "surface-pihole.tgp"
+                    "pi.hole"
                   ],
                   "value": [
                     "k8s-node-1.tgp",
                     "load-balancer-1.tgp",
-                    "surface-pihole.tgp"
+                    "pi.hole"
                   ]
                 },
                 "datasource": "HomeLab InfluxDB",
@@ -4263,7 +4263,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1606155283759,
+          "iteration": 1608569882238,
           "links": [],
           "panels": [
             {
@@ -4326,7 +4326,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -4527,7 +4527,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -4729,7 +4729,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -4926,7 +4926,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -5137,7 +5137,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -5342,7 +5342,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -5553,7 +5553,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -5822,7 +5822,7 @@ dashboards:
               "links": [],
               "nullPointMode": "connected",
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -5976,7 +5976,7 @@ dashboards:
               "links": [],
               "nullPointMode": "connected",
               "percentage": false,
-              "pluginVersion": "7.3.3",
+              "pluginVersion": "7.3.5",
               "pointradius": 5,
               "points": false,
               "renderer": "flot",
@@ -6252,12 +6252,12 @@ dashboards:
                   "text": [
                     "k8s-node-1.tgp",
                     "load-balancer-1.tgp",
-                    "surface-pihole.tgp"
+                    "pi.hole"
                   ],
                   "value": [
                     "k8s-node-1.tgp",
                     "load-balancer-1.tgp",
-                    "surface-pihole.tgp"
+                    "pi.hole"
                   ]
                 },
                 "datasource": "HomeLab InfluxDB",
