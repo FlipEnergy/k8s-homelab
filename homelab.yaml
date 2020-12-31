@@ -118,9 +118,9 @@ apps:
   nextcloud:
     <<: *default
     namespace: "nextcloud"
-    enabled: true
+    enabled: false
     chart: "nextcloud/nextcloud"
-    version: "2.3.2"
+    version: "2.5.0"
     valuesFile: "nextcloud/nextcloud-values.yaml"
     secretsFile: "nextcloud/secrets.nextcloud-secrets.yaml"
     hooks:
