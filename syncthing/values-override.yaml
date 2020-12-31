@@ -6,12 +6,11 @@ replicaCount: 1
 
 persistenVolume:
   path: /mnt/data/syncthing-data
+  server: k8s-node-1.tgp
 
 podSecurityContext:
   runAsUser: 1000
   fsGroup: 1000
-
-securityContext: {}
 
 service:
   website:

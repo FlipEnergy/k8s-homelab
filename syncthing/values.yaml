@@ -16,6 +16,7 @@ fullnameOverride: ""
 
 persistenVolume:
   path: /path/to/hostpath
+  server: myserver
 
 serviceAccount:
   # Specifies whether a service account should be created
