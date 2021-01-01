@@ -14,6 +14,8 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+# see available environment variable configs at
+# https://www.navidrome.org/docs/usage/configuration-options/#available-options
 env:
   ND_MUSICFOLDER: /music
   ND_DATAFOLDER: /data
