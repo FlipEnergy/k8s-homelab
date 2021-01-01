@@ -80,7 +80,7 @@ configJSON: {
     "EnableOutgoingWebhooks": true,
     "EnableCommands": true,
     "EnablePostUsernameOverride": false,
-    "EnablePostIconOverride": false,
+    "EnablePostIconOverride": true,
     "EnableBotAccountCreation": true,
     "EnableUserAccessTokens": false,
     "EnableLinkPreviews": true,
