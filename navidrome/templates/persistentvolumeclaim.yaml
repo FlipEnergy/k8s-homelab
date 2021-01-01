@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "navidrome.fullname" . }}-data
+  labels:
+    {{- include "navidrome.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ include "navidrome.fullname" . }}-data
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  volumeName: {{ include "navidrome.fullname" . }}-data
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "navidrome.fullname" . }}-music
+  labels:
+    {{- include "navidrome.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ include "navidrome.fullname" . }}-music
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: {{ include "navidrome.fullname" . }}-music

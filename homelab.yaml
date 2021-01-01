@@ -15,6 +15,7 @@ namespaces:
   mattermost:
   owncast:
   pretend-youre-xyzzy:
+  navidrome:
   nextcloud:
   syncthing:
   wireguard:
@@ -114,6 +115,14 @@ apps:
     secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
     hooks:
       preInstall: "mattermost/persistencevolumes.yaml"
+
+  navidrome:
+    <<: *default
+    namespace: "navidrome"
+    enabled: true
+    chart: "./navidrome"
+    version: "0.1.0"
+    valuesFile: "navidrome/values-override.yaml"
 
   nextcloud:
     <<: *default

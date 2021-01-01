@@ -1,0 +1,31 @@
+# Override values for navidrome.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+env:
+  ND_SCANINTERVAL: 15m
+
+persistenVolume:
+  data:
+    path: /mnt/data/navidrome-data
+    server: k8s-node-1.tgp
+  music:
+    path: /mnt/data/syncthing-data/music
+    server: k8s-node-1.tgp
+
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
+
+service:
+  type: LoadBalancer
+  port: 80
+  loadBalancerIP: 192.168.1.64
+
+resources: 
+  limits:
+    cpu: 1
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
