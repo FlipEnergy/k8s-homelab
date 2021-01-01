@@ -17,8 +17,10 @@ fullnameOverride: ""
 env:
   ND_MUSICFOLDER: /music
   ND_DATAFOLDER: /data
-  # ND_SCANINTERVAL:
-  # ND_LOGLEVEL:
+  ND_TRANSCODINGCACHESIZE: 100MB
+  ND_IMAGECACHESIZE: 100MB
+  ND_SCANINTERVAL: 1m
+  ND_LOGLEVEL: info
 
 persistenVolume:
   data:
