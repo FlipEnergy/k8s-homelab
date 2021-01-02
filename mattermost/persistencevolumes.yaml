@@ -17,22 +17,6 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mattermost-plugins
-spec:
-  storageClassName: mattermost-plugins
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/data/mattermost-plugins
-    server: k8s-node-1.tgp
-
----
-
-apiVersion: v1
-kind: PersistentVolume
-metadata:
   name: mattermost-mysql
 spec:
   storageClassName: mattermost-mysql

@@ -39,7 +39,6 @@ clean-concourse:
 # Mattermost
 clean-mattermost:
 	kubectl delete pv mattermost-data
-	kubectl delete pv mattermost-plugins
 	kubectl delete pv mattermost-mysql
 
 # Syncthing

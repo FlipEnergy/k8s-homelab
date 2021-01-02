@@ -17,7 +17,7 @@ persistence:
     accessMode: ReadWriteOnce
   # existingClaim: ""
   plugins:
-    enabled: true
+    enabled: false
     size: 1Gi
     # If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
     # Default: volume.alpha.kubernetes.io/storage-class: default
@@ -42,16 +42,6 @@ mysql:
 
   persistence:
     enabled: true
-    # If defined, storageClassName: <storageClass>
-    # If set to "-", storageClassName: "", which disables dynamic provisioning
-    # If undefined (the default) or set to null, no storageClassName spec is
-    #   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    #   GKE, AWS & OpenStack)
-    #
-    storageClass: mattermost-mysql
-    accessMode: ReadWriteOnce
-    size: 10Gi
-  # existingClaim: ""
 
 # NOTE: These acts as the default values for the config.json file read by the
 # mattermost server itself. You can override the configJSON object just like any
