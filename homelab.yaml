@@ -148,9 +148,9 @@ apps:
     <<: *default
     namespace: "pretend-youre-xyzzy"
     enabled: false
-    chart: "./pretend-youre-xyzzy"
+    chart: "k8s-homelab/pretend-youre-xyzzy"
     version: "0.1.0"
-    valuesFile: "pretend-youre-xyzzy/values-override.yaml"
+    valuesFile: "pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml"
 
   syncthing:
     <<: *default
