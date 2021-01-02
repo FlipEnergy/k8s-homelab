@@ -139,9 +139,9 @@ apps:
     <<: *default
     namespace: "owncast"
     enabled: true
-    chart: "./owncast"
+    chart: "k8s-homelab/owncast"
     version: "0.1.0"
-    valuesFile: "owncast/values-override.yaml"
+    valuesFile: "owncast/owncast-values.yaml"
     secretsFile: "owncast/secrets.owncast-config.yaml"
 
   pretend-youre-xyzzy:
