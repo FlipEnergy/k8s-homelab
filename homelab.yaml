@@ -156,9 +156,9 @@ apps:
     <<: *default
     namespace: "syncthing"
     enabled: true
-    chart: "./syncthing"
+    chart: "k8s-homelab/syncthing"
     version: "0.1.0"
-    valuesFile: "syncthing/values-override.yaml"
+    valuesFile: "syncthing/syncthing-values.yaml"
 
   wireguard:
     <<: *default
