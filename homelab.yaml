@@ -120,9 +120,9 @@ apps:
     <<: *default
     namespace: "navidrome"
     enabled: true
-    chart: "./navidrome"
+    chart: "k8s-homelab/navidrome"
     version: "0.1.0"
-    valuesFile: "navidrome/values-override.yaml"
+    valuesFile: "navidrome/navidrome-values.yaml"
 
   nextcloud:
     <<: *default
