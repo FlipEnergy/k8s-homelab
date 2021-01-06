@@ -2,16 +2,17 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-env:
-  ND_SCANINTERVAL: 30m
+image:
+  repository: deluan/navidrome
+  tag: 0.39.0
 
-persistenVolume:
-  data:
-    path: /mnt/data/navidrome-data
-    server: k8s-node-1.tgp
-  music:
-    path: /mnt/data/syncthing-data/music
-    server: k8s-node-1.tgp
+env:
+  ND_DATAFOLDER: /data
+  ND_IMAGECACHESIZE: 100MB
+  ND_LOGLEVEL: info
+  ND_MUSICFOLDER: /music
+  ND_SCANINTERVAL: 30m
+  ND_TRANSCODINGCACHESIZE: 100MB
 
 podSecurityContext:
   fsGroup: 1000
@@ -19,7 +20,9 @@ podSecurityContext:
 
 service:
   type: LoadBalancer
-  port: 80
+  port: 
+    port: 80
+    targetPort: 4533
   loadBalancerIP: 192.168.1.64
 
 resources: 
@@ -29,3 +32,25 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
+
+persistence:
+  config:
+    enabled: true
+    emptyDir: false
+    mountPath: /data
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Class
+    storageClass: navidrome-data
+    size: 1Gi
+    # Do not delete the pvc upon helm uninstall
+    skipuninstall: true
+  music:
+    enabled: true
+    emptyDir: false
+    mountPath: /music
+    accessMode: ReadOnlyMany
+    # Persistent Volume Storage Class
+    storageClass: navidrome-music
+    size: 100Gi
+    # Do not delete the pvc upon helm uninstall
+    skipuninstall: true
