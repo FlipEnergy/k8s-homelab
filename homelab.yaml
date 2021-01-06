@@ -17,6 +17,7 @@ namespaces:
   pretend-youre-xyzzy:
   navidrome:
   nextcloud:
+  searx:
   syncthing:
   wireguard:
   whoogle:
@@ -155,6 +156,15 @@ apps:
     version: 0.1.0
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
+  searx:
+    <<: *default
+    namespace: searx
+    enabled: true
+    chart: k8s-at-home/searx
+    version: 1.1.0
+    valuesFile: searx/searx-values.yaml
+    secretsFile: searx/secrets.searx-secrets.enc.yaml
+
   syncthing:
     <<: *default
     namespace: syncthing
@@ -173,11 +183,3 @@ apps:
     secretsFile: wireguard/secrets.wireguard-creds.yaml
     hooks:
       preInstall: wireguard/persistencevolume.yaml
-
-  whoogle:
-    <<: *default
-    namespace: whoogle
-    enabled: true
-    chart: k8s-homelab/whoogle
-    version: 0.1.0
-    valuesFile: whoogle/whoogle-values.yaml

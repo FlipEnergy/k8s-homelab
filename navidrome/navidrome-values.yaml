@@ -4,6 +4,7 @@
 
 image:
   repository: deluan/navidrome
+  pullPolicy: IfNotPresent
   tag: 0.39.0
 
 env:
