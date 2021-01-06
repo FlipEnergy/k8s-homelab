@@ -1,11 +1,11 @@
 context: homelab
 
 metadata:
-  maintainer: "Dennis Zhang (dennis.zhang.nrg@gmail.com)"
-  description: "Helmman DSF for homelab K8s"
+  maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
+  description: Helmman DSF for homelab K8s
 
 settings:
-  kubeContext: "microk8s"
+  kubeContext: microk8s
 
 namespaces:
   monitoring:
@@ -25,156 +25,156 @@ helmRepos:
   concourse: https://concourse-charts.storage.googleapis.com/
   cdwv: https://cdwv.github.io/bitwarden-k8s
   grafana: https://grafana.github.io/helm-charts
-  influxdata: "https://helm.influxdata.com/"
-  kubernetes-dashboard: "https://kubernetes.github.io/dashboard/"
-  mattermost: "https://helm.mattermost.com"
-  nextcloud: "https://nextcloud.github.io/helm/"
-  k8s-homelab: "https://flipenergy.github.io/k8s-homelab/"
-  pcktdmp: "https://pcktdmp.github.io/charts"
-  place1: "https://place1.github.io/wg-access-server"
+  influxdata: https://helm.influxdata.com/
+  kubernetes-dashboard: https://kubernetes.github.io/dashboard/
+  mattermost: https://helm.mattermost.com
+  nextcloud: https://nextcloud.github.io/helm/
+  k8s-homelab: https://flipenergy.github.io/k8s-homelab/
+  pcktdmp: https://pcktdmp.github.io/charts
+  place1: https://place1.github.io/wg-access-server
 
 appsTemplates:
   default: &default
     wait: true
 
   monitoring: &monitoring
-    namespace: "monitoring"
+    namespace: monitoring
     wait: true
 
 apps:
   my-k8s-dashboard:
     <<: *monitoring
     enabled: true
-    chart: "kubernetes-dashboard/kubernetes-dashboard"
-    version: "3.0.2"
-    valuesFile: "kubernetes-dashboard/k8s-dashboard-values.yaml"
+    chart: kubernetes-dashboard/kubernetes-dashboard
+    version: 3.0.2
+    valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     priority : -98
   my-kube-ops-view:
     <<: *monitoring
     enabled: true
-    chart: "k8s-homelab/kube-ops-view"
-    version: "1.3.0"
-    valuesFile: "kube-ops-view/kube-ops-view-values.yaml"
+    chart: k8s-homelab/kube-ops-view
+    version: 1.3.0
+    valuesFile: kube-ops-view/kube-ops-view-values.yaml
     priority : -99
   influxdb:
     <<: *monitoring
     enabled: true
-    chart: "influxdata/influxdb"
-    version: "4.8.10"
-    valuesFile: "influxdb/influxdb-values.yaml"
-    secretsFile: "influxdb/secrets.influxdb-creds.yaml"
+    chart: influxdata/influxdb
+    version: 4.8.10
+    valuesFile: influxdb/influxdb-values.yaml
+    secretsFile: influxdb/secrets.influxdb-creds.yaml
     hooks:
-      preInstall: "influxdb/persistencevolume.yaml"
+      preInstall: influxdb/persistencevolume.yaml
     priority : -97
   grafana:
     <<: *monitoring
     enabled: true
-    chart: "grafana/grafana"
-    version: "6.1.16"
-    valuesFile: "grafana/grafana-values.yaml"
-    secretsFile: "grafana/secrets.grafana-secrets.yaml"
+    chart: grafana/grafana
+    version: 6.1.16
+    valuesFile: grafana/grafana-values.yaml
+    secretsFile: grafana/secrets.grafana-secrets.yaml
     priority : -96
 
   bitwarden:
     <<: *default
-    namespace: "bitwarden"
+    namespace: bitwarden
     enabled: true
-    chart: "cdwv/bitwarden-k8s"
-    version: "0.1.5"
-    valuesFile: "bitwarden/bitwarden-values.yaml"
+    chart: cdwv/bitwarden-k8s
+    version: 0.1.5
+    valuesFile: bitwarden/bitwarden-values.yaml
     hooks:
-      preInstall: "bitwarden/persistencevolume.yaml"
+      preInstall: bitwarden/persistencevolume.yaml
 
   concourse:
     <<: *default
-    namespace: "concourse"
+    namespace: concourse
     enabled: true
-    chart: "concourse/concourse"
-    version: "14.1.0"
-    valuesFile: "concourse/concourse-values.yaml"
-    secretsFile: "concourse/secret.concourse-creds.yaml"
+    chart: concourse/concourse
+    version: 14.1.0
+    valuesFile: concourse/concourse-values.yaml
+    secretsFile: concourse/secret.concourse-creds.yaml
     hooks:
-      preInstall: "concourse/persistencevolume.yaml"
+      preInstall: concourse/persistencevolume.yaml
 
   folding-at-home:
     <<: *default
-    namespace: "folding-at-home"
+    namespace: folding-at-home
     enabled: false
-    chart: "pcktdmp/fahclient"
-    version: "2.5.4"
-    valuesFile: "folding-at-home/folding-at-home-values.yaml"
-    secretsFile: "folding-at-home/secrets.folding-at-home.yaml"
+    chart: pcktdmp/fahclient
+    version: 2.5.4
+    valuesFile: folding-at-home/folding-at-home-values.yaml
+    secretsFile: folding-at-home/secrets.folding-at-home.yaml
 
   mattermost:
     <<: *default
-    namespace: "mattermost"
+    namespace: mattermost
     enabled: true
-    chart: "mattermost/mattermost-team-edition"
-    version: "3.19.0"
-    valuesFile: "mattermost/mattermost-values.yaml"
-    secretsFile: "mattermost/secrets.mattermost-secrets.yaml"
+    chart: mattermost/mattermost-team-edition
+    version: 3.19.0
+    valuesFile: mattermost/mattermost-values.yaml
+    secretsFile: mattermost/secrets.mattermost-secrets.yaml
     hooks:
-      preInstall: "mattermost/persistencevolumes.yaml"
+      preInstall: mattermost/persistencevolumes.yaml
 
   navidrome:
     <<: *default
-    namespace: "navidrome"
+    namespace: navidrome
     enabled: true
-    chart: "k8s-homelab/navidrome"
-    version: "0.1.0"
-    valuesFile: "navidrome/navidrome-values.yaml"
+    chart: k8s-homelab/navidrome
+    version: 0.1.0
+    valuesFile: navidrome/navidrome-values.yaml
 
   nextcloud:
     <<: *default
-    namespace: "nextcloud"
+    namespace: nextcloud
     enabled: false
-    chart: "nextcloud/nextcloud"
-    version: "2.5.0"
-    valuesFile: "nextcloud/nextcloud-values.yaml"
-    secretsFile: "nextcloud/secrets.nextcloud-secrets.yaml"
+    chart: nextcloud/nextcloud
+    version: 2.5.0
+    valuesFile: nextcloud/nextcloud-values.yaml
+    secretsFile: nextcloud/secrets.nextcloud-secrets.yaml
     hooks:
-      preInstall: "nextcloud/persistencevolume.yaml"
+      preInstall: nextcloud/persistencevolume.yaml
   
   owncast:
     <<: *default
-    namespace: "owncast"
+    namespace: owncast
     enabled: true
-    chart: "k8s-homelab/owncast"
-    version: "0.1.0"
-    valuesFile: "owncast/owncast-values.yaml"
-    secretsFile: "owncast/secrets.owncast-config.yaml"
+    chart: k8s-homelab/owncast
+    version: 0.1.0
+    valuesFile: owncast/owncast-values.yaml
+    secretsFile: owncast/secrets.owncast-config.yaml
 
   pretend-youre-xyzzy:
     <<: *default
-    namespace: "pretend-youre-xyzzy"
+    namespace: pretend-youre-xyzzy
     enabled: false
-    chart: "k8s-homelab/pretend-youre-xyzzy"
-    version: "0.1.0"
-    valuesFile: "pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml"
+    chart: k8s-homelab/pretend-youre-xyzzy
+    version: 0.1.0
+    valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   syncthing:
     <<: *default
-    namespace: "syncthing"
+    namespace: syncthing
     enabled: true
-    chart: "k8s-homelab/syncthing"
-    version: "0.1.0"
-    valuesFile: "syncthing/syncthing-values.yaml"
+    chart: k8s-homelab/syncthing
+    version: 0.1.0
+    valuesFile: syncthing/syncthing-values.yaml
 
   wireguard:
     <<: *default
-    namespace: "wireguard"
+    namespace: wireguard
     enabled: true
-    chart: "place1/wg-access-server"
-    version: "0.3.0"
-    valuesFile: "wireguard/wireguard-values.yaml"
-    secretsFile: "wireguard/secrets.wireguard-creds.yaml"
+    chart: place1/wg-access-server
+    version: 0.3.0
+    valuesFile: wireguard/wireguard-values.yaml
+    secretsFile: wireguard/secrets.wireguard-creds.yaml
     hooks:
-      preInstall: "wireguard/persistencevolume.yaml"
+      preInstall: wireguard/persistencevolume.yaml
 
   whoogle:
     <<: *default
-    namespace: "whoogle"
+    namespace: whoogle
     enabled: true
-    chart: "k8s-homelab/whoogle"
-    version: "0.1.0"
-    valuesFile: "whoogle/whoogle-values.yaml"
+    chart: k8s-homelab/whoogle
+    version: 0.1.0
+    valuesFile: whoogle/whoogle-values.yaml
