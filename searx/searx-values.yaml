@@ -5,6 +5,9 @@ image:
   pullPolicy: IfNotPresent
   tag: 0.18.0
 
+strategy:
+  type: RollingUpdate
+
 searx:
   # external URL
   baseUrl: "https://searx.pleasenoddos.com"
@@ -12,21 +15,12 @@ searx:
   # example : `openssl rand -base64 24`
   mortyKey: REPLACED_BY_SECRET
 
-strategy:
-  type: Recreate
-
 service:
   type: LoadBalancer
   port:
     port: 80
   loadBalancerIP: 192.168.1.60
 
-
 envFrom:
   - secretRef:
       name: searx-config
-
-persistence:
-  config:
-    enabled: false
-    emptyDir: false

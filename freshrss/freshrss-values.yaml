@@ -1,0 +1,34 @@
+# Override values for FreshRSS.
+
+image:
+  repository: linuxserver/freshrss
+  pullPolicy: IfNotPresent
+  tag: version-1.17.0
+
+service:
+  type: LoadBalancer
+  port:
+    port: 80
+  loadBalancerIP: 192.168.1.65
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+env:
+  PUID: 65534 #nobody
+  PGID: 65534 #nogroup
+
+persistence:
+  config:
+    enabled: true
+    emptyDir: false
+    # Persistent Volume Storage Class
+    storageClass: freshrss-data
+    size: 1Gi
+    # Do not delete the pvc upon helm uninstall
+    skipuninstall: true
