@@ -24,7 +24,7 @@ service:
   port: 
     port: 80
     targetPort: 4533
-  loadBalancerIP: 192.168.1.64
+  loadBalancerIP: 192.168.1.249
 
 resources: 
   limits:

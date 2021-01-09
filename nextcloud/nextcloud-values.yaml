@@ -88,7 +88,7 @@ internalDatabase:
 service:
   type: LoadBalancer
   port: 80
-  loadBalancerIP: 192.168.1.61
+  loadBalancerIP: 192.168.1.xx
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

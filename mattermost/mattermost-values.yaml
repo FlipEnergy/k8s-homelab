@@ -18,18 +18,11 @@ persistence:
   # existingClaim: ""
   plugins:
     enabled: false
-    size: 1Gi
-    # If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
-    # Default: volume.alpha.kubernetes.io/storage-class: default
-    #
-    storageClass: mattermost-plugins
-    accessMode: ReadWriteOnce
-  # existingClaim: ""
 
 service:
   type: LoadBalancer
   externalPort: 80
-  loadBalancerIP: 192.168.1.56
+  loadBalancerIP: 192.168.1.252
 
 mysql:
   enabled: true

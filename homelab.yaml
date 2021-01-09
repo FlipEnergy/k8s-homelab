@@ -45,20 +45,27 @@ appsTemplates:
     wait: true
 
 apps:
-  my-k8s-dashboard:
+  k8s-dashboard:
     <<: *monitoring
     enabled: true
     chart: kubernetes-dashboard/kubernetes-dashboard
     version: 3.0.2
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     priority : -98
-  my-kube-ops-view:
+  kube-ops-view:
     <<: *monitoring
     enabled: true
     chart: k8s-homelab/kube-ops-view
     version: 1.3.0
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
     priority : -99
+  kubeview:
+    <<: *monitoring
+    enabled: true
+    chart: k8s-homelab/kubeview
+    version: 0.1.17
+    valuesFile: kubeview/kubeview-values.yaml
+    priority: -95
   influxdb:
     <<: *monitoring
     enabled: true
