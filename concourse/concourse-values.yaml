@@ -59,6 +59,10 @@ concourse:
     ##
     enableAcrossStep: false
 
+    ## Enable skip checking not-in-use resources.
+    ##
+    enableSkipCheckingNotInUseResources: false
+
     ## Maximum number of jobs to be scheduling at the same time.
     ##
     jobSchedulingMaxInFlight:
@@ -197,7 +201,7 @@ concourse:
       ## `concourse.web.auth.mainTeam.localUser` with a comma-separated list
       ## of ids.
       ##
-      ## Ref: https://concourse-ci.org/install.html#local-auth-config
+      ## Ref: https://concourse-ci.org/local-auth.html
       ##
       enabled: true
 
@@ -231,6 +235,16 @@ concourse:
     ## configured a webhook token
     ##
     resourceWithWebhookCheckingInterval: 1m
+
+    ## Configuration file for specifying defaults for base resource types
+    ## Ref: https://concourse-ci.org/concourse-web.html#resource-defaults
+    ## Example:
+    ## baseResourceTypeDefaults: |
+    ##   registry-image:
+    ##     registry_mirror:
+    ##       host: https://registry.mirror.example.com
+    ##
+    baseResourceTypeDefaults: ""
 
     ## Compression to use when streaming artifacts (values: zstd, gzip)
     ##
@@ -313,9 +327,9 @@ concourse:
       enabled: true
 
       ## Prefix to use for Kubernetes namespaces under which secrets will be looked up.
-      ## Defaults to the Release name hyphen, e.g. "my-release-" produces namespace "my-release-main"
-      ## for the "main" Concourse team.
-      ##
+      ## Defaults to the Release (https://helm.sh/docs/glossary/#release) name
+      ## hyphen, e.g. "my-release-" produces namespace "my-release-main" for
+      ## the "main" Concourse team.
       namespacePrefix:
 
       ## Teams to create namespaces for to hold secrets.
@@ -459,9 +473,9 @@ concourse:
         ##
         config: ""
 
-        ## List of local Concourse users to be included as members of the `main` team.
+        ## Comma-separated list of local Concourse users to be included as members of the `main` team.
         ## Make sure you have local users support enabled (`concourse.web.localAuth.enabled`) and
-        ## that the users were added (`local-users` secret).
+        ## that the users were added (`secrets.localUsers`).
         ##
         localUser: "FlipEnergy"
 
@@ -672,6 +686,14 @@ concourse:
       ##
       requestTimeout:
 
+      ## Maximum container capacity. 0 means no limit. Defaults to 250.
+      ##
+      maxContainers:
+
+      ## Network range to use for dynamically allocated container subnets. Defaults to "10.80.0.0/16".
+      ##
+      networkPool:
+
     containerd:
 
       ## Path to a containerd executable (non-absolute names get resolved from $PATH)."`
@@ -697,7 +719,7 @@ concourse:
       ##   - 2.2.2.2
       restrictedNetworks: []
 
-      ## Max container capacity. 0 means no limit.
+      ## Maximum container capacity. 0 means no limit. Defaults to 250.
       maxContainers:
 
       ## Network range to use for dynamically allocated container subnets, defaults to "10.80.0.0/16"
@@ -745,7 +767,7 @@ concourse:
       ## Driver to use for managing volumes.
       ## Possible values: detect, naive, btrfs, and overlay.
       ##
-      driver: detect
+      driver: naive
 
       ## Path to btrfs binary
       ##
@@ -800,7 +822,6 @@ concourse:
 ## Concourse Web nodes, see https://concourse-ci.org/concourse-web.html.
 ##
 web:
-
   ## Enable or disable the web component.
   ## This allows the creation of worker-only releases by setting this to false.
   ##
@@ -840,6 +861,14 @@ web:
   ##     value: "debug"
   ##
   env:
+
+    ## Configure the security context for the web containers.
+  ## Example:
+  ##   capabilities:
+  ##     add:
+  ##       - SYS_PTRACE
+  ##
+  securityContext:
 
   ## Node selector for web nodes.
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -882,7 +911,7 @@ worker:
   ## Using Deployment leads to ephemeral workers. Meaning workers do not
   ## share state between restarts
   ##
-  kind: StatefulSet
+  kind: Deployment
 
   ## Override the components name (defaults to worker).
   ##
@@ -921,6 +950,23 @@ worker:
   ## Ref: https://kubernetes.io/docs/admin/disruptions/
   ##
   minAvailable: 1
+
+  ## Configures the liveness probe used to determine if the Worker component is up.
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+  ##
+  livenessProbe:
+    failureThreshold: 5
+    initialDelaySeconds: 10
+    periodSeconds: 15
+    timeoutSeconds: 3
+    httpGet:
+      path: /
+      port: worker-hc
+
+  ## Configures the readiness probes.
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+  ##
+  readinessProbe: {}
 
   ## Configure resource requests and limits.
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
@@ -986,27 +1032,7 @@ persistence:
   ## Enable persistence using Persistent Volume Claims.
   ## Ignored for Kind: Deployment. If persistence is needed use kind: StatefulSet
   ##
-  enabled: true
-
-  ## Worker Persistence configuration.
-  ##
-  worker:
-    ## concourse data Persistent Volume Storage Class
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    ##
-    storageClass:
-
-    ## Persistent Volume Access Mode.
-    ##
-    accessMode: ReadWriteOnce
-
-    ## Persistent Volume Storage Size.
-    ##
-    size: 10Gi
+  enabled: false
 
 ## Configuration values for the postgresql dependency.
 ## Ref: https://github.com/helm/charts/blob/master/stable/postgresql/README.md
