@@ -4,7 +4,7 @@
 # The roles & rolebindings created will be namespaced rather than cluster scoped
 limitNamespace: false
 
-loadBalancerIP: 192.168.1.55
+loadBalancerIP: 192.168.1.52
 
 resources: 
   limits:
