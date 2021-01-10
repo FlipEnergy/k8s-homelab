@@ -5,6 +5,11 @@ serviceAccount:
 
 replicas: 1
 
+securityContext:
+  runAsUser: 472
+  runAsGroup: 472
+  fsGroup: 472
+
 ## Expose the grafana service to be accessed from outside the cluster (LoadBalancer service).
 ## or access it from within the cluster (ClusterIP service). Set the service type and the port to serve it.
 ## ref: http://kubernetes.io/docs/user-guide/services/

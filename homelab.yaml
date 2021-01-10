@@ -63,9 +63,8 @@ apps:
     <<: *monitoring
     enabled: true
     chart: k8s-homelab/kubeview
-    version: 0.1.17
+    version: 0.1.18
     valuesFile: kubeview/kubeview-values.yaml
-    priority: -95
   influxdb:
     <<: *monitoring
     enabled: true
@@ -80,7 +79,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: grafana/grafana
-    version: 6.1.16
+    version: 6.1.17
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority : -96
