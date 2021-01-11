@@ -63,7 +63,7 @@ apps:
     <<: *monitoring
     enabled: true
     chart: k8s-homelab/kubeview
-    version: 0.1.17
+    version: 0.1.18
     valuesFile: kubeview/kubeview-values.yaml
   influxdb:
     <<: *monitoring
