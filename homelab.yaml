@@ -161,7 +161,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-homelab/owncast
-    version: 0.1.0
+    version: 0.1.1
     valuesFile: owncast/owncast-values.yaml
     secretsFile: owncast/secrets.owncast-config.yaml
 
