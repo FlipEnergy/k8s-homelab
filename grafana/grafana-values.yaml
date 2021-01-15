@@ -75,7 +75,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1610684000774,
+          "iteration": 1610685666984,
           "links": [],
           "panels": [
             {
@@ -252,7 +252,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -357,7 +357,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -462,7 +462,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -567,7 +567,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -789,7 +789,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -900,7 +900,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -1011,7 +1011,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -1122,7 +1122,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -1349,7 +1349,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1463,7 +1463,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1577,7 +1577,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1691,7 +1691,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1918,7 +1918,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2032,7 +2032,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2146,7 +2146,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2260,7 +2260,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2486,7 +2486,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2599,7 +2599,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2712,7 +2712,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2825,7 +2825,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -3026,7 +3026,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3134,7 +3134,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3242,7 +3242,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3350,7 +3350,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3777,7 +3777,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -3932,7 +3932,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -4087,7 +4087,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -4242,7 +4242,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610684000774,
+              "repeatIteration": 1610685666984,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -5848,7 +5848,6 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "tags": [],
                   "text": [
                     "k8s-node-1.tgp",
                     "k8s-node-2.tgp",
@@ -5939,8 +5938,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 3,
-          "iteration": 1610684197427,
+          "id": 4,
+          "iteration": 1610689137813,
           "links": [],
           "panels": [
             {
@@ -7900,7 +7899,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "10s",
+          "refresh": "30s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
@@ -7915,7 +7914,7 @@ dashboards:
                 },
                 "datasource": "HomeLab InfluxDB",
                 "error": null,
-                "hide": 0,
+                "hide": 2,
                 "includeAll": false,
                 "label": "",
                 "multi": false,
@@ -7923,7 +7922,7 @@ dashboards:
                 "options": [],
                 "query": "influxdb",
                 "refresh": 1,
-                "regex": "",
+                "regex": "HomeLab InfluxDB",
                 "skipUrlSync": false,
                 "type": "datasource"
               },
@@ -7931,7 +7930,6 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "tags": [],
                   "text": [
                     "k8s-node-1.tgp",
                     "k8s-node-2.tgp",
@@ -8000,7 +7998,7 @@ dashboards:
           "timezone": "browser",
           "title": "Network",
           "uid": "H6MPuNHks",
-          "version": 1
+          "version": 2
         }
     Nginx:
       json: |
@@ -8022,8 +8020,8 @@ dashboards:
           "editable": true,
           "gnetId": 5063,
           "graphTooltip": 0,
-          "id": 2,
-          "iteration": 1610684315859,
+          "id": 3,
+          "iteration": 1610689189560,
           "links": [],
           "panels": [
             {
@@ -8824,7 +8822,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "10s",
+          "refresh": "30s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
@@ -8838,7 +8836,7 @@ dashboards:
                 },
                 "datasource": null,
                 "error": null,
-                "hide": 0,
+                "hide": 2,
                 "includeAll": false,
                 "label": "",
                 "multi": false,
@@ -8846,7 +8844,7 @@ dashboards:
                 "options": [],
                 "query": "influxdb",
                 "refresh": 1,
-                "regex": "",
+                "regex": "HomeLab InfluxDB",
                 "skipUrlSync": false,
                 "type": "datasource"
               },
@@ -8854,7 +8852,6 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
-                  "tags": [],
                   "text": [
                     "load-balancer-1.tgp"
                   ],
@@ -11912,7 +11909,7 @@ dashboards:
               }
             }
           ],
-          "refresh": "10s",
+          "refresh": "30s",
           "schemaVersion": 26,
           "style": "dark",
           "tags": [],
