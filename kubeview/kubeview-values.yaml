@@ -4,6 +4,11 @@
 # The roles & rolebindings created will be namespaced rather than cluster scoped
 limitNamespace: false
 
+image:
+  repository: ghcr.io/benc-uk/kubeview
+  tag: 0.1.18
+  pullPolicy: IfNotPresent
+
 loadBalancerIP: 192.168.1.52
 
 resources: 
