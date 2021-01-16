@@ -12,6 +12,7 @@ namespaces:
   concourse:
   folding-at-home:
   freshrss:
+  grafana:
   k8s-dashboard:
   kube-ops-view:
   kubeview:
@@ -83,8 +84,8 @@ apps:
 
   grafana:
     <<: *default
-    namespace: concourse
-    enabled: false
+    namespace: grafana
+    enabled: true
     chart: grafana/grafana
     version: 6.1.17
     valuesFile: grafana/grafana-values.yaml

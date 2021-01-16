@@ -20,9 +20,6 @@ rbac:
   # If true, create & use RBAC resources
   create: true
 
-# Add securityContext
-securityContext: {}
-
 # Add securityContext at pod level:
 podSecurityContext:
   runAsUser: 1001
@@ -35,3 +32,6 @@ resources:
   requests:
     cpu: 50m
     memory: 64Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64

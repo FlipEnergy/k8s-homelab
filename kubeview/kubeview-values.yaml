@@ -9,7 +9,13 @@ limitNamespace: false
 #   tag: 0.1.18
 #   pullPolicy: IfNotPresent
 
-loadBalancerIP: 192.168.1.52
+ingress:
+  enabled: true
+  annotations: {}
+  hosts:
+    - host: kubeview.tgp
+      paths: ["/"]
+  tls: []
 
 resources: 
   limits:
@@ -18,3 +24,6 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64
