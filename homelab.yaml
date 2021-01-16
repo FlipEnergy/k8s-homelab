@@ -5,13 +5,15 @@ metadata:
   description: Helmman DSF for homelab K8s
 
 settings:
-  kubeContext: k3s-cluster
+  kubeContext: k3s
 
 namespaces:
   bitwarden:
   concourse:
   freshrss:
+  folding-at-home:
   grafana:
+  influxdb:
   k8s-dashboard:
   kube-ops-view:
   kubeview:
@@ -25,14 +27,15 @@ namespaces:
   wireguard:
 
 helmRepos:
-  concourse: https://concourse-charts.storage.googleapis.com/
   cdwv: https://cdwv.github.io/bitwarden-k8s
+  concourse: https://concourse-charts.storage.googleapis.com/
   grafana: https://grafana.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
-  kubernetes-dashboard: https://kubernetes.github.io/dashboard/
-  mattermost: https://helm.mattermost.com
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
+  kubernetes-dashboard: https://kubernetes.github.io/dashboard/
+  mattermost: https://helm.mattermost.com
+  pcktdmp: https://pcktdmp.github.io/charts
   place1: https://place1.github.io/wg-access-server
 
 appsTemplates:
@@ -43,7 +46,7 @@ apps:
   kube-ops-view:
     <<: *default
     namespace: kube-ops-view
-    enabled: false
+    enabled: true
     chart: k8s-homelab/kube-ops-view
     version: 1.3.0
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
@@ -62,8 +65,8 @@ apps:
 
   influxdb:
     <<: *default
-    namespace: concourse
-    enabled: false
+    namespace: influxdb
+    enabled: true
     chart: influxdata/influxdb
     version: 4.8.10
     valuesFile: influxdb/influxdb-values.yaml
@@ -75,7 +78,7 @@ apps:
   kubeview:
     <<: *default
     namespace: kubeview
-    enabled: false
+    enabled: true
     chart: k8s-homelab/kubeview
     version: 0.1.18
     valuesFile: kubeview/kubeview-values.yaml
@@ -92,7 +95,7 @@ apps:
   bitwarden:
     <<: *default
     namespace: bitwarden
-    enabled: false
+    enabled: true
     chart: cdwv/bitwarden-k8s
     version: 0.1.5
     valuesFile: bitwarden/bitwarden-values.yaml

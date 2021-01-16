@@ -75,7 +75,8 @@ ingress:
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
-nodeSelector: {}
+nodeSelector:
+  k3s.io/hostname: k8s-node-1.tgp
 
 # Allow executing custom init scripts
 #
