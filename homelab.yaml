@@ -77,7 +77,7 @@ apps:
     priority : -97
   grafana:
     <<: *monitoring
-    enabled: true
+    enabled: false
     chart: grafana/grafana
     version: 6.1.17
     valuesFile: grafana/grafana-values.yaml
