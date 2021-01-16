@@ -46,3 +46,6 @@ resources:
   requests:
     cpu: 100m
     memory: 512Mi
+
+nodeSelector:
+  k3s.io/hostname: k8s-node-1.tgp
