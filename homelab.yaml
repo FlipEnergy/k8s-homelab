@@ -95,7 +95,7 @@ apps:
   bitwarden:
     <<: *default
     namespace: bitwarden
-    enabled: true
+    enabled: false
     chart: cdwv/bitwarden-k8s
     version: 0.1.5
     valuesFile: bitwarden/bitwarden-values.yaml
@@ -105,7 +105,7 @@ apps:
   concourse:
     <<: *default
     namespace: concourse
-    enabled: false
+    enabled: true
     chart: concourse/concourse
     version: 14.5.2
     valuesFile: concourse/concourse-values.yaml
@@ -116,7 +116,7 @@ apps:
   freshrss:
     <<: *default
     namespace: freshrss
-    enabled: false
+    enabled: true
     chart: k8s-at-home/freshrss
     version: 2.3.0
     valuesFile: freshrss/freshrss-values.yaml
@@ -135,7 +135,7 @@ apps:
   mattermost:
     <<: *default
     namespace: mattermost
-    enabled: false
+    enabled: true
     chart: k8s-homelab/mattermost-team-edition
     version: 3.20.0
     valuesFile: mattermost/mattermost-values.yaml
@@ -146,7 +146,7 @@ apps:
   navidrome:
     <<: *default
     namespace: navidrome
-    enabled: false
+    enabled: true
     chart: k8s-at-home/navidrome
     version: 2.3.0
     valuesFile: navidrome/navidrome-values.yaml
@@ -173,7 +173,7 @@ apps:
   searx:
     <<: *default
     namespace: searx
-    enabled: false
+    enabled: true
     chart: k8s-at-home/searx
     version: 1.1.0
     valuesFile: searx/searx-values.yaml
