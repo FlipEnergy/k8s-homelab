@@ -38,5 +38,5 @@ persistence:
     # Do not delete the pvc upon helm uninstall
     skipuninstall: true
 
-# nodeSelector:
-#   kubernetes.io/arch: amd64
+nodeSelector:
+  k3s.io/hostname: k8s-node-1.tgp

@@ -16,10 +16,19 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   httpPort: 80
   rtmpPort: 1935
-  loadBalancerIP: 192.168.1.246
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: owncast.pleasenoddos.com
+      paths:
+        - path: /
 
 resources:
   limits:
@@ -28,3 +37,6 @@ resources:
   requests:
     cpu: 1
     memory: 256Mi
+
+nodeSelector:
+  k3s.io/hostname: k8s-node-1.tgp
