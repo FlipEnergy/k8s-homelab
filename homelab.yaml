@@ -53,10 +53,12 @@ apps:
   k8s-dashboard:
     <<: *default
     namespace: k8s-dashboard
-    enabled: false
+    enabled: true
     chart: kubernetes-dashboard/kubernetes-dashboard
     version: 3.0.2
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
+    hooks:
+      preInstall: kubernetes-dashboard/dashboard-admin.yaml
     priority : -98
 
   influxdb:

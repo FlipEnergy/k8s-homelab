@@ -1,32 +1,67 @@
 # Configuration for k8s dashboard values
 
-replicaCount: 1
+resources:
+  requests:
+    cpu: 100m
+    memory: 200Mi
+  limits:
+    cpu: 2
+    memory: 200Mi
 
 protocolHttp: true
 
-# Loadbalanced by Metallb
 service:
-  type: LoadBalancer
-  loadBalancerIP: 192.168.1.50
+  type: ClusterIP
   externalPort: 80
 
-securityContext:
-  runAsUser: 1002
-  fsGroup: 1002
+ingress:
+  # If true, Kubernetes Dashboard Ingress will be created.
+  #
+  enabled: true
+
+  # Kubernetes Dashboard Ingress paths
+  #
+  paths:
+    - /
+
+  # Kubernetes Dashboard Ingress hostnames
+  # Must be provided if Ingress is enabled
+  #
+  hosts:
+    - k8s-dashboard.tgp
 
 metricsScraper:
   enabled: true
 
+rbac:
+  # Specifies whether namespaced RBAC resources (Role, Rolebinding) should be created
+  create: true
+
+  # Specifies whether cluster-wide RBAC resources (ClusterRole, ClusterRolebinding) to access metrics should be created
+  # Independent from rbac.create parameter.
+  clusterRoleMetrics: true
+
+  # Start in ReadOnly mode.
+  # Only dashboard-related Secrets and ConfigMaps will still be available for writing.
+  #
+  # The basic idea of the clusterReadOnlyRole
+  # is not to hide all the secrets and sensitive data but more
+  # to avoid accidental changes in the cluster outside the standard CI/CD.
+  #
+  # It is NOT RECOMMENDED to use this version in production.
+  # Instead you should review the role and remove all potentially sensitive parts such as
+  # access to persistentvolumes, pods/log etc.
+  #
+  # Independent from rbac.create parameter.
+  clusterReadOnlyRole: false
+
 serviceAccount:
   # Specifies whether a service account should be created
-  create: false
+  create: true
   # The name of the service account to use.
-  name: default
+  name: k8s-dashboard-svc-acct
 
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 50m
-    memory: 64Mi
+# PodSecurityContext for pod level securityContext
+securityContext:
+  runAsUser: 1001
+  runAsGroup: 2001
