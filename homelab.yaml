@@ -158,7 +158,7 @@ apps:
     namespace: owncast
     enabled: false
     chart: k8s-homelab/owncast
-    version: 0.1.1
+    version: 0.2.0
     valuesFile: owncast/owncast-values.yaml
     secretsFile: owncast/secrets.owncast-config.yaml
 
@@ -184,7 +184,7 @@ apps:
     namespace: syncthing
     enabled: false
     chart: k8s-homelab/syncthing
-    version: 0.1.1
+    version: 0.2.0
     valuesFile: syncthing/syncthing-values.yaml
 
   wireguard:
