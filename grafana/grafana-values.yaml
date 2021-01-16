@@ -75,7 +75,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1610685666984,
+          "iteration": 1610768312364,
           "links": [],
           "panels": [
             {
@@ -232,7 +232,7 @@ dashboards:
                 "x": 4.8,
                 "y": 1
               },
-              "id": 65107,
+              "id": 65108,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -252,7 +252,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -337,7 +337,7 @@ dashboards:
                 "x": 9.6,
                 "y": 1
               },
-              "id": 65108,
+              "id": 65109,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -357,7 +357,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -442,7 +442,7 @@ dashboards:
                 "x": 14.399999999999999,
                 "y": 1
               },
-              "id": 65109,
+              "id": 65110,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -462,7 +462,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -547,7 +547,7 @@ dashboards:
                 "x": 19.2,
                 "y": 1
               },
-              "id": 65110,
+              "id": 65111,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -567,7 +567,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 54758,
               "scopedVars": {
                 "server": {
@@ -619,6 +619,660 @@ dashboards:
             {
               "cacheTimeout": null,
               "datasource": "HomeLab InfluxDB",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    },
+                    {
+                      "from": "",
+                      "id": 1,
+                      "text": "No",
+                      "to": "",
+                      "type": 1,
+                      "value": "0"
+                    },
+                    {
+                      "from": "",
+                      "id": 2,
+                      "text": "Yes",
+                      "to": "",
+                      "type": 1,
+                      "value": "1"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "blue",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 3,
+                "w": 4.8,
+                "x": 0,
+                "y": 4
+              },
+              "id": 65107,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "maxPerRow": 6,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "/^filestat\\.last$/",
+                  "values": false
+                },
+                "textMode": "value"
+              },
+              "pluginVersion": "7.3.5",
+              "repeat": "server",
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "k8s-node-1.tgp",
+                  "value": "k8s-node-1.tgp"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "$server Requires Restart",
+              "transformations": [],
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    },
+                    {
+                      "from": "",
+                      "id": 1,
+                      "text": "No",
+                      "to": "",
+                      "type": 1,
+                      "value": "0"
+                    },
+                    {
+                      "from": "",
+                      "id": 2,
+                      "text": "Yes",
+                      "to": "",
+                      "type": 1,
+                      "value": "1"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "blue",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 3,
+                "w": 4.8,
+                "x": 4.8,
+                "y": 4
+              },
+              "id": 65112,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "maxPerRow": 6,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "/^filestat\\.last$/",
+                  "values": false
+                },
+                "textMode": "value"
+              },
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1610768312364,
+              "repeatPanelId": 65107,
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "k8s-node-2.tgp",
+                  "value": "k8s-node-2.tgp"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "$server Requires Restart",
+              "transformations": [],
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    },
+                    {
+                      "from": "",
+                      "id": 1,
+                      "text": "No",
+                      "to": "",
+                      "type": 1,
+                      "value": "0"
+                    },
+                    {
+                      "from": "",
+                      "id": 2,
+                      "text": "Yes",
+                      "to": "",
+                      "type": 1,
+                      "value": "1"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "blue",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 3,
+                "w": 4.8,
+                "x": 9.6,
+                "y": 4
+              },
+              "id": 65113,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "maxPerRow": 6,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "/^filestat\\.last$/",
+                  "values": false
+                },
+                "textMode": "value"
+              },
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1610768312364,
+              "repeatPanelId": 65107,
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "k8s-node-3.tgp",
+                  "value": "k8s-node-3.tgp"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "$server Requires Restart",
+              "transformations": [],
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    },
+                    {
+                      "from": "",
+                      "id": 1,
+                      "text": "No",
+                      "to": "",
+                      "type": 1,
+                      "value": "0"
+                    },
+                    {
+                      "from": "",
+                      "id": 2,
+                      "text": "Yes",
+                      "to": "",
+                      "type": 1,
+                      "value": "1"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "blue",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 3,
+                "w": 4.8,
+                "x": 14.399999999999999,
+                "y": 4
+              },
+              "id": 65114,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "maxPerRow": 6,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "/^filestat\\.last$/",
+                  "values": false
+                },
+                "textMode": "value"
+              },
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1610768312364,
+              "repeatPanelId": 65107,
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "load-balancer-1.tgp",
+                  "value": "load-balancer-1.tgp"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "$server Requires Restart",
+              "transformations": [],
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "description": "",
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "id": 0,
+                      "op": "=",
+                      "text": "N/A",
+                      "type": 1,
+                      "value": "null"
+                    },
+                    {
+                      "from": "",
+                      "id": 1,
+                      "text": "No",
+                      "to": "",
+                      "type": 1,
+                      "value": "0"
+                    },
+                    {
+                      "from": "",
+                      "id": 2,
+                      "text": "Yes",
+                      "to": "",
+                      "type": 1,
+                      "value": "1"
+                    }
+                  ],
+                  "nullValueMode": "connected",
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "blue",
+                        "value": null
+                      },
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "yellow",
+                        "value": 1
+                      }
+                    ]
+                  },
+                  "unit": "s"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 3,
+                "w": 4.8,
+                "x": 19.2,
+                "y": 4
+              },
+              "id": 65115,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "maxPerRow": 6,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "/^filestat\\.last$/",
+                  "values": false
+                },
+                "textMode": "value"
+              },
+              "pluginVersion": "7.3.5",
+              "repeatIteration": 1610768312364,
+              "repeatPanelId": 65107,
+              "scopedVars": {
+                "server": {
+                  "selected": true,
+                  "text": "pi.hole",
+                  "value": "pi.hole"
+                }
+              },
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "timeFrom": null,
+              "timeShift": null,
+              "title": "$server Requires Restart",
+              "transformations": [],
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
               "fieldConfig": {
                 "defaults": {
                   "custom": {},
@@ -657,7 +1311,7 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 0,
-                "y": 4
+                "y": 7
               },
               "id": 65066,
               "interval": "1m",
@@ -767,9 +1421,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 4.8,
-                "y": 4
+                "y": 7
               },
-              "id": 65111,
+              "id": 65116,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -789,7 +1443,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -878,9 +1532,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 9.6,
-                "y": 4
+                "y": 7
               },
-              "id": 65112,
+              "id": 65117,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -900,7 +1554,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -989,9 +1643,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 14.399999999999999,
-                "y": 4
+                "y": 7
               },
-              "id": 65113,
+              "id": 65118,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1011,7 +1665,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -1100,9 +1754,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 19.2,
-                "y": 4
+                "y": 7
               },
-              "id": 65114,
+              "id": 65119,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1122,7 +1776,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65066,
               "scopedVars": {
                 "server": {
@@ -1211,7 +1865,7 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 0,
-                "y": 9
+                "y": 12
               },
               "id": 65065,
               "interval": "1m",
@@ -1324,9 +1978,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 4.8,
-                "y": 9
+                "y": 12
               },
-              "id": 65115,
+              "id": 65120,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1349,7 +2003,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1438,9 +2092,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 9.6,
-                "y": 9
+                "y": 12
               },
-              "id": 65116,
+              "id": 65121,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1463,7 +2117,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1552,9 +2206,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 14.399999999999999,
-                "y": 9
+                "y": 12
               },
-              "id": 65117,
+              "id": 65122,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1577,7 +2231,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1666,9 +2320,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 19.2,
-                "y": 9
+                "y": 12
               },
-              "id": 65118,
+              "id": 65123,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1691,7 +2345,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65065,
               "scopedVars": {
                 "server": {
@@ -1780,7 +2434,7 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 0,
-                "y": 14
+                "y": 17
               },
               "id": 2165,
               "interval": "1m",
@@ -1893,9 +2547,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 4.8,
-                "y": 14
+                "y": 17
               },
-              "id": 65119,
+              "id": 65124,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -1918,7 +2572,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2007,9 +2661,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 9.6,
-                "y": 14
+                "y": 17
               },
-              "id": 65120,
+              "id": 65125,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2032,7 +2686,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2121,9 +2775,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 14.399999999999999,
-                "y": 14
+                "y": 17
               },
-              "id": 65121,
+              "id": 65126,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2146,7 +2800,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2235,9 +2889,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 19.2,
-                "y": 14
+                "y": 17
               },
-              "id": 65122,
+              "id": 65127,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2260,7 +2914,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2165,
               "scopedVars": {
                 "server": {
@@ -2349,7 +3003,7 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 0,
-                "y": 19
+                "y": 22
               },
               "id": 2092,
               "interval": "1m",
@@ -2461,9 +3115,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 4.8,
-                "y": 19
+                "y": 22
               },
-              "id": 65123,
+              "id": 65128,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2486,7 +3140,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2574,9 +3228,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 9.6,
-                "y": 19
+                "y": 22
               },
-              "id": 65124,
+              "id": 65129,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2599,7 +3253,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2687,9 +3341,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 14.399999999999999,
-                "y": 19
+                "y": 22
               },
-              "id": 65125,
+              "id": 65130,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2712,7 +3366,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2800,9 +3454,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 19.2,
-                "y": 19
+                "y": 22
               },
-              "id": 65126,
+              "id": 65131,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
@@ -2825,7 +3479,7 @@ dashboards:
                 "showThresholdMarkers": true
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 2092,
               "scopedVars": {
                 "server": {
@@ -2897,7 +3551,7 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 0,
-                "y": 24
+                "y": 27
               },
               "id": 65073,
               "interval": null,
@@ -3004,9 +3658,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 4.8,
-                "y": 24
+                "y": 27
               },
-              "id": 65127,
+              "id": 65132,
               "interval": null,
               "links": [],
               "maxDataPoints": 100,
@@ -3026,7 +3680,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3112,9 +3766,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 9.6,
-                "y": 24
+                "y": 27
               },
-              "id": 65128,
+              "id": 65133,
               "interval": null,
               "links": [],
               "maxDataPoints": 100,
@@ -3134,7 +3788,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3220,9 +3874,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 14.399999999999999,
-                "y": 24
+                "y": 27
               },
-              "id": 65129,
+              "id": 65134,
               "interval": null,
               "links": [],
               "maxDataPoints": 100,
@@ -3242,7 +3896,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3328,9 +3982,9 @@ dashboards:
                 "h": 5,
                 "w": 4.8,
                 "x": 19.2,
-                "y": 24
+                "y": 27
               },
-              "id": 65130,
+              "id": 65135,
               "interval": null,
               "links": [],
               "maxDataPoints": 100,
@@ -3350,7 +4004,7 @@ dashboards:
                 "textMode": "auto"
               },
               "pluginVersion": "7.3.5",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65073,
               "scopedVars": {
                 "server": {
@@ -3418,7 +4072,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 29
+                "y": 32
               },
               "id": 65060,
               "panels": [],
@@ -3447,7 +4101,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 30
+                "y": 33
               },
               "hiddenSeries": false,
               "id": 28239,
@@ -3589,7 +4243,7 @@ dashboards:
                 "h": 10,
                 "w": 4.8,
                 "x": 0,
-                "y": 39
+                "y": 42
               },
               "hiddenSeries": false,
               "id": 65081,
@@ -3743,10 +4397,10 @@ dashboards:
                 "h": 10,
                 "w": 4.8,
                 "x": 4.8,
-                "y": 39
+                "y": 42
               },
               "hiddenSeries": false,
-              "id": 65131,
+              "id": 65136,
               "interval": "1m",
               "legend": {
                 "alignAsTable": true,
@@ -3777,7 +4431,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -3898,10 +4552,10 @@ dashboards:
                 "h": 10,
                 "w": 4.8,
                 "x": 9.6,
-                "y": 39
+                "y": 42
               },
               "hiddenSeries": false,
-              "id": 65132,
+              "id": 65137,
               "interval": "1m",
               "legend": {
                 "alignAsTable": true,
@@ -3932,7 +4586,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -4053,10 +4707,10 @@ dashboards:
                 "h": 10,
                 "w": 4.8,
                 "x": 14.399999999999999,
-                "y": 39
+                "y": 42
               },
               "hiddenSeries": false,
-              "id": 65133,
+              "id": 65138,
               "interval": "1m",
               "legend": {
                 "alignAsTable": true,
@@ -4087,7 +4741,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -4208,10 +4862,10 @@ dashboards:
                 "h": 10,
                 "w": 4.8,
                 "x": 19.2,
-                "y": 39
+                "y": 42
               },
               "hiddenSeries": false,
-              "id": 65134,
+              "id": 65139,
               "interval": "1m",
               "legend": {
                 "alignAsTable": true,
@@ -4242,7 +4896,7 @@ dashboards:
               "points": false,
               "renderer": "flot",
               "repeatDirection": "h",
-              "repeatIteration": 1610685666984,
+              "repeatIteration": 1610768312364,
               "repeatPanelId": 65081,
               "scopedVars": {
                 "server": {
@@ -4363,7 +5017,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 49
+                "y": 52
               },
               "hiddenSeries": false,
               "id": 65064,
@@ -4506,7 +5160,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 58
+                "y": 61
               },
               "hiddenSeries": false,
               "id": 54694,
@@ -4643,7 +5297,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 58
+                "y": 61
               },
               "hiddenSeries": false,
               "id": 12054,
@@ -4789,7 +5443,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 68
+                "y": 71
               },
               "hiddenSeries": false,
               "id": 65104,
@@ -4932,7 +5586,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 78
+                "y": 81
               },
               "height": "",
               "hiddenSeries": false,
@@ -5087,7 +5741,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 88
+                "y": 91
               },
               "hiddenSeries": false,
               "id": 52240,
@@ -5229,7 +5883,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 88
+                "y": 91
               },
               "hiddenSeries": false,
               "id": 60200,
@@ -5432,7 +6086,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 97
+                "y": 100
               },
               "hiddenSeries": false,
               "id": 13782,
@@ -5635,7 +6289,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 97
+                "y": 100
               },
               "hiddenSeries": false,
               "id": 56720,
@@ -5848,6 +6502,7 @@ dashboards:
                 "allValue": null,
                 "current": {
                   "selected": true,
+                  "tags": [],
                   "text": [
                     "k8s-node-1.tgp",
                     "k8s-node-2.tgp",
@@ -5916,7 +6571,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 2
+          "version": 5
         }
     network:
       json: |
