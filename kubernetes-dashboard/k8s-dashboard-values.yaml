@@ -28,7 +28,7 @@ ingress:
   # Must be provided if Ingress is enabled
   #
   hosts:
-    - k8s-dashboard.tgp
+    - k3s-dashboard.tgp
 
 metricsScraper:
   enabled: true
