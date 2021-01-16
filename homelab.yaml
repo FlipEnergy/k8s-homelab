@@ -10,7 +10,6 @@ settings:
 namespaces:
   bitwarden:
   concourse:
-  folding-at-home:
   freshrss:
   grafana:
   k8s-dashboard:
@@ -34,7 +33,6 @@ helmRepos:
   mattermost: https://helm.mattermost.com
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
-  pcktdmp: https://pcktdmp.github.io/charts
   place1: https://place1.github.io/wg-access-server
 
 appsTemplates:
@@ -135,8 +133,8 @@ apps:
     <<: *default
     namespace: mattermost
     enabled: false
-    chart: mattermost/mattermost-team-edition
-    version: 3.19.0
+    chart: k8s-homelab/mattermost-team-edition
+    version: 3.20.0
     valuesFile: mattermost/mattermost-values.yaml
     secretsFile: mattermost/secrets.mattermost-secrets.yaml
     hooks:
