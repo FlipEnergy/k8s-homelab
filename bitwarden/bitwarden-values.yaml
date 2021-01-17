@@ -19,7 +19,7 @@ bitwardenrs:
     enabled: false
     disableAdminToken: false
     existingSecret:
-      enabled: false
+      enabled: true
       name: ""
       tokenKey: ""
 
