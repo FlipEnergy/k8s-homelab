@@ -19,7 +19,7 @@ web:
 
 wireguard:
   service:
-    type: NodePort
+    type: LoadBalancer
 
 persistence:
   enabled: true
