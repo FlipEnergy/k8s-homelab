@@ -19,7 +19,7 @@ web:
 
 wireguard:
   service:
-    type: ClusterIP
+    type: NodePort
 
 persistence:
   enabled: true
@@ -50,5 +50,5 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-# nodeSelector:
-#   k3s.io/hostname: k8s-node-1.tgp
+nodeSelector:
+  k3s.io/hostname: k8s-node-2.tgp

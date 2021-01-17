@@ -156,7 +156,7 @@ apps:
   owncast:
     <<: *default
     namespace: owncast
-    enabled: false
+    enabled: true
     chart: k8s-homelab/owncast
     version: 0.2.0
     valuesFile: owncast/owncast-values.yaml
@@ -190,7 +190,7 @@ apps:
   wireguard:
     <<: *default
     namespace: wireguard
-    enabled: false
+    enabled: true
     chart: place1/wg-access-server
     version: 0.3.0
     valuesFile: wireguard/wireguard-values.yaml

@@ -33,7 +33,7 @@ ingress:
   hosts:
     - host: xyzzy.pleasenoddos.com
       paths:
-        - /
+        - path: /
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
