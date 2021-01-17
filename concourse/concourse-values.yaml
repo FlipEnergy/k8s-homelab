@@ -153,7 +153,7 @@ concourse:
 
     ## Minimum level of logs to see. Possible options: debug, info, error.
     ##
-    logLevel: info
+    logLevel: error
 
     ## IP address on which to listen for HTTP traffic (web UI and API).
     ##
@@ -491,7 +491,7 @@ concourse:
 
       ## Minimum level of logs to see. Possible values: debug, info, error.
       ##
-      logLevel: info
+      logLevel: error
 
       ## IP address on which to listen for SSH.
       ##
@@ -767,7 +767,7 @@ concourse:
       ## Driver to use for managing volumes.
       ## Possible values: detect, naive, btrfs, and overlay.
       ##
-      driver: naive
+      driver: btrfs
 
       ## Path to btrfs binary
       ##

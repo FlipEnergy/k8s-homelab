@@ -22,7 +22,6 @@ namespaces:
   navidrome:
   owncast:
   pretend-youre-xyzzy:
-  searx:
   syncthing:
   wireguard:
 
@@ -169,15 +168,6 @@ apps:
     chart: k8s-homelab/pretend-youre-xyzzy
     version: 0.1.0
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
-
-  searx:
-    <<: *default
-    namespace: searx
-    enabled: true
-    chart: k8s-at-home/searx
-    version: 1.1.0
-    valuesFile: searx/searx-values.yaml
-    secretsFile: searx/secrets.searx-secrets.enc.yaml
 
   syncthing:
     <<: *default
