@@ -5,34 +5,36 @@ metadata:
   description: Helmman DSF for homelab K8s
 
 settings:
-  kubeContext: microk8s
+  kubeContext: k3s
 
 namespaces:
-  monitoring:
   bitwarden:
   concourse:
   freshrss:
   folding-at-home:
+  grafana:
+  influxdb:
+  k8s-dashboard:
+  kube-ops-view:
+  kubeview:
   mattermost:
+  monitoring:
+  navidrome:
   owncast:
   pretend-youre-xyzzy:
-  navidrome:
-  nextcloud:
   searx:
   syncthing:
   wireguard:
-  whoogle:
 
 helmRepos:
-  concourse: https://concourse-charts.storage.googleapis.com/
   cdwv: https://cdwv.github.io/bitwarden-k8s
+  concourse: https://concourse-charts.storage.googleapis.com/
   grafana: https://grafana.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
-  kubernetes-dashboard: https://kubernetes.github.io/dashboard/
-  mattermost: https://helm.mattermost.com
-  nextcloud: https://nextcloud.github.io/helm/
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
+  kubernetes-dashboard: https://kubernetes.github.io/dashboard/
+  mattermost: https://helm.mattermost.com
   pcktdmp: https://pcktdmp.github.io/charts
   place1: https://place1.github.io/wg-access-server
 
@@ -40,33 +42,30 @@ appsTemplates:
   default: &default
     wait: true
 
-  monitoring: &monitoring
-    namespace: monitoring
-    wait: true
-
 apps:
-  k8s-dashboard:
-    <<: *monitoring
-    enabled: true
-    chart: kubernetes-dashboard/kubernetes-dashboard
-    version: 3.0.2
-    valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
-    priority : -98
   kube-ops-view:
-    <<: *monitoring
+    <<: *default
+    namespace: kube-ops-view
     enabled: true
     chart: k8s-homelab/kube-ops-view
     version: 1.3.0
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
     priority : -99
-  kubeview:
-    <<: *monitoring
+
+  k8s-dashboard:
+    <<: *default
+    namespace: k8s-dashboard
     enabled: true
-    chart: k8s-homelab/kubeview
-    version: 0.1.18
-    valuesFile: kubeview/kubeview-values.yaml
+    chart: kubernetes-dashboard/kubernetes-dashboard
+    version: 3.0.2
+    valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
+    hooks:
+      preInstall: kubernetes-dashboard/dashboard-admin.yaml
+    priority : -98
+
   influxdb:
-    <<: *monitoring
+    <<: *default
+    namespace: influxdb
     enabled: true
     chart: influxdata/influxdb
     version: 4.8.10
@@ -75,19 +74,28 @@ apps:
     hooks:
       preInstall: influxdb/persistencevolume.yaml
     priority : -97
+
+  kubeview:
+    <<: *default
+    namespace: kubeview
+    enabled: true
+    chart: k8s-homelab/kubeview
+    version: 0.1.18
+    valuesFile: kubeview/kubeview-values.yaml
+
   grafana:
-    <<: *monitoring
-    enabled: false
+    <<: *default
+    namespace: grafana
+    enabled: true
     chart: grafana/grafana
     version: 6.1.17
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
-    priority : -96
 
   bitwarden:
     <<: *default
     namespace: bitwarden
-    enabled: true
+    enabled: false
     chart: cdwv/bitwarden-k8s
     version: 0.1.5
     valuesFile: bitwarden/bitwarden-values.yaml
@@ -99,7 +107,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 14.5.1
+    version: 14.5.2
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
     hooks:
@@ -128,8 +136,8 @@ apps:
     <<: *default
     namespace: mattermost
     enabled: true
-    chart: mattermost/mattermost-team-edition
-    version: 3.19.0
+    chart: k8s-homelab/mattermost-team-edition
+    version: 3.20.0
     valuesFile: mattermost/mattermost-values.yaml
     secretsFile: mattermost/secrets.mattermost-secrets.yaml
     hooks:
@@ -144,24 +152,13 @@ apps:
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
       preInstall: navidrome/persistencevolume.yaml
-
-  nextcloud:
-    <<: *default
-    namespace: nextcloud
-    enabled: false
-    chart: nextcloud/nextcloud
-    version: 2.5.0
-    valuesFile: nextcloud/nextcloud-values.yaml
-    secretsFile: nextcloud/secrets.nextcloud-secrets.yaml
-    hooks:
-      preInstall: nextcloud/persistencevolume.yaml
   
   owncast:
     <<: *default
     namespace: owncast
-    enabled: true
+    enabled: false
     chart: k8s-homelab/owncast
-    version: 0.1.1
+    version: 0.2.0
     valuesFile: owncast/owncast-values.yaml
     secretsFile: owncast/secrets.owncast-config.yaml
 
@@ -185,15 +182,15 @@ apps:
   syncthing:
     <<: *default
     namespace: syncthing
-    enabled: true
+    enabled: false
     chart: k8s-homelab/syncthing
-    version: 0.1.1
+    version: 0.2.0
     valuesFile: syncthing/syncthing-values.yaml
 
   wireguard:
     <<: *default
     namespace: wireguard
-    enabled: true
+    enabled: false
     chart: place1/wg-access-server
     version: 0.3.0
     valuesFile: wireguard/wireguard-values.yaml

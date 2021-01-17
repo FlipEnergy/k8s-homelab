@@ -1,4 +1,4 @@
-## Default values for Concourse Helm Chart.
+## Override values for Concourse Helm Chart.
 ## This is a YAML-formatted file.
 ## Declare variables to be passed into your templates.
 
@@ -161,7 +161,7 @@ concourse:
 
     ## Port on which to listen for HTTP traffic (web UI and API).
     ##
-    bindPort: 80
+    bindPort: 8080
 
     ## TLS configuration for the web component to be able to serve HTTPS traffic.
     ## Once enabled, consumes the certificates set via secrets (`web-tls-cert` and
@@ -843,6 +843,30 @@ web:
   ##
   args: ["web"]
 
+
+  ## Configures the liveness probe used to determine if the Web component is up.
+  ## ps.: if you're upgrading Concourse from one version  to another, the probe will
+  ## probably fail for some time before migrations are finished - in such situations,
+  ## consider bumping the values set here.
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+  ##
+  livenessProbe:
+    failureThreshold: 5
+    initialDelaySeconds: 10
+    periodSeconds: 15
+    timeoutSeconds: 3
+    httpGet:
+      path: /api/v1/info
+      port: atc
+
+  ## Configures the readiness probes.
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+  ##
+  readinessProbe:
+    httpGet:
+      path: /api/v1/info
+      port: atc
+
   ## Configure resource requests and limits.
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
@@ -862,7 +886,7 @@ web:
   ##
   env:
 
-    ## Configure the security context for the web containers.
+  ## Configure the security context for the web containers.
   ## Example:
   ##   capabilities:
   ##     add:
@@ -873,7 +897,8 @@ web:
   ## Node selector for web nodes.
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    kubernetes.io/arch: amd64
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/
@@ -883,18 +908,137 @@ web:
       ## For minikube, set this to ClusterIP, elsewhere use LoadBalancer or NodePort
       ## Ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
       ##
-      type: LoadBalancer
+      type: ClusterIP
+
+      ## When using `web.service.api.type: ClusterIP`, sets the user-specified cluster IP.
+      ## Example: 172.217.1.174
+      ##
+      clusterIP: None
 
       ## When using `web.service.api.type: LoadBalancer`, sets the user-specified load balancer IP.
       ## Example: 172.217.1.174
       ##
-      loadBalancerIP: 192.168.1.200
+      loadBalancerIP:
+
+      ## Additional Labels to be added to the web api service.
+      ##
+      labels:
+
+      ## Annotations to be added to the web api service.
+      ##
+      ##
+      ## When using `web.service.api.type: LoadBalancer` in AWS, enable HTTPS with an ACM cert:
+      ##
+      ##   service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-west-1:123456789:certificate/abc123-abc123-abc123-abc123"
+      ##   service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+      ##   service.beta.kubernetes.io/aws-load-balancer-backend-port: "api"
+      ##   service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+      ##
+      annotations: {}
+
+      ## When using `web.service.api.type: LoadBalancer`, restrict access to the load balancer to particular IPs
+      ## Example:
+      ##   - 192.168.1.10/32
+      ##
+      loadBalancerSourceRanges:
+
+      ## When using `web.service.api.type: NodePort`, sets the nodePort for api
+      ##
+      NodePort:
+
+      ## When using `web.service.api.type: NodePort`, sets the nodePort for api tls
+      ##
+      tlsNodePort:
 
     workerGateway:
       ## For minikube, set this to ClusterIP, elsewhere use LoadBalancer or NodePort
       ## Ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
       ##
       type: ClusterIP
+
+      ## When using `web.service.workerGateway.type: ClusterIP`, sets the user-specified cluster IP.
+      ## Example: 172.217.1.174
+      ##
+      clusterIP: None
+
+      ## When using `web.service.workerGateway.type: LoadBalancer`, sets the user-specified load balancer IP.
+      ## Example: 172.217.1.174
+      ##
+      loadBalancerIP:
+
+      ## Additional Labels to be added to the web workerGateway service.
+      ##
+      labels:
+
+      ## Annotations to be added to the web workerGateway service.
+      ##
+      ## When using `web.service.workerGateway.type: LoadBalancer` in AWS, enable HTTPS with an ACM cert:
+      ##
+      ##   service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-west-1:123456789:certificate/abc123-abc123-abc123-abc123"
+      ##   service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+      ##   service.beta.kubernetes.io/aws-load-balancer-backend-port: "atc"
+      ##   service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+      ##
+      annotations: {}
+
+      ## When using `web.service.workerGateway.type: LoadBalancer`, restrict access to the load balancer to particular IPs
+      ## Example:
+      ##   - 192.168.1.10/32
+      ##
+      loadBalancerSourceRanges:
+
+      ## When using `web.service.workerGateway.type: NodePort`, sets the nodePort for tsa
+      ##
+      NodePort:
+
+
+
+    prometheus:
+      ## Additional Labels to be added to the web service.
+      ##
+      labels:
+
+      ## Annotations to be added to the web service.
+      ##
+      ## Example:
+      ##
+      ##   prometheus.io/probe: "true"
+      ##   prometheus.io/probe_path: "/"
+      ##
+      ##
+      annotations: {}
+
+  ## Ingress configuration.
+  ## Ref: https://kubernetes.io/docs/user-guide/ingress/
+  ##
+  ingress:
+    ## Enable Ingress.
+    ##
+    enabled: true
+
+    ## Annotations to be added to the web ingress.
+    ## Example:
+    ##   kubernetes.io/ingress.class: nginx
+    ##   kubernetes.io/tls-acme: 'true'
+    ##
+    annotations: {}
+
+    ## Hostnames.
+    ## Must be provided if Ingress is enabled.
+    ## Example:
+    ##   - concourse.domain.com
+    ##
+    hosts:
+      - concourse.tgp
+
+    ## TLS configuration.
+    ## Secrets must be manually created in the namespace.
+    ## Example:
+    ##   - secretName: concourse-web-tls
+    ##     hosts:
+    ##       - concourse.domain.com
+    ##
+    tls:
 
 ## Configuration values for Concourse Worker components.
 ## For more information regarding the characteristics of
@@ -989,7 +1133,8 @@ worker:
   ## Node selector for the worker nodes.
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
   ##
-  nodeSelector: {}
+  nodeSelector:
+    kubernetes.io/arch: amd64
 
   ## Time to allow the pod to terminate before being forcefully terminated. This should provide time for
   ## the worker to retire, i.e. drain its tasks. See https://concourse-ci.org/worker-internals.html for worker
@@ -1087,19 +1232,25 @@ postgresql:
 rbac:
   ## Enable the creation of RBAC resources.
   ##
-  create: false
+  create: true
 
   ## RBAC Version
   ##
-  apiVersion: v1beta1
+  apiVersion: v1
 
   ## The name of the service account to use for web pods if rbac.create is false
   ##
   webServiceAccountName: default
 
+  ## Any annotations required for the web Service Account
+  webServiceAccountAnnotations: {}
+
   ## The name of the service account to use for worker pods if rbac.create is false
   ##
   workerServiceAccountName: default
+
+  ## Any annotations required for the worker Service Account
+  workerServiceAccountAnnotations: {} 
 
 ## For managing podSecurityPolicies. To make sure rbac objects are also created
 ## for the use of the podsecuritypolicy objects,

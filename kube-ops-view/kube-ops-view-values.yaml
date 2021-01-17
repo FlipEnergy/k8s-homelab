@@ -6,14 +6,19 @@ image:
   repository: hjacobs/kube-ops-view
   tag: 20.4.0
 
-# Loadbalanced by Metallb
 service:
-  type: LoadBalancer
-  loadBalancerIP: 192.168.1.51
+  type: ClusterIP
   externalPort: 80
+  internalPort: 8080
 
-# Add securityContext
-securityContext: {}
+ingress:
+  enabled: true
+  path: /
+  hostname: kube.pleasenoddos.com
+
+rbac:
+  # If true, create & use RBAC resources
+  create: true
 
 # Add securityContext at pod level:
 podSecurityContext:
@@ -27,3 +32,6 @@ resources:
   requests:
     cpu: 50m
     memory: 64Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64

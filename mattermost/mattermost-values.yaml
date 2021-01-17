@@ -20,9 +20,15 @@ persistence:
     enabled: false
 
 service:
-  type: LoadBalancer
-  externalPort: 80
-  loadBalancerIP: 192.168.1.251
+  type: ClusterIP
+  externalPort: 8065
+  internalPort: 8065
+
+ingress:
+  enabled: true
+  path: /
+  hosts:
+    - mattermost.pleasenoddos.com
 
 mysql:
   enabled: true
@@ -36,6 +42,9 @@ mysql:
   persistence:
     enabled: true
     storageClass: mattermost-mysql
+
+  nodeSelector:
+    kubernetes.io/arch: amd64
 
 # NOTE: These acts as the default values for the config.json file read by the
 # mattermost server itself. You can override the configJSON object just like any
@@ -275,3 +284,7 @@ configJSON: {
     }
   }
 }
+
+
+nodeSelector:
+    kubernetes.io/arch: amd64

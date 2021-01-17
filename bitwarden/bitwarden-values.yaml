@@ -30,13 +30,18 @@ env:
   WEB_VAULT_ENABLED: true
 
 service:
-  type: LoadBalancer
-  httpPort: 80
-  externalTrafficPolicy: Cluster
-  loadBalancerIP: 192.168.1.253
+  type: ClusterIP
+  port: 80
 
 ingress:
-  enabled: false
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "false"
+  path: /
+  hosts:
+    - bitwarden.pleasenoddos.com
+  tls: []
 
 resources:
   limits:

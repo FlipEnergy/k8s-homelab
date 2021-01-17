@@ -6,10 +6,15 @@ image:
   tag: version-1.17.0
 
 service:
-  type: LoadBalancer
   port:
     port: 80
-  loadBalancerIP: 192.168.1.247
+
+ingress:
+  enabled: true
+  hosts:
+    - host: freshrss.pleasenoddos.com
+      paths:
+        - path: /
 
 resources:
   limits:
@@ -32,3 +37,6 @@ persistence:
     size: 1Gi
     # Do not delete the pvc upon helm uninstall
     skipuninstall: true
+
+# nodeSelector:
+#   k3s.io/hostname: k8s-node-1.tgp

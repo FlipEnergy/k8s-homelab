@@ -15,18 +15,25 @@ config:
 
 web:
   service:
-    type: LoadBalancer
-    loadBalancerIP: 192.168.1.249
+    type: ClusterIP
 
 wireguard:
   service:
-    type: LoadBalancer
-    loadBalancerIP: 192.168.1.250
+    type: ClusterIP
 
 persistence:
   enabled: true
   storageClass: "wireguard"
   size: 25Mi
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - wireguard.tgp
+  tls: []
 
 image:
   repository: place1/wg-access-server
@@ -43,4 +50,5 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-nodeSelector: {}
+# nodeSelector:
+#   k3s.io/hostname: k8s-node-1.tgp
