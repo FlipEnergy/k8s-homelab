@@ -16,9 +16,14 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  httpPort: 80
-  rtmpPort: 1935
+  web:
+    type: ClusterIP
+    port: 80
+    # loadBalancerIP:
+  rtmp:
+    type: NodePort
+    port: 1935
+    # loadBalancerIP:
 
 ingress:
   enabled: true
