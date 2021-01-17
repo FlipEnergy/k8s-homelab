@@ -26,7 +26,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: syncthing.tgp
-      paths: [/]
+      paths:
+        - path: /
 
 resources:
   # limits:

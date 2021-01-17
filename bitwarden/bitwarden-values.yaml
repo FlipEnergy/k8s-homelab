@@ -34,8 +34,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: bitwarden.pleasenoddos.com
-      paths: [/]
-      pathType: Prefix
+      paths:
+        - /
 
 resources:
   # limits:
