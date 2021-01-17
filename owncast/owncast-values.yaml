@@ -27,8 +27,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: owncast.pleasenoddos.com
-      paths:
-        - path: /
+      paths: [/]
+      pathType: Prefix
 
 resources:
   limits:
