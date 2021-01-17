@@ -5,6 +5,8 @@ image:
   pullPolicy: IfNotPresent
   tag: 0.18.0
 
+replicas: 1
+
 strategy:
   type: RollingUpdate
 

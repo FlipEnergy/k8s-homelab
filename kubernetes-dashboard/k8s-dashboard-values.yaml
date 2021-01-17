@@ -4,9 +4,9 @@ resources:
   requests:
     cpu: 100m
     memory: 200Mi
-  limits:
-    cpu: 2
-    memory: 200Mi
+  # limits:
+  #   cpu: 2
+  #   memory: 200Mi
 
 protocolHttp: true
 

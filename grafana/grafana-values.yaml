@@ -36,9 +36,9 @@ ingress:
     - grafana.tgp
 
 resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
   requests:
     cpu: 50m
     memory: 64Mi
