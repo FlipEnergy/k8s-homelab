@@ -10,10 +10,11 @@ settings:
 namespaces:
   bitwarden:
   concourse:
-  freshrss:
   folding-at-home:
+  freshrss:
   grafana:
   influxdb:
+  ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
   kubeview:
@@ -30,6 +31,7 @@ helmRepos:
   concourse: https://concourse-charts.storage.googleapis.com/
   grafana: https://grafana.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
+  ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
@@ -42,6 +44,14 @@ appsTemplates:
     wait: true
 
 apps:
+  ingress-nginx:
+    <<: *default
+    namespace: ingress-nginx
+    enabled: true
+    chart: ingress-nginx/ingress-nginx
+    version: 3.20.1
+    priority : -100
+
   kube-ops-view:
     <<: *default
     namespace: kube-ops-view
