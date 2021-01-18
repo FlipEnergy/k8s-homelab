@@ -106,7 +106,7 @@ apps:
     namespace: bitwarden
     enabled: true
     chart: k8s-at-home/bitwardenrs
-    version: 1.1.1
+    version: 2.0.0
     valuesFile: bitwarden/bitwarden-values.yaml
     hooks:
       preInstall: bitwarden/persistencevolume.yaml

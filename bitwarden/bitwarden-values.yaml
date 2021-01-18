@@ -4,7 +4,7 @@ replicaCount: 1
 image:
   repository: bitwardenrs/server
   pullPolicy: IfNotPresent
-  tag: 1.18.0
+  # tag: 1.18.0
 
 bitwardenrs:
   domain: https://bitwarden.pleasenoddos.com
