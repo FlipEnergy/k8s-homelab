@@ -16,6 +16,7 @@ namespaces:
   influxdb:
   ingress-nginx:
   k8s-dashboard:
+  kube-ops-view:
   kubeview:
   mattermost:
   monitoring:
@@ -52,6 +53,15 @@ apps:
     version: 3.20.1
     priority : -100
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
+
+  kube-ops-view:
+    <<: *default
+    namespace: kube-ops-view
+    enabled: true
+    chart: stable/kube-ops-view
+    version: 1.2.1
+    valuesFile: kube-ops-view/kube-ops-view-values.yaml
+    priority : -99
 
   k8s-dashboard:
     <<: *default
