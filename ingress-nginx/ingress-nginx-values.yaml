@@ -1,0 +1,13 @@
+## nginx configuration
+## Ref: https://github.com/kubernetes/ingress-nginx/blob/master/controllers/nginx/configuration.md
+##
+
+## Overrides for generated resource names
+# See templates/_helpers.tpl
+# nameOverride:
+# fullnameOverride:
+
+controller:
+  ## DaemonSet or Deployment
+  ##
+  kind: DaemonSet

@@ -17,7 +17,7 @@ service:
     type: ClusterIP
     port: 80
   backend:
-    type: LoadBalancer
+    type: NodePort
 
 ingress:
   enabled: true

@@ -5,25 +5,12 @@ replicaCount: 1
 image:
   repository: hjacobs/kube-ops-view
   tag: 20.4.0
+  pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   externalPort: 80
   internalPort: 8080
-
-ingress:
-  enabled: true
-  path: /
-  hostname: kube.pleasenoddos.com
-
-rbac:
-  # If true, create & use RBAC resources
-  create: true
-
-# Add securityContext at pod level:
-podSecurityContext:
-  runAsUser: 1001
-  fsGroup: 1001
 
 resources:
   # limits:
@@ -32,6 +19,26 @@ resources:
   requests:
     cpu: 50m
     memory: 64Mi
+
+ingress:
+  enabled: true
+  path: /
+  hostname: kube.pleasenoddos.com
+  annotations: {}
+  #   kubernetes.io/ingress.class: nginx
+
+rbac:
+  # If true, create & use RBAC resources
+  create: true
+
+env:
+  QUERY_INTERVAL: 3
+  ROUTE_PREFIX: kube.pleasenoddos.com
+
+# Add securityContext at pod level:
+podSecurityContext:
+  runAsUser: 1001
+  fsGroup: 1001
 
 nodeSelector:
   kubernetes.io/arch: amd64
