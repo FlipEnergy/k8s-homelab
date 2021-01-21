@@ -1,4 +1,9 @@
-# Default values for mattermost-team-edition.
+# Override values for mattermost-team-edition.
+
+image:
+  repository: mattermost/mattermost-team-edition
+  tag: 5.30.1
+  imagePullPolicy: IfNotPresent
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
