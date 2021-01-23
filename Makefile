@@ -2,7 +2,14 @@ monitoring_namespace := monitoring
 syncthing_namespace := syncthing
 
 deploy:
+	docker run --rm -it \
+	-v ~/k8s-homelab:/k8s-homelab \
+	-v ~/.kube/config:/root/.kube/config \
+	-v ~/.gnupg:/root/.gnupg \
+	-w /k8s-homelab \
+	praqma/helmsman:v3.6.3 \
 	helmsman -p 3 --apply -f homelab.yaml
+	
 
 destroy:
 	make clean-influx
