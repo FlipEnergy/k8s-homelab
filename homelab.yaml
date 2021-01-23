@@ -99,7 +99,7 @@ apps:
   kubeview:
     <<: *default
     namespace: kubeview
-    enabled: true
+    enabled: false
     chart: k8s-homelab/kubeview
     version: 0.1.18
     valuesFile: kubeview/kubeview-values.yaml
