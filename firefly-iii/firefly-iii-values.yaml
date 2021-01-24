@@ -68,8 +68,8 @@ mysql:
   ## Security context
   securityContext:
     enabled: true
-    runAsUser: 999
-    fsGroup: 999
+    runAsUser: 2003
+    fsGroup: 2003
 
   ## Configure resource requests and limits
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
