@@ -8,7 +8,7 @@ deploy:
 	-v ~/.gnupg:/root/.gnupg \
 	-w /k8s-homelab \
 	praqma/helmsman:v3.6.3 \
-	helmsman -p 3 --apply -f homelab.yaml
+	helmsman $(options) -p 3 --apply -f homelab.yaml
 	
 
 destroy:

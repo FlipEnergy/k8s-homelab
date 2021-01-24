@@ -4,9 +4,15 @@
 
 replicaCount: 1
 
-persistenVolume:
-  path: /mnt/data/syncthing-data
-  server: k8s-node-1.tgp
+persistence:
+  volume:
+    enabled: true
+    path: /mnt/data/syncthing-data
+    server: k8s-node-1.tgp
+    size: 500Gi
+  volumeClaim:
+    enabled: true
+    size: 500Gi
 
 podSecurityContext:
   runAsUser: 1000
