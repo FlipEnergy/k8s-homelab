@@ -2,14 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# See https://raw.githubusercontent.com/firefly-iii/firefly-iii/main/.env.example for list of all variables
-env:
-  DB_DATABASE: firefly
-
-# podSecurityContext:
-#   fsGroup: 1000
-#   runAsUser: 1000
-
 ingress:
   enabled: true
   annotations: {}

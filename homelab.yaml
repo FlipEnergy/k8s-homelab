@@ -131,7 +131,7 @@ apps:
     namespace: firefly-iii
     enabled: true
     chart: k8s-homelab/firefly-iii
-    version: 0.1.0
+    version: 0.2.0
     valuesFile: firefly-iii/firefly-iii-values.yaml
     secretsFile: firefly-iii/secret.firefly-iii.enc.yaml
     hooks:
