@@ -33,6 +33,7 @@ helmRepos:
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
+  kubeview: https://benc-uk.github.io/kubeview/charts
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
   mattermost: https://helm.mattermost.com
   pcktdmp: https://pcktdmp.github.io/charts
@@ -99,7 +100,7 @@ apps:
     <<: *default
     namespace: kubeview
     enabled: true
-    chart: k8s-homelab/kubeview
+    chart: kubeview/kubeview
     version: 0.1.19
     valuesFile: kubeview/kubeview-values.yaml
 
