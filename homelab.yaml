@@ -27,7 +27,6 @@ namespaces:
   wireguard:
 
 helmRepos:
-  cdwv: https://cdwv.github.io/bitwarden-k8s
   concourse: https://concourse-charts.storage.googleapis.com/
   grafana: https://grafana.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
