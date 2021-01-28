@@ -149,8 +149,8 @@ apps:
     <<: *default
     namespace: mattermost
     enabled: true
-    chart: k8s-homelab/mattermost-team-edition
-    version: 3.20.0
+    chart: mattermost/mattermost-team-edition
+    version: 3.21.0
     valuesFile: mattermost/mattermost-values.yaml
     secretsFile: mattermost/secrets.mattermost-secrets.yaml
     hooks:
