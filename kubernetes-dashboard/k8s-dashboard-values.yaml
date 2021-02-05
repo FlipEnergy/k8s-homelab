@@ -1,12 +1,12 @@
 # Configuration for k8s dashboard values
 
 resources:
-  requests:
-    cpu: 100m
-    memory: 200Mi
   # limits:
-  #   cpu: 2
-  #   memory: 200Mi
+  #   cpu: 500m
+  #   memory: 128Mi
+  requests:
+    cpu: 500m
+    memory: 128Mi
 
 protocolHttp: true
 
@@ -65,3 +65,6 @@ serviceAccount:
 securityContext:
   runAsUser: 1001
   runAsGroup: 2001
+
+nodeSelector:
+  k3s.io/hostname: k8s-node-2.tgp

@@ -37,10 +37,10 @@ ingress:
 
 resources:
   # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
+  #   cpu: 500m
+  #   memory: 64Mi
   requests:
-    cpu: 50m
+    cpu: 500m
     memory: 64Mi
 
 ## Configure grafana dashboard providers
@@ -11660,7 +11660,8 @@ dashboards:
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
-nodeSelector: {}
+nodeSelector:
+  k3s.io/hostname: k8s-node-2.tgp
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

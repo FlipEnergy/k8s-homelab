@@ -1,0 +1,65 @@
+# Override values for archivy.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+persistence:
+  volume:
+    enabled: true
+    path: /mnt/data/archivy-data
+    server: k8s-node-1.tgp
+    storageClass: archivy
+    size: 10Gi
+  volumeClaim:
+    enabled: true
+    storageClass: archivy
+    size: 10Gi
+
+
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: archivy.tgp
+      paths:
+        - path: /
+
+resources:
+  # limits:
+  #   cpu: 200m
+  #   memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64
+
+tolerations: []
+
+affinity: {}
+
+elasticsearch:
+  enabled: true
+
+  volumeClaimTemplate:
+    accessModes: [ "ReadWriteOnce" ]
+    storageClassName: archivy-elasticsearch
+    resources:
+      requests:
+        storage: 30Gi
+
+  persistence:
+    enabled: true
+    labels:
+      # Add default labels for the volumeClaimTemplate of the StatefulSet
+      enabled: false
+    annotations: {}
+
+  nodeSelector:
+    kubernetes.io/arch: amd64

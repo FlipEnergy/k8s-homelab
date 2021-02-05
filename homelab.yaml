@@ -8,9 +8,9 @@ settings:
   kubeContext: default
 
 namespaces:
+  archivy:
   bitwarden:
   concourse:
-  folding-at-home:
   freshrss:
   grafana:
   influxdb:
@@ -36,7 +36,6 @@ helmRepos:
   kubeview: https://benc-uk.github.io/kubeview/charts
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
   mattermost: https://helm.mattermost.com
-  pcktdmp: https://pcktdmp.github.io/charts
   place1: https://place1.github.io/wg-access-server
   stable: https://charts.helm.sh/stable
 
@@ -96,10 +95,20 @@ apps:
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -97
 
+  archivy:
+    <<: *default
+    namespace: archivy
+    enabled: false
+    chart: k8s-homelab/archivy
+    version: 0.1.0
+    valuesFile: archivy/archivy-values.yaml
+    hooks:
+      preInstall: archivy/persistencevolume.yaml
+
   kubeview:
     <<: *default
     namespace: kubeview
-    enabled: true
+    enabled: false
     chart: kubeview/kubeview
     version: 0.1.19
     valuesFile: kubeview/kubeview-values.yaml
@@ -135,15 +144,6 @@ apps:
     hooks:
       preInstall: freshrss/persistencevolume.yaml
     timeout: 360
-
-  folding-at-home:
-    <<: *default
-    namespace: folding-at-home
-    enabled: false
-    chart: pcktdmp/fahclient
-    version: 2.5.4
-    valuesFile: folding-at-home/folding-at-home-values.yaml
-    secretsFile: folding-at-home/secrets.folding-at-home.yaml
 
   mattermost:
     <<: *default

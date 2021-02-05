@@ -19,9 +19,9 @@ ingress:
 resources:
   # limits:
   #   cpu: 100m
-  #   memory: 256Mi
+  #   memory: 128Mi
   requests:
-    cpu: 50m
+    cpu: 100m
     memory: 128Mi
 
 env:
