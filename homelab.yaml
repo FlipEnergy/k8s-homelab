@@ -139,7 +139,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 2.3.0
+    version: 2.4.0
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistencevolume.yaml
@@ -161,7 +161,7 @@ apps:
     namespace: navidrome
     enabled: true
     chart: k8s-at-home/navidrome
-    version: 2.3.0
+    version: 2.4.0
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
       preInstall: navidrome/persistencevolume.yaml
