@@ -38,6 +38,16 @@ nodeSelector:
 elasticsearch:
   enabled: true
 
+  esJavaOpts: "-Xmx1g -Xms1g"
+
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "2Gi"
+    limits:
+      cpu: "500m"
+      memory: "2Gi"
+
   volumeClaimTemplate:
     accessModes: [ "ReadWriteOnce" ]
     storageClassName: archivy-elasticsearch
