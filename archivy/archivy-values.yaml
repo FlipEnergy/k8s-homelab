@@ -14,11 +14,6 @@ persistence:
     storageClass: archivy
     size: 10Gi
 
-
-podSecurityContext:
-  fsGroup: 1000
-  runAsUser: 1000
-
 ingress:
   enabled: true
   annotations: {}
@@ -39,10 +34,6 @@ resources:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-
-tolerations: []
-
-affinity: {}
 
 elasticsearch:
   enabled: true
