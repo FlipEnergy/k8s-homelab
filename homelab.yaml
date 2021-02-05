@@ -108,9 +108,9 @@ apps:
   kubeview:
     <<: *default
     namespace: kubeview
-    enabled: false
+    enabled: true
     chart: kubeview/kubeview
-    version: 0.1.19
+    version: 0.1.20
     valuesFile: kubeview/kubeview-values.yaml
 
   bitwarden:
