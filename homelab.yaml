@@ -100,7 +100,7 @@ apps:
     namespace: archivy
     enabled: true
     chart: k8s-homelab/archivy
-    version: 0.1.0
+    version: 0.1.1
     valuesFile: archivy/archivy-values.yaml
     hooks:
       preInstall: archivy/persistencevolume.yaml
@@ -180,7 +180,7 @@ apps:
     namespace: pretend-youre-xyzzy
     enabled: false
     chart: k8s-homelab/pretend-youre-xyzzy
-    version: 0.1.0
+    version: 0.1.1
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   syncthing:
