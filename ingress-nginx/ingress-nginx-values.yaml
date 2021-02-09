@@ -11,3 +11,9 @@ controller:
   ## DaemonSet or Deployment
   ##
   kind: DaemonSet
+
+  # Will add custom configuration options to Nginx https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
+  config:
+    http-snippet: |
+      client_max_body_size 500M;
+      proxy_cache_path /tmp/nginx_cache levels=1:2 keys_zone=mattermost_cache:10m max_size=3g inactive=120m use_temp_path=off;

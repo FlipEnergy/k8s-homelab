@@ -16,7 +16,7 @@ bitwardenrs:
     enabled: true
     port: 3012
   admin:
-    enabled: true
+    enabled: false
     disableAdminToken: false
     existingSecret:
       enabled: false
