@@ -6,6 +6,7 @@ metadata:
 
 settings:
   kubeContext: default
+  globalMaxHistory: 5
 
 namespaces:
   archivy:
