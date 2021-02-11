@@ -55,9 +55,9 @@ enterprise:
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
-  limits:
-    cpu: 100m
-    memory: 256Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 256Mi
   requests:
     cpu: 100m
     memory: 256Mi

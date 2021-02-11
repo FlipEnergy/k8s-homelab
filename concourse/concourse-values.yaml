@@ -902,6 +902,7 @@ web:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
+    k3s.io/hostname: k8s-node-1.tgp
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/

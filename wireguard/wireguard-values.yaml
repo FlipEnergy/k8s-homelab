@@ -50,5 +50,4 @@ resources:
     cpu: 200m
     memory: 128Mi
 
-nodeSelector:
-  k3s.io/hostname: k8s-node-2.tgp
+nodeSelector: {}
