@@ -37,10 +37,10 @@ ingress:
 
 resources:
   # limits:
-  #   cpu: 500m
+  #   cpu: 250m
   #   memory: 64Mi
   requests:
-    cpu: 500m
+    cpu: 250m
     memory: 64Mi
 
 ## Configure grafana dashboard providers
