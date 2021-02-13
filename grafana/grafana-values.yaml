@@ -9710,7 +9710,7 @@ dashboards:
           "editable": true,
           "gnetId": null,
           "graphTooltip": 0,
-          "id": 1,
+          "id": 2,
           "links": [],
           "panels": [
             {
@@ -9752,7 +9752,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -9880,7 +9880,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -10008,7 +10008,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -10288,7 +10288,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -10568,7 +10568,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -10734,7 +10734,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -11090,7 +11090,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -11408,7 +11408,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -11575,7 +11575,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -11704,7 +11704,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -11832,52 +11832,60 @@ dashboards:
               }
             },
             {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
               "datasource": "Concourse InfluxDB",
               "description": "",
               "fieldConfig": {
                 "defaults": {
-                  "custom": {}
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {},
+                  "mappings": [
+                    {
+                      "from": "",
+                      "id": 1,
+                      "text": "",
+                      "to": "",
+                      "type": 1,
+                      "value": ""
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      }
+                    ]
+                  },
+                  "unit": "short"
                 },
                 "overrides": []
               },
-              "fill": 1,
-              "fillGradient": 0,
               "gridPos": {
                 "h": 9,
                 "w": 12,
                 "x": 0,
                 "y": 45
               },
-              "hiddenSeries": false,
               "id": 10,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "nullPointMode": "null",
               "options": {
-                "alertThreshold": true
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "text": {},
+                "textMode": "auto"
               },
-              "percentage": false,
-              "pluginVersion": "7.3.5",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
+              "pluginVersion": "7.4.0",
               "targets": [
                 {
                   "alias": "$tag_type",
@@ -11918,46 +11926,10 @@ dashboards:
                   "tags": []
                 }
               ],
-              "thresholds": [],
               "timeFrom": null,
-              "timeRegions": [],
               "timeShift": null,
               "title": "Locks Held",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                },
-                {
-                  "format": "short",
-                  "label": null,
-                  "logBase": 1,
-                  "max": null,
-                  "min": null,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false,
-                "alignLevel": null
-              }
+              "type": "stat"
             },
             {
               "aliasColors": {},
@@ -11998,7 +11970,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -12430,7 +12402,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -12596,7 +12568,7 @@ dashboards:
                 "alertThreshold": true
               },
               "percentage": false,
-              "pluginVersion": "7.3.5",
+              "pluginVersion": "7.4.0",
               "pointradius": 2,
               "points": false,
               "renderer": "flot",
@@ -12687,7 +12659,7 @@ dashboards:
             }
           ],
           "refresh": "30s",
-          "schemaVersion": 26,
+          "schemaVersion": 27,
           "style": "dark",
           "tags": [],
           "templating": {
@@ -12713,7 +12685,7 @@ dashboards:
           "timezone": "",
           "title": "Concourse",
           "uid": "FcKaZZvGz",
-          "version": 1
+          "version": 2
         }
 
 ## Node labels for pod assignment
