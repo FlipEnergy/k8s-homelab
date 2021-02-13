@@ -871,11 +871,11 @@ web:
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources:
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
     requests:
-      cpu: 100m
+      cpu: 250m
       memory: 128Mi
 
   ## Configure additional environment variables for the
@@ -901,7 +901,7 @@ web:
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
   nodeSelector:
-    kubernetes.io/arch: amd64
+    # kubernetes.io/arch: amd64
     k3s.io/hostname: k8s-node-1.tgp
 
   ## Service configuration.
@@ -1121,10 +1121,10 @@ worker:
   ##
   resources:
     requests:
-      cpu: 300m
+      cpu: 250m
       memory: 512Mi
     requests:
-      cpu: 300m
+      cpu: 250m
       memory: 512Mi
 
   ## Configure additional environment variables for the

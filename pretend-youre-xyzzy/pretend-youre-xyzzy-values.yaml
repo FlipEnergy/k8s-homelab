@@ -36,13 +36,13 @@ ingress:
         - path: /
 
 resources:
-  # limits:
-  #   cpu: 2
-  #   memory: 1Gi
+  limits:
+    cpu: 2
+    memory: 1Gi
   requests:
     cpu: 250m
     memory: 512Mi
 
 nodeSelector:
-  kubernetes.io/arch: amd64
+  # kubernetes.io/arch: amd64
   k3s.io/hostname: k8s-node-1.tgp

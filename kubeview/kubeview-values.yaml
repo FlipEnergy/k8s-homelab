@@ -18,12 +18,12 @@ ingress:
   tls: []
 
 resources: 
-  # limits:
-  #   cpu: 250m
-  #   memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
   requests:
-    cpu: 250m
-    memory: 64Mi
+    cpu: 100m
+    memory: 128Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64
