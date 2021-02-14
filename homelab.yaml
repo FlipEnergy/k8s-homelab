@@ -99,7 +99,7 @@ apps:
     namespace: archivy
     enabled: true
     chart: k8s-homelab/archivy
-    version: 0.1.1
+    version: 0.1.3
     valuesFile: archivy/archivy-values.yaml
     hooks:
       preInstall: archivy/persistencevolume.yaml
@@ -162,7 +162,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-homelab/owncast
-    version: 0.2.1
+    version: 0.2.2
     valuesFile: owncast/owncast-values.yaml
     secretsFile: owncast/secrets.owncast-config.yaml
 
@@ -171,7 +171,7 @@ apps:
     namespace: pretend-youre-xyzzy
     enabled: false
     chart: k8s-homelab/pretend-youre-xyzzy
-    version: 0.1.1
+    version: 0.1.2
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   syncthing:
@@ -179,7 +179,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-homelab/syncthing
-    version: 0.4.1
+    version: 0.4.2
     valuesFile: syncthing/syncthing-values.yaml
 
   wireguard:
