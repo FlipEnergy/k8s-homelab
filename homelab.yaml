@@ -109,7 +109,7 @@ apps:
   kubeview:
     <<: *default
     namespace: kubeview
-    enabled: true
+    enabled: false
     chart: kubeview/kubeview
     version: 0.1.20
     valuesFile: kubeview/kubeview-values.yaml
