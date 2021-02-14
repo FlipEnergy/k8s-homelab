@@ -18,7 +18,6 @@ namespaces:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
-  kubeview:
   mattermost:
   monitoring:
   navidrome:
@@ -34,7 +33,6 @@ helmRepos:
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
-  kubeview: https://benc-uk.github.io/kubeview/charts
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
   mattermost: https://helm.mattermost.com
   place1: https://place1.github.io/wg-access-server
@@ -105,14 +103,6 @@ apps:
     valuesFile: archivy/archivy-values.yaml
     hooks:
       preInstall: archivy/persistencevolume.yaml
-
-  kubeview:
-    <<: *default
-    namespace: kubeview
-    enabled: false
-    chart: kubeview/kubeview
-    version: 0.1.20
-    valuesFile: kubeview/kubeview-values.yaml
 
   bitwarden:
     <<: *default
