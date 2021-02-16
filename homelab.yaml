@@ -89,7 +89,7 @@ apps:
     namespace: grafana
     enabled: true
     chart: grafana/grafana
-    version: 6.4.1
+    version: 6.4.2
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -97
@@ -130,7 +130,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 3.0.0
+    version: 3.0.1
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistencevolume.yaml
@@ -152,7 +152,7 @@ apps:
     namespace: navidrome
     enabled: true
     chart: k8s-at-home/navidrome
-    version: 3.0.0
+    version: 3.0.1
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
       preInstall: navidrome/persistencevolume.yaml
