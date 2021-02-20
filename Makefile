@@ -3,7 +3,7 @@ syncthing_namespace := syncthing
 
 deploy:
 	docker run --rm -it \
-	-v ~/k8s-homelab:/k8s-homelab \
+	-v $$(pwd):/k8s-homelab \
 	-v ~/.kube/config:/root/.kube/config \
 	-v ~/.gnupg:/root/.gnupg \
 	-w /k8s-homelab \
