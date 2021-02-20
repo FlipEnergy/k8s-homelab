@@ -77,7 +77,7 @@ apps:
     namespace: influxdb
     enabled: true
     chart: influxdata/influxdb
-    version: 4.8.12
+    version: 4.9.13
     valuesFile: influxdb/influxdb-values.yaml
     secretsFile: influxdb/secrets.influxdb-creds.yaml
     hooks:
@@ -89,7 +89,7 @@ apps:
     namespace: grafana
     enabled: true
     chart: grafana/grafana
-    version: 6.4.2
+    version: 6.4.4
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -97
