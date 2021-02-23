@@ -101,7 +101,7 @@ apps:
     namespace: archivy
     enabled: true
     chart: k8s-homelab/archivy
-    version: 0.1.4
+    version: 0.2.0
     valuesFile: archivy/archivy-values.yaml
     hooks:
       preInstall: archivy/persistencevolume.yaml

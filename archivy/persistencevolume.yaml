@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: archivy-elasticsearch
   capacity:
-    storage: 30Gi
+    storage: 10Gi
   accessModes:
     - ReadWriteOnce
   nfs:

@@ -3,16 +3,24 @@
 # Declare variables to be passed into your templates.
 
 persistence:
-  volume:
-    enabled: true
-    path: /mnt/data/syncthing-data/archivy-data
-    server: k8s-node-1.tgp
-    storageClass: archivy
-    size: 10Gi
-  volumeClaim:
-    enabled: true
-    storageClass: archivy
-    size: 10Gi
+  db:
+    volume:
+      enabled: true
+      path: /mnt/data/syncthing-data/archivy-data/db
+      server: k8s-node-1.tgp
+      size: 1Gi
+    volumeClaim:
+      enabled: true
+      size: 1Gi
+  data:
+    volume:
+      enabled: true
+      path: /mnt/data/syncthing-data/archivy-data/data
+      server: k8s-node-1.tgp
+      size: 10Gi
+    volumeClaim:
+      enabled: true
+      size: 10Gi
 
 ingress:
   enabled: true
@@ -53,7 +61,7 @@ elasticsearch:
     storageClassName: archivy-elasticsearch
     resources:
       requests:
-        storage: 30Gi
+        storage: 10Gi
 
   persistence:
     enabled: true
