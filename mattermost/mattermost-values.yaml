@@ -299,7 +299,7 @@ configJSON: {
         "Enable": true
       },
       "com.mattermost.plugin-todo": {
-        "Enable": true
+        "Enable": false
       },
       "com.github.moussetc.mattermost.plugin.giphy": {
         "Enable": true
