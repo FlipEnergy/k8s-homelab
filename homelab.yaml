@@ -189,7 +189,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-homelab/syncthing
-    version: 0.4.3
+    version: 0.5.1
     valuesFile: syncthing/syncthing-values.yaml
 
   wireguard:
