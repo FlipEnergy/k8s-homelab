@@ -34,10 +34,10 @@ ingress:
 
 resources:
   limits:
-    cpu: 250m
+    cpu: 500m
     memory: 256Mi
   requests:
-    cpu: 250m
+    cpu: 50m
     memory: 256Mi
 
 nodeSelector:
@@ -49,12 +49,12 @@ elasticsearch:
   esJavaOpts: "-Xmx1g -Xms1g"
 
   resources:
-    requests:
-      cpu: "500m"
-      memory: "2Gi"
     limits:
-      cpu: "500m"
-      memory: "2Gi"
+      cpu: 500m
+      memory: 2Gi
+    requests:
+      cpu: 250m
+      memory: 2Gi
 
   volumeClaimTemplate:
     accessModes: [ "ReadWriteOnce" ]
