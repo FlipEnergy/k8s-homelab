@@ -1120,9 +1120,9 @@ worker:
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources:
-    limits:
-      cpu: 3
-      memory: 512Mi
+    # limits:
+    #   cpu: 3
+    #   memory: 512Mi
     requests:
       cpu: 250m
       memory: 512Mi
