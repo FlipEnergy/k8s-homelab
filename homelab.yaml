@@ -26,6 +26,7 @@ namespaces:
   pretend-youre-xyzzy:
   syncthing:
   wireguard:
+  whoogle:
 
 helmRepos:
   concourse: https://concourse-charts.storage.googleapis.com/
@@ -101,7 +102,7 @@ apps:
     namespace: archivy
     enabled: true
     chart: k8s-homelab/archivy
-    version: 0.2.0
+    version: 0.3.0
     valuesFile: archivy/archivy-values.yaml
     hooks:
       preInstall: archivy/persistencevolume.yaml
@@ -172,7 +173,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-homelab/owncast
-    version: 0.2.3
+    version: 0.3.0
     valuesFile: owncast/owncast-values.yaml
     secretsFile: owncast/secrets.owncast-config.yaml
 
@@ -181,7 +182,7 @@ apps:
     namespace: pretend-youre-xyzzy
     enabled: false
     chart: k8s-homelab/pretend-youre-xyzzy
-    version: 0.1.2
+    version: 0.2.0
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   syncthing:
@@ -202,3 +203,11 @@ apps:
     secretsFile: wireguard/secrets.wireguard-creds.yaml
     hooks:
       preInstall: wireguard/persistencevolume.yaml
+
+  whoogle:
+    <<: *default
+    namespace: whoogle
+    enabled: true
+    chart: k8s-homelab/whoogle
+    version: 0.2.0
+    valuesFile: whoogle/whoogle-values.yaml
