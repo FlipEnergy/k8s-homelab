@@ -1121,7 +1121,7 @@ worker:
   ##
   resources:
     limits:
-      cpu: 500m
+      cpu: 3
       memory: 512Mi
     requests:
       cpu: 250m
