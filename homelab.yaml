@@ -138,7 +138,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 14.5.3
+    version: 14.6.1
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
@@ -206,6 +206,15 @@ apps:
     chart: k8s-homelab/whoogle
     version: 0.2.0
     valuesFile: whoogle/whoogle-values.yaml
+
+  wikijs:
+    <<: *default
+    namespace: wikijs
+    enabled: true
+    chart: k8s-homelab/wiki
+    version: 2.1.0
+    valuesFile: wikijs/wikijs-values.yaml
+    secretsFile: wikijs/secret.wikijs-creds.yaml
 
   wireguard:
     <<: *default
