@@ -320,6 +320,34 @@ concourse:
     ##
     peerAddress:
 
+    ## Configurations regarding how the web component is able to connect to a postgres
+    ## instance.
+    ##
+    postgres:
+      ## The host to connect to.
+      ##
+      host: postgresql.postgresql.svc.cluster.local
+
+      ## The port to connect to.
+      ##
+      port: 5432
+
+      ## Path to a UNIX domain socket to connect to.
+      ##
+      socket:
+
+      ## Whether or not to use SSL.
+      ##
+      sslmode: disable
+
+      ## Dialing timeout. (0 means wait indefinitely)
+      ##
+      connectTimeout: 5m
+
+      ## The name of the database to use.
+      ##
+      database: concourse
+
     kubernetes:
       ## Enable the use of Kubernetes Secrets as the credential provider for
       ## concourse pipelines.
@@ -1199,47 +1227,14 @@ postgresql:
   ##
   ## Should be set to false if using the chart as a worker only deployment.
   ##
-  enabled: true
-
-  ## PostgreSQL Database to create.
-  ##
-  postgresqlDatabase: concourse
-
-  ## Persistent Volume Storage configuration for PostgreSQL.
-  ##
-  ## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes
-  ##
-  persistence:
-    ## Enable PostgreSQL persistence using Persistent Volume Claims.
-    ##
-    enabled: true
-
-    ## Persistent Volume Storage Class to be used by PersistentVolumes created
-    ## for PostgreSQL.
-    ##
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    ##
-    storageClass: concourse-postgresql
-
-    ## Persistent Volume Access Mode.
-    ##
-    accessModes:
-      - ReadWriteOnce
-
-    ## Persistent Volume Storage Size.
-    ##
-    size: 5Gi
+  enabled: false
 
 ## For Kubernetes RBAC support:
 ##
 rbac:
   ## Enable the creation of RBAC resources.
   ##
-  create: true
+  create: false
 
   ## RBAC Version
   ##

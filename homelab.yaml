@@ -21,6 +21,7 @@ namespaces:
   mattermost:
   navidrome:
   owncast:
+  postgresql:
   pretend-youre-xyzzy:
   syncthing:
   whoogle:
@@ -28,6 +29,7 @@ namespaces:
   wireguard:
 
 helmRepos:
+  bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
   grafana: https://grafana.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
@@ -44,15 +46,17 @@ appsTemplates:
     wait: true
 
 apps:
+  # Ingress
   ingress-nginx:
     <<: *default
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
     version: 3.23.0
-    priority : -100
+    priority : -200
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
+  # Monitoring
   kube-ops-view:
     <<: *default
     namespace: kube-ops-view
@@ -60,7 +64,7 @@ apps:
     chart: stable/kube-ops-view
     version: 1.2.1
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
-    priority : -99
+    priority : -100
 
   k8s-dashboard:
     <<: *default
@@ -71,7 +75,7 @@ apps:
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     hooks:
       preInstall: kubernetes-dashboard/dashboard-admin.yaml
-    priority : -99
+    priority : -100
 
   influxdb:
     <<: *default
@@ -83,7 +87,7 @@ apps:
     secretsFile: influxdb/secrets.influxdb-creds.yaml
     hooks:
       preInstall: influxdb/persistencevolume.yaml
-    priority : -98
+    priority : -99
 
   grafana:
     <<: *default
@@ -93,8 +97,22 @@ apps:
     version: 6.4.4
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
-    priority: -97
+    priority: -98
 
+  # Databases
+  postgresql:
+    <<: *default
+    namespace: postgresql
+    enabled: true
+    chart: bitnami/postgresql
+    version: 10.3.7
+    valuesFile: postgresql/postgres-values.yaml
+    secretsFile: postgresql/secret.postgresql-creds.yaml
+    hooks:
+      preInstall: postgresql/persistencevolume.yaml
+    priority: -98
+
+  # Applications
   archivy:
     <<: *default
     namespace: archivy
@@ -123,8 +141,6 @@ apps:
     version: 14.5.3
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
-    hooks:
-      preInstall: concourse/persistencevolume.yaml
 
   freshrss:
     <<: *default
