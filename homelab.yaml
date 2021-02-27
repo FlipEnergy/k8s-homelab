@@ -18,15 +18,14 @@ namespaces:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
-  kubeview:
   mattermost:
-  monitoring:
   navidrome:
   owncast:
   pretend-youre-xyzzy:
   syncthing:
-  wireguard:
   whoogle:
+  wikijs:
+  wireguard:
 
 helmRepos:
   concourse: https://concourse-charts.storage.googleapis.com/
@@ -36,7 +35,6 @@ helmRepos:
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-homelab: https://flipenergy.github.io/k8s-homelab/
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
-  kubeview: https://benc-uk.github.io/kubeview/charts
   mattermost: https://helm.mattermost.com
   place1: https://place1.github.io/wg-access-server
   stable: https://charts.helm.sh/stable
@@ -80,7 +78,7 @@ apps:
     namespace: influxdb
     enabled: true
     chart: influxdata/influxdb
-    version: 4.9.13
+    version: 4.9.14
     valuesFile: influxdb/influxdb-values.yaml
     secretsFile: influxdb/secrets.influxdb-creds.yaml
     hooks:
@@ -139,14 +137,6 @@ apps:
       preInstall: freshrss/persistencevolume.yaml
     timeout: 360
 
-  kubeview:
-    <<: *default
-    namespace: kubeview
-    enabled: false
-    chart: kubeview/kubeview
-    version: 0.1.20
-    valuesFile: kubeview/kubeview-values.yaml
-
   mattermost:
     <<: *default
     namespace: mattermost
@@ -193,6 +183,14 @@ apps:
     version: 0.5.1
     valuesFile: syncthing/syncthing-values.yaml
 
+  whoogle:
+    <<: *default
+    namespace: whoogle
+    enabled: true
+    chart: k8s-homelab/whoogle
+    version: 0.2.0
+    valuesFile: whoogle/whoogle-values.yaml
+
   wireguard:
     <<: *default
     namespace: wireguard
@@ -203,11 +201,3 @@ apps:
     secretsFile: wireguard/secrets.wireguard-creds.yaml
     hooks:
       preInstall: wireguard/persistencevolume.yaml
-
-  whoogle:
-    <<: *default
-    namespace: whoogle
-    enabled: true
-    chart: k8s-homelab/whoogle
-    version: 0.2.0
-    valuesFile: whoogle/whoogle-values.yaml
