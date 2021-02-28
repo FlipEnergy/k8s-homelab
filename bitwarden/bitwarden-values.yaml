@@ -11,17 +11,27 @@ bitwardenrs:
   signupsAllowed: false
   gui:
     # If you set a different port here, you must also provide it under env
-    port: 80
+    port: 8080
   websockets:
-    enabled: true
+    enabled: false
     port: 3012
   admin:
     enabled: false
     disableAdminToken: false
     existingSecret:
       enabled: true
-      name: ""
-      tokenKey: ""
+      name: bitwarden-admin-token
+      tokenKey: token
+
+env:
+  ROCKET_PORT: "8080"
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
 
 service:
   type: ClusterIP

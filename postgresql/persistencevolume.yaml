@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/postgresql
+    path: /mnt/data/syncthing-data/postgresql
     server: k8s-node-1.tgp

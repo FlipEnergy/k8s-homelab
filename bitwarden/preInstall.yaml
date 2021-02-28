@@ -9,5 +9,13 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/bitwarden
+    path: /mnt/data/syncthing-data/bitwarden
     server: k8s-node-1.tgp
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bitwarden-admin-token
+type: Opaque
+data:
+  token: bm90X3VzZWQK

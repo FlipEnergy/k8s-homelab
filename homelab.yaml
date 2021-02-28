@@ -120,7 +120,7 @@ apps:
     version: 2.0.0
     valuesFile: bitwarden/bitwarden-values.yaml
     hooks:
-      preInstall: bitwarden/persistencevolume.yaml
+      preInstall: bitwarden/preInstall.yaml
 
   concourse:
     <<: *default
