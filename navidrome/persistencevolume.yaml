@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/navidrome-data
+    path: /mnt/data/syncthing-data/navidrome-data
     server: k8s-node-1.tgp
 
 ---
