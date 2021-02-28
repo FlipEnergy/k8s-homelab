@@ -9,7 +9,6 @@ settings:
   globalMaxHistory: 5
 
 namespaces:
-  archivy:
   bitwarden:
   concourse:
   freshrss:
@@ -113,16 +112,6 @@ apps:
     priority: -98
 
   # Applications
-  archivy:
-    <<: *default
-    namespace: archivy
-    enabled: true
-    chart: k8s-homelab/archivy
-    version: 0.3.0
-    valuesFile: archivy/archivy-values.yaml
-    hooks:
-      preInstall: archivy/persistencevolume.yaml
-
   bitwarden:
     <<: *default
     namespace: bitwarden
