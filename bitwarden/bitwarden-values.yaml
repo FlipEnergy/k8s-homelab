@@ -55,7 +55,8 @@ resources:
     cpu: 50m
     memory: 128Mi
 
-nodeSelector: {}
+nodeSelector:
+  k3s.io/hostname: k8s-node-2.tgp
 
 persistence:
   type: statefulset
