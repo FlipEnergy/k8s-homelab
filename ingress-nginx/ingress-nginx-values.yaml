@@ -13,7 +13,7 @@ controller:
   kind: Deployment
 
   nodeSelector:
-    k3s.io/hostname: k8s-node-1.tgp
+    kubernetes.io/hostname: k8s-node-1.tgp
 
   # Will add custom configuration options to Nginx https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
   config:

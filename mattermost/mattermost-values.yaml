@@ -50,7 +50,7 @@ resources:
     memory: 256Mi
 
 nodeSelector:
-  k3s.io/hostname: k8s-node-1.tgp
+  kubernetes.io/hostname: k8s-node-1.tgp
 
 mysql:
   enabled: true
@@ -71,7 +71,7 @@ mysql:
 
   nodeSelector:
     # kubernetes.io/arch: amd64
-    k3s.io/hostname: k8s-node-1.tgp
+    kubernetes.io/hostname: k8s-node-1.tgp
 
 # NOTE: These acts as the default values for the config.json file read by the
 # mattermost server itself. You can override the configJSON object just like any

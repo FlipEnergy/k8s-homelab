@@ -39,4 +39,4 @@ persistence:
     skipuninstall: true
 
 nodeSelector:
-  k3s.io/hostname: k8s-node-1.tgp
+  kubernetes.io/hostname: k8s-node-1.tgp

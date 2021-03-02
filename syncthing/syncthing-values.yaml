@@ -51,4 +51,4 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 # nodeSelector:
-#   k3s.io/hostname: k8s-node-1.tgp
+#   kubernetes.io/hostname: k8s-node-1.tgp

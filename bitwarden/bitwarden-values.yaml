@@ -56,7 +56,7 @@ resources:
     memory: 128Mi
 
 nodeSelector:
-  k3s.io/hostname: k8s-node-2.tgp
+  kubernetes.io/hostname: k8s-node-2.tgp
 
 persistence:
   type: statefulset

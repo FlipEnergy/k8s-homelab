@@ -45,4 +45,4 @@ resources:
 
 nodeSelector:
   # kubernetes.io/arch: amd64
-  k3s.io/hostname: k8s-node-1.tgp
+  kubernetes.io/hostname: k8s-node-1.tgp
