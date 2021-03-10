@@ -51,7 +51,7 @@ apps:
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 3.23.0
+    version: 3.24.0
     priority : -200
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
