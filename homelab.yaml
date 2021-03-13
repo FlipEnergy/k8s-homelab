@@ -168,7 +168,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-homelab/owncast
-    version: 0.5.0
+    version: 0.6.0
     valuesFile: owncast/owncast-values.yaml
 
   pretend-youre-xyzzy:

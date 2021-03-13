@@ -4,6 +4,10 @@
 
 replicaCount: 1
 
+image:
+  repository: gabekangas/owncast
+  pullPolicy: Always
+
 persistence:
   volume:
     enabled: true
