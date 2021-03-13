@@ -78,28 +78,6 @@ ingress:
 nodeSelector:
   kubernetes.io/hostname: k8s-node-1.tgp
 
-## InfluxDB configuration
-## ref: https://docs.influxdata.com/influxdb/v1.7/administration/config
-config:
-  reporting_disabled: false
-  rpc: {}
-  meta: {}
-  data:
-    max-values-per-tag: 0
-  coordinator: {}
-  retention: {}
-  shard_precreation: {}
-  monitor: {}
-  http: {}
-  logging: {}
-  subscriber: {}
-  graphite: {}
-  collectd: {}
-  opentsdb: {}
-  udp: {}
-  continuous_queries: {}
-  tls: {}
-
 # Allow executing custom init scripts
 #
 # If the container finds any files with the extensions .sh or .iql inside of the
