@@ -199,8 +199,8 @@ apps:
     <<: *default
     namespace: wikijs
     enabled: true
-    chart: k8s-homelab/wiki
-    version: 2.1.0
+    chart: k8s-at-home/wikijs
+    version: 2.5.191
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 

@@ -2,6 +2,21 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+image:
+  repository: requarks/wiki
+  pullPolicy: IfNotPresent
+  tag: 2.5.191
+
+env:
+  # -- Set the time zone, e.g. Europe/Amsterdam
+  TZ: 
+  # -- mysql, postgres, mariadb, mssql or sqlite
+  DB_TYPE: postgres
+  # -- Host of the database
+  DB_HOST: postgresql.postgresql.svc.cluster.local
+  # -- Port of the database
+  DB_PORT: 5432
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -18,26 +33,17 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
-  # Annotations applied for services such as externalDNS or
-  # service type LoadBalancer
-  # type: LoadBalancer
-  # httpsPort: 443
-  # annotations: {}
+  # -- The default port is 3000 used by wiki.ks
+  port:
+    port: 80
+    targetPort: 3000
 
 ingress:
   enabled: true
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
   hosts:
     - host: wiki.pleasenoddos.com
-      paths: ["/"]
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+      paths:
+        - path: /
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -45,24 +51,15 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 500m
+    cpu: 1
     memory: 256Mi
   requests:
     cpu: 100m
     memory: 128Mi
 
-nodeSelector:
-  # kubernetes.io/arch: amd64
+nodeSelector: {}
+  # kubernetes.io/hostname: k8s-node-1.tgp
 
 tolerations: []
 
 affinity: {}
-
-## Configuration values for the postgresql dependency.
-## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
-##
-postgresql:
-  ## Use the PostgreSQL chart dependency.
-  ## Set to false if bringing your own PostgreSQL, and set secret value postgresql-uri.
-  ##
-  enabled: false
