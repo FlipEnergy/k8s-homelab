@@ -24,6 +24,8 @@ service:
     port: 80
   backend:
     type: LoadBalancer
+  discovery:
+    type: LoadBalancer
 
 ingress:
   enabled: true
