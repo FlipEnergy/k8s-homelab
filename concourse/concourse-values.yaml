@@ -1092,7 +1092,7 @@ worker:
   ## Using Deployment leads to ephemeral workers. Meaning workers do not
   ## share state between restarts
   ##
-  kind: Deployment
+  kind: StatefulSet
 
   ## Override the components name (defaults to worker).
   ##
