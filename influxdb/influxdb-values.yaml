@@ -85,7 +85,7 @@ config:
   rpc: {}
   meta: {}
   data:
-    max-values-per-tag: "1000000"
+    max-values-per-tag: 0
   coordinator: {}
   retention: {}
   shard_precreation: {}
