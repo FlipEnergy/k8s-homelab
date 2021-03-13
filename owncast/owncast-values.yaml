@@ -4,26 +4,21 @@
 
 replicaCount: 1
 
-podSecurityContext: {}
-  # fsGroup: 2000
-
-securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+persistence:
+  volume:
+    enabled: true
+    path: /mnt/data/owncast-data
+    server: k8s-node-1.tgp
+    size: 1Gi
+  volumeClaim:
+    enabled: true
+    size: 1Gi
 
 service:
   web:
     type: ClusterIP
-    port: 80
-    # loadBalancerIP:
   rtmp:
     type: LoadBalancer
-    port: 1935
-    # loadBalancerIP:
 
 ingress:
   enabled: true
