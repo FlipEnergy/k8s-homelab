@@ -8,8 +8,6 @@ image:
   tag: 2.5.191
 
 env:
-  # -- Set the time zone, e.g. Europe/Amsterdam
-  TZ: 
   # -- mysql, postgres, mariadb, mssql or sqlite
   DB_TYPE: postgres
   # -- Host of the database
@@ -35,8 +33,7 @@ securityContext: {}
 service:
   # -- The default port is 3000 used by wiki.ks
   port:
-    port: 80
-    targetPort: 3000
+    port: 3000
 
 ingress:
   enabled: true
