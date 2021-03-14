@@ -5,6 +5,7 @@
 image:
   repository: deluan/navidrome
   pullPolicy: IfNotPresent
+  # Pin to newer version
   tag: 0.40.0
 
 env:

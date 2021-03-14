@@ -4,6 +4,7 @@ replicaCount: 1
 image:
   repository: bitwardenrs/server
   pullPolicy: IfNotPresent
+  # Pin to newer version
   tag: 1.19.0
 
 bitwardenrs:
