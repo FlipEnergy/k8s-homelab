@@ -15,6 +15,7 @@ namespaces:
   grafana:
   influxdb:
   ingress-nginx:
+  kanboard:
   k8s-dashboard:
   kube-ops-view:
   mattermost:
@@ -141,6 +142,15 @@ apps:
     hooks:
       preInstall: freshrss/persistencevolume.yaml
     timeout: 360
+
+  kanboard:
+    <<: *default
+    namespace: kanboard
+    enabled: true
+    chart: k8s-at-home/kanboard
+    version: 1.0.0
+    valuesFile: kanboard/kanboard-values.yaml
+    secretsFile: kanboard/secrets.kanboard-creds.yaml
 
   mattermost:
     <<: *default
