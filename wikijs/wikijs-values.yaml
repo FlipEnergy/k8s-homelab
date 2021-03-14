@@ -2,10 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Override image
 image:
   repository: requarks/wiki
-#   pullPolicy: IfNotPresent
-#   tag: 2.5.191
+  pullPolicy: IfNotPresent
+  tag: 2.5.191
 
 env:
   # -- mysql, postgres, mariadb, mssql or sqlite
