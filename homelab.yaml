@@ -118,7 +118,7 @@ apps:
     namespace: bitwarden
     enabled: true
     chart: k8s-at-home/bitwardenrs
-    version: 2.0.0
+    version: 2.0.2
     valuesFile: bitwarden/bitwarden-values.yaml
     hooks:
       preInstall: bitwarden/preInstall.yaml
@@ -137,7 +137,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 3.2.0
+    version: 3.2.1
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistencevolume.yaml
@@ -148,7 +148,7 @@ apps:
     namespace: kanboard
     enabled: true
     chart: k8s-at-home/kanboard
-    version: 1.1.0
+    version: 1.1.1
     valuesFile: kanboard/kanboard-values.yaml
     secretsFile: kanboard/secrets.kanboard-creds.yaml
 
@@ -168,7 +168,7 @@ apps:
     namespace: navidrome
     enabled: true
     chart: k8s-at-home/navidrome
-    version: 3.2.0
+    version: 3.2.1
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
       preInstall: navidrome/persistencevolume.yaml
@@ -210,7 +210,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 3.0.0
+    version: 3.0.1
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
