@@ -78,6 +78,10 @@ ingress:
 nodeSelector:
   kubernetes.io/hostname: k8s-node-1.tgp
 
+env:
+  - name: INFLUXDB_DATA_MAX_VALUES_PER_TAG
+    value: "0"
+
 # Allow executing custom init scripts
 #
 # If the container finds any files with the extensions .sh or .iql inside of the
