@@ -6,7 +6,7 @@ image:
   repository: deluan/navidrome
   pullPolicy: IfNotPresent
   # Pin to newer version
-  tag: 0.40.0
+  tag: 0.41.0
 
 env:
   ND_DATAFOLDER: /data
