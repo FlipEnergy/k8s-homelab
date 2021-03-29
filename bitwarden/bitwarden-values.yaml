@@ -5,7 +5,7 @@ image:
   repository: bitwardenrs/server
   pullPolicy: IfNotPresent
   # Pin to newer version
-  tag: 1.19.0
+  tag: 1.20.0
 
 bitwardenrs:
   domain: https://bitwarden.pleasenoddos.com
