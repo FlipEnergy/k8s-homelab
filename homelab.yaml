@@ -146,7 +146,7 @@ apps:
     namespace: kanboard
     enabled: true
     chart: k8s-at-home/kanboard
-    version: 2.1.1
+    version: 2.1.2
     valuesFile: kanboard/kanboard-values.yaml
     secretsFile: kanboard/secrets.kanboard-creds.yaml
 
