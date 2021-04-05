@@ -92,7 +92,7 @@ apps:
     namespace: grafana
     enabled: true
     chart: grafana/grafana
-    version: 6.7.1
+    version: 6.7.2
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -98
@@ -189,7 +189,7 @@ apps:
     namespace: whoogle
     enabled: true
     chart: k8s-homelab/whoogle
-    version: 0.2.3
+    version: 0.2.4
     valuesFile: whoogle/whoogle-values.yaml
 
   wikijs:
