@@ -181,7 +181,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-homelab/syncthing
-    version: 0.6.0
+    version: 0.6.1
     valuesFile: syncthing/syncthing-values.yaml
 
   whoogle:
