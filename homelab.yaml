@@ -164,9 +164,11 @@ apps:
     <<: *default
     namespace: owncast
     enabled: true
-    chart: k8s-homelab/owncast
-    version: 0.6.0
+    chart: k8s-at-home/owncast
+    version: 1.0.0
     valuesFile: owncast/owncast-values.yaml
+    hooks:
+      preInstall: owncast/persistencevolume.yaml
 
   pretend-youre-xyzzy:
     <<: *default
