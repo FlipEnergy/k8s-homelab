@@ -41,3 +41,43 @@ resources:
 nodeSelector:
   # kubernetes.io/arch: amd64
   kubernetes.io/hostname: k8s-node-1.tgp
+
+
+# ###
+# image:
+#   repository: gabekangas/owncast
+#   pullPolicy: IfNotPresent
+#   tag: 0.0.6
+
+# service:
+#   port:
+#     port: 8080
+#   additionalServices:
+#     - enabled: true
+#       nameSuffix: rtmp
+#       type: LoadBalancer
+#       port:
+#         port: 1935
+#         name: rtmp
+#         protocol: TCP
+#         targetPort: 1935
+#       externalTrafficPolicy: Local
+
+# ingress:
+#   enabled: true
+#   hosts:
+#     - host: owncast.pleasenoddos.com
+#       paths:
+#         - path: /
+
+# # Persistence is required for persistent configuration changes
+# persistence:
+#   config:
+#     enabled: true
+#     emptyDir:
+#       enabled: false
+#     mountPath: /app/data
+#     storageClass: owncast
+#     accessMode: ReadWriteOnce
+#     size: 10Mi
+#     # skipuninstall: false

@@ -44,7 +44,6 @@ resources:
 persistence:
   config:
     enabled: true
-    emptyDir: false
     mountPath: /data
     accessMode: ReadWriteOnce
     # Persistent Volume Storage Class
@@ -54,7 +53,6 @@ persistence:
     skipuninstall: true
   music:
     enabled: true
-    emptyDir: false
     mountPath: /music
     accessMode: ReadOnlyMany
     # Persistent Volume Storage Class
