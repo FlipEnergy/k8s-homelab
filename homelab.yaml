@@ -159,7 +159,7 @@ apps:
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
       preInstall: navidrome/persistencevolume.yaml
-  
+
   owncast:
     <<: *default
     namespace: owncast
