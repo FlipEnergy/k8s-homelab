@@ -4,6 +4,9 @@
 
 replicas: 2
 
+strategy:
+  type: RollingUpdate
+
 # See more environment variables in the whoogle documentation
 # https://github.com/benbusby/whoogle-search#environment-variables
 env:
