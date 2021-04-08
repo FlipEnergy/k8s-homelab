@@ -4,6 +4,11 @@
 
 replicas: 2
 
+image:
+  repository: benbusby/whoogle-search
+  pullPolicy: IfNotPresent
+  tag: 0.4.1
+
 strategy:
   type: RollingUpdate
 
