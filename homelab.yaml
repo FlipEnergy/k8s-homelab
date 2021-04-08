@@ -126,7 +126,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 15.0.1
+    version: 15.0.2
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
