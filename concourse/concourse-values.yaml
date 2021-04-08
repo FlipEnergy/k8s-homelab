@@ -380,7 +380,7 @@ concourse:
       configPath:
 
     influxdb:
-      enabled: false
+      enabled: true
 
       ## Number of points to batch together when emitting to InfluxDB
       ##

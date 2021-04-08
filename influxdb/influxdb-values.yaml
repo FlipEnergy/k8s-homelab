@@ -93,4 +93,4 @@ initScripts:
     init_homelab.iql: |+
       CREATE DATABASE "homelab" WITH DURATION 30d REPLICATION 1 NAME "rp_30d"
     init_concourse.iql: |+
-      CREATE DATABASE "concourse" WITH DURATION 30d REPLICATION 1 NAME "rp_30d"
+      CREATE DATABASE "concourse" WITH DURATION 7d REPLICATION 1 NAME "rp_7d"
