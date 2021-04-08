@@ -7,7 +7,7 @@ deploy:
 	-v ~/.kube/config:/root/.kube/config \
 	-v ~/.gnupg:/root/.gnupg \
 	-w /k8s-homelab \
-	praqma/helmsman:v3.6.6 \
+	praqma/helmsman:v3.6.7 \
 	helmsman $(options) -p 3 -show-diff --apply -f homelab.yaml
 
 destroy:

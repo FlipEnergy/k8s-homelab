@@ -69,7 +69,7 @@ apps:
     namespace: k8s-dashboard
     enabled: true
     chart: kubernetes-dashboard/kubernetes-dashboard
-    version: 4.0.1
+    version: 4.0.2
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     hooks:
       preInstall: kubernetes-dashboard/dashboard-admin.yaml
@@ -103,7 +103,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.3.7
+    version: 10.3.15
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
@@ -126,7 +126,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 14.6.2
+    version: 15.0.1
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
