@@ -103,7 +103,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.3.15
+    version: 10.3.16
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
