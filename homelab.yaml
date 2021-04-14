@@ -182,9 +182,11 @@ apps:
     <<: *default
     namespace: syncthing
     enabled: true
-    chart: k8s-homelab/syncthing
-    version: 0.6.1
+    chart: k8s-at-home/syncthing
+    version: 1.0.0
     valuesFile: syncthing/syncthing-values.yaml
+    hooks:
+      preInstall: syncthing/persistencevolume.yaml
 
   whoogle:
     <<: *default

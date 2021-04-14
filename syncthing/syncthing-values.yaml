@@ -2,55 +2,51 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+image:
+  repository: syncthing/syncthing
+  pullPolicy: IfNotPresent
+  tag: 1.15.1
 
-persistence:
-  volume:
-    enabled: true
-    path: /mnt/data/syncthing-data
-    server: k8s-node-1.tgp
-    size: 500Gi
-  volumeClaim:
-    enabled: true
-    size: 500Gi
+service:
+  port:
+    port: 8384
+  additionalServices:
+  - enabled: true
+    nameSuffix: listen
+    type: LoadBalancer
+    port:
+      port: 22000
+      name: listen
+      protocol: TCP
+      targetPort: 22000
+    externalTrafficPolicy: Local
+  - enabled: true
+    nameSuffix: discovery
+    type: LoadBalancer
+    port:
+      port: 21027
+      name: discovery
+      protocol: UDP
+      targetPort: 21027
+    externalTrafficPolicy: Local
 
 podSecurityContext:
   runAsUser: 1000
   fsGroup: 1000
 
-service:
-  website:
-    type: ClusterIP
-    port: 80
-  backend:
-    type: LoadBalancer
-  discovery:
-    type: LoadBalancer
-
 ingress:
   enabled: true
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: syncthing.tgp
-      paths:
-        - path: /
+  - host: syncthing.tgp
+    paths:
+      - path: /
 
-resources:
-  limits:
-    cpu: 1
-    memory: 1Gi
-  requests:
-    cpu: 250m
-    memory: 256Mi
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
-
-# nodeSelector:
-#   kubernetes.io/hostname: k8s-node-1.tgp
+persistence:
+  data:
+    enabled: true
+    emptyDir:
+      enabled: false
+    mountPath: /var/syncthing
+    storageClass: syncthing
+    accessMode: ReadWriteOnce
+    size: 500Gi
