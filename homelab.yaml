@@ -115,7 +115,7 @@ apps:
     namespace: bitwarden
     enabled: true
     chart: k8s-at-home/bitwardenrs
-    version: 2.1.6
+    version: 2.1.7
     valuesFile: bitwarden/bitwarden-values.yaml
     hooks:
       preInstall: bitwarden/preInstall.yaml
@@ -174,7 +174,7 @@ apps:
     namespace: pretend-youre-xyzzy
     enabled: false
     chart: k8s-at-home/pretend-youre-xyzzy
-    version: 1.0.0
+    version: 1.0.1
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   syncthing:
