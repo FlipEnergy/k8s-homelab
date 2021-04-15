@@ -34,7 +34,6 @@ helmRepos:
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
-  k8s-homelab: https://flipenergy.github.io/k8s-homelab/
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
   place1: https://place1.github.io/wg-access-server
   stable: https://charts.helm.sh/stable
@@ -174,8 +173,8 @@ apps:
     <<: *default
     namespace: pretend-youre-xyzzy
     enabled: false
-    chart: k8s-homelab/pretend-youre-xyzzy
-    version: 0.2.0
+    chart: k8s-at-home/pretend-youre-xyzzy
+    version: 1.0.0
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   syncthing:
