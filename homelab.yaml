@@ -115,7 +115,7 @@ apps:
     namespace: bitwarden
     enabled: true
     chart: k8s-at-home/bitwardenrs
-    version: 2.1.7
+    version: 2.1.6
     valuesFile: bitwarden/bitwarden-values.yaml
     hooks:
       preInstall: bitwarden/preInstall.yaml
