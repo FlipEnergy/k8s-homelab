@@ -3,6 +3,10 @@ Just repo that holds stuff for my personal homelab k8s environment. There's a lo
 
 A lot of the charts I use are from [k8s-at-home](https://github.com/k8s-at-home/charts) and I'm now also a contributer there.
 
+# Publicly accessable services
+- check out my website which has info and posts about my homelab: https://pleasenoddos.com
+- Search with https://whoogle.pleasenoddos.com/
+- Watch my stream at https://owncast.pleasenoddos.com
 
 # Requirements
 - Kubectl
