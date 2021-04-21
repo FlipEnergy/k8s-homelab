@@ -1,26 +1,15 @@
-# Override values for FreshRSS.
-
-# image:
-#     repository: flipenergy/focalboard
-#     pullPolicy: IfNotPresent
-#     tag: 0.6.1
+# Override values for Focalboard.
 
 # See more environment variables in the image entrypoint script
 # https://github.com/FlipEnergy/concourse-pipelines/blob/master/images/focalboard/entrypoint.sh
 env:
-    SERVER_ROOT: https://focalboard.pleasenoddos.com
-    DBTYPE: postgres
-
-strategy:
-    type: Recreate
-
-service:
-    port:
-        port: 8000
+  SERVER_ROOT: https://focalboard.pleasenoddos.com
+  # DBTYPE: postgres
+  ENABLE_TELEMETRY: 'false'
 
 ingress:
-    enabled: true
-    hosts:
-    -   host: focalboard.pleasenoddos.com
-        paths:
-        -   path: /
+  enabled: true
+  hosts:
+  - host: focalboard.pleasenoddos.com
+    paths:
+    - path: /
