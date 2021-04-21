@@ -129,6 +129,15 @@ apps:
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
+  focalboard:
+    <<: *default
+    namespace: focalboard
+    enabled: false
+    chart: k8s-at-home/focalboard
+    version: 0.1.0
+    valuesFile: focalboard/focalboard-values.yaml
+    secretsFile: focalboard/secret.focalboard-creds.yaml
+
   freshrss:
     <<: *default
     namespace: freshrss
