@@ -4,7 +4,7 @@
 # https://github.com/FlipEnergy/concourse-pipelines/blob/master/images/focalboard/entrypoint.sh
 env:
   SERVER_ROOT: https://focalboard.pleasenoddos.com
-  # DBTYPE: postgres
+  DBTYPE: postgres
   ENABLE_TELEMETRY: 'false'
 
 ingress:

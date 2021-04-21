@@ -130,7 +130,7 @@ apps:
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
-  focalboard:
+  focal:
     <<: *default
     namespace: focalboard
     enabled: true
