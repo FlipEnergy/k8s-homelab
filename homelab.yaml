@@ -16,7 +16,6 @@ namespaces:
   grafana:
   influxdb:
   ingress-nginx:
-  kanboard:
   k8s-dashboard:
   kube-ops-view:
   navidrome:
@@ -149,15 +148,6 @@ apps:
     hooks:
       preInstall: freshrss/persistencevolume.yaml
     timeout: 360
-
-  kanboard:
-    <<: *default
-    namespace: kanboard
-    enabled: true
-    chart: k8s-at-home/kanboard
-    version: 2.3.1
-    valuesFile: kanboard/kanboard-values.yaml
-    secretsFile: kanboard/secrets.kanboard-creds.yaml
 
   navidrome:
     <<: *default
