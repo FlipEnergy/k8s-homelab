@@ -3,13 +3,13 @@
 # See more environment variables in the image entrypoint script
 # https://github.com/FlipEnergy/concourse-pipelines/blob/master/images/focalboard/entrypoint.sh
 env:
-  SERVER_ROOT: https://focalboard.pleasenoddos.com
+  SERVER_ROOT: https://focal.pleasenoddos.com
   DBTYPE: postgres
   ENABLE_TELEMETRY: 'false'
 
 ingress:
   enabled: true
   hosts:
-  - host: focalboard.pleasenoddos.com
+  - host: focal.pleasenoddos.com
     paths:
     - path: /
