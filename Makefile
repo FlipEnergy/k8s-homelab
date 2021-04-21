@@ -1,4 +1,3 @@
-monitoring_namespace := monitoring
 syncthing_namespace := syncthing
 
 deploy:
@@ -24,12 +23,12 @@ destroy:
 	kubectl delete namespace $(syncthing_namespace)
 	kubectl delete namespace wireguard
 	kubectl delete namespace whoogle
-	kubectl delete namespace $(monitoring_namespace)
+	kubectl delete namespace influxdb
 
 # InfluxDB
 
 clean-influx:
-	kubectl delete -n $(monitoring_namespace) pvc influxdb-data-influxdb-0
+	kubectl delete -n influxdb pvc influxdb-data-influxdb-0
 	kubectl delete pv influxdb
 
 # Bitwarden
