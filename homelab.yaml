@@ -134,7 +134,7 @@ apps:
     namespace: focalboard
     enabled: true
     chart: k8s-at-home/focalboard
-    version: 1.0.0
+    version: 1.0.1
     valuesFile: focalboard/focalboard-values.yaml
     secretsFile: focalboard/secret.focalboard-creds.yaml
 
