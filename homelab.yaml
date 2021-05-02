@@ -134,7 +134,7 @@ apps:
     namespace: focalboard
     enabled: true
     chart: k8s-at-home/focalboard
-    version: 1.0.1
+    version: 1.0.2
     valuesFile: focalboard/focalboard-values.yaml
     secretsFile: focalboard/secret.focalboard-creds.yaml
 
@@ -143,7 +143,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 4.3.1
+    version: 4.3.2
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistencevolume.yaml
@@ -182,7 +182,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 1.1.1
+    version: 1.1.2
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistencevolume.yaml
