@@ -1,0 +1,72 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+#
+
+image:
+  repository: vaultwarden/server
+  pullPolicy: IfNotPresent
+  tag: 1.21.0
+
+strategy:
+  type: Recreate
+
+# See more environment variables in the Vaultwarden documentation
+# https://github.com/dani-garcia/vaultwarden/blob/main/.env.template
+
+
+env:
+  DATA_FOLDER: "data"
+  SIGNUPS_ALLOWED: "false"
+  WEBSOCKET_ENABLED: "true"
+  ROCKET_PORT: 8080
+  DOMAIN: https://bitwarden.pleasenoddos.com
+
+service:
+  port:
+    port: 8080
+    name: www
+  additionalPorts:
+    port:
+      port: 3012
+      name: websocket
+
+ingress:
+  enabled: true
+  hosts:
+    - host: bitwarden.pleasenoddos.com
+      paths:
+        - path: /
+          pathType: Prefix
+        - path: /notifications/hub/negotiate
+          pathType: Prefix
+        - path: /notifications/hub
+          pathType: Prefix
+          servicePort: 3012
+
+persistence:
+  data:
+    enabled: true
+    emptydir:
+      enabled: false
+    mountPath: /data
+    storageClass: vaultwarden
+    accessMode: ReadWriteOnce
+    size: 50Mi
+
+podSecurityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+nodeSelector:
+  kubernetes.io/hostname: k8s-node-2.tgp

@@ -9,7 +9,7 @@ settings:
   globalMaxHistory: 5
 
 namespaces:
-  bitwarden:
+  vaultwarden:
   concourse:
   focalboard:
   freshrss:
@@ -83,7 +83,7 @@ apps:
     valuesFile: influxdb/influxdb-values.yaml
     secretsFile: influxdb/secrets.influxdb-creds.yaml
     hooks:
-      preInstall: influxdb/persistencevolume.yaml
+      preInstall: influxdb/persistenceVolume.yaml
     priority : -99
 
   grafana:
@@ -106,20 +106,10 @@ apps:
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
-      preInstall: postgresql/persistencevolume.yaml
+      preInstall: postgresql/persistenceVolume.yaml
     priority: -98
 
   # Applications
-  bitwarden:
-    <<: *default
-    namespace: bitwarden
-    enabled: true
-    chart: k8s-at-home/bitwardenrs
-    version: 2.1.10
-    valuesFile: bitwarden/bitwarden-values.yaml
-    hooks:
-      preInstall: bitwarden/preInstall.yaml
-
   concourse:
     <<: *default
     namespace: concourse
@@ -146,7 +136,7 @@ apps:
     version: 4.4.0
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
-      preInstall: freshrss/persistencevolume.yaml
+      preInstall: freshrss/persistenceVolume.yaml
     timeout: 360
 
   navidrome:
@@ -157,7 +147,7 @@ apps:
     version: 4.4.0
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
-      preInstall: navidrome/persistencevolume.yaml
+      preInstall: navidrome/persistenceVolume.yaml
 
   owncast:
     <<: *default
@@ -167,7 +157,7 @@ apps:
     version: 1.2.0
     valuesFile: owncast/owncast-values.yaml
     hooks:
-      preInstall: owncast/persistencevolume.yaml
+      preInstall: owncast/persistenceVolume.yaml
 
   pretend-youre-xyzzy:
     <<: *default
@@ -185,7 +175,18 @@ apps:
     version: 1.2.0
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
-      preInstall: syncthing/persistencevolume.yaml
+      preInstall: syncthing/persistenceVolume.yaml
+
+  vaultwarden:
+    <<: *default
+    namespace: vaultwarden
+    enabled: true
+    chart: k8s-at-home/vaultwarden
+    version: 1.0.0
+    valuesFile: vaultwarden/vaultwarden-values.yaml
+    secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
+    hooks:
+      preInstall: vaultwarden/persistenceVolume.yaml
 
   whoogle:
     <<: *default
@@ -213,4 +214,4 @@ apps:
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
     hooks:
-      preInstall: wireguard/persistencevolume.yaml
+      preInstall: wireguard/persistenceVolume.yaml
