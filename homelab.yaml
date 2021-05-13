@@ -68,7 +68,7 @@ apps:
     namespace: k8s-dashboard
     enabled: true
     chart: kubernetes-dashboard/kubernetes-dashboard
-    version: 4.0.3
+    version: 4.1.0
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     hooks:
       preInstall: kubernetes-dashboard/dashboard-admin.yaml
