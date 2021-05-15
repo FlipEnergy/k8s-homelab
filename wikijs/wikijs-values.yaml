@@ -4,8 +4,6 @@
 
 # Override image
 image:
-  repository: requarks/wiki
-  pullPolicy: IfNotPresent
   tag: 2.5.201
 
 env:

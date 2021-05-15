@@ -6,8 +6,6 @@
 #
 
 image:
-  repository: vaultwarden/server
-  pullPolicy: IfNotPresent
   tag: 1.21.0
 
 strategy:

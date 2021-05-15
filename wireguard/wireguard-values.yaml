@@ -35,10 +35,6 @@ ingress:
     - wireguard.tgp
   tls: []
 
-image:
-  repository: place1/wg-access-server
-  pullPolicy: IfNotPresent
-
 strategy:
   type: Recreate
 
