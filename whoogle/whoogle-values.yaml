@@ -5,7 +5,7 @@
 replicas: 2
 
 image:
-  tag: 0.4.1
+  tag: 0.5.0
 
 strategy:
   type: RollingUpdate
@@ -22,6 +22,7 @@ env:
   # WHOOGLE_CONFIG_GET_ONLY:
   WHOOGLE_CONFIG_URL: https://whoogle.pleasenoddos.com/
   # WHOOGLE_CONFIG_STYLE:
+  WHOOGLE_CONFIG_DISABLE: 1
 
 ingress:
   enabled: true
