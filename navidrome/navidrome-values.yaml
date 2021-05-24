@@ -5,7 +5,7 @@
 replicas: 2
 
 image:
-  tag: 0.42.1
+  tag: 0.43.0
 
 env:
   ND_DATAFOLDER: /data
