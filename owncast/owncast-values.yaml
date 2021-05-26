@@ -1,9 +1,8 @@
 # Override values for owncast.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
 
 image:
   tag: 0.0.7
+  pullPolicy: Always
 
 service:
   port:
@@ -36,7 +35,6 @@ persistence:
     storageClass: owncast
     accessMode: ReadWriteOnce
     size: 10Mi
-    # skipuninstall: false
 
 resources:
   limits:

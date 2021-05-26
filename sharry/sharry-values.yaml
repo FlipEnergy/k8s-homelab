@@ -1,0 +1,31 @@
+# Override values for sharry.
+
+image:
+  tag: 1.8.0
+  pullPolicy: Always
+
+args:
+  - "/opt/sharry.conf"
+
+ingress:
+  enabled: true
+  # -- Enable large file support with those annotations for nginx
+  annotations:
+    nginx.ingress.kubernetes.io/client-body-buffer-size: "2048m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+  hosts:
+    - host: sharry.pleasenoddos.com
+      paths:
+        - path: /
+
+resources:
+  limits:
+    cpu: 1
+    memory: 1Gi
+  requests:
+    cpu: 50m
+    memory: 256Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64

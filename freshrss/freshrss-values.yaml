@@ -1,9 +1,8 @@
 # Override values for FreshRSS.
 
-# image:
-#   repository: linuxserver/freshrss
-#   pullPolicy: IfNotPresent
-#   tag: version-1.17.0
+image:
+  tag: version-1.17.0
+  pullPolicy: Always
 
 service:
   port:

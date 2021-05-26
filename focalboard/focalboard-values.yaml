@@ -1,8 +1,8 @@
 # Override values for Focalboard.
 
 image:
-  pullPolicy: Always
   tag: 0.6.7
+  pullPolicy: Always
 
 # See more environment variables in the image entrypoint script
 # https://github.com/FlipEnergy/concourse-pipelines/blob/master/images/focalboard/entrypoint.sh
@@ -17,3 +17,6 @@ ingress:
   - host: focal.pleasenoddos.com
     paths:
     - path: /
+
+nodeSelector:
+  kubernetes.io/arch: amd64

@@ -1,9 +1,7 @@
 # Default values for wiki.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
 
-# Override image
 image:
+  # Override image
   repository: requarks/wiki
   pullPolicy: IfNotPresent
   tag: 2.5.201
@@ -55,9 +53,5 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-nodeSelector: {}
-  # kubernetes.io/hostname: k8s-node-1.tgp
-
-tolerations: []
-
-affinity: {}
+nodeSelector:
+  kubernetes.io/hostname: k8s-node-1.tgp

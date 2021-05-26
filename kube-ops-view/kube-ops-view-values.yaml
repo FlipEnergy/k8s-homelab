@@ -37,14 +37,9 @@ rbac:
   # Ignored if rbac.create is true
   serviceAccountName: default
 
-## Additional pod labels
-## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-podLabels: {}
-affinity: {}
 nodeSelector:
   kubernetes.io/arch: amd64
   # kubernetes.io/hostname: k8s-node-1.tgp
-tolerations: []
 
 # pass env vars like this: helm [...] --set env.ENV_NAME=env_value,env.ENV_NAME2=env_value2
 env: {}

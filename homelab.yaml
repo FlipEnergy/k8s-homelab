@@ -22,6 +22,7 @@ namespaces:
   owncast:
   postgresql:
   pretend-youre-xyzzy:
+  sharry:
   syncthing:
   whoogle:
   wikijs:
@@ -166,6 +167,15 @@ apps:
     chart: k8s-at-home/pretend-youre-xyzzy
     version: 1.0.1
     valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
+
+  sharry:
+    <<: *default
+    namespace: sharry
+    enabled: true
+    chart: k8s-at-home/sharry
+    version: 3.1.0
+    valuesFile: sharry/sharry-values.yaml
+    secretsFile: sharry/secret.sharry-config.yaml
 
   syncthing:
     <<: *default
