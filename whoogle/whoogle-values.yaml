@@ -3,7 +3,7 @@
 replicas: 2
 
 image:
-  tag: 0.5.0
+  tag: 0.5.1
   pullPolicy: Always
 
 strategy:
