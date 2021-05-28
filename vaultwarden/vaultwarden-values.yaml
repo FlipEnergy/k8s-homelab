@@ -9,7 +9,7 @@ image:
   tag: 1.21.0
 
 strategy:
-  type: Recreate
+  type: RollingUpdate
 
 # See more environment variables in the Vaultwarden documentation
 # https://github.com/dani-garcia/vaultwarden/blob/main/.env.template

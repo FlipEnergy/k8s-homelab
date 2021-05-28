@@ -4,6 +4,9 @@ image:
   tag: version-1.17.0
   pullPolicy: Always
 
+strategy:
+  type: RollingUpdate
+
 service:
   port:
     port: 80

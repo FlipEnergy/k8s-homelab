@@ -6,6 +6,9 @@ image:
   tag: 0.43.0
   pullPolicy: Always
 
+strategy:
+  type: RollingUpdate
+
 env:
   ND_DATAFOLDER: /data
   ND_IMAGECACHESIZE: 512MB

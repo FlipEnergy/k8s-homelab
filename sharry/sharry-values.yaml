@@ -4,9 +4,6 @@ image:
   tag: 1.8.0
   pullPolicy: Always
 
-args:
-  - "/opt/sharry.conf"
-
 ingress:
   enabled: true
   # -- Enable large file support with those annotations for nginx

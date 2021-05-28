@@ -4,6 +4,9 @@ image:
   tag: 0.6.7
   pullPolicy: Always
 
+strategy:
+  type: RollingUpdate
+
 # See more environment variables in the image entrypoint script
 # https://github.com/FlipEnergy/concourse-pipelines/blob/master/images/focalboard/entrypoint.sh
 env:

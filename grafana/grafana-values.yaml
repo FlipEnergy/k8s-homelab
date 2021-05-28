@@ -1,7 +1,7 @@
 rbac:
-  create: true
+  create: false
 serviceAccount:
-  create: true
+  create: false
 
 securityContext:
   runAsUser: 472
