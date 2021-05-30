@@ -1,0 +1,21 @@
+
+image:
+  repository: ghcr.io/k8s-at-home/haste-server
+  pullPolicy: Always
+  tag: latest
+
+strategy:
+  type: RollingUpdate
+
+# See more environment variables in the haste-server documentation
+# https://github.com/rwaltr/haste-server
+env:
+  STORAGE_FILEPATH: "/config"
+  STORAGE_TYPE: "file"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: haste.pleasenoddos.com
+      paths:
+        - path: /
