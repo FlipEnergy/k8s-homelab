@@ -201,7 +201,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 1.0.0
+    version: 1.0.1
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
