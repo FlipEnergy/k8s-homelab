@@ -51,7 +51,7 @@ apps:
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 3.31.0
+    version: 3.32.0
     priority : -200
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
@@ -93,7 +93,7 @@ apps:
     namespace: grafana
     enabled: true
     chart: grafana/grafana
-    version: 6.9.2
+    version: 6.11.0
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -98
