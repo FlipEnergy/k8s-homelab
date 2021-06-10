@@ -23,26 +23,25 @@ env:
   DOMAIN: https://bitwarden.pleasenoddos.com
 
 service:
-  port:
-    port: 8080
-    name: www
-  additionalPorts:
-    port:
-      port: 3012
-      name: websocket
-
+  main:
+    ports:
+      http:
+        port: 8080
 ingress:
-  enabled: true
-  hosts:
-    - host: bitwarden.pleasenoddos.com
-      paths:
-        - path: /
-          pathType: Prefix
-        - path: /notifications/hub/negotiate
-          pathType: Prefix
-        - path: /notifications/hub
-          pathType: Prefix
-          servicePort: 3012
+  main:
+    enabled: true
+    hosts:
+      - host: bitwarden.pleasenoddos.com
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              port: 8080
+          - path: /notifications/hub/negotiate
+            pathType: Prefix
+            service:
+              port: 8080
+    tls: []
 
 persistence:
   data:

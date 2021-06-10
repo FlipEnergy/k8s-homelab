@@ -14,8 +14,9 @@ env:
   STORAGE_TYPE: "file"
 
 ingress:
-  enabled: true
-  hosts:
-    - host: haste.pleasenoddos.com
-      paths:
-        - path: /
+  main:
+    enabled: true
+    hosts:
+      - host: haste.pleasenoddos.com
+        paths:
+          - path: /
