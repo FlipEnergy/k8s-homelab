@@ -12690,6 +12690,16 @@ dashboards:
           "version": 2
         }
 
+grafana.ini:
+  auth:
+    disable_login_form: true
+  auth.anonymous:
+    enabled: true
+    org_name: Main Org.
+    org_role: Admin
+  auth.basic:
+    enabled: true
+
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
 #

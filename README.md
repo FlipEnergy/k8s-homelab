@@ -8,7 +8,6 @@ A lot of the charts I use are from [k8s-at-home](https://github.com/k8s-at-home/
 - Search with https://whoogle.pleasenoddos.com/
 - Use my instance of Focalboard at https://focal.pleasenoddos.com (I do not guarantee your data will never be lost but I personally use this)
 - Watch my stream at https://stream.pleasenoddos.com
-- paste stuff with haste at https://haste.pleasenoddos.com
 
 # Requirements
 - Kubectl

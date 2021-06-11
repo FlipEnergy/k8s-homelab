@@ -14,7 +14,6 @@ namespaces:
   focalboard:
   freshrss:
   grafana:
-  hastebin:
   influxdb:
   ingress-nginx:
   k8s-dashboard:
@@ -70,7 +69,7 @@ apps:
     namespace: k8s-dashboard
     enabled: true
     chart: kubernetes-dashboard/kubernetes-dashboard
-    version: 4.3.0
+    version: 4.3.1
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     hooks:
       preInstall: kubernetes-dashboard/dashboard-admin.yaml
@@ -93,7 +92,7 @@ apps:
     namespace: grafana
     enabled: true
     chart: grafana/grafana
-    version: 6.12.0
+    version: 6.12.1
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -98
@@ -140,14 +139,6 @@ apps:
     hooks:
       preInstall: freshrss/persistenceVolume.yaml
     timeout: 360
-
-  hastebin:
-    <<: *default
-    namespace: hastebin
-    enabled: true
-    chart: k8s-at-home/haste-server
-    version: 2.0.0
-    valuesFile: hastebin/hastebin-values.yaml
 
   navidrome:
     <<: *default
