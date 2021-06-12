@@ -8179,8 +8179,6 @@ grafana.ini:
     enabled: true
     org_name: Main Org.
     org_role: Admin
-  auth.basic:
-    enabled: true
 
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
