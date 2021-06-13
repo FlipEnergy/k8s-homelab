@@ -91,7 +91,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1623476056454,
+          "iteration": 1623561119753,
           "links": [],
           "panels": [
             {
@@ -1640,8 +1640,8 @@ dashboards:
                     "lastNotNull",
                     "max"
                   ],
-                  "displayMode": "list",
-                  "placement": "bottom"
+                  "displayMode": "table",
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -1780,7 +1780,7 @@ dashboards:
                     "min"
                   ],
                   "displayMode": "table",
-                  "placement": "bottom"
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -2645,7 +2645,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 3
+          "version": 2
         }
     network:
       json: |
