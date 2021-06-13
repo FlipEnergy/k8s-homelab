@@ -11,7 +11,7 @@ settings:
 namespaces:
   vaultwarden:
   concourse:
-  focalboard:
+  focal:
   freshrss:
   grafana:
   influxdb:
@@ -122,10 +122,10 @@ apps:
 
   focal:
     <<: *default
-    namespace: focalboard
+    namespace: focal
     enabled: true
     chart: k8s-at-home/focalboard
-    version: 1.1.0
+    version: 2.0.0
     valuesFile: focalboard/focalboard-values.yaml
     secretsFile: focalboard/secret.focalboard-creds.yaml
 
@@ -134,7 +134,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 4.4.0
+    version: 5.0.0
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistenceVolume.yaml

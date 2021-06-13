@@ -1,5 +1,7 @@
 # Override values for Focalboard.
 
+nameOverride: focal
+
 image:
   tag: 0.6.7
   pullPolicy: Always
@@ -7,19 +9,20 @@ image:
 strategy:
   type: RollingUpdate
 
-# See more environment variables in the image entrypoint script
-# https://github.com/FlipEnergy/concourse-pipelines/blob/master/images/focalboard/entrypoint.sh
+# -- environment variables. See more environment variables in the [image entrypoint script](https://github.com/FlipEnergy/container-images/blob/main/focalboard/entrypoint.sh)
+# @default -- See below
 env:
   SERVER_ROOT: https://focal.pleasenoddos.com
   DBTYPE: postgres
   ENABLE_TELEMETRY: 'false'
 
 ingress:
-  enabled: true
-  hosts:
-  - host: focal.pleasenoddos.com
-    paths:
-    - path: /
+  main:
+    enabled: true
+    hosts:
+      - host: focal.pleasenoddos.com
+        paths:
+          - path: /
 
 nodeSelector:
   kubernetes.io/arch: amd64
