@@ -93,7 +93,7 @@ apps:
     namespace: grafana
     enabled: true
     chart: grafana/grafana
-    version: 6.12.1
+    version: 6.13.0
     valuesFile: grafana/grafana-values.yaml
     secretsFile: grafana/secrets.grafana-secrets.yaml
     priority: -98
