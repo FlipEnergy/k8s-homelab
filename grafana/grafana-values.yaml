@@ -91,11 +91,11 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1623561119753,
+          "iteration": 1623959199009,
           "links": [],
           "panels": [
             {
-              "collapsed": false,
+              "collapsed": true,
               "datasource": null,
               "gridPos": {
                 "h": 1,
@@ -103,245 +103,260 @@ dashboards:
                 "x": 0,
                 "y": 0
               },
+              "id": 65178,
+              "panels": [
+                {
+                  "cacheTimeout": null,
+                  "datasource": "HomeLab InfluxDB",
+                  "description": "",
+                  "fieldConfig": {
+                    "defaults": {
+                      "color": {
+                        "mode": "thresholds"
+                      },
+                      "mappings": [
+                        {
+                          "options": {
+                            "match": "null",
+                            "result": {
+                              "text": "N/A"
+                            }
+                          },
+                          "type": "special"
+                        }
+                      ],
+                      "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                          {
+                            "color": "dark-green",
+                            "value": null
+                          },
+                          {
+                            "color": "semi-dark-green",
+                            "value": 7
+                          },
+                          {
+                            "color": "light-green",
+                            "value": 30
+                          },
+                          {
+                            "color": "super-light-green",
+                            "value": 120
+                          }
+                        ]
+                      },
+                      "unit": "s"
+                    },
+                    "overrides": []
+                  },
+                  "gridPos": {
+                    "h": 3,
+                    "w": 6,
+                    "x": 0,
+                    "y": 1
+                  },
+                  "id": 54758,
+                  "interval": "1m",
+                  "links": [],
+                  "maxDataPoints": 100,
+                  "maxPerRow": 6,
+                  "options": {
+                    "colorMode": "background",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "horizontal",
+                    "reduceOptions": {
+                      "calcs": [
+                        "lastNotNull"
+                      ],
+                      "fields": "",
+                      "values": false
+                    },
+                    "text": {},
+                    "textMode": "auto"
+                  },
+                  "pluginVersion": "8.0.1",
+                  "repeat": "server",
+                  "targets": [
+                    {
+                      "dsType": "influxdb",
+                      "groupBy": [
+                        {
+                          "interval": "auto",
+                          "params": [
+                            "auto"
+                          ],
+                          "type": "time"
+                        }
+                      ],
+                      "measurement": "system_uptime",
+                      "orderByTime": "ASC",
+                      "policy": "default",
+                      "query": "SELECT last(\"uptime\") AS \"value\" FROM \"system\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                      "rawQuery": true,
+                      "refId": "A",
+                      "resultFormat": "time_series",
+                      "select": [
+                        [
+                          {
+                            "params": [
+                              "value"
+                            ],
+                            "type": "field"
+                          },
+                          {
+                            "params": [],
+                            "type": "mean"
+                          }
+                        ]
+                      ],
+                      "tags": []
+                    }
+                  ],
+                  "title": "$server Uptime",
+                  "transformations": [],
+                  "type": "stat"
+                },
+                {
+                  "cacheTimeout": null,
+                  "datasource": "HomeLab InfluxDB",
+                  "description": "",
+                  "fieldConfig": {
+                    "defaults": {
+                      "color": {
+                        "mode": "thresholds"
+                      },
+                      "mappings": [
+                        {
+                          "options": {
+                            "0": {
+                              "text": "No"
+                            },
+                            "1": {
+                              "text": "Yes"
+                            }
+                          },
+                          "type": "value"
+                        },
+                        {
+                          "options": {
+                            "match": "null",
+                            "result": {
+                              "text": "N/A"
+                            }
+                          },
+                          "type": "special"
+                        }
+                      ],
+                      "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                          {
+                            "color": "blue",
+                            "value": null
+                          },
+                          {
+                            "color": "green",
+                            "value": 0
+                          },
+                          {
+                            "color": "red",
+                            "value": 1
+                          }
+                        ]
+                      },
+                      "unit": "none"
+                    },
+                    "overrides": []
+                  },
+                  "gridPos": {
+                    "h": 3,
+                    "w": 6,
+                    "x": 0,
+                    "y": 4
+                  },
+                  "id": 65107,
+                  "interval": "1m",
+                  "links": [],
+                  "maxDataPoints": 100,
+                  "maxPerRow": 6,
+                  "options": {
+                    "colorMode": "value",
+                    "graphMode": "none",
+                    "justifyMode": "auto",
+                    "orientation": "horizontal",
+                    "reduceOptions": {
+                      "calcs": [
+                        "lastNotNull"
+                      ],
+                      "fields": "/^filestat\\.last$/",
+                      "values": false
+                    },
+                    "text": {},
+                    "textMode": "value"
+                  },
+                  "pluginVersion": "8.0.1",
+                  "repeat": "server",
+                  "targets": [
+                    {
+                      "dsType": "influxdb",
+                      "groupBy": [
+                        {
+                          "interval": "auto",
+                          "params": [
+                            "auto"
+                          ],
+                          "type": "time"
+                        }
+                      ],
+                      "measurement": "system_uptime",
+                      "orderByTime": "ASC",
+                      "policy": "default",
+                      "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
+                      "rawQuery": true,
+                      "refId": "A",
+                      "resultFormat": "time_series",
+                      "select": [
+                        [
+                          {
+                            "params": [
+                              "value"
+                            ],
+                            "type": "field"
+                          },
+                          {
+                            "params": [],
+                            "type": "mean"
+                          }
+                        ]
+                      ],
+                      "tags": []
+                    }
+                  ],
+                  "timeFrom": null,
+                  "timeShift": null,
+                  "title": "$server Requires Restart",
+                  "transformations": [],
+                  "type": "stat"
+                }
+              ],
+              "title": "Uptime",
+              "type": "row"
+            },
+            {
+              "collapsed": false,
+              "datasource": null,
+              "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 1
+              },
               "id": 65058,
               "panels": [],
               "title": "SUMMARY",
               "type": "row"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "HomeLab InfluxDB",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "mappings": [
-                    {
-                      "options": {
-                        "match": "null",
-                        "result": {
-                          "text": "N/A"
-                        }
-                      },
-                      "type": "special"
-                    }
-                  ],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "dark-green",
-                        "value": null
-                      },
-                      {
-                        "color": "semi-dark-green",
-                        "value": 7
-                      },
-                      {
-                        "color": "light-green",
-                        "value": 30
-                      },
-                      {
-                        "color": "super-light-green",
-                        "value": 120
-                      }
-                    ]
-                  },
-                  "unit": "s"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 6,
-                "x": 0,
-                "y": 1
-              },
-              "id": 54758,
-              "interval": "1m",
-              "links": [],
-              "maxDataPoints": 100,
-              "maxPerRow": 6,
-              "options": {
-                "colorMode": "background",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-              },
-              "pluginVersion": "8.0.1",
-              "repeat": "server",
-              "targets": [
-                {
-                  "dsType": "influxdb",
-                  "groupBy": [
-                    {
-                      "interval": "auto",
-                      "params": [
-                        "auto"
-                      ],
-                      "type": "time"
-                    }
-                  ],
-                  "measurement": "system_uptime",
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"uptime\") AS \"value\" FROM \"system\" WHERE \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "value"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": []
-                }
-              ],
-              "title": "$server Uptime",
-              "transformations": [],
-              "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "HomeLab InfluxDB",
-              "description": "",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "mappings": [
-                    {
-                      "options": {
-                        "0": {
-                          "text": "No"
-                        },
-                        "1": {
-                          "text": "Yes"
-                        }
-                      },
-                      "type": "value"
-                    },
-                    {
-                      "options": {
-                        "match": "null",
-                        "result": {
-                          "text": "N/A"
-                        }
-                      },
-                      "type": "special"
-                    }
-                  ],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "blue",
-                        "value": null
-                      },
-                      {
-                        "color": "green",
-                        "value": 0
-                      },
-                      {
-                        "color": "red",
-                        "value": 1
-                      }
-                    ]
-                  },
-                  "unit": "none"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 3,
-                "w": 6,
-                "x": 0,
-                "y": 4
-              },
-              "id": 65107,
-              "interval": "1m",
-              "links": [],
-              "maxDataPoints": 100,
-              "maxPerRow": 6,
-              "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "/^filestat\\.last$/",
-                  "values": false
-                },
-                "text": {},
-                "textMode": "value"
-              },
-              "pluginVersion": "8.0.1",
-              "repeat": "server",
-              "targets": [
-                {
-                  "dsType": "influxdb",
-                  "groupBy": [
-                    {
-                      "interval": "auto",
-                      "params": [
-                        "auto"
-                      ],
-                      "type": "time"
-                    }
-                  ],
-                  "measurement": "system_uptime",
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT last(\"exists\") FROM \"filestat\" WHERE  \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($__interval) fill(null)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "value"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": []
-                }
-              ],
-              "timeFrom": null,
-              "timeShift": null,
-              "title": "$server Requires Restart",
-              "transformations": [],
-              "type": "stat"
             },
             {
               "cacheTimeout": null,
@@ -387,7 +402,7 @@ dashboards:
                 "h": 5,
                 "w": 6,
                 "x": 0,
-                "y": 7
+                "y": 2
               },
               "id": 65066,
               "interval": "1m",
@@ -496,7 +511,7 @@ dashboards:
                 "h": 6,
                 "w": 6,
                 "x": 0,
-                "y": 12
+                "y": 7
               },
               "id": 65065,
               "interval": "1m",
@@ -608,7 +623,7 @@ dashboards:
                 "h": 6,
                 "w": 6,
                 "x": 0,
-                "y": 18
+                "y": 13
               },
               "id": 2165,
               "interval": "1m",
@@ -741,7 +756,7 @@ dashboards:
                 "h": 6,
                 "w": 6,
                 "x": 0,
-                "y": 24
+                "y": 19
               },
               "id": 2092,
               "interval": "1m",
@@ -842,7 +857,7 @@ dashboards:
                 "h": 5,
                 "w": 6,
                 "x": 0,
-                "y": 30
+                "y": 25
               },
               "id": 65073,
               "interval": null,
@@ -925,7 +940,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 35
+                "y": 30
               },
               "id": 65060,
               "panels": [],
@@ -985,7 +1000,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 36
+                "y": 31
               },
               "id": 28239,
               "interval": "1m",
@@ -1111,7 +1126,7 @@ dashboards:
                 "h": 10,
                 "w": 6,
                 "x": 0,
-                "y": 45
+                "y": 40
               },
               "id": 65081,
               "interval": "1m",
@@ -1236,7 +1251,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 55
+                "y": 50
               },
               "id": 65064,
               "interval": "1m",
@@ -1362,7 +1377,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 64
+                "y": 59
               },
               "id": 54694,
               "interval": "1m",
@@ -1504,7 +1519,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 64
+                "y": 59
               },
               "id": 12054,
               "interval": "1m",
@@ -1628,7 +1643,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 74
+                "y": 69
               },
               "id": 65104,
               "interval": "1m",
@@ -1766,7 +1781,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 84
+                "y": 79
               },
               "id": 65106,
               "interval": "1m",
@@ -1925,7 +1940,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 94
+                "y": 89
               },
               "id": 52240,
               "interval": "1m",
@@ -2048,7 +2063,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 94
+                "y": 89
               },
               "id": 60200,
               "interval": "1m",
@@ -2233,7 +2248,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 103
+                "y": 98
               },
               "id": 13782,
               "interval": "1m",
@@ -2418,7 +2433,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 103
+                "y": 98
               },
               "id": 56720,
               "interval": "1m",
