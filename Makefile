@@ -1,6 +1,8 @@
+pihole_server_ip := 192.168.1.11
 syncthing_namespace := syncthing
 
 deploy:
+	kubectl get configmap -n kube-system coredns -o json | sed 's+/etc/resolv.conf+$(pihole_server_ip)+g' | kubectl apply -f -
 	docker run --rm -it \
 	-v $$(pwd):/k8s-homelab \
 	-v ~/.kube/config:/root/.kube/config \
