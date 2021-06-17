@@ -2667,8 +2667,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 3,
-          "iteration": 1623475833116,
+          "id": 2,
+          "iteration": 1623943351506,
           "links": [],
           "panels": [
             {
@@ -2756,7 +2756,7 @@ dashboards:
                     "min"
                   ],
                   "displayMode": "table",
-                  "placement": "bottom"
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -2941,7 +2941,7 @@ dashboards:
                     "min"
                   ],
                   "displayMode": "table",
-                  "placement": "bottom"
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -3511,7 +3511,7 @@ dashboards:
                     "max"
                   ],
                   "displayMode": "table",
-                  "placement": "bottom"
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -4572,7 +4572,7 @@ dashboards:
           "timezone": "browser",
           "title": "Network",
           "uid": "H6MPuNHks",
-          "version": 3
+          "version": 2
         }
     Nginx:
       json: |
