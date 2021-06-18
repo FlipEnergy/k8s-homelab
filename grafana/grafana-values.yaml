@@ -90,8 +90,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 4,
-          "iteration": 1623959199009,
+          "id": 2,
+          "iteration": 1623990430755,
           "links": [],
           "panels": [
             {
@@ -1264,8 +1264,8 @@ dashboards:
                     "max",
                     "min"
                   ],
-                  "displayMode": "list",
-                  "placement": "bottom"
+                  "displayMode": "table",
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -2660,7 +2660,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 2
+          "version": 1
         }
     network:
       json: |
