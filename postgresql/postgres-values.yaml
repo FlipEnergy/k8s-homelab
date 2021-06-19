@@ -64,7 +64,7 @@ postgresqlUsername: postgres
 
 ## Maximum total connections
 ##
-postgresqlMaxConnections:
+postgresqlMaxConnections: 300
 
 ## Maximum connections for the postgres user
 ##
