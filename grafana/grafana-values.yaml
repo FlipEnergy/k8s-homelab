@@ -90,8 +90,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 2,
-          "iteration": 1623990430755,
+          "id": 4,
+          "iteration": 1624311923659,
           "links": [],
           "panels": [
             {
@@ -152,7 +152,7 @@ dashboards:
                   },
                   "gridPos": {
                     "h": 3,
-                    "w": 6,
+                    "w": 24,
                     "x": 0,
                     "y": 1
                   },
@@ -160,7 +160,7 @@ dashboards:
                   "interval": "1m",
                   "links": [],
                   "maxDataPoints": 100,
-                  "maxPerRow": 6,
+                  "maxPerRow": 12,
                   "options": {
                     "colorMode": "background",
                     "graphMode": "none",
@@ -176,8 +176,9 @@ dashboards:
                     "text": {},
                     "textMode": "auto"
                   },
-                  "pluginVersion": "8.0.1",
+                  "pluginVersion": "8.0.3",
                   "repeat": "server",
+                  "repeatDirection": "h",
                   "targets": [
                     {
                       "dsType": "influxdb",
@@ -272,7 +273,7 @@ dashboards:
                   },
                   "gridPos": {
                     "h": 3,
-                    "w": 6,
+                    "w": 24,
                     "x": 0,
                     "y": 4
                   },
@@ -280,7 +281,7 @@ dashboards:
                   "interval": "1m",
                   "links": [],
                   "maxDataPoints": 100,
-                  "maxPerRow": 6,
+                  "maxPerRow": 12,
                   "options": {
                     "colorMode": "value",
                     "graphMode": "none",
@@ -296,8 +297,9 @@ dashboards:
                     "text": {},
                     "textMode": "value"
                   },
-                  "pluginVersion": "8.0.1",
+                  "pluginVersion": "8.0.3",
                   "repeat": "server",
+                  "repeatDirection": "h",
                   "targets": [
                     {
                       "dsType": "influxdb",
@@ -377,113 +379,6 @@ dashboards:
                       "type": "special"
                     }
                   ],
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green",
-                        "value": null
-                      },
-                      {
-                        "color": "orange",
-                        "value": 40
-                      },
-                      {
-                        "color": "red",
-                        "value": 55
-                      }
-                    ]
-                  },
-                  "unit": "celsius"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 5,
-                "w": 6,
-                "x": 0,
-                "y": 2
-              },
-              "id": 65066,
-              "interval": "1m",
-              "links": [],
-              "maxDataPoints": 100,
-              "maxPerRow": 6,
-              "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                  "calcs": [
-                    "lastNotNull"
-                  ],
-                  "fields": "",
-                  "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-              },
-              "pluginVersion": "8.0.1",
-              "repeat": "server",
-              "targets": [
-                {
-                  "dsType": "influxdb",
-                  "groupBy": [
-                    {
-                      "interval": "auto",
-                      "params": [
-                        "auto"
-                      ],
-                      "type": "time"
-                    }
-                  ],
-                  "measurement": "system_uptime",
-                  "orderByTime": "ASC",
-                  "policy": "default",
-                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input|soc-thermal|cpu_thermal_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
-                  "rawQuery": true,
-                  "refId": "A",
-                  "resultFormat": "time_series",
-                  "select": [
-                    [
-                      {
-                        "params": [
-                          "value"
-                        ],
-                        "type": "field"
-                      },
-                      {
-                        "params": [],
-                        "type": "mean"
-                      }
-                    ]
-                  ],
-                  "tags": []
-                }
-              ],
-              "title": "CPU Core Temp: $server",
-              "type": "stat"
-            },
-            {
-              "cacheTimeout": null,
-              "datasource": "HomeLab InfluxDB",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "mappings": [
-                    {
-                      "options": {
-                        "match": "null",
-                        "result": {
-                          "text": "N/A"
-                        }
-                      },
-                      "type": "special"
-                    }
-                  ],
                   "max": 100,
                   "min": 0,
                   "thresholds": {
@@ -509,15 +404,15 @@ dashboards:
               },
               "gridPos": {
                 "h": 6,
-                "w": 6,
+                "w": 4,
                 "x": 0,
-                "y": 7
+                "y": 2
               },
               "id": 65065,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
-              "maxPerRow": 6,
+              "maxPerRow": 12,
               "options": {
                 "fieldOptions": {
                   "calcs": [
@@ -536,8 +431,9 @@ dashboards:
                 "showThresholdMarkers": true,
                 "text": {}
               },
-              "pluginVersion": "8.0.1",
+              "pluginVersion": "8.0.3",
               "repeat": "server",
+              "repeatDirection": "h",
               "targets": [
                 {
                   "dsType": "influxdb",
@@ -621,15 +517,15 @@ dashboards:
               },
               "gridPos": {
                 "h": 6,
-                "w": 6,
+                "w": 4,
                 "x": 0,
-                "y": 13
+                "y": 8
               },
               "id": 2165,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
-              "maxPerRow": 6,
+              "maxPerRow": 12,
               "options": {
                 "fieldOptions": {
                   "calcs": [
@@ -648,8 +544,9 @@ dashboards:
                 "showThresholdMarkers": true,
                 "text": {}
               },
-              "pluginVersion": "8.0.1",
+              "pluginVersion": "8.0.3",
               "repeat": "server",
+              "repeatDirection": "h",
               "targets": [
                 {
                   "dsType": "influxdb",
@@ -754,14 +651,15 @@ dashboards:
               },
               "gridPos": {
                 "h": 6,
-                "w": 6,
+                "w": 4,
                 "x": 0,
-                "y": 19
+                "y": 14
               },
               "id": 2092,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
+              "maxPerRow": 12,
               "options": {
                 "displayLabels": [
                   "percent",
@@ -785,6 +683,7 @@ dashboards:
               },
               "pluginVersion": "8.0.1",
               "repeat": "server",
+              "repeatDirection": "h",
               "targets": [
                 {
                   "alias": "Used",
@@ -855,15 +754,15 @@ dashboards:
               },
               "gridPos": {
                 "h": 5,
-                "w": 6,
+                "w": 4,
                 "x": 0,
-                "y": 25
+                "y": 20
               },
               "id": 65073,
               "interval": null,
               "links": [],
               "maxDataPoints": 100,
-              "maxPerRow": 6,
+              "maxPerRow": 12,
               "options": {
                 "colorMode": "value",
                 "graphMode": "area",
@@ -879,8 +778,9 @@ dashboards:
                 "text": {},
                 "textMode": "auto"
               },
-              "pluginVersion": "8.0.1",
+              "pluginVersion": "8.0.3",
               "repeat": "server",
+              "repeatDirection": "h",
               "targets": [
                 {
                   "dsType": "influxdb",
@@ -931,6 +831,114 @@ dashboards:
               "timeFrom": null,
               "timeShift": null,
               "title": "Total Threads: $server",
+              "type": "stat"
+            },
+            {
+              "cacheTimeout": null,
+              "datasource": "HomeLab InfluxDB",
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "mappings": [
+                    {
+                      "options": {
+                        "match": "null",
+                        "result": {
+                          "text": "N/A"
+                        }
+                      },
+                      "type": "special"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "orange",
+                        "value": 40
+                      },
+                      {
+                        "color": "red",
+                        "value": 55
+                      }
+                    ]
+                  },
+                  "unit": "celsius"
+                },
+                "overrides": []
+              },
+              "gridPos": {
+                "h": 5,
+                "w": 4,
+                "x": 0,
+                "y": 25
+              },
+              "id": 65066,
+              "interval": "1m",
+              "links": [],
+              "maxDataPoints": 100,
+              "maxPerRow": 12,
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+              },
+              "pluginVersion": "8.0.3",
+              "repeat": "server",
+              "repeatDirection": "h",
+              "targets": [
+                {
+                  "dsType": "influxdb",
+                  "groupBy": [
+                    {
+                      "interval": "auto",
+                      "params": [
+                        "auto"
+                      ],
+                      "type": "time"
+                    }
+                  ],
+                  "measurement": "system_uptime",
+                  "orderByTime": "ASC",
+                  "policy": "default",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input|soc-thermal|cpu_thermal_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "rawQuery": true,
+                  "refId": "A",
+                  "resultFormat": "time_series",
+                  "select": [
+                    [
+                      {
+                        "params": [
+                          "value"
+                        ],
+                        "type": "field"
+                      },
+                      {
+                        "params": [],
+                        "type": "mean"
+                      }
+                    ]
+                  ],
+                  "tags": []
+                }
+              ],
+              "title": "CPU Core Temp: $server",
               "type": "stat"
             },
             {
@@ -1124,13 +1132,14 @@ dashboards:
               },
               "gridPos": {
                 "h": 10,
-                "w": 6,
+                "w": 4,
                 "x": 0,
                 "y": 40
               },
               "id": 65081,
               "interval": "1m",
               "links": [],
+              "maxPerRow": 12,
               "options": {
                 "legend": {
                   "calcs": [
@@ -2595,16 +2604,20 @@ dashboards:
                 "current": {
                   "selected": true,
                   "text": [
-                    "k8s-node-1.tgp",
-                    "k8s-node-2.tgp",
-                    "load-balancer-1.tgp",
-                    "pi.hole"
+                    "pi.hole",
+                    "k8s-nfs-1",
+                    "k8s-node-1",
+                    "k8s-node-2",
+                    "k8s-node-3",
+                    "load-balancer-1"
                   ],
                   "value": [
-                    "k8s-node-1.tgp",
-                    "k8s-node-2.tgp",
-                    "load-balancer-1.tgp",
-                    "pi.hole"
+                    "pi.hole",
+                    "k8s-nfs-1",
+                    "k8s-node-1",
+                    "k8s-node-2",
+                    "k8s-node-3",
+                    "load-balancer-1"
                   ]
                 },
                 "datasource": "HomeLab InfluxDB",
@@ -2660,7 +2673,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 1
+          "version": 3
         }
     network:
       json: |
@@ -2682,8 +2695,8 @@ dashboards:
           "editable": true,
           "gnetId": 61,
           "graphTooltip": 1,
-          "id": 2,
-          "iteration": 1623943351506,
+          "id": 3,
+          "iteration": 1624311981726,
           "links": [],
           "panels": [
             {
@@ -4522,15 +4535,19 @@ dashboards:
                 "current": {
                   "selected": true,
                   "text": [
-                    "k8s-node-1.tgp",
-                    "k8s-node-2.tgp",
-                    "load-balancer-1.tgp",
+                    "k8s-nfs-1",
+                    "k8s-node-1",
+                    "k8s-node-2",
+                    "k8s-node-3",
+                    "load-balancer-1",
                     "pi.hole"
                   ],
                   "value": [
-                    "k8s-node-1.tgp",
-                    "k8s-node-2.tgp",
-                    "load-balancer-1.tgp",
+                    "k8s-nfs-1",
+                    "k8s-node-1",
+                    "k8s-node-2",
+                    "k8s-node-3",
+                    "load-balancer-1",
                     "pi.hole"
                   ]
                 },
@@ -4610,7 +4627,7 @@ dashboards:
           "gnetId": 5063,
           "graphTooltip": 0,
           "id": 2,
-          "iteration": 1623475688609,
+          "iteration": 1624311958570,
           "links": [],
           "panels": [
             {
@@ -5287,12 +5304,12 @@ dashboards:
               {
                 "allValue": null,
                 "current": {
-                  "selected": true,
+                  "selected": false,
                   "text": [
-                    "load-balancer-1.tgp"
+                    "load-balancer-1"
                   ],
                   "value": [
-                    "load-balancer-1.tgp"
+                    "load-balancer-1"
                   ]
                 },
                 "datasource": "$datasource",
@@ -5348,7 +5365,7 @@ dashboards:
           "timezone": "browser",
           "title": "Nginx",
           "uid": "GqFjuAgmk",
-          "version": 3
+          "version": 4
         }
     Concourse:
       json: |
