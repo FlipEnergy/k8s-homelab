@@ -18,5 +18,4 @@ resources:
     memory: 512Mi
 
 nodeSelector:
-  # kubernetes.io/arch: amd64
-  kubernetes.io/hostname: k8s-node-1.tgp
+  kubernetes.io/arch: amd64

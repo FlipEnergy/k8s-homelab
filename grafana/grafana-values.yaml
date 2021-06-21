@@ -8198,8 +8198,7 @@ grafana.ini:
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-2.tgp
+nodeSelector: {}
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

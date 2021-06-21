@@ -39,7 +39,6 @@ rbac:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  # kubernetes.io/hostname: k8s-node-1.tgp
 
 # pass env vars like this: helm [...] --set env.ENV_NAME=env_value,env.ENV_NAME2=env_value2
 env: {}

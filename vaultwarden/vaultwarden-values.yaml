@@ -66,5 +66,4 @@ resources:
     cpu: 50m
     memory: 128Mi
 
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-2.tgp
+nodeSelector: {}

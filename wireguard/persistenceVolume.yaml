@@ -10,4 +10,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/data/wireguard
-    server: k8s-node-1.tgp
+    server: k8s-nfs-1

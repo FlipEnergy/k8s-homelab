@@ -66,5 +66,4 @@ securityContext:
   runAsUser: 1001
   runAsGroup: 2001
 
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-2.tgp
+nodeSelector: {}
