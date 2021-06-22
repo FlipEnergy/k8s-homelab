@@ -1,6 +1,6 @@
 # Override values for navidrome.
 
-replicas: 1
+replicas: 2
 
 image:
   tag: 0.43.0
