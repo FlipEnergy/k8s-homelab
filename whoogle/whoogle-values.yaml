@@ -1,6 +1,6 @@
 # Override values for whoogle.
 
-replicas: 2
+replicas: 1
 
 image:
   tag: 0.5.4
