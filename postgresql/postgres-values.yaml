@@ -64,11 +64,11 @@ postgresqlUsername: postgres
 
 ## Maximum total connections
 ##
-postgresqlMaxConnections: 300
+postgresqlMaxConnections: 500
 
 ## Maximum connections for the postgres user
 ##
-postgresqlPostgresConnectionLimit:
+postgresqlPostgresConnectionLimit: 2
 
 ## Maximum connections for the created user
 ##
@@ -88,7 +88,7 @@ postgresqlTcpKeepalivesCount:
 
 ## Statement timeout
 ##
-postgresqlStatementTimeout:
+postgresqlStatementTimeout: 90s
 
 ## Remove pg_hba.conf lines with the following comma-separated patterns
 ## (cannot be used with custom pg_hba.conf)
