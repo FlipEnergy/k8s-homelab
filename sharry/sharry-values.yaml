@@ -24,5 +24,19 @@ resources:
     cpu: 50m
     memory: 256Mi
 
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
+
+persistence:
+  data:
+    enabled: true
+    emptyDir:
+      enabled: false
+    mountPath: /tmp
+    storageClass: sharry
+    accessMode: ReadWriteOnce
+    size: 30Gi
+
 nodeSelector:
   kubernetes.io/arch: amd64

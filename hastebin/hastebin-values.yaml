@@ -13,7 +13,7 @@ strategy:
 # See more environment variables in the haste-server documentation
 # https://github.com/rwaltr/haste-server
 env:
-  STORAGE_FILEPATH: "/config"
+  STORAGE_FILEPATH: "/data"
   STORAGE_TYPE: "file"
 
 ingress:
@@ -25,10 +25,11 @@ ingress:
           - path: /
 
 persistence:
-  config:
+  data:
     enabled: true
     # Persistent Volume Storage Class
     storageClass: haste
+    accessMode: ReadWriteOnce
     size: 2Gi
     # Do not delete the pvc upon helm uninstall
     skipuninstall: true

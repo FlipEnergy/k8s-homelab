@@ -186,6 +186,8 @@ apps:
     version: 3.1.0
     valuesFile: sharry/sharry-values.yaml
     secretsFile: sharry/secret.sharry-config.yaml
+    hooks:
+      preInstall: sharry/persistenceVolume.yaml
 
   syncthing:
     <<: *default
