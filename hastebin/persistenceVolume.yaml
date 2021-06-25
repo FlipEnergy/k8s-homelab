@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: haste
+spec:
+  storageClassName: haste
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/data/haste-data
+    server: k8s-nfs-1

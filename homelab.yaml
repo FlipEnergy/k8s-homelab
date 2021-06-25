@@ -147,13 +147,15 @@ apps:
     chart: k8s-at-home/haste-server
     version: 2.2.0
     valuesFile: hastebin/hastebin-values.yaml
+    hooks:
+      preInstall: hastebin/persistenceVolume.yaml
 
   navidrome:
     <<: *default
     namespace: navidrome
     enabled: true
     chart: k8s-at-home/navidrome
-    version: 4.4.0
+    version: 5.0.0
     valuesFile: navidrome/navidrome-values.yaml
     hooks:
       preInstall: navidrome/persistenceVolume.yaml

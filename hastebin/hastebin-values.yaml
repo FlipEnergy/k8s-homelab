@@ -23,3 +23,12 @@ ingress:
       - host: haste.pleasenoddos.com
         paths:
           - path: /
+
+persistence:
+  config:
+    enabled: true
+    # Persistent Volume Storage Class
+    storageClass: haste
+    size: 2Gi
+    # Do not delete the pvc upon helm uninstall
+    skipuninstall: true

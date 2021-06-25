@@ -22,15 +22,18 @@ podSecurityContext:
   runAsUser: 1000
 
 service:
-  port:
-    port: 4533
+  main:
+    ports:
+      http:
+        port: 4533
 
 ingress:
-  enabled: true
-  hosts:
-    - host: navidrome.pleasenoddos.com
-      paths:
-        - path: /
+  main:
+    enabled: true
+    hosts:
+      - host: navidrome.pleasenoddos.com
+        paths:
+          - path: /
 
 resources:
   limits:
