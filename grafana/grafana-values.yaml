@@ -91,7 +91,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1624311923659,
+          "iteration": 1624724236571,
           "links": [],
           "panels": [
             {
@@ -152,7 +152,7 @@ dashboards:
                   },
                   "gridPos": {
                     "h": 3,
-                    "w": 24,
+                    "w": 4,
                     "x": 0,
                     "y": 1
                   },
@@ -273,7 +273,7 @@ dashboards:
                   },
                   "gridPos": {
                     "h": 3,
-                    "w": 24,
+                    "w": 4,
                     "x": 0,
                     "y": 4
                   },
@@ -404,7 +404,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 6,
-                "w": 4,
+                "w": 4.8,
                 "x": 0,
                 "y": 2
               },
@@ -517,7 +517,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 6,
-                "w": 4,
+                "w": 4.8,
                 "x": 0,
                 "y": 8
               },
@@ -651,7 +651,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 6,
-                "w": 4,
+                "w": 4.8,
                 "x": 0,
                 "y": 14
               },
@@ -754,7 +754,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 5,
-                "w": 4,
+                "w": 4.8,
                 "x": 0,
                 "y": 20
               },
@@ -875,7 +875,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 5,
-                "w": 4,
+                "w": 4.8,
                 "x": 0,
                 "y": 25
               },
@@ -1132,7 +1132,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 10,
-                "w": 4,
+                "w": 4.8,
                 "x": 0,
                 "y": 40
               },
@@ -2604,20 +2604,18 @@ dashboards:
                 "current": {
                   "selected": true,
                   "text": [
-                    "pi.hole",
                     "k8s-nfs-1",
                     "k8s-node-1",
                     "k8s-node-2",
-                    "k8s-node-3",
-                    "load-balancer-1"
+                    "load-balancer-1",
+                    "pi.hole"
                   ],
                   "value": [
-                    "pi.hole",
                     "k8s-nfs-1",
                     "k8s-node-1",
                     "k8s-node-2",
-                    "k8s-node-3",
-                    "load-balancer-1"
+                    "load-balancer-1",
+                    "pi.hole"
                   ]
                 },
                 "datasource": "HomeLab InfluxDB",
@@ -2673,7 +2671,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 3
+          "version": 2
         }
     network:
       json: |
@@ -2696,7 +2694,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1624311981726,
+          "iteration": 1624772444350,
           "links": [],
           "panels": [
             {
@@ -4538,7 +4536,6 @@ dashboards:
                     "k8s-nfs-1",
                     "k8s-node-1",
                     "k8s-node-2",
-                    "k8s-node-3",
                     "load-balancer-1",
                     "pi.hole"
                   ],
@@ -4546,7 +4543,6 @@ dashboards:
                     "k8s-nfs-1",
                     "k8s-node-1",
                     "k8s-node-2",
-                    "k8s-node-3",
                     "load-balancer-1",
                     "pi.hole"
                   ]
@@ -4604,7 +4600,7 @@ dashboards:
           "timezone": "browser",
           "title": "Network",
           "uid": "H6MPuNHks",
-          "version": 2
+          "version": 3
         }
     Nginx:
       json: |
