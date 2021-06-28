@@ -7,26 +7,13 @@ image:
 strategy:
   type: RollingUpdate
 
-service:
-  port:
-    port: 8080
-  additionalServices:
-    - enabled: true
-      nameSuffix: rtmp
-      type: LoadBalancer
-      port:
-        port: 1935
-        name: rtmp
-        protocol: TCP
-        targetPort: 1935
-      externalTrafficPolicy: Local
-
 ingress:
-  enabled: true
-  hosts:
-    - host: stream.pleasenoddos.com
-      paths:
-        - path: /
+  main:
+    enabled: true
+    hosts:
+      - host: stream.pleasenoddos.com
+        paths:
+          - path: /
 
 # Persistence is required for persistent configuration changes
 persistence:
