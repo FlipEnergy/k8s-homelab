@@ -1,6 +1,8 @@
 # Override values for whoogle.
 
-replicas: 1
+controller:
+  replicas: 1
+  strategy: RollingUpdate
 
 image:
   tag: 0.5.4

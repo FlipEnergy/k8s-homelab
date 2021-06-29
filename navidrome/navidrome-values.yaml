@@ -1,13 +1,14 @@
 # Override values for navidrome.
 
-replicas: 2
+controller:
+  replicas: 2
+  strategy: RollingUpdate
 
 image:
   tag: 0.44.0
   pullPolicy: Always
 
-strategy:
-  type: RollingUpdate
+
 
 env:
   ND_DATAFOLDER: /data
