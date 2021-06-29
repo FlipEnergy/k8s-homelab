@@ -91,7 +91,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 4,
-          "iteration": 1624724236571,
+          "iteration": 1624938407168,
           "links": [],
           "panels": [
             {
@@ -152,7 +152,7 @@ dashboards:
                   },
                   "gridPos": {
                     "h": 3,
-                    "w": 4,
+                    "w": 24,
                     "x": 0,
                     "y": 1
                   },
@@ -273,9 +273,9 @@ dashboards:
                   },
                   "gridPos": {
                     "h": 3,
-                    "w": 4,
+                    "w": 24,
                     "x": 0,
-                    "y": 4
+                    "y": 7
                   },
                   "id": 65107,
                   "interval": "1m",
@@ -834,12 +834,54 @@ dashboards:
               "type": "stat"
             },
             {
+              "collapsed": false,
+              "datasource": null,
+              "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 25
+              },
+              "id": 65060,
+              "panels": [],
+              "title": "SYSTEM",
+              "type": "row"
+            },
+            {
               "cacheTimeout": null,
               "datasource": "HomeLab InfluxDB",
               "fieldConfig": {
                 "defaults": {
                   "color": {
-                    "mode": "thresholds"
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "line",
+                    "fillOpacity": 50,
+                    "gradientMode": "hue",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "area"
+                    }
                   },
                   "mappings": [
                     {
@@ -860,12 +902,12 @@ dashboards:
                         "value": null
                       },
                       {
-                        "color": "orange",
-                        "value": 40
+                        "color": "yellow",
+                        "value": 50
                       },
                       {
                         "color": "red",
-                        "value": 55
+                        "value": 60
                       }
                     ]
                   },
@@ -874,36 +916,35 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 5,
-                "w": 4.8,
+                "h": 9,
+                "w": 24,
                 "x": 0,
-                "y": 25
+                "y": 26
               },
               "id": 65066,
               "interval": "1m",
               "links": [],
               "maxDataPoints": 100,
-              "maxPerRow": 12,
               "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
+                "legend": {
                   "calcs": [
+                    "min",
+                    "max",
+                    "mean",
                     "lastNotNull"
                   ],
-                  "fields": "",
-                  "values": false
+                  "displayMode": "table",
+                  "placement": "right"
                 },
-                "text": {},
-                "textMode": "auto"
+                "tooltip": {
+                  "mode": "single"
+                }
               },
               "pluginVersion": "8.0.3",
-              "repeat": "server",
-              "repeatDirection": "h",
+              "repeat": null,
               "targets": [
                 {
+                  "alias": "$tag_host",
                   "dsType": "influxdb",
                   "groupBy": [
                     {
@@ -917,7 +958,7 @@ dashboards:
                   "measurement": "system_uptime",
                   "orderByTime": "ASC",
                   "policy": "default",
-                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input|soc-thermal|cpu_thermal_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval)",
+                  "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input|soc-thermal|cpu_thermal_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval), *",
                   "rawQuery": true,
                   "refId": "A",
                   "resultFormat": "time_series",
@@ -938,22 +979,8 @@ dashboards:
                   "tags": []
                 }
               ],
-              "title": "CPU Core Temp: $server",
-              "type": "stat"
-            },
-            {
-              "collapsed": false,
-              "datasource": null,
-              "gridPos": {
-                "h": 1,
-                "w": 24,
-                "x": 0,
-                "y": 30
-              },
-              "id": 65060,
-              "panels": [],
-              "title": "SYSTEM",
-              "type": "row"
+              "title": "CPU Core Temp",
+              "type": "timeseries"
             },
             {
               "datasource": "HomeLab InfluxDB",
@@ -1008,7 +1035,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 31
+                "y": 35
               },
               "id": 28239,
               "interval": "1m",
@@ -1016,10 +1043,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -1134,7 +1161,7 @@ dashboards:
                 "h": 10,
                 "w": 4.8,
                 "x": 0,
-                "y": 40
+                "y": 44
               },
               "id": 65081,
               "interval": "1m",
@@ -1142,13 +1169,8 @@ dashboards:
               "maxPerRow": 12,
               "options": {
                 "legend": {
-                  "calcs": [
-                    "mean",
-                    "lastNotNull",
-                    "max",
-                    "min"
-                  ],
-                  "displayMode": "table",
+                  "calcs": [],
+                  "displayMode": "hidden",
                   "placement": "bottom"
                 },
                 "tooltip": {
@@ -1260,7 +1282,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 50
+                "y": 54
               },
               "id": 65064,
               "interval": "1m",
@@ -1268,10 +1290,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -1386,7 +1408,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 0,
-                "y": 59
+                "y": 63
               },
               "id": 54694,
               "interval": "1m",
@@ -1394,10 +1416,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "bottom"
@@ -1528,7 +1550,7 @@ dashboards:
                 "h": 10,
                 "w": 12,
                 "x": 12,
-                "y": 59
+                "y": 63
               },
               "id": 12054,
               "interval": "1m",
@@ -1536,10 +1558,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "bottom"
@@ -1652,7 +1674,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 69
+                "y": 73
               },
               "id": 65104,
               "interval": "1m",
@@ -1660,9 +1682,9 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
-                    "max"
+                    "min",
+                    "max",
+                    "mean"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -1790,7 +1812,7 @@ dashboards:
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 79
+                "y": 83
               },
               "id": 65106,
               "interval": "1m",
@@ -1798,10 +1820,9 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -1949,7 +1970,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 89
+                "y": 93
               },
               "id": 52240,
               "interval": "1m",
@@ -1957,10 +1978,7 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
-                    "max",
-                    "min"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "bottom"
@@ -2072,7 +2090,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 89
+                "y": 93
               },
               "id": 60200,
               "interval": "1m",
@@ -2080,10 +2098,9 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean"
                   ],
                   "displayMode": "table",
                   "placement": "bottom"
@@ -2257,7 +2274,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 0,
-                "y": 98
+                "y": 102
               },
               "id": 13782,
               "interval": "1m",
@@ -2265,10 +2282,9 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean"
                   ],
                   "displayMode": "table",
                   "placement": "bottom"
@@ -2442,7 +2458,7 @@ dashboards:
                 "h": 9,
                 "w": 12,
                 "x": 12,
-                "y": 98
+                "y": 102
               },
               "id": 56720,
               "interval": "1m",
@@ -2450,10 +2466,9 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean"
                   ],
                   "displayMode": "table",
                   "placement": "bottom"
@@ -2671,7 +2686,7 @@ dashboards:
           "timezone": "browser",
           "title": "Server Metrics",
           "uid": "H6MPdDGGz",
-          "version": 2
+          "version": 4
         }
     network:
       json: |
@@ -2694,7 +2709,7 @@ dashboards:
           "gnetId": 61,
           "graphTooltip": 1,
           "id": 3,
-          "iteration": 1624772444350,
+          "iteration": 1624939272725,
           "links": [],
           "panels": [
             {
@@ -2776,10 +2791,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -2961,10 +2976,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -3136,8 +3151,8 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 9,
-                "w": 12,
+                "h": 10,
+                "w": 24,
                 "x": 0,
                 "y": 19
               },
@@ -3147,13 +3162,13 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
-                  "displayMode": "list",
-                  "placement": "bottom"
+                  "displayMode": "table",
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -3322,10 +3337,10 @@ dashboards:
                 "overrides": []
               },
               "gridPos": {
-                "h": 9,
-                "w": 12,
-                "x": 12,
-                "y": 19
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 29
               },
               "id": 50643,
               "interval": "1m",
@@ -3333,13 +3348,13 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
-                    "mean",
-                    "lastNotNull",
+                    "min",
                     "max",
-                    "min"
+                    "mean",
+                    "lastNotNull"
                   ],
-                  "displayMode": "list",
-                  "placement": "bottom"
+                  "displayMode": "table",
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -3460,7 +3475,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 28
+                "y": 37
               },
               "id": 65106,
               "panels": [],
@@ -3524,7 +3539,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 29
+                "y": 38
               },
               "id": 65090,
               "interval": "1m",
@@ -3532,9 +3547,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -3709,7 +3725,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 38
+                "y": 47
               },
               "id": 65100,
               "interval": "1m",
@@ -3717,9 +3733,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -3898,7 +3915,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 47
+                "y": 56
               },
               "id": 65102,
               "interval": "1m",
@@ -3906,9 +3923,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -4089,7 +4107,7 @@ dashboards:
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 56
+                "y": 65
               },
               "id": 65110,
               "panels": [],
@@ -4153,7 +4171,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 57
+                "y": 66
               },
               "id": 65108,
               "interval": "1m",
@@ -4161,9 +4179,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -4287,7 +4306,7 @@ dashboards:
                 "h": 9,
                 "w": 24,
                 "x": 0,
-                "y": 66
+                "y": 75
               },
               "id": 65112,
               "interval": "1m",
@@ -4295,9 +4314,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -4600,7 +4620,7 @@ dashboards:
           "timezone": "browser",
           "title": "Network",
           "uid": "H6MPuNHks",
-          "version": 3
+          "version": 2
         }
     Nginx:
       json: |
@@ -4623,7 +4643,7 @@ dashboards:
           "gnetId": 5063,
           "graphTooltip": 0,
           "id": 2,
-          "iteration": 1624311958570,
+          "iteration": 1624939481395,
           "links": [],
           "panels": [
             {
@@ -4690,9 +4710,10 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
                   "displayMode": "table",
                   "placement": "right"
@@ -4966,7 +4987,7 @@ dashboards:
               },
               "gridPos": {
                 "h": 11,
-                "w": 12,
+                "w": 24,
                 "x": 0,
                 "y": 11
               },
@@ -4975,12 +4996,13 @@ dashboards:
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
-                  "displayMode": "list",
-                  "placement": "bottom"
+                  "displayMode": "table",
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -5143,21 +5165,22 @@ dashboards:
               },
               "gridPos": {
                 "h": 11,
-                "w": 12,
-                "x": 12,
-                "y": 11
+                "w": 24,
+                "x": 0,
+                "y": 22
               },
               "id": 29,
               "links": [],
               "options": {
                 "legend": {
                   "calcs": [
+                    "min",
+                    "max",
                     "mean",
-                    "lastNotNull",
-                    "max"
+                    "lastNotNull"
                   ],
-                  "displayMode": "list",
-                  "placement": "bottom"
+                  "displayMode": "table",
+                  "placement": "right"
                 },
                 "tooltip": {
                   "mode": "single"
@@ -5300,7 +5323,7 @@ dashboards:
               {
                 "allValue": null,
                 "current": {
-                  "selected": false,
+                  "selected": true,
                   "text": [
                     "load-balancer-1"
                   ],
@@ -5361,7 +5384,7 @@ dashboards:
           "timezone": "browser",
           "title": "Nginx",
           "uid": "GqFjuAgmk",
-          "version": 4
+          "version": 3
         }
     Concourse:
       json: |
