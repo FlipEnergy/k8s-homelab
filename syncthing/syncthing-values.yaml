@@ -4,39 +4,17 @@ image:
   tag: 1.17.0
   pullPolicy: Always
 
-service:
-  port:
-    port: 8384
-  additionalServices:
-  - enabled: true
-    nameSuffix: listen
-    type: LoadBalancer
-    port:
-      port: 22000
-      name: listen
-      protocol: TCP
-      targetPort: 22000
-    externalTrafficPolicy: Local
-  - enabled: true
-    nameSuffix: discovery
-    type: LoadBalancer
-    port:
-      port: 21027
-      name: discovery
-      protocol: UDP
-      targetPort: 21027
-    externalTrafficPolicy: Local
-
 podSecurityContext:
   fsGroup: 1000
   runAsUser: 1000
 
 ingress:
-  enabled: true
-  hosts:
-  - host: syncthing.tgp
-    paths:
-      - path: /
+  main:
+    enabled: true
+    hosts:
+    - host: syncthing.tgp
+      paths:
+        - path: /
 
 persistence:
   data:
