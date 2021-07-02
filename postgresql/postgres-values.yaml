@@ -169,8 +169,8 @@ updateStrategy:
 ##
 resources:
   requests:
-    memory: 256Mi
-    cpu: 250m
+    cpu: '1'
+    memory: 1Gi
 
 ##
 ## PostgreSQL Primary parameters
@@ -220,6 +220,7 @@ primary:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
+    kubernetes.io/hostname: k8s-node-1
 
   ## Tolerations for PostgreSQL primary pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

@@ -1091,7 +1091,7 @@ worker:
   ## Using Deployment leads to ephemeral workers. Meaning workers do not
   ## share state between restarts
   ##
-  kind: StatefulSet
+  kind: Deployment
 
   ## Override the components name (defaults to worker).
   ##
@@ -1103,7 +1103,7 @@ worker:
 
   ## Number of replicas.
   ##
-  replicas: 1
+  replicas: 2
 
   ## Array of extra containers to run alongside the Concourse worker
   ## container.
@@ -1153,11 +1153,11 @@ worker:
   ##
   resources:
     # limits:
-    #   cpu: 3
+    #   cpu: '3'
     #   memory: 512Mi
     requests:
-      cpu: 250m
-      memory: 512Mi
+      cpu: '1'
+      memory: 1Gi
 
   ## Configure additional environment variables for the
   ## worker container(s)
@@ -1174,6 +1174,50 @@ worker:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
+
+  ## Additional affinities to add to the worker pods.
+  ## Useful if you prefer to run workers on non-spot instances, for example.
+  ##
+  ## Example:
+  ##
+  ##   nodeAffinity:
+  ##     preferredDuringSchedulingIgnoredDuringExecution:
+  ##       - weight: 50
+  ##         preference:
+  ##           matchExpressions:
+  ##             - key: spot
+  ##               operator: NotIn
+  ##               values:
+  ##                 - "true"
+  ##
+  additionalAffinities:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - influxdb
+              - postgresql
+          topologyKey: kubernetes.io/hostname
+
+  ## Whether the workers should be forced to run on separate nodes.
+  ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#inter-pod-affinity-and-anti-affinity-beta-feature
+  ##
+  hardAntiAffinity: false
+
+  ## Set of labels to use in the hard anti affinity rule.
+  ##
+  ## Example:
+  ##   hardAntiAffinity: true
+  ##   hardAntiAffinityLabels:
+  ##     application: concourse
+  ##
+  hardAntiAffinityLabels: {}
 
   ## Time to allow the pod to terminate before being forcefully terminated. This should provide time for
   ## the worker to retire, i.e. drain its tasks. See https://concourse-ci.org/worker-internals.html for worker

@@ -55,8 +55,8 @@ resources:
   #   cpu: 500m
   #   memory: 1Gi
   requests:
-    cpu: 250m
-    memory: 512Mi
+    cpu: '1'
+    memory: 1Gi
 
 ingress:
   enabled: true
@@ -73,6 +73,7 @@ ingress:
 ##
 nodeSelector:
   kubernetes.io/arch: amd64
+  kubernetes.io/hostname: k8s-node-1
 
 env:
   - name: INFLUXDB_DATA_MAX_VALUES_PER_TAG
