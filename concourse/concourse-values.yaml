@@ -326,7 +326,7 @@ concourse:
     postgres:
       ## The host to connect to.
       ##
-      host: postgresql.postgresql.svc.cluster.local
+      host: postgresql.postgresql
 
       ## The port to connect to.
       ##

@@ -13,7 +13,7 @@ env:
   # -- mysql, postgres, mariadb, mssql or sqlite
   DB_TYPE: postgres
   # -- Host of the database
-  DB_HOST: postgresql.postgresql.svc.cluster.local
+  DB_HOST: postgresql.postgresql
   # -- Port of the database
   DB_PORT: 5432
 
