@@ -8,8 +8,7 @@ image:
   tag: latest
 
 controller:
-  strategy:
-    type: RollingUpdate
+  strategy: RollingUpdate
 
 # See more environment variables in the haste-server documentation
 # https://github.com/rwaltr/haste-server

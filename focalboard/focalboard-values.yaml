@@ -7,8 +7,7 @@ image:
   pullPolicy: Always
 
 controller:
-  strategy:
-    type: RollingUpdate
+  strategy: RollingUpdate
 
 # -- environment variables. See more environment variables in the [image entrypoint script](https://github.com/FlipEnergy/container-images/blob/main/focalboard/entrypoint.sh)
 # @default -- See below

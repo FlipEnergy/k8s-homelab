@@ -7,8 +7,7 @@ image:
   tag: 2.5.201
 
 controller:
-  strategy:
-    type: RollingUpdate
+  strategy: RollingUpdate
 
 env:
   # -- mysql, postgres, mariadb, mssql or sqlite

@@ -10,7 +10,7 @@
 controller:
   ## DaemonSet or Deployment
   ##
-  kind: Deployment
+  kind: DaemonSet
 
   nodeSelector:
     kubernetes.io/arch: amd64
