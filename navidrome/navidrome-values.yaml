@@ -24,12 +24,6 @@ podSecurityContext:
   fsGroup: 1000
   runAsUser: 1000
 
-service:
-  main:
-    ports:
-      http:
-        port: 4533
-
 ingress:
   main:
     enabled: true

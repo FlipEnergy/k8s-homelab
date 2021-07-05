@@ -32,11 +32,6 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
-  # -- The default port is 3000 used by wiki.ks
-  port:
-    port: 3000
-
 ingress:
   enabled: true
   hosts:
