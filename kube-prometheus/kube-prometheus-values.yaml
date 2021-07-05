@@ -2704,8 +2704,8 @@ grafana:
             "editable": true,
             "gnetId": 61,
             "graphTooltip": 1,
-            "id": 3,
-            "iteration": 1625465925838,
+            "id": 4,
+            "iteration": 1625466900714,
             "links": [],
             "panels": [
               {
@@ -4519,7 +4519,9 @@ grafana:
             "refresh": "30s",
             "schemaVersion": 30,
             "style": "dark",
-            "tags": [],
+            "tags": [
+              "Hosts"
+            ],
             "templating": {
               "list": [
                 {
@@ -4616,7 +4618,7 @@ grafana:
             "timezone": "browser",
             "title": "Server Network",
             "uid": "H6MPuNHks",
-            "version": 2
+            "version": 3
           }
       Nginx:
         json: |
