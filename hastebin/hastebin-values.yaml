@@ -7,8 +7,9 @@ image:
   pullPolicy: Always
   tag: latest
 
-strategy:
-  type: RollingUpdate
+controller:
+  strategy:
+    type: RollingUpdate
 
 # See more environment variables in the haste-server documentation
 # https://github.com/rwaltr/haste-server

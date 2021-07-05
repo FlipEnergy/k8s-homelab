@@ -4,8 +4,9 @@ image:
   tag: 0.0.7
   pullPolicy: Always
 
-strategy:
-  type: RollingUpdate
+controller:
+  strategy:
+    type: RollingUpdate
 
 ingress:
   main:
@@ -31,7 +32,7 @@ resources:
     cpu: '1'
     memory: 250Mi
   requests:
-    cpu: 100m
+    cpu: 50m
     memory: 125Mi
 
 nodeSelector:

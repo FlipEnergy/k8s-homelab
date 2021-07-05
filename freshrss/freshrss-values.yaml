@@ -4,8 +4,9 @@ image:
   tag: version-1.18.1
   pullPolicy: Always
 
-strategy:
-  type: RollingUpdate
+controller:
+  strategy:
+    type: RollingUpdate
 
 ingress:
   main:

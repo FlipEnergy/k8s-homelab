@@ -8,8 +8,9 @@
 image:
   tag: 1.22.0
 
-strategy:
-  type: RollingUpdate
+controller:
+  strategy:
+    type: RollingUpdate
 
 # See more environment variables in the Vaultwarden documentation
 # https://github.com/dani-garcia/vaultwarden/blob/main/.env.template

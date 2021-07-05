@@ -8,9 +8,6 @@ image:
   tag: 0.5.4
   pullPolicy: Always
 
-strategy:
-  type: RollingUpdate
-
 # See more environment variables in the whoogle documentation
 # https://github.com/benbusby/whoogle-search#environment-variables
 env:
@@ -37,7 +34,7 @@ resources:
     cpu: 500m
     memory: 250Mi
   requests:
-    cpu: 100m
+    cpu: 50m
     memory: 125Mi
 
 nodeSelector:

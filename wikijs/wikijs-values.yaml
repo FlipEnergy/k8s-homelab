@@ -6,8 +6,9 @@ image:
   pullPolicy: IfNotPresent
   tag: 2.5.201
 
-strategy:
-  type: RollingUpdate
+controller:
+  strategy:
+    type: RollingUpdate
 
 env:
   # -- mysql, postgres, mariadb, mssql or sqlite
@@ -48,7 +49,7 @@ resources:
     cpu: '1'
     memory: 500Mi
   requests:
-    cpu: 100m
+    cpu: 50m
     memory: 125Mi
 
 nodeSelector:
