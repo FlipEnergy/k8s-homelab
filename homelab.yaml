@@ -8,22 +8,22 @@ settings:
   globalMaxHistory: 5
 
 namespaces:
-  vaultwarden:
   concourse:
   focal:
   freshrss:
-  grafana:
   haste:
   influxdb:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
+  kube-prometheus-stack:
   navidrome:
   owncast:
   postgresql:
   pretend-youre-xyzzy:
   sharry:
   syncthing:
+  vaultwarden:
   whoogle:
   wikijs:
   wireguard:
@@ -31,12 +31,12 @@ namespaces:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
-  grafana: https://grafana.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
   place1: https://place1.github.io/wg-access-server
+  prometheus-community: https://prometheus-community.github.io/helm-charts
   stable: https://charts.helm.sh/stable
 
 appsTemplates:
@@ -87,14 +87,16 @@ apps:
       preInstall: influxdb/persistenceVolume.yaml
     priority : -99
 
-  grafana:
+  kube-prometheus-stack:
     <<: *default
-    namespace: grafana
+    namespace: kube-prometheus-stack
     enabled: true
-    chart: grafana/grafana
-    version: 6.13.6
-    valuesFile: grafana/grafana-values.yaml
-    secretsFile: grafana/secrets.grafana-secrets.yaml
+    chart: prometheus-community/kube-prometheus-stack
+    version: 16.12.1
+    valuesFile: kube-prometheus/kube-prometheus-values.yaml
+    secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
+    hooks:
+      preInstall: kube-prometheus/persistenceVolume.yaml
     priority: -98
 
   # Databases
@@ -109,7 +111,7 @@ apps:
     hooks:
       preInstall: postgresql/persistenceVolume.yaml
       postInstall: postgresql/reset-focal-conns.yaml
-    priority: -98
+    priority: -97
 
   # Applications
   concourse:
