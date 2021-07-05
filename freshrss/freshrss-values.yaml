@@ -21,7 +21,7 @@ resources:
     cpu: 500m
     memory: 250Mi
   requests:
-    cpu: 100m
+    cpu: 50m
     memory: 125Mi
 
 env:
