@@ -4,8 +4,7 @@
 ## ref: https://prometheus.io/docs/alerting/alertmanager/
 ##
 alertmanager:
-  ingress:
-    enabled: false
+  enabled: false
 
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
