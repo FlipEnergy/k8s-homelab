@@ -8239,11 +8239,6 @@ grafana:
   #
   nodeSelector: {}
 
-## Component scraping etcd
-##
-kubeEtcd:
-  enabled: false
-
 ## Manages Prometheus and Alertmanager components
 ##
 prometheusOperator:
