@@ -1,7 +1,7 @@
 # Override values for navidrome.
 
 controller:
-  replicas: 2
+  replicas: 1
   strategy: RollingUpdate
 
 image:
