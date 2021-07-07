@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: navidrome-data
+  name: gonic-data
 spec:
-  storageClassName: navidrome-data
+  storageClassName: gonic-data
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data/navidrome-data
+    path: /mnt/data/syncthing-data/gonic-data
     server: k8s-nfs-1
 
 ---
@@ -17,9 +17,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: navidrome-music
+  name: gonic-music
 spec:
-  storageClassName: navidrome-music
+  storageClassName: gonic-music
   capacity:
     storage: 100Gi
   accessModes:

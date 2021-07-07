@@ -11,13 +11,13 @@ namespaces:
   concourse:
   focal:
   freshrss:
+  gonic:
   haste:
   influxdb:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
   kube-prometheus-stack:
-  navidrome:
   owncast:
   postgresql:
   pretend-youre-xyzzy:
@@ -153,15 +153,15 @@ apps:
     hooks:
       preInstall: hastebin/persistenceVolume.yaml
 
-  navidrome:
+  gonic:
     <<: *default
-    namespace: navidrome
+    namespace: gonic
     enabled: true
-    chart: k8s-at-home/navidrome
-    version: 5.0.0
-    valuesFile: navidrome/navidrome-values.yaml
+    chart: k8s-at-home/gonic
+    version: 5.2.0
+    valuesFile: gonic/gonic-values.yaml
     hooks:
-      preInstall: navidrome/persistenceVolume.yaml
+      preInstall: gonic/persistenceVolume.yaml
 
   owncast:
     <<: *default
