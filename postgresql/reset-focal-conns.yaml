@@ -6,7 +6,7 @@ metadata:
   name: reset-focal-conns
   namespace: postgresql
 spec:
-  schedule: "0 * * * *"
+  schedule: "*/10 * * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 3
   jobTemplate:
