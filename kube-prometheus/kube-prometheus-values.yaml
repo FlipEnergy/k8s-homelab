@@ -84,7 +84,7 @@ grafana:
             "gnetId": 61,
             "graphTooltip": 1,
             "id": 4,
-            "iteration": 1625465847773,
+            "iteration": 1625758425863,
             "links": [],
             "panels": [
               {
@@ -397,7 +397,7 @@ grafana:
                 },
                 "gridPos": {
                   "h": 6,
-                  "w": 4.8,
+                  "w": 4,
                   "x": 0,
                   "y": 2
                 },
@@ -510,7 +510,7 @@ grafana:
                 },
                 "gridPos": {
                   "h": 6,
-                  "w": 4.8,
+                  "w": 4,
                   "x": 0,
                   "y": 8
                 },
@@ -644,7 +644,7 @@ grafana:
                 },
                 "gridPos": {
                   "h": 6,
-                  "w": 4.8,
+                  "w": 4,
                   "x": 0,
                   "y": 14
                 },
@@ -747,7 +747,7 @@ grafana:
                 },
                 "gridPos": {
                   "h": 5,
-                  "w": 4.8,
+                  "w": 4,
                   "x": 0,
                   "y": 20
                 },
@@ -1152,7 +1152,7 @@ grafana:
                 },
                 "gridPos": {
                   "h": 10,
-                  "w": 4.8,
+                  "w": 4,
                   "x": 0,
                   "y": 44
                 },
@@ -2618,14 +2618,16 @@ grafana:
                       "k8s-node-1",
                       "k8s-node-2",
                       "load-balancer-1",
-                      "pi.hole"
+                      "pi.hole",
+                      "k8s-node-3"
                     ],
                     "value": [
                       "k8s-nfs-1",
                       "k8s-node-1",
                       "k8s-node-2",
                       "load-balancer-1",
-                      "pi.hole"
+                      "pi.hole",
+                      "k8s-node-3"
                     ]
                   },
                   "datasource": "HomeLab InfluxDB",
@@ -2703,8 +2705,8 @@ grafana:
             "editable": true,
             "gnetId": 61,
             "graphTooltip": 1,
-            "id": 4,
-            "iteration": 1625466900714,
+            "id": 1,
+            "iteration": 1625758480360,
             "links": [],
             "panels": [
               {
@@ -4554,14 +4556,16 @@ grafana:
                       "k8s-node-1",
                       "k8s-node-2",
                       "load-balancer-1",
-                      "pi.hole"
+                      "pi.hole",
+                      "k8s-node-3"
                     ],
                     "value": [
                       "k8s-nfs-1",
                       "k8s-node-1",
                       "k8s-node-2",
                       "load-balancer-1",
-                      "pi.hole"
+                      "pi.hole",
+                      "k8s-node-3"
                     ]
                   },
                   "datasource": "HomeLab InfluxDB",
@@ -4617,7 +4621,7 @@ grafana:
             "timezone": "browser",
             "title": "Server Network",
             "uid": "H6MPuNHks",
-            "version": 3
+            "version": 2
           }
       Nginx:
         json: |
