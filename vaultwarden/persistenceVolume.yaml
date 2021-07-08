@@ -10,4 +10,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/data/syncthing-data/vaultwarden
-    server: k8s-nfs-1
+    server: k8s-nfs-1.tgp

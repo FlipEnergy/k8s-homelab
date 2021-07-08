@@ -10,4 +10,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/data/prometheus-data
-    server: k8s-nfs-1
+    server: k8s-nfs-1.tgp

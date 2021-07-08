@@ -2615,7 +2615,7 @@ grafana:
                     "selected": true,
                     "text": [
                       "k8s-node-1",
-                      "k8s-nfs-1",
+                      "k8s-nfs-1.tgp",
                       "k8s-node-2",
                       "k8s-node-3",
                       "load-balancer-1",
@@ -2623,7 +2623,7 @@ grafana:
                     ],
                     "value": [
                       "k8s-node-1",
-                      "k8s-nfs-1",
+                      "k8s-nfs-1.tgp",
                       "k8s-node-2",
                       "k8s-node-3",
                       "load-balancer-1",
@@ -4552,7 +4552,7 @@ grafana:
                   "current": {
                     "selected": true,
                     "text": [
-                      "k8s-nfs-1",
+                      "k8s-nfs-1.tgp",
                       "k8s-node-1",
                       "k8s-node-2",
                       "load-balancer-1",
@@ -4560,7 +4560,7 @@ grafana:
                       "k8s-node-3"
                     ],
                     "value": [
-                      "k8s-nfs-1",
+                      "k8s-nfs-1.tgp",
                       "k8s-node-1",
                       "k8s-node-2",
                       "load-balancer-1",

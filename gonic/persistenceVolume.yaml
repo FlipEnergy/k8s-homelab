@@ -10,7 +10,7 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/data/syncthing-data/gonic-data
-    server: k8s-nfs-1
+    server: k8s-nfs-1.tgp
 
 ---
 
@@ -26,4 +26,4 @@ spec:
     - ReadOnlyMany
   nfs:
     path: /mnt/data/syncthing-data/music
-    server: k8s-nfs-1
+    server: k8s-nfs-1.tgp
