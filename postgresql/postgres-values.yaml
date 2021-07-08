@@ -170,7 +170,7 @@ updateStrategy:
 resources:
   limits:
     cpu: '2'
-    memory: 1Gi
+    memory: 2Gi
   requests:
     cpu: '1'
     memory: 1Gi

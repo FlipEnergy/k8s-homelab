@@ -83,8 +83,8 @@ grafana:
             "editable": true,
             "gnetId": 61,
             "graphTooltip": 1,
-            "id": 4,
-            "iteration": 1625758425863,
+            "id": 3,
+            "iteration": 1625763862245,
             "links": [],
             "panels": [
               {
@@ -951,7 +951,7 @@ grafana:
                     "measurement": "system_uptime",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input|soc-thermal|cpu_thermal_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY time($interval), *",
+                    "query": "SELECT mean(temp) FROM \"temp\" WHERE \"sensor\" =~ /coretemp_core\\d_input|soc-thermal|cpu_thermal_input/ AND \"host\" =~ /$server$/ AND $timeFilter GROUP BY host, time($interval)",
                     "rawQuery": true,
                     "refId": "A",
                     "resultFormat": "time_series",
@@ -2614,20 +2614,20 @@ grafana:
                   "current": {
                     "selected": true,
                     "text": [
-                      "k8s-nfs-1",
                       "k8s-node-1",
+                      "k8s-nfs-1",
                       "k8s-node-2",
+                      "k8s-node-3",
                       "load-balancer-1",
-                      "pi.hole",
-                      "k8s-node-3"
+                      "pi.hole"
                     ],
                     "value": [
-                      "k8s-nfs-1",
                       "k8s-node-1",
+                      "k8s-nfs-1",
                       "k8s-node-2",
+                      "k8s-node-3",
                       "load-balancer-1",
-                      "pi.hole",
-                      "k8s-node-3"
+                      "pi.hole"
                     ]
                   },
                   "datasource": "HomeLab InfluxDB",
