@@ -39,5 +39,4 @@ persistence:
     accessMode: ReadWriteOnce
     size: 30Gi
 
-nodeSelector:
-  kubernetes.io/arch: amd64
+nodeSelector: {}

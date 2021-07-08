@@ -17,5 +17,4 @@ resources:
     cpu: 50m
     memory: 125Mi
 
-nodeSelector:
-  kubernetes.io/arch: amd64
+nodeSelector: {}

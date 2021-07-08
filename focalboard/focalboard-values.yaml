@@ -23,5 +23,4 @@ ingress:
         paths:
           - path: /
 
-nodeSelector:
-  kubernetes.io/arch: amd64
+nodeSelector: {}

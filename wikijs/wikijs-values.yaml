@@ -21,8 +21,9 @@ serviceAccount:
   # Specifies whether a service account should be created
   create: false
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
 
 securityContext: {}
   # capabilities:
@@ -33,11 +34,12 @@ securityContext: {}
   # runAsUser: 1000
 
 ingress:
-  enabled: true
-  hosts:
-    - host: wiki.pleasenoddos.com
-      paths:
-        - path: /
+  main:
+    enabled: true
+    hosts:
+      - host: wiki.pleasenoddos.com
+        paths:
+          - path: /
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -51,5 +53,4 @@ resources:
     cpu: 50m
     memory: 125Mi
 
-nodeSelector:
-  kubernetes.io/arch: amd64
+nodeSelector: {}

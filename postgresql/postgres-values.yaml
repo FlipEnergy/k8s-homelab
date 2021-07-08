@@ -222,8 +222,7 @@ primary:
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    kubernetes.io/arch: amd64
-    kubernetes.io/hostname: k8s-node-1
+    kubernetes.io/hostname: k8s-node-3
 
   ## Tolerations for PostgreSQL primary pods assignment
   ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

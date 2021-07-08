@@ -23,11 +23,12 @@ env:
   WHOOGLE_CONFIG_DISABLE: 1
 
 ingress:
-  enabled: true
-  hosts:
-    - host: whoogle.pleasenoddos.com
-      paths:
-        - path: /
+  main:
+    enabled: true
+    hosts:
+      - host: whoogle.pleasenoddos.com
+        paths:
+          - path: /
 
 resources:
   limits:
@@ -37,5 +38,4 @@ resources:
     cpu: 50m
     memory: 125Mi
 
-nodeSelector:
-  kubernetes.io/arch: amd64
+nodeSelector: {}

@@ -38,5 +38,4 @@ persistence:
     # Do not delete the pvc upon helm uninstall
     skipuninstall: true
 
-nodeSelector:
-  kubernetes.io/arch: amd64
+nodeSelector: {}

@@ -218,7 +218,7 @@ apps:
     namespace: whoogle
     enabled: true
     chart: k8s-at-home/whoogle
-    version: 1.3.0
+    version: 2.0.0
     valuesFile: whoogle/whoogle-values.yaml
 
   wikijs:
@@ -226,7 +226,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 4.4.1
+    version: 5.0.0
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
