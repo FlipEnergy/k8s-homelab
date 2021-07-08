@@ -24,6 +24,14 @@ ingress:
         paths:
           - path: /
 
+resources:
+  limits:
+    cpu: 250m
+    memory: 200Mi
+  requests:
+    cpu: 50m
+    memory: 100Mi
+
 persistence:
   data:
     enabled: true
