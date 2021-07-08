@@ -168,6 +168,9 @@ updateStrategy:
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
 resources:
+  limits:
+    cpu: '2'
+    memory: 1Gi
   requests:
     cpu: '1'
     memory: 1Gi
