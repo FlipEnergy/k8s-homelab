@@ -2,7 +2,7 @@
 
 image:
   tag: 1.8.0
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 ingress:
   main:

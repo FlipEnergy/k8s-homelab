@@ -2,7 +2,7 @@
 
 image:
   tag: version-1.18.1
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 controller:
   strategy: RollingUpdate

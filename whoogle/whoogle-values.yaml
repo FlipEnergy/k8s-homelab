@@ -6,7 +6,7 @@ controller:
 
 image:
   tag: 0.5.4
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 # See more environment variables in the whoogle documentation
 # https://github.com/benbusby/whoogle-search#environment-variables

@@ -2,7 +2,7 @@
 
 image:
   tag: 1.18.0
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 podSecurityContext:
   fsGroup: 1000
