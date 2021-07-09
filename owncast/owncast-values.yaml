@@ -7,6 +7,11 @@ image:
 controller:
   strategy: RollingUpdate
 
+service:
+  rtmp:
+    enabled: true
+    type: LoadBalancer
+
 ingress:
   main:
     enabled: true
