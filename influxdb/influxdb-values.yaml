@@ -71,8 +71,7 @@ ingress:
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
-nodeSelector:
-  kubernetes.io/hostname: k8s-node-3
+nodeSelector: {}
 
 env:
   - name: INFLUXDB_DATA_MAX_VALUES_PER_TAG
