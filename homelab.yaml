@@ -92,7 +92,7 @@ apps:
     namespace: kube-prometheus-stack
     enabled: true
     chart: prometheus-community/kube-prometheus-stack
-    version: 16.12.2
+    version: 16.13.0
     valuesFile: kube-prometheus/kube-prometheus-values.yaml
     secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
     hooks:
