@@ -3,7 +3,7 @@
 nameOverride: focal
 
 image:
-  tag: 0.7.0
+  tag: 0.8.0
   pullPolicy: Always
 
 controller:
