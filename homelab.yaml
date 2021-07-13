@@ -110,7 +110,8 @@ apps:
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
       preInstall: postgresql/persistenceVolume.yaml
-      postInstall: postgresql/reset-focal-conns.yaml
+      # TODO: remove if focal is behaving
+      # postInstall: postgresql/reset-focal-conns.yaml
     priority: -97
 
   # Applications
