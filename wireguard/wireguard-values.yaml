@@ -4,14 +4,11 @@
 #   in the peer section, add your subnet to the front and check Exclude private IPs.
 
 config:
-  wireguard:
-    externalHost: pleasenoddos.com
+  externalHost: pleasenoddos.com
   vpn:
     cidr: "10.44.0.0/24"
   dns:
     enabled: true
-    upstream:
-      - 192.168.1.11
 
 web:
   service:
@@ -20,11 +17,6 @@ web:
 wireguard:
   service:
     type: LoadBalancer
-
-persistence:
-  enabled: true
-  storageClass: "wireguard"
-  size: 100Mi
 
 ingress:
   enabled: true
@@ -36,7 +28,7 @@ ingress:
   tls: []
 
 strategy:
-  type: Recreate
+  type: RollingUpdate
 
 resources:
   limits:

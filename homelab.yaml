@@ -239,5 +239,3 @@ apps:
     version: 0.4.6
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
-    hooks:
-      preInstall: wireguard/persistenceVolume.yaml
