@@ -236,7 +236,7 @@ apps:
     namespace: wireguard
     enabled: true
     chart: place1/wg-access-server
-    version: 0.3.0
+    version: 0.4.6
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
     hooks:

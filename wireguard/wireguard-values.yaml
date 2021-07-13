@@ -24,7 +24,7 @@ wireguard:
 persistence:
   enabled: true
   storageClass: "wireguard"
-  size: 25Mi
+  size: 100Mi
 
 ingress:
   enabled: true
