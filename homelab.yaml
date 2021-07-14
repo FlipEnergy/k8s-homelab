@@ -22,6 +22,7 @@ namespaces:
   postgresql:
   pretend-youre-xyzzy:
   sharry:
+  snapscheduler:
   syncthing:
   vaultwarden:
   whoogle:
@@ -35,6 +36,7 @@ helmRepos:
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   kubernetes-dashboard: https://kubernetes.github.io/dashboard/
+  nfs-subdir-external-provisioner: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
   place1: https://place1.github.io/wg-access-server
   prometheus-community: https://prometheus-community.github.io/helm-charts
   stable: https://charts.helm.sh/stable
@@ -62,7 +64,7 @@ apps:
     chart: stable/kube-ops-view
     version: 1.2.4
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
-    priority : -100
+    priority : -199
 
   k8s-dashboard:
     <<: *default
@@ -73,8 +75,19 @@ apps:
     valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
     hooks:
       preInstall: kubernetes-dashboard/dashboard-admin.yaml
-    priority : -100
+    priority : -199
 
+  # NFS
+  nfs-subdir-external-provisioner:
+    <<: *default
+    namespace: nfs-subdir-external-provisioner
+    enabled: true
+    chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
+    version: 4.0.12
+    valuesFile: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner-values.yaml
+    priority : -199
+
+  # Databases
   influxdb:
     <<: *default
     namespace: influxdb
@@ -99,7 +112,6 @@ apps:
       preInstall: kube-prometheus/persistenceVolume.yaml
     priority: -98
 
-  # Databases
   postgresql:
     <<: *default
     namespace: postgresql
