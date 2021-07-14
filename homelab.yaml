@@ -18,11 +18,11 @@ namespaces:
   k8s-dashboard:
   kube-ops-view:
   kube-prometheus-stack:
+  nfs-subdir-external-provisioner:
   owncast:
   postgresql:
   pretend-youre-xyzzy:
   sharry:
-  snapscheduler:
   syncthing:
   vaultwarden:
   whoogle:
