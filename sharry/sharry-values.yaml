@@ -35,7 +35,7 @@ persistence:
     emptyDir:
       enabled: false
     mountPath: /tmp
-    storageClass: sharry
+    storageClass: nfs-client
     accessMode: ReadWriteOnce
     size: 30Gi
 

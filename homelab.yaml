@@ -161,8 +161,6 @@ apps:
     chart: k8s-at-home/haste-server
     version: 2.3.0
     valuesFile: hastebin/hastebin-values.yaml
-    hooks:
-      preInstall: hastebin/persistenceVolume.yaml
 
   gonic:
     <<: *default
@@ -200,8 +198,6 @@ apps:
     version: 4.1.0
     valuesFile: sharry/sharry-values.yaml
     secretsFile: sharry/secret.sharry-config.yaml
-    hooks:
-      preInstall: sharry/persistenceVolume.yaml
 
   syncthing:
     <<: *default
