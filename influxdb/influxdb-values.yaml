@@ -73,6 +73,23 @@ ingress:
 ##
 nodeSelector: {}
 
+## Affinity for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+##
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - postgresql
+            - prometheus
+        topologyKey: kubernetes.io/hostname
+
 env:
   - name: INFLUXDB_DATA_MAX_VALUES_PER_TAG
     value: "0"

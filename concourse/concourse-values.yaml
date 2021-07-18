@@ -1188,19 +1188,7 @@ worker:
   ##               values:
   ##                 - "true"
   ##
-  additionalAffinities:
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - influxdb
-              - postgresql
-          topologyKey: kubernetes.io/hostname
+  additionalAffinities: {}
 
   ## Whether the workers should be forced to run on separate nodes.
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
