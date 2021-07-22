@@ -15,7 +15,6 @@ namespaces:
   haste:
   influxdb:
   ingress-nginx:
-  k8s-dashboard:
   kube-ops-view:
   kube-prometheus-stack:
   nfs-subdir-external-provisioner:
@@ -32,10 +31,10 @@ namespaces:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
+  # headlamp: https://kinvolk.github.io/headlamp/
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
-  kubernetes-dashboard: https://kubernetes.github.io/dashboard/
   nfs-subdir-external-provisioner: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
   place1: https://place1.github.io/wg-access-server
   prometheus-community: https://prometheus-community.github.io/helm-charts
@@ -66,15 +65,13 @@ apps:
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
     priority : -199
 
-  k8s-dashboard:
+  headlamp:
     <<: *default
-    namespace: k8s-dashboard
+    namespace: kube-system
     enabled: true
-    chart: kubernetes-dashboard/kubernetes-dashboard
-    version: 4.3.1
-    valuesFile: kubernetes-dashboard/k8s-dashboard-values.yaml
-    hooks:
-      preInstall: kubernetes-dashboard/dashboard-admin.yaml
+    chart: https://github.com/kinvolk/headlamp/releases/download/headlamp-helm-0.1.0/headlamp-0.1.0.tgz
+    version: 0.1.0
+    valuesFile: headlamp/headlamp-values.yaml
     priority : -199
 
   # NFS

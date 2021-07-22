@@ -1,0 +1,28 @@
+# Override values for headlamp.
+
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
+
+ingress:
+  # -- Enable ingress controller resource
+  enabled: true
+  # -- Annotations for Ingress resource
+  annotations:
+    {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  # -- Hostname(s) for the Ingress resource
+  hosts:
+    - host: headlamp.tgp
+      paths:
+        - path: /
+          type: Prefix
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 250Mi
+  requests:
+    cpu: 50m
+    memory: 125Mi
