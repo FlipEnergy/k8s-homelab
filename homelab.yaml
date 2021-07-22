@@ -105,7 +105,7 @@ apps:
     namespace: kube-prometheus-stack
     enabled: true
     chart: prometheus-community/kube-prometheus-stack
-    version: 16.15.0
+    version: 17.0.0
     valuesFile: kube-prometheus/kube-prometheus-values.yaml
     secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
     hooks:
@@ -117,7 +117,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.6.1
+    version: 10.7.0
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
