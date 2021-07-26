@@ -31,7 +31,7 @@ namespaces:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
-  # headlamp: https://kinvolk.github.io/headlamp/
+  headlamp: https://kinvolk.github.io/headlamp/
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
@@ -69,8 +69,8 @@ apps:
     <<: *default
     namespace: kube-system
     enabled: true
-    chart: https://github.com/kinvolk/headlamp/releases/download/headlamp-helm-0.1.0/headlamp-0.1.0.tgz
-    version: 0.1.0
+    chart: headlamp/headlamp
+    version: 0.1.1
     valuesFile: headlamp/headlamp-values.yaml
     priority : -199
 
