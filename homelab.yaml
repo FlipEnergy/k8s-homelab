@@ -90,7 +90,7 @@ apps:
     namespace: influxdb
     enabled: true
     chart: influxdata/influxdb
-    version: 4.9.14
+    version: 4.10.0
     valuesFile: influxdb/influxdb-values.yaml
     secretsFile: influxdb/secrets.influxdb-creds.yaml
     hooks:
