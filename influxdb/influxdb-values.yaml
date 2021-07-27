@@ -53,10 +53,10 @@ enterprise:
 resources:
   limits:
     cpu: '2'
-    memory: 6Gi
+    memory: 7Gi
   requests:
     cpu: '1'
-    memory: 6Gi
+    memory: 3Gi
 
 ingress:
   enabled: true
