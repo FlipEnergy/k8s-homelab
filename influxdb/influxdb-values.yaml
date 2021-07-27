@@ -90,9 +90,7 @@ affinity:
             - prometheus
         topologyKey: kubernetes.io/hostname
 
-env:
-  - name: INFLUXDB_DATA_MAX_VALUES_PER_TAG
-    value: "0"
+env: {}
 
 # Allow executing custom init scripts
 #
@@ -103,6 +101,6 @@ initScripts:
   enabled: true
   scripts:
     init_homelab.iql: |+
-      CREATE DATABASE "homelab" WITH DURATION 30d REPLICATION 1 NAME "rp_30d"
+      CREATE DATABASE "homelab" WITH DURATION 14d REPLICATION 1 NAME "rp_30d"
     init_concourse.iql: |+
       CREATE DATABASE "concourse" WITH DURATION 7d REPLICATION 1 NAME "rp_7d"
