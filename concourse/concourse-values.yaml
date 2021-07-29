@@ -379,31 +379,6 @@ concourse:
       ##
       configPath:
 
-    influxdb:
-      enabled: true
-
-      ## Number of points to batch together when emitting to InfluxDB
-      ##
-      batchSize:
-
-      ## The duration to wait before emitting a batch of points to InfluxDB,
-      ## disregarding # the batch size.
-      ##
-      batchDuration:
-
-      ## InfluxDB server address to emit points to.
-      ## Example: http://127.0.0.1:8086
-      ##
-      url: http://influxdb.influxdb.svc.cluster.local:8086
-
-      ## InfluxDB database to write points to.
-      ##
-      database: concourse
-
-      ## Skip SSL verification when emitting to InfluxDB.
-      ##
-      insecureSkipVerify: true
-
     ## Emit metrics to logs instead of an actual metrics system.
     ##
     emitToLogs: false

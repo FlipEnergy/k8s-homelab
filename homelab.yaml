@@ -13,7 +13,7 @@ namespaces:
   freshrss:
   gonic:
   haste:
-  influxdb:
+  influxdb2:
   ingress-nginx:
   kube-ops-view:
   kube-prometheus-stack:
@@ -85,16 +85,16 @@ apps:
     priority : -199
 
   # Databases
-  influxdb:
+  influxdb2:
     <<: *default
-    namespace: influxdb
+    namespace: influxdb2
     enabled: true
-    chart: influxdata/influxdb
-    version: 4.10.0
-    valuesFile: influxdb/influxdb-values.yaml
-    secretsFile: influxdb/secrets.influxdb-creds.yaml
+    chart: influxdata/influxdb2
+    version: 2.0.1
+    valuesFile: influxdb2/influxdb2-values.yaml
+    secretsFile: influxdb2/secrets.influxdb2-creds.yaml
     hooks:
-      preInstall: influxdb/persistenceVolume.yaml
+      preInstall: influxdb2/persistenceVolume.yaml
     priority : -99
 
   kube-prometheus-stack:
