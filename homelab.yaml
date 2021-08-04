@@ -102,12 +102,13 @@ apps:
     namespace: kube-prometheus-stack
     enabled: true
     chart: prometheus-community/kube-prometheus-stack
-    version: 17.1.0
+    version: 17.1.1
     valuesFile: kube-prometheus/kube-prometheus-values.yaml
     secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
     hooks:
       preInstall: kube-prometheus/persistenceVolume.yaml
     priority: -98
+    timeout: 600
 
   postgresql:
     <<: *default
