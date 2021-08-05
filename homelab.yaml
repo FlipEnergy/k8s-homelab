@@ -80,7 +80,7 @@ apps:
     namespace: nfs-subdir-external-provisioner
     enabled: true
     chart: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner
-    version: 4.0.12
+    version: 4.0.13
     valuesFile: nfs-subdir-external-provisioner/nfs-subdir-external-provisioner-values.yaml
     priority : -199
 
