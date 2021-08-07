@@ -72,8 +72,8 @@ prometheus:
               - key: app.kubernetes.io/name
                 operator: In
                 values:
-                - postgresql
-                - influxdb
+                  - postgresql
+                  - influxdb
             topologyKey: kubernetes.io/hostname
 
     ## Resource limits & requests

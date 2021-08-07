@@ -226,8 +226,8 @@ primary:
             - key: app.kubernetes.io/name
               operator: In
               values:
-              - influxdb
-              - prometheus
+                - influxdb
+                - prometheus
           topologyKey: kubernetes.io/hostname
 
   ## Node labels for PostgreSQL primary pods assignment

@@ -13,8 +13,8 @@ affinity:
           - key: app.kubernetes.io/name
             operator: In
             values:
-            - postgresql
-            - prometheus
+              - postgresql
+              - prometheus
         topologyKey: kubernetes.io/hostname
 
 securityContext:
