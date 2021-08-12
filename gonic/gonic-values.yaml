@@ -51,7 +51,7 @@ persistence:
     storageClass: gonic-data
     size: 1Gi
     # Do not delete the pvc upon helm uninstall
-    skipuninstall: true
+    retain: false
   music:
     enabled: true
     mountPath: /music
@@ -60,4 +60,4 @@ persistence:
     storageClass: gonic-music
     size: 100Gi
     # Do not delete the pvc upon helm uninstall
-    skipuninstall: true
+    retain: false

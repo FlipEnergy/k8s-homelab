@@ -137,7 +137,7 @@ apps:
     namespace: focal
     enabled: true
     chart: k8s-at-home/focalboard
-    version: 2.3.0
+    version: 3.0.0
     valuesFile: focalboard/focalboard-values.yaml
     secretsFile: focalboard/secret.focalboard-creds.yaml
 
@@ -146,7 +146,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 5.3.0
+    version: 6.0.0
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistenceVolume.yaml
@@ -157,7 +157,7 @@ apps:
     namespace: haste
     enabled: true
     chart: k8s-at-home/haste-server
-    version: 2.3.0
+    version: 3.0.0
     valuesFile: hastebin/hastebin-values.yaml
 
   gonic:
@@ -165,7 +165,7 @@ apps:
     namespace: gonic
     enabled: true
     chart: k8s-at-home/gonic
-    version: 5.3.0
+    version: 6.0.0
     valuesFile: gonic/gonic-values.yaml
     hooks:
       preInstall: gonic/persistenceVolume.yaml
@@ -175,7 +175,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-at-home/owncast
-    version: 2.1.0
+    version: 3.0.0
     valuesFile: owncast/owncast-values.yaml
     hooks:
       preInstall: owncast/persistenceVolume.yaml
@@ -193,7 +193,7 @@ apps:
     namespace: sharry
     enabled: true
     chart: k8s-at-home/sharry
-    version: 4.1.0
+    version: 5.0.0
     valuesFile: sharry/sharry-values.yaml
     secretsFile: sharry/secret.sharry-config.yaml
 
@@ -202,7 +202,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 2.1.0
+    version: 3.0.0
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
@@ -212,7 +212,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 2.3.0
+    version: 3.0.0
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
@@ -223,7 +223,7 @@ apps:
     namespace: whoogle
     enabled: true
     chart: k8s-at-home/whoogle
-    version: 2.1.0
+    version: 3.0.0
     valuesFile: whoogle/whoogle-values.yaml
 
   wikijs:
@@ -231,7 +231,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 5.1.0
+    version: 6.0.0
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 

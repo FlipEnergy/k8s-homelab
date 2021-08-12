@@ -1,7 +1,7 @@
 # Override values for sharry.
 
 image:
-  tag: 1.8.0
+  tag: v1.9.0
   pullPolicy: IfNotPresent
 
 ingress:

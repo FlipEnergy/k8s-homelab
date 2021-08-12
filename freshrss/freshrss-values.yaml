@@ -36,6 +36,6 @@ persistence:
     storageClass: freshrss-data
     size: 1Gi
     # Do not delete the pvc upon helm uninstall
-    skipuninstall: true
+    retain: false
 
 nodeSelector: {}
