@@ -56,10 +56,10 @@ persistence:
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
   limits:
-    cpu: '2'
+    cpu: '1'
     memory: 6Gi
   requests:
-    cpu: '1'
+    cpu: 500m
     memory: 3Gi
 
 ingress:
