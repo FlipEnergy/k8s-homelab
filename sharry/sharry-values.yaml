@@ -35,7 +35,7 @@ persistence:
     emptyDir:
       enabled: false
     mountPath: /tmp
-    storageClass: nfs-client
+    storageClass: local-path
     accessMode: ReadWriteOnce
     size: 30Gi
 

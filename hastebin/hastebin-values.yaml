@@ -36,7 +36,7 @@ persistence:
   data:
     enabled: true
     # Persistent Volume Storage Class
-    storageClass: nfs-client
+    storageClass: local-path
     accessMode: ReadWriteOnce
     size: 5Gi
     # Do not delete the pvc upon helm uninstall
