@@ -1,0 +1,32 @@
+# wg-access-server config
+
+# Note: on your phone, to allow chromecast to work and allow access to your local network,
+#   in the peer section, add your subnet to the front and check Exclude private IPs.
+
+config:
+  externalHost: pleasenoddos.com
+  vpn:
+    cidr: "10.45.0.0/24"
+  dns:
+    enabled: true
+
+web:
+  service:
+    type: ClusterIP
+
+wireguard:
+  service:
+    type: LoadBalancer
+
+strategy:
+  type: RollingUpdate
+
+resources:
+  limits:
+    cpu: 300m
+    memory: 500Mi
+  requests:
+    cpu: 50m
+    memory: 125Mi
+
+nodeSelector: {}

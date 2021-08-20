@@ -1,0 +1,58 @@
+context: oracle
+
+metadata:
+  maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
+  description: Helmman DSF for Oracle homelab K8s
+
+settings:
+  kubeContext: oracle
+  globalMaxHistory: 2
+
+namespaces:
+  ingress-nginx:
+  kube-ops-view:
+  kube-prometheus-stack:
+  whoogle:
+  wireguard:
+
+helmRepos:
+  ingress-nginx: https://kubernetes.github.io/ingress-nginx
+  place1: https://place1.github.io/wg-access-server
+  prometheus-community: https://prometheus-community.github.io/helm-charts
+
+appsTemplates:
+  default: &default
+    wait: true
+
+apps:
+  # Ingress
+  ingress-nginx:
+    <<: *default
+    namespace: ingress-nginx
+    enabled: true
+    chart: ingress-nginx/ingress-nginx
+    version: 3.34.0
+    priority : -200
+    valuesFile: ingress-nginx/ingress-nginx-values.yaml
+
+  # Databases
+  kube-prometheus-stack:
+    <<: *default
+    namespace: kube-prometheus-stack
+    enabled: true
+    chart: prometheus-community/kube-prometheus-stack
+    version: 18.0.0
+    valuesFile: kube-prometheus/o-kube-prometheus-values.yaml
+    secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
+    priority: -98
+    timeout: 600
+
+  # Applications
+  wireguard:
+    <<: *default
+    namespace: wireguard
+    enabled: true
+    chart: place1/wg-access-server
+    version: 0.4.6
+    valuesFile: wireguard/o-wireguard-values.yaml
+    secretsFile: wireguard/secrets.o-wireguard-creds.yaml
