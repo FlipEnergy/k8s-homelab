@@ -10,9 +10,7 @@ settings:
 
 namespaces:
   ingress-nginx:
-  kube-ops-view:
   kube-prometheus-stack:
-  whoogle:
   wireguard:
 
 helmRepos:
