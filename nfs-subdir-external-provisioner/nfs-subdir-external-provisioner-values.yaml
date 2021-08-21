@@ -1,7 +1,0 @@
-# override values for nfs-subdir-external-provisioner
-
-nfs:
-  server: k8s-nfs-1.tgp
-  path: /mnt/data/dynamic
-  mountOptions:
-  volumeName: nfs-subdir-external-provisioner-root

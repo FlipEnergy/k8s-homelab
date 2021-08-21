@@ -11,10 +11,12 @@ settings:
 namespaces:
   ingress-nginx:
   kube-prometheus-stack:
+  whoogle:
   wireguard:
 
 helmRepos:
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
+  k8s-at-home: https://k8s-at-home.com/charts/
   place1: https://place1.github.io/wg-access-server
   prometheus-community: https://prometheus-community.github.io/helm-charts
 
@@ -33,19 +35,13 @@ apps:
     priority : -200
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
-  # Databases
-  kube-prometheus-stack:
+  whoogle:
     <<: *default
-    namespace: kube-prometheus-stack
+    namespace: whoogle
     enabled: true
-    chart: prometheus-community/kube-prometheus-stack
-    version: 18.0.0
-    valuesFiles:
-      - kube-prometheus/kube-prometheus-values.yaml
-      - kube-prometheus/oracle/kube-prometheus-values.yaml
-    secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
-    priority: -98
-    timeout: 600
+    chart: k8s-at-home/whoogle
+    version: 3.0.0
+    valuesFile: whoogle/whoogle-values.yaml
 
   # Applications
   wireguard:
