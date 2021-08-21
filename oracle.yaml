@@ -40,7 +40,9 @@ apps:
     enabled: true
     chart: prometheus-community/kube-prometheus-stack
     version: 18.0.0
-    valuesFile: kube-prometheus/oracle/kube-prometheus-values.yaml
+    valuesFiles:
+      - kube-prometheus/kube-prometheus-values.yaml
+      - kube-prometheus/oracle/kube-prometheus-values.yaml
     secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
     priority: -98
     timeout: 600
@@ -52,5 +54,7 @@ apps:
     enabled: true
     chart: place1/wg-access-server
     version: 0.4.6
-    valuesFile: wireguard/oracle/wireguard-values.yaml
+    valuesFiles:
+      - wireguard/wireguard-values.yaml
+      - wireguard/oracle/wireguard-values.yaml
     secretsFile: wireguard/oracle/secrets.wireguard-creds.yaml
