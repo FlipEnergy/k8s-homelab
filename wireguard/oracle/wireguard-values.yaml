@@ -21,3 +21,6 @@ persistence:
   #
   storageClass: local-path
   size: 100Mi
+
+nodeSelector:
+  k3s.io/hostname: oraclek8sarmnode1
