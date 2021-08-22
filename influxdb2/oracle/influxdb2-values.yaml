@@ -42,7 +42,7 @@ resources:
     memory: 3Gi
 
 ingress:
-  enabled: false
+  enabled: true
   tls: false
   # secretName: my-tls-cert # only needed if tls above is true
   hostname: influx.pleasenoddos.com
