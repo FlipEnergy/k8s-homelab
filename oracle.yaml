@@ -9,10 +9,8 @@ settings:
   globalMaxHistory: 2
 
 namespaces:
-  haste:
   influxdb2:
   ingress-nginx:
-  wireguard:
 
 helmRepos:
   influxdata: https://helm.influxdata.com/
@@ -41,21 +39,9 @@ apps:
   influxdb2:
     <<: *default
     namespace: influxdb2
-    enabled: false
+    enabled: true
     chart: influxdata/influxdb2
     version: 2.0.1
     valuesFile: influxdb2/oracle/influxdb2-values.yaml
     secretsFile: influxdb2/oracle/secrets.influxdb2-creds.yaml
     priority : -99
-
-  # Applications
-  wireguard:
-    <<: *default
-    namespace: wireguard
-    enabled: false
-    chart: place1/wg-access-server
-    version: 0.4.6
-    valuesFiles:
-      - wireguard/wireguard-values.yaml
-      - wireguard/oracle/wireguard-values.yaml
-    secretsFile: wireguard/oracle/secrets.wireguard-creds.yaml
