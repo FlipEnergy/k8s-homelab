@@ -29,21 +29,18 @@ apps:
   ingress-nginx:
     <<: *default
     namespace: ingress-nginx
-    enabled: true
+    enabled: false
     chart: ingress-nginx/ingress-nginx
     version: 3.34.0
     priority : -200
-    valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
   # Databases
   influxdb2:
     <<: *default
     namespace: influxdb2
-    enabled: true
+    enabled: false
     chart: influxdata/influxdb2
     version: 2.0.1
-    valuesFile: influxdb2/oracle/influxdb2-values.yaml
-    secretsFile: influxdb2/oracle/secrets.influxdb2-creds.yaml
     priority : -99
 
   # Applications
@@ -53,7 +50,3 @@ apps:
     enabled: false
     chart: place1/wg-access-server
     version: 0.4.6
-    valuesFiles:
-      - wireguard/wireguard-values.yaml
-      - wireguard/oracle/wireguard-values.yaml
-    secretsFile: wireguard/oracle/secrets.wireguard-creds.yaml
