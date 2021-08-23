@@ -33,13 +33,15 @@ apps:
     chart: ingress-nginx/ingress-nginx
     version: 3.34.0
     priority : -200
-    valuesFile: ingress-nginx/ingress-nginx-values.yaml
+    valuesFiles:
+      - ingress-nginx/ingress-nginx-values.yaml
+      - ingress-nginx/oracle/ingress-nginx-values.yaml
 
   # Databases
   influxdb2:
     <<: *default
     namespace: influxdb2
-    enabled: true
+    enabled: false
     chart: influxdata/influxdb2
     version: 2.0.1
     valuesFile: influxdb2/oracle/influxdb2-values.yaml

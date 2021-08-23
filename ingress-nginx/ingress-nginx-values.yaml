@@ -2,17 +2,10 @@
 ## Ref: https://github.com/kubernetes/ingress-nginx/blob/master/charts/ingress-nginx/values.yaml
 ##
 
-## Overrides for generated resource names
-# See templates/_helpers.tpl
-# nameOverride:
-# fullnameOverride:
-
 controller:
   ## DaemonSet or Deployment
   ##
   kind: DaemonSet
-
-  nodeSelector: {}
 
   # Will add custom configuration options to Nginx https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
   config:

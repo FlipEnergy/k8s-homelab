@@ -11,6 +11,7 @@ deploy:
 	helmsman $(options) -p 3 -show-diff --apply -f homelab.yaml
 
 deploy-oracle:
+	sops -d ingress-nginx/oracle/secret.default-ssl-certs.yaml | kubectl --context oracle -n default apply -f -
 	docker run --rm -it \
 	-v $$(pwd):/k8s-homelab \
 	-v ~/.kube/config:/root/.kube/config \
