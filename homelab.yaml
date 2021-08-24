@@ -130,7 +130,7 @@ apps:
   haste:
     <<: *default
     namespace: haste
-    enabled: true
+    enabled: false
     chart: k8s-at-home/haste-server
     version: 3.0.0
     valuesFile: hastebin/hastebin-values.yaml
