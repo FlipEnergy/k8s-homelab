@@ -13,7 +13,6 @@ namespaces:
   focal:
   freshrss:
   gonic:
-  haste:
   ingress-nginx:
   kube-ops-view:
   kube-prometheus-stack:
@@ -126,14 +125,6 @@ apps:
     hooks:
       preInstall: freshrss/persistenceVolume.yaml
     timeout: 360
-
-  haste:
-    <<: *default
-    namespace: haste
-    enabled: false
-    chart: k8s-at-home/haste-server
-    version: 3.0.0
-    valuesFile: hastebin/hastebin-values.yaml
 
   gonic:
     <<: *default
