@@ -22,7 +22,6 @@ namespaces:
   sharry:
   syncthing:
   vaultwarden:
-  whoogle:
   wikijs:
   wireguard:
 
@@ -183,13 +182,6 @@ apps:
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
       preInstall: vaultwarden/persistenceVolume.yaml
-
-  whoogle:
-    <<: *default
-    namespace: whoogle
-    enabled: false
-    chart: k8s-at-home/whoogle
-    version: 3.0.0
 
   wikijs:
     <<: *default
