@@ -23,7 +23,7 @@ spec:
   capacity:
     storage: 100Gi
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   nfs:
     path: /mnt/data/syncthing-data/music
     server: k8s-nfs-1.tgp
