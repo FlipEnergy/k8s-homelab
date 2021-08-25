@@ -1,0 +1,48 @@
+image:
+  # -- image tag
+  tag: 10.7.6
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    hosts:
+      - host: jelly.pleasenoddos.com
+        paths:
+          - path: /
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Class
+    storageClass: jellyfin-config
+    size: 25Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: false
+  media:
+    enabled: true
+    mountPath: /media
+    accessMode: ReadOnlyMany
+    # Persistent Volume Storage Class
+    storageClass: jellyfin-music
+    size: 100Gi
+    # Do not delete the pvc upon helm uninstall
+    retain: false
+
+
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi

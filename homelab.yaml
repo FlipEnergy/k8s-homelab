@@ -12,6 +12,7 @@ namespaces:
   concourse:
   focal:
   freshrss:
+  jellyfin:
   gonic:
   ingress-nginx:
   kube-ops-view:
@@ -133,6 +134,16 @@ apps:
     valuesFile: gonic/gonic-values.yaml
     hooks:
       preInstall: gonic/persistenceVolume.yaml
+
+  jellyfin:
+    <<: *default
+    namespace: jellyfin
+    enabled: true
+    chart: k8s-at-home/jellyfin
+    version: 9.0.0
+    valuesFile: jellyfin/jellyfin-values.yaml
+    hooks:
+      preInstall: jellyfin/persistenceVolume.yaml
 
   owncast:
     <<: *default
