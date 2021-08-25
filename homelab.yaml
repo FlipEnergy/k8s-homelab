@@ -128,7 +128,7 @@ apps:
   gonic:
     <<: *default
     namespace: gonic
-    enabled: true
+    enabled: false
     chart: k8s-at-home/gonic
     version: 6.0.0
     valuesFile: gonic/gonic-values.yaml
