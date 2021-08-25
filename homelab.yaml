@@ -13,7 +13,6 @@ namespaces:
   focal:
   freshrss:
   jellyfin:
-  gonic:
   ingress-nginx:
   kube-ops-view:
   kube-prometheus-stack:
@@ -124,16 +123,6 @@ apps:
     hooks:
       preInstall: freshrss/persistenceVolume.yaml
     timeout: 360
-
-  gonic:
-    <<: *default
-    namespace: gonic
-    enabled: false
-    chart: k8s-at-home/gonic
-    version: 6.0.0
-    valuesFile: gonic/gonic-values.yaml
-    hooks:
-      preInstall: gonic/persistenceVolume.yaml
 
   jellyfin:
     <<: *default
