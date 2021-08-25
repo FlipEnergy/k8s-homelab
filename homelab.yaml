@@ -18,7 +18,6 @@ namespaces:
   kube-prometheus-stack:
   owncast:
   postgresql:
-  pretend-youre-xyzzy:
   sharry:
   syncthing:
   vaultwarden:
@@ -144,14 +143,6 @@ apps:
     valuesFile: owncast/owncast-values.yaml
     hooks:
       preInstall: owncast/persistenceVolume.yaml
-
-  pretend-youre-xyzzy:
-    <<: *default
-    namespace: pretend-youre-xyzzy
-    enabled: false
-    chart: k8s-at-home/pretend-youre-xyzzy
-    version: 1.0.1
-    valuesFile: pretend-youre-xyzzy/pretend-youre-xyzzy-values.yaml
 
   sharry:
     <<: *default
