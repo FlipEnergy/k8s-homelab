@@ -187,10 +187,9 @@ apps:
   whoogle:
     <<: *default
     namespace: whoogle
-    enabled: true
+    enabled: false
     chart: k8s-at-home/whoogle
     version: 3.0.0
-    valuesFile: whoogle/whoogle-values.yaml
 
   wikijs:
     <<: *default
