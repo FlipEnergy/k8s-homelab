@@ -19,10 +19,10 @@ ingress:
 resources:
   limits:
     cpu: 500m
-    memory: 250Mi
+    memory: 100Mi
   requests:
     cpu: 50m
-    memory: 125Mi
+    memory: 50Mi
 
 env:
   PUID: 65534 #nobody

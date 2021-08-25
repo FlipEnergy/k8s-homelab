@@ -875,11 +875,11 @@ web:
   ##
   resources:
     limits:
-      cpu: 250m
-      memory: 150Mi
+      cpu: 100m
+      memory: 75Mi
     requests:
       cpu: 50m
-      memory: 100Mi
+      memory: 50Mi
 
   ## Configure additional environment variables for the
   ## web containers.
