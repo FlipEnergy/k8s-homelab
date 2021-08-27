@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: duplicati-config
+spec:
+  storageClassName: duplicati-config
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/data/syncthing-data/duplicati-config
+    server: k8s-nfs-1.tgp
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: duplicati-source
+spec:
+  storageClassName: duplicati-source
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/data/syncthing-data
+    server: k8s-nfs-1.tgp

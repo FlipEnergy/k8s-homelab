@@ -10,6 +10,7 @@ settings:
 
 namespaces:
   concourse:
+  duplicati:
   focal:
   freshrss:
   jellyfin:
@@ -191,3 +192,14 @@ apps:
     version: 0.4.6
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
+
+  # Backup
+  duplicati:
+    <<: *default
+    namespace: duplicati
+    enabled: true
+    chart: k8s-at-home/duplicati
+    version: 5.0.0
+    valuesFile: duplicati/duplicati-values.yaml
+    hooks:
+      preInstall: duplicati/persistenceVolume.yaml
