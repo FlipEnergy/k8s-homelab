@@ -5,7 +5,7 @@ metadata:
   description: Helmman DSF for homelab K8s
 
 settings:
-  kubeContext: default
+  kubeContext: homelab
   globalMaxHistory: 2
 
 namespaces:
