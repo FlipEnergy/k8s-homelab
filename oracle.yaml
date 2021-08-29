@@ -1,0 +1,54 @@
+context: homelab
+
+metadata:
+  maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
+  description: Helmman DSF for homelab K8s
+
+settings:
+  kubeContext: default
+  globalMaxHistory: 2
+
+namespaces:
+  concourse:
+  duplicati:
+  focal:
+  freshrss:
+  jellyfin:
+  ingress-nginx:
+  kube-ops-view:
+  kube-prometheus-stack:
+  owncast:
+  postgresql:
+  sharry:
+  syncthing:
+  vaultwarden:
+  wikijs:
+  wireguard:
+
+helmRepos:
+  ingress-nginx: https://kubernetes.github.io/ingress-nginx
+  k8s-at-home: https://k8s-at-home.com/charts/
+
+appsTemplates:
+  default: &default
+    wait: true
+
+apps:
+  # Ingress
+  ingress-nginx:
+    <<: *default
+    namespace: ingress-nginx
+    enabled: true
+    chart: ingress-nginx/ingress-nginx
+    version: 3.34.0 # Do not upgrade to > 4.0.0 as it drops support for ingress v1beta1
+    priority : -200
+    valuesFile: ingress-nginx/ingress-nginx-values.yaml
+
+  # Apps
+  haste:
+     <<: *default
+     namespace: haste
+     enabled: true
+     chart: k8s-at-home/haste-server
+     version: 3.0.0
+     valuesFile: hastebin/oracle/hastebin-values.yaml
