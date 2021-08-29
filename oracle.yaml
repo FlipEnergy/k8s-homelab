@@ -1,31 +1,21 @@
-context: homelab
+context: oracle
 
 metadata:
   maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
-  description: Helmman DSF for homelab K8s
+  description: Helmman DSF for Oracle homelab K8s
 
 settings:
-  kubeContext: default
+  kubeContext: oracle
   globalMaxHistory: 2
 
 namespaces:
-  concourse:
-  duplicati:
-  focal:
-  freshrss:
-  jellyfin:
+  haste:
+  influxdb2:
   ingress-nginx:
-  kube-ops-view:
-  kube-prometheus-stack:
-  owncast:
-  postgresql:
-  sharry:
-  syncthing:
-  vaultwarden:
-  wikijs:
-  wireguard:
+  whoogle:
 
 helmRepos:
+  influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
 
@@ -40,15 +30,36 @@ apps:
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 3.34.0 # Do not upgrade to > 4.0.0 as it drops support for ingress v1beta1
+    version: 3.34.0
     priority : -200
-    valuesFile: ingress-nginx/ingress-nginx-values.yaml
+    valuesFiles:
+      - ingress-nginx/ingress-nginx-values.yaml
+      - ingress-nginx/oracle/ingress-nginx-values.yaml
+
+  # Databases
+  influxdb2:
+    <<: *default
+    namespace: influxdb2
+    enabled: true
+    chart: influxdata/influxdb2
+    version: 2.0.1
+    valuesFile: influxdb2/oracle/influxdb2-values.yaml
+    secretsFile: influxdb2/oracle/secrets.influxdb2-creds.yaml
+    priority : -99
 
   # Apps
   haste:
-     <<: *default
-     namespace: haste
-     enabled: true
-     chart: k8s-at-home/haste-server
-     version: 3.0.0
-     valuesFile: hastebin/oracle/hastebin-values.yaml
+    <<: *default
+    namespace: haste
+    enabled: true
+    chart: k8s-at-home/haste-server
+    version: 3.0.0
+    valuesFile: hastebin/oracle/hastebin-values.yaml
+
+  whoogle:
+    <<: *default
+    namespace: whoogle
+    enabled: true
+    chart: k8s-at-home/whoogle
+    version: 3.0.0
+    valuesFile: whoogle/oracle/whoogle-values.yaml

@@ -1,0 +1,41 @@
+# Override values for whoogle.
+
+controller:
+  replicas: 1
+  strategy: RollingUpdate
+
+image:
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# See more environment variables in the whoogle documentation
+# https://github.com/benbusby/whoogle-search#environment-variables
+env:
+  # WHOOGLE_CONFIG_COUNTRY:
+  WHOOGLE_CONFIG_DARK: 1
+  # WHOOGLE_CONFIG_SAFE:
+  # WHOOGLE_CONFIG_ALTS:
+  # WHOOGLE_CONFIG_TOR:
+  # WHOOGLE_CONFIG_NEW_TAB:
+  # WHOOGLE_CONFIG_GET_ONLY:
+  WHOOGLE_CONFIG_URL: https://whoogle.pleasenoddos.com/
+  # WHOOGLE_CONFIG_STYLE:
+  WHOOGLE_CONFIG_DISABLE: 1
+
+ingress:
+  main:
+    enabled: true
+    hosts:
+      - host: whoogle.pleasenoddos.com
+        paths:
+          - path: /
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 250Mi
+  requests:
+    cpu: 50m
+    memory: 125Mi
+
+nodeSelector: {}

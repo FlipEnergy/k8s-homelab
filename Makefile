@@ -1,4 +1,3 @@
-pihole_server_ip := 192.168.1.11
 syncthing_namespace := syncthing
 
 deploy:
@@ -9,6 +8,16 @@ deploy:
 	-w /k8s-homelab \
 	praqma/helmsman:latest \
 	helmsman $(options) -p 3 -show-diff --apply -f homelab.yaml
+
+deploy-oracle:
+	sops -d ingress-nginx/oracle/secret.default-ssl-certs.yaml | kubectl --context oracle -n default apply -f -
+	docker run --rm -it \
+	-v $$(pwd):/k8s-homelab \
+	-v ~/.kube/config:/root/.kube/config \
+	-v ~/.gnupg:/root/.gnupg \
+	-w /k8s-homelab \
+	praqma/helmsman:latest \
+	helmsman $(options) -p 3 -show-diff --apply -f oracle.yaml
 
 # Syncthing
 save-sync-config:

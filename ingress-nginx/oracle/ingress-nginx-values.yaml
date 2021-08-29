@@ -1,0 +1,18 @@
+## nginx configuration oracle overrides
+## Ref: https://github.com/kubernetes/ingress-nginx/blob/master/charts/ingress-nginx/values.yaml
+##
+
+controller:
+  service:
+    ## List of IP addresses at which the default backend service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs:
+      - 140.238.137.39
+
+  ## Additional command line arguments to pass to nginx-ingress-controller
+  ## E.g. to specify the default SSL certificate you can use
+  ## extraArgs:
+  ##   default-ssl-certificate: "<namespace>/<secret_name>"
+  extraArgs:
+    default-ssl-certificate: "default/letsencrypt-tls"

@@ -12,10 +12,3 @@ controller:
     http-snippet: |
       client_max_body_size 500M;
       proxy_cache_path /tmp/nginx_cache levels=1:2 keys_zone=mattermost_cache:10m max_size=3g inactive=120m use_temp_path=off;
-
-  ## Additional command line arguments to pass to nginx-ingress-controller
-  ## E.g. to specify the default SSL certificate you can use
-  ## extraArgs:
-  ##   default-ssl-certificate: "<namespace>/<secret_name>"
-  # extraArgs:
-  #   default-ssl-certificate: "default/letsencrypt-tls"
