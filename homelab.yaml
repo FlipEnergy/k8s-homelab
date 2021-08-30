@@ -49,6 +49,7 @@ apps:
     chart: ingress-nginx/ingress-nginx
     version: 3.34.0 # Do not upgrade to > 4.0.0 as it drops support for ingress v1beta1
     priority : -200
+    timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
   # Monitoring
@@ -58,8 +59,8 @@ apps:
     enabled: true
     chart: stable/kube-ops-view
     version: 1.2.4
-    valuesFile: kube-ops-view/kube-ops-view-values.yaml
     priority : -199
+    valuesFile: kube-ops-view/kube-ops-view-values.yaml
 
   headlamp:
     <<: *default
@@ -67,8 +68,8 @@ apps:
     enabled: true
     chart: headlamp/headlamp
     version: 0.1.1
-    valuesFile: headlamp/headlamp-values.yaml
     priority : -199
+    valuesFile: headlamp/headlamp-values.yaml
 
   # Databases
   kube-prometheus-stack:
@@ -77,12 +78,12 @@ apps:
     enabled: true
     chart: prometheus-community/kube-prometheus-stack
     version: 18.0.1
+    priority: -98
+    timeout: 600
     valuesFile: kube-prometheus/kube-prometheus-values.yaml
     secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
     hooks:
       preInstall: kube-prometheus/persistenceVolume.yaml
-    priority: -98
-    timeout: 600
 
   postgresql:
     <<: *default
@@ -90,11 +91,11 @@ apps:
     enabled: true
     chart: bitnami/postgresql
     version: 10.9.4
+    priority: -97
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
       preInstall: postgresql/persistenceVolume.yaml
-    priority: -97
 
   # Applications
   concourse:
@@ -121,10 +122,10 @@ apps:
     enabled: true
     chart: k8s-at-home/freshrss
     version: 6.0.0
+    timeout: 360
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
       preInstall: freshrss/persistenceVolume.yaml
-    timeout: 360
 
   jellyfin:
     <<: *default
