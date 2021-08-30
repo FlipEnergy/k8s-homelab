@@ -9,6 +9,7 @@ ingress:
     enabled: true
     # -- Enable large file support with those annotations for nginx
     annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/client-body-buffer-size: "2048m"
       nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
       nginx.ingress.kubernetes.io/proxy-buffering: "off"

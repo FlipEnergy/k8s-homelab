@@ -36,6 +36,8 @@ securityContext: {}
 ingress:
   main:
     enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - host: wiki.pleasenoddos.com
         paths:

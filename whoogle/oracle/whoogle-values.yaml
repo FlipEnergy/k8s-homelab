@@ -25,12 +25,12 @@ env:
 ingress:
   main:
     enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - host: whoogle.pleasenoddos.com
         paths:
           - path: /
-    annotations:
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 
 resources:
   limits:

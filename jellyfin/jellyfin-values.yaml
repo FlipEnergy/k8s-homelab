@@ -7,6 +7,8 @@ ingress:
   # @default -- See values.yaml
   main:
     enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - host: jelly.pleasenoddos.com
         paths:
