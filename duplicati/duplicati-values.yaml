@@ -43,10 +43,10 @@ persistence:
     # Persistent Volume Storage Class
     storageClass: duplicati-config
     accessMode: ReadWriteOnce
-    size: 500Mi
+    size: 100Mi
   source:
     enabled: true
     # Persistent Volume Storage Class
     storageClass: duplicati-source
     accessMode: ReadWriteOnce
-    size: 500Gi
+    size: 3500Gi

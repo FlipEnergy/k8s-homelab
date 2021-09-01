@@ -185,7 +185,7 @@ apps:
   duplicati:
     <<: *default
     namespace: duplicati
-    enabled: false
+    enabled: true
     chart: k8s-at-home/duplicati
     version: 5.0.0
     valuesFile: duplicati/duplicati-values.yaml
