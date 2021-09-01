@@ -13,6 +13,9 @@ ingress:
       nginx.ingress.kubernetes.io/client-body-buffer-size: "2048m"
       nginx.ingress.kubernetes.io/proxy-body-size: "2048m"
       nginx.ingress.kubernetes.io/proxy-buffering: "off"
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     hosts:
       - host: sharry.pleasenoddos.com
         paths:
