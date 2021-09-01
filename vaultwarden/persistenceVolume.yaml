@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data/vaultwarden
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB/syncthing-data/vaultwarden
+    server: truenas-1.tgp

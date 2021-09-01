@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/owncast-data
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB/owncast-data
+    server: truenas-1.tgp

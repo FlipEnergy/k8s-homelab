@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: freshrss-data
+  name: sharry
 spec:
-  storageClassName: freshrss-data
+  storageClassName: sharry
   capacity:
-    storage: 100Mi
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/freshrss-data
+    path: /mnt/ZFS-3.6TB/sharry-data
     server: truenas-1.tgp

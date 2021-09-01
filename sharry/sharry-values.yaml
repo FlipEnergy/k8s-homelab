@@ -36,8 +36,8 @@ persistence:
     emptyDir:
       enabled: false
     mountPath: /tmp
-    storageClass: local-path
+    storageClass: sharry
     accessMode: ReadWriteOnce
-    size: 30Gi
+    size: 50Gi
 
 nodeSelector: {}

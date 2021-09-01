@@ -5,9 +5,9 @@ metadata:
 spec:
   storageClassName: syncthing
   capacity:
-    storage: 500Gi
+    storage: 1Ti
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB/syncthing-data
+    server: truenas-1.tgp

@@ -36,7 +36,7 @@ persistence:
     emptyDir: false
     # Persistent Volume Storage Class
     storageClass: freshrss-data
-    size: 1Gi
+    size: 100Mi
     # Do not delete the pvc upon helm uninstall
     retain: false
 

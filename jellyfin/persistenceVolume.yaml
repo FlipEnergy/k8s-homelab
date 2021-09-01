@@ -9,8 +9,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data/jellyfin-config
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB/syncthing-data/jellyfin-config
+    server: truenas-1.tgp
 
 ---
 
@@ -25,5 +25,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data/music
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB/syncthing-data/music
+    server: truenas-1.tgp

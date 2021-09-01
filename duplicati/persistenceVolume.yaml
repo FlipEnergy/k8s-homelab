@@ -9,8 +9,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data/duplicati-config
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB/duplicati-config
+    server: truenas-1.tgp
 
 ---
 apiVersion: v1
@@ -20,9 +20,9 @@ metadata:
 spec:
   storageClassName: duplicati-source
   capacity:
-    storage: 500Gi
+    storage: 1Ti
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/data/syncthing-data
-    server: k8s-nfs-1.tgp
+    path: /mnt/ZFS-3.6TB
+    server: truenas-1.tgp
