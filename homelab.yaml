@@ -16,7 +16,6 @@ namespaces:
   jellyfin:
   ingress-nginx:
   kube-ops-view:
-  kube-prometheus-stack:
   owncast:
   postgresql:
   sharry:
@@ -32,7 +31,6 @@ helmRepos:
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   place1: https://place1.github.io/wg-access-server
-  prometheus-community: https://prometheus-community.github.io/helm-charts
   stable: https://charts.helm.sh/stable
 
 appsTemplates:
@@ -71,19 +69,6 @@ apps:
     valuesFile: headlamp/headlamp-values.yaml
 
   # Databases
-  kube-prometheus-stack:
-    <<: *default
-    namespace: kube-prometheus-stack
-    enabled: true
-    chart: prometheus-community/kube-prometheus-stack
-    version: 18.0.2
-    priority: -98
-    timeout: 600
-    valuesFile: kube-prometheus/kube-prometheus-values.yaml
-    secretsFile: kube-prometheus/secrets.kube-prometheus.yaml
-    hooks:
-      preInstall: kube-prometheus/persistenceVolume.yaml
-
   postgresql:
     <<: *default
     namespace: postgresql
