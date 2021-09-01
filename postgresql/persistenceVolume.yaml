@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/postgresql-data
+    path: /mnt/ZFS-3.6TB/storage/postgresql-data
     server: truenas-1.tgp
