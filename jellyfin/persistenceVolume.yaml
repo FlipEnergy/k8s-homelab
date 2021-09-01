@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/syncthing-data/jellyfin-config
+    path: /mnt/ZFS-3.6TB/jellyfin-config
     server: truenas-1.tgp
 
 ---
