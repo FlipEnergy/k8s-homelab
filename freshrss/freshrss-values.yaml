@@ -27,8 +27,8 @@ resources:
     memory: 50Mi
 
 env:
-  PUID: 65534 #nobody
-  PGID: 65534 #nogroup
+  PUID: 1000
+  PGID: 1000
 
 persistence:
   config:
