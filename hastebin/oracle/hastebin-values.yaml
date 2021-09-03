@@ -17,9 +17,7 @@ env:
   STORAGE_TYPE: "file"
 
 podSecurityContext:
-  runAsUser: 1000
   runAsNonRoot: true
-
 
 ingress:
   main:
