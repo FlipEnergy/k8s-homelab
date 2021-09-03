@@ -74,7 +74,7 @@ apps:
   postgresql:
     <<: *default
     namespace: postgresql
-    enabled: true
+    enabled: false
     chart: bitnami/postgresql
     version: 10.9.4
     priority: -97
@@ -87,7 +87,7 @@ apps:
   concourse:
     <<: *default
     namespace: concourse
-    enabled: true
+    enabled: false
     chart: concourse/concourse
     version: 15.7.1
     valuesFile: concourse/concourse-values.yaml
@@ -96,7 +96,7 @@ apps:
   focal:
     <<: *default
     namespace: focal
-    enabled: true
+    enabled: false
     chart: k8s-at-home/focalboard
     version: 3.0.0
     valuesFile: focalboard/focalboard-values.yaml
@@ -105,7 +105,7 @@ apps:
   freshrss:
     <<: *default
     namespace: freshrss
-    enabled: true
+    enabled: false
     chart: k8s-at-home/freshrss
     version: 6.0.0
     timeout: 360
@@ -116,7 +116,7 @@ apps:
   jellyfin:
     <<: *default
     namespace: jellyfin
-    enabled: true
+    enabled: false
     chart: k8s-at-home/jellyfin
     version: 9.0.0
     valuesFile: jellyfin/jellyfin-values.yaml
@@ -126,7 +126,7 @@ apps:
   owncast:
     <<: *default
     namespace: owncast
-    enabled: true
+    enabled: false
     chart: k8s-at-home/owncast
     version: 3.0.0
     valuesFile: owncast/owncast-values.yaml
@@ -147,7 +147,7 @@ apps:
   sharry:
     <<: *default
     namespace: sharry
-    enabled: true
+    enabled: false
     chart: k8s-at-home/sharry
     version: 5.0.0
     valuesFile: sharry/sharry-values.yaml
@@ -158,7 +158,7 @@ apps:
   syncthing:
     <<: *default
     namespace: syncthing
-    enabled: true
+    enabled: false
     chart: k8s-at-home/syncthing
     version: 3.0.0
     valuesFile: syncthing/syncthing-values.yaml
@@ -168,7 +168,7 @@ apps:
   vaultwarden:
     <<: *default
     namespace: vaultwarden
-    enabled: true
+    enabled: false
     chart: k8s-at-home/vaultwarden
     version: 3.1.0
     valuesFile: vaultwarden/vaultwarden-values.yaml
@@ -179,7 +179,7 @@ apps:
   wikijs:
     <<: *default
     namespace: wikijs
-    enabled: true
+    enabled: false
     chart: k8s-at-home/wikijs
     version: 6.0.0
     valuesFile: wikijs/wikijs-values.yaml
@@ -188,7 +188,7 @@ apps:
   wireguard:
     <<: *default
     namespace: wireguard
-    enabled: true
+    enabled: false
     chart: place1/wg-access-server
     version: 0.4.6
     valuesFile: wireguard/wireguard-values.yaml
@@ -198,7 +198,7 @@ apps:
   duplicati:
     <<: *default
     namespace: duplicati
-    enabled: true
+    enabled: false
     chart: k8s-at-home/duplicati
     version: 5.0.0
     valuesFile: duplicati/duplicati-values.yaml
