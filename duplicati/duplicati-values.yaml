@@ -8,7 +8,7 @@ image:
 # @default -- See below
 env:
   # -- Set the container timezone
-  TZ: UTC
+  TZ: America/Vancouver
   # -- Specify the user ID the application will run as
   PUID: "1000"
   # -- Specify the group ID the application will run as
@@ -29,7 +29,7 @@ ingress:
 
 resources:
   limits:
-    cpu: 3
+    cpu: 2
     memory: 1Gi
   requests:
     cpu: 1
