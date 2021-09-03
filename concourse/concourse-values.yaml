@@ -1263,7 +1263,7 @@ rbac:
   workerServiceAccountName: default
 
   ## Any annotations required for the worker Service Account
-  workerServiceAccountAnnotations: {} 
+  workerServiceAccountAnnotations: {}
 
 ## For managing podSecurityPolicies. To make sure rbac objects are also created
 ## for the use of the podsecuritypolicy objects,

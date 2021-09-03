@@ -1,8 +1,8 @@
 # Override values for headlamp.
 
 podSecurityContext:
-  fsGroup: 1000
   runAsUser: 1000
+  runAsNonRoot: true
 
 ingress:
   # -- Enable ingress controller resource

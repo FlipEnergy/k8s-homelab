@@ -1,0 +1,130 @@
+## Allowing use of ingress controllers
+## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
+##
+ingress:
+  enabled: true
+  annotations:
+   nginx.ingress.kubernetes.io/proxy-body-size: 4G
+   nginx.ingress.kubernetes.io/server-snippet: |-
+     server_tokens off;
+     proxy_hide_header X-Powered-By;
+
+     rewrite ^/.well-known/webfinger /public.php?service=webfinger last;
+     rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+     rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json;
+     location = /.well-known/carddav {
+       return 301 $scheme://$host/remote.php/dav;
+     }
+     location = /.well-known/caldav {
+       return 301 $scheme://$host/remote.php/dav;
+     }
+     location = /robots.txt {
+       allow all;
+       log_not_found off;
+       access_log off;
+     }
+     location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+       deny all;
+     }
+     location ~ ^/(?:autotest|occ|issue|indie|db_|console) {
+       deny all;
+     }
+  tls: []
+  labels: {}
+
+securityContext:
+  runAsUser: 1000
+  runAsNonRoot: true
+
+nextcloud:
+  host: cloud.pleasenoddos.com
+
+  # Default config files
+  # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
+  # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/16.0/apache/config
+  defaultConfigs:
+    # Redis default configuration
+    redis.config.php: false
+
+## Cronjob to execute Nextcloud background tasks
+## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#webcron
+##
+cronjob:
+  enabled: false
+  # Nexcloud image is used as default but only curl is needed
+  image:
+    repository: curlimages/curl
+    tag: latest
+    # pullPolicy: IfNotPresent
+    # pullSecrets:
+    #   - myRegistrKeySecretName
+  # Every 5 minutes
+  # Note: Setting this to any any other value than 5 minutes might
+  #  cause issues with how nextcloud background jobs are executed
+  schedule: "*/5 * * * *"
+  annotations: {}
+  failedJobsHistoryLimit: 2
+  successfulJobsHistoryLimit: 1
+  # If not set, nextcloud deployment one will be set
+  # resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #  cpu: 100m
+    #  memory: 128Mi
+    # requests:
+    #  cpu: 100m
+    #  memory: 128Mi
+
+  # If not set, nextcloud deployment one will be set
+  # nodeSelector: {}
+
+  # If not set, nextcloud deployment one will be set
+  # tolerations: []
+
+  # If not set, nextcloud deployment one will be set
+  # affinity: {}
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  # Nextcloud Data (/var/www/html)
+  enabled: true
+  annotations: {}
+  # nextcloud data Persistent Volume Storage Class
+  # If defined, storageClassName: <storageClass>
+  # If set to "-", storageClassName: "", which disables dynamic provisioning
+  # If undefined (the default) or set to null, no storageClassName spec is
+  #   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  #   GKE, AWS & OpenStack)
+  #
+  storageClass: nextcloud-data
+
+  ## A manually managed Persistent Volume and Claim
+  ## Requires persistence.enabled: true
+  ## If defined, PVC must be created manually before volume will be bound
+  # existingClaim:
+
+  accessMode: ReadWriteOnce
+  size: 3Ti
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 2
+    memory: 3Gi
+  requests:
+    cpu: 1
+    memory: 1Gi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

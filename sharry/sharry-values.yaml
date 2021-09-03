@@ -30,14 +30,12 @@ resources:
     memory: 250Mi
 
 podSecurityContext:
-  fsGroup: 1000
   runAsUser: 1000
+  runAsNonRoot: true
 
 persistence:
   data:
     enabled: true
-    emptyDir:
-      enabled: false
     mountPath: /tmp
     storageClass: sharry
     accessMode: ReadWriteOnce

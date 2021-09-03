@@ -35,6 +35,19 @@ resources:
     cpu: 1
     memory: 500Mi
 
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+              - postgresql
+        topologyKey: kubernetes.io/hostname
+
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:

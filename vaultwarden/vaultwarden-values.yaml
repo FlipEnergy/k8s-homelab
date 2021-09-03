@@ -58,8 +58,8 @@ persistence:
     size: 50Mi
 
 podSecurityContext:
-  fsGroup: 1000
   runAsUser: 1000
+  runAsNonRoot: true
 
 resources:
   limits:

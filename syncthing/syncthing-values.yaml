@@ -5,8 +5,8 @@ image:
   pullPolicy: IfNotPresent
 
 podSecurityContext:
-  fsGroup: 1000
   runAsUser: 1000
+  runAsNonRoot: true
 
 ingress:
   main:
@@ -27,8 +27,6 @@ resources:
 persistence:
   data:
     enabled: true
-    emptyDir:
-      enabled: false
     mountPath: /var/syncthing
     storageClass: syncthing
     accessMode: ReadWriteOnce

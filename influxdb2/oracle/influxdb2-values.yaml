@@ -2,7 +2,7 @@
 
 securityContext:
   runAsUser: 1000
-  runAsGroup: 1000
+  runAsNonRoot: true
 
 ## Persist data to a persistent volume
 ##

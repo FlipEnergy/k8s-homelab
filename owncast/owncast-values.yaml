@@ -29,9 +29,6 @@ ingress:
 persistence:
   config:
     enabled: true
-    emptyDir:
-      enabled: false
-    mountPath: /app/data
     storageClass: owncast
     accessMode: ReadWriteOnce
     size: 10Mi
