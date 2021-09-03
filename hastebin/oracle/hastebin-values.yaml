@@ -16,9 +16,6 @@ env:
   STORAGE_FILEPATH: "/data"
   STORAGE_TYPE: "file"
 
-podSecurityContext:
-  runAsNonRoot: true
-
 ingress:
   main:
     enabled: true
