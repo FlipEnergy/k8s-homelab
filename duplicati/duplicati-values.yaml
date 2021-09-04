@@ -29,11 +29,11 @@ ingress:
 
 resources:
   limits:
-    cpu: 2
-    memory: 1Gi
-  requests:
     cpu: 1
-    memory: 500Mi
+    memory: 800Mi
+  requests:
+    cpu: 500m
+    memory: 400Mi
 
 affinity:
   podAntiAffinity:
