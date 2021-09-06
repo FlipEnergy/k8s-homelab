@@ -1,0 +1,6 @@
+apiVersion: v2
+name: restic
+description: restic is a backup program that is fast, efficient and secure.
+type: application
+version: 0.1.0
+appVersion: 0.12.1

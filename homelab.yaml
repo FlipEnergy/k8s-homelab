@@ -19,6 +19,7 @@ namespaces:
   nextcloud:
   owncast:
   postgresql:
+  restic:
   sharry:
   syncthing:
   vaultwarden:
@@ -204,3 +205,11 @@ apps:
     valuesFile: duplicati/duplicati-values.yaml
     hooks:
       preInstall: duplicati/persistenceVolume.yaml
+
+  restic:
+    <<: *default
+    namespace: restic
+    enabled: false
+    chart: ./restic
+    version: 0.1.0
+    secretsFile: restic/secret.restic-creds.yaml

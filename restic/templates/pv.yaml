@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "restic.fullname" . }}-source
+spec:
+  storageClassName: {{ include "restic.fullname" . }}-source
+  capacity:
+    storage: {{ .Values.persistence.source.storage }}
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: {{ .Values.persistence.source.nfsPath }}
+    server: {{ .Values.persistence.source.nfsServer }}
