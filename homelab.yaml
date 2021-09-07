@@ -209,7 +209,7 @@ apps:
   restic:
     <<: *default
     namespace: restic
-    enabled: false
+    enabled: true
     chart: ./restic
     version: 0.1.0
     secretsFile: restic/secret.restic-creds.yaml

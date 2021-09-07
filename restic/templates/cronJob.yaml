@@ -5,13 +5,13 @@ metadata:
   labels:
     {{- include "restic.labels" . | nindent 4 }}
 spec:
+  concurrencyPolicy: Forbid
   schedule: {{ quote .Values.schedule }}
   successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
   failedJobsHistoryLimit: {{ .Values.failedJobsHistoryLimit }}
   jobTemplate:
     spec:
       backoffLimit: {{ .Values.backoffLimit }}
-      activeDeadlineSeconds: {{ .Values.activeDeadlineSeconds }}
       template:
         spec:
           restartPolicy: {{ .Values.restartPolicy }}
@@ -26,13 +26,26 @@ spec:
               securityContext:
               {{- toYaml .Values.securityContext | nindent 16 }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-              command:
-                - /bin/sh
-                - -c
-                - -e
+              command: ["/bin/sh"]
+              args:
+                - -ec
                 - |
-                  set -eo pipefail
-                  sleep 9999
+                  echo "Listing snapshots for [${RESTIC_REPOSITORY}]"
+                  echo
+                  status=0
+                  restic snapshots || status=$?
+                  if [ $status != 0 ]; then
+                    echo
+                    echo "Restic repository [${RESTIC_REPOSITORY}] does not exists. Running restic init"
+                    restic init
+                  fi
+                  echo
+                  echo "Starting Backup for [${RESTIC_REPOSITORY}]"
+                  echo
+                  restic --verbose backup /source
+              volumeMounts:
+                - mountPath: /source
+                  name: source
               resources:
                 {{- toYaml .Values.resources | nindent 16 }}
               {{- with .Values.env }}

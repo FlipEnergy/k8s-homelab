@@ -11,14 +11,13 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
-# schedule: "6 45 * * *"
-schedule: "*/10 * * * *"
+# 1145 PM PST
+schedule: "45 6 * * *"
 
 successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 3
 
 backoffLimit: 3
-activeDeadlineSeconds: 600
 
 restartPolicy: OnFailure
 
