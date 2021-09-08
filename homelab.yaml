@@ -148,7 +148,7 @@ apps:
   sharry:
     <<: *default
     namespace: sharry
-    enabled: true
+    enabled: false
     chart: k8s-at-home/sharry
     version: 5.0.0
     valuesFile: sharry/sharry-values.yaml
