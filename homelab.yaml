@@ -10,7 +10,6 @@ settings:
 
 namespaces:
   concourse:
-  duplicati:
   focal:
   freshrss:
   jellyfin:
@@ -137,13 +136,14 @@ apps:
   nextcloud:
     <<: *default
     namespace: nextcloud
-    enabled: false
+    enabled: true
     chart: nextcloud/nextcloud
     version: 2.8.2
+    timeout: 900
     valuesFile: nextcloud/nextcloud-values.yaml
     secretsFile: nextcloud/secret.nextcloud-creds.yaml
     hooks:
-      preInstall: nextcloud/persistenceVolume.yaml
+      preInstall: nextcloud/preInstall.yaml
 
   sharry:
     <<: *default
@@ -196,16 +196,6 @@ apps:
     secretsFile: wireguard/secrets.wireguard-creds.yaml
 
   # Backup
-  duplicati:
-    <<: *default
-    namespace: duplicati
-    enabled: false
-    chart: k8s-at-home/duplicati
-    version: 5.0.0
-    valuesFile: duplicati/duplicati-values.yaml
-    hooks:
-      preInstall: duplicati/persistenceVolume.yaml
-
   restic:
     <<: *default
     namespace: restic

@@ -38,6 +38,7 @@ securityContext:
 
 nextcloud:
   host: cloud.pleasenoddos.com
+  containerPort: 8080
 
   # Default config files
   # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
@@ -45,6 +46,39 @@ nextcloud:
   defaultConfigs:
     # Redis default configuration
     redis.config.php: false
+  # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+  # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+  extraVolumes:
+    - name: apache-conf
+      configMap:
+        name: nextcloud-apache2-conf
+  extraVolumeMounts:
+    - name: apache-conf
+      mountPath: /etc/apache2/ports.conf
+      subPath: ports.conf
+      readOnly: true
+    - name: apache-conf
+      mountPath: /etc/apache2/sites-enabled/000-default.conf
+      subPath: 000-default.conf
+      readOnly: true
+
+internalDatabase:
+  enabled: false
+
+##
+## External database configuration
+##
+externalDatabase:
+  enabled: true
+
+  ## Supported database engines: mysql or postgresql
+  type: postgresql
+
+  ## Database host
+  host: postgresql.postgresql
+
+  ## Database name
+  database: nextcloud
 
 ## Cronjob to execute Nextcloud background tasks
 ## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#webcron
@@ -63,7 +97,7 @@ cronjob:
   #  cause issues with how nextcloud background jobs are executed
   schedule: "*/5 * * * *"
   annotations: {}
-  failedJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 3
   successfulJobsHistoryLimit: 1
   # If not set, nextcloud deployment one will be set
   # resources:
@@ -127,4 +161,26 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+              - postgresql
+        topologyKey: kubernetes.io/hostname
+
+## Liveness and readiness probe values
+## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+##
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 60
+  successThreshold: 1
