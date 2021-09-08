@@ -19,7 +19,6 @@ namespaces:
   owncast:
   postgresql:
   restic:
-  sharry:
   syncthing:
   vaultwarden:
   wikijs:
@@ -144,17 +143,6 @@ apps:
     secretsFile: nextcloud/secret.nextcloud-creds.yaml
     hooks:
       preInstall: nextcloud/preInstall.yaml
-
-  sharry:
-    <<: *default
-    namespace: sharry
-    enabled: false
-    chart: k8s-at-home/sharry
-    version: 5.0.0
-    valuesFile: sharry/sharry-values.yaml
-    secretsFile: sharry/secret.sharry-config.yaml
-    hooks:
-      preInstall: sharry/persistenceVolume.yaml
 
   syncthing:
     <<: *default
