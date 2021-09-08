@@ -28,21 +28,47 @@ spec:
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
               command: ["/bin/sh"]
               args:
-                - -ec
+                - -c
                 - |
+                  CURL_CMD='curl --header "Content-Type: application/json" -X POST -d'
+
+                  $CURL_CMD '{"content": "**Back up started** :rocket:"}' "$DISCORD_WEBHOOK_URL"
+
                   echo "Listing snapshots for [${RESTIC_REPOSITORY}]"
                   echo
-                  status=0
-                  restic snapshots || status=$?
-                  if [ $status != 0 ]; then
+                  restic snapshots
+                  if [ $? != 0 ]; then
                     echo
                     echo "Restic repository [${RESTIC_REPOSITORY}] does not exists. Running restic init"
                     restic init
+                    if [ $? != 0 ]; then
+                      echo "Restic repository [${RESTIC_REPOSITORY}] failed to init"
+                      exit 1
+                    fi
                   fi
+
                   echo
                   echo "Starting Backup for [${RESTIC_REPOSITORY}]"
                   echo
-                  restic --verbose backup /source
+                  restic backup /source
+                  if [ $? != 0 ]; then
+                    echo
+                    echo "Restic backup [${RESTIC_REPOSITORY}] failed!"
+                    $CURL_CMD '{"content": "**Back up failed** :boom:"}' "$DISCORD_WEBHOOK_URL"
+                  fi
+                  $CURL_CMD '{"content": "**Back up successful** :white_check_mark:"}' "$DISCORD_WEBHOOK_URL"
+
+                  echo
+                  echo "Starting snapshot clean up for [${RESTIC_REPOSITORY}]"
+                  restic --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 2 --prune
+                  if [ $? != 0 ]; then
+                    echo
+                    echo "Restic clean up for [${RESTIC_REPOSITORY}] failed!"
+                    $CURL_CMD '{"content": "**Clean up failed** :boom:"}' "$DISCORD_WEBHOOK_URL"
+                  fi
+
+                  echo
+                  echo 'Done!'
               volumeMounts:
                 - mountPath: /source
                   name: source
