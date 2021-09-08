@@ -61,7 +61,7 @@ spec:
 
                   echo
                   echo "Starting snapshot clean up for [${RESTIC_REPOSITORY}]"
-                  restic --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 2 --prune
+                  restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 2 --prune
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic clean up for [${RESTIC_REPOSITORY}] failed!"
