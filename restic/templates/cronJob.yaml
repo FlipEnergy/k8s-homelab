@@ -30,9 +30,10 @@ spec:
               args:
                 - -c
                 - |
-                  CURL_CMD='curl --header "Content-Type: application/json" -X POST -d'
-
-                  $CURL_CMD '{"content": "**Back up started** :rocket:"}' "$DISCORD_WEBHOOK_URL"
+                  curl_discord () {
+                    curl --header "Content-Type:application/json" -X POST -d "$1" "$DISCORD_WEBHOOK_URL"
+                  }
+                  curl_discord '{"content": "**Back up started** :rocket:"}'
 
                   echo "Listing snapshots for [${RESTIC_REPOSITORY}]"
                   echo
@@ -54,9 +55,9 @@ spec:
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic backup [${RESTIC_REPOSITORY}] failed!"
-                    $CURL_CMD '{"content": "**Back up failed** :boom:"}' "$DISCORD_WEBHOOK_URL"
+                    curl_discord '{"content": "**Back up failed** :boom:"}'
                   fi
-                  $CURL_CMD '{"content": "**Back up successful** :white_check_mark:"}' "$DISCORD_WEBHOOK_URL"
+                  curl_discord '{"content": "**Back up successful** :white_check_mark:"}'
 
                   echo
                   echo "Starting snapshot clean up for [${RESTIC_REPOSITORY}]"
@@ -64,7 +65,7 @@ spec:
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic clean up for [${RESTIC_REPOSITORY}] failed!"
-                    $CURL_CMD '{"content": "**Clean up failed** :boom:"}' "$DISCORD_WEBHOOK_URL"
+                    curl_discord '{"content": "**Clean up failed** :boom:"}'
                   fi
 
                   echo
