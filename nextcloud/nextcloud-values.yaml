@@ -8,7 +8,7 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-body-size: 4G
+    nginx.ingress.kubernetes.io/proxy-body-size: 20G
     nginx.ingress.kubernetes.io/server-snippet: |-
       server_tokens off;
       proxy_hide_header X-Powered-By;
@@ -73,6 +73,12 @@ nextcloud:
       mountPath: /etc/apache2/sites-enabled/000-default.conf
       subPath: 000-default.conf
       readOnly: true
+
+  ##
+  ## Extra environment variables
+  extraEnv:
+    - name: OVERWRITEPROTOCOL
+      value: https
 
 internalDatabase:
   enabled: false
