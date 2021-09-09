@@ -1,8 +1,5 @@
 # Override values for Nextcloud
 
-# Number of replicas to be deployed
-replicaCount: 2
-
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
@@ -171,7 +168,6 @@ affinity:
             operator: In
             values:
               - postgresql
-              - nextcloud
         topologyKey: kubernetes.io/hostname
 
 ## Liveness and readiness probe values
