@@ -48,6 +48,7 @@ spec:
                     fi
                   fi
 
+                  status=0
                   echo
                   echo "Starting Backup for [${RESTIC_REPOSITORY}]"
                   echo
@@ -56,8 +57,10 @@ spec:
                     echo
                     echo "Restic backup [${RESTIC_REPOSITORY}] failed!"
                     curl_discord '{"content": "**Back up failed** :boom:"}'
+                    status=1
+                  else
+                    curl_discord '{"content": "**Back up successful** :white_check_mark:"}'
                   fi
-                  curl_discord '{"content": "**Back up successful** :white_check_mark:"}'
 
                   echo
                   echo "Starting snapshot clean up for [${RESTIC_REPOSITORY}]"
@@ -70,6 +73,7 @@ spec:
 
                   echo
                   echo 'Done!'
+                  exit $status
               volumeMounts:
                 - mountPath: /source
                   name: source

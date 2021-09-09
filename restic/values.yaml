@@ -17,7 +17,7 @@ schedule: "45 6 * * *"
 successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 3
 
-backoffLimit: 3
+backoffLimit: 2
 
 restartPolicy: OnFailure
 
