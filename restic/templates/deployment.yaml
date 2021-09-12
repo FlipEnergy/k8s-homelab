@@ -36,8 +36,6 @@ spec:
           volumeMounts:
             - mountPath: /source
               name: source
-          resources:
-            {{- toYaml .Values.resources | nindent 16 }}
           {{- with .Values.env }}
           env:
             {{- range $name, $value := . }}
