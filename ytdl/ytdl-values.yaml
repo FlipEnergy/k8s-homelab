@@ -1,0 +1,51 @@
+# Override values for youtubedl-material
+
+image:
+  tag: "4.2"
+
+# -- environment variables. See [image repo](https://github.com/Tzahi12345/YoutubeDL-Material) for more details.
+# @default -- See below
+env:
+  # -- Set the container timezone
+  TZ: UTC
+  # -- Specify the user ID the application will run as
+  UID: "1000"
+  # -- Specify the group ID the application will run as
+  GID: "1000"
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  main:
+    ports:
+      http:
+        port: 17442
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    hosts:
+    - host: ytdl.tgp
+      paths:
+        - path: /
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  config:
+    enabled: true
+    storageClass: ytdl-config
+    accessMode: ReadWriteOnce
+    size: 10Mi
+  subscriptions:
+    enabled: true
+    storageClass: ytdl-subs
+    accessMode: ReadWriteOnce
+    size: 10Mi
+  video:
+    enabled: true
+    storageClass: ytdl-video
+    accessMode: ReadWriteOnce
+    size: 25Gi
