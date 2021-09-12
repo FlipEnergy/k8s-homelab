@@ -19,23 +19,9 @@ metadata:
 spec:
   storageClassName:  ytdl-subs
   capacity:
-    storage: 10Mi
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/ZFS-3.6TB/storage/ytdl-data/subscriptions
-    server: truenas-1.tgp
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ytdl-video
-spec:
-  storageClassName: ytdl-video
-  capacity:
     storage: 25Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/storage/ytdl-data/video
+    path: /mnt/ZFS-3.6TB/storage/ytdl-data/subscriptions
     server: truenas-1.tgp

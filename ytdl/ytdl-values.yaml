@@ -34,7 +34,7 @@ ingress:
 resources:
   limits:
     cpu: 1
-    memory: 1500Mi
+    memory: 2Gi
   requests:
     cpu: 500m
     memory: 1Gi
@@ -50,10 +50,5 @@ persistence:
   subscriptions:
     enabled: true
     storageClass: ytdl-subs
-    accessMode: ReadWriteOnce
-    size: 10Mi
-  video:
-    enabled: true
-    storageClass: ytdl-video
     accessMode: ReadWriteOnce
     size: 25Gi
