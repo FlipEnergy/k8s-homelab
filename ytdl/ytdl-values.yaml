@@ -31,6 +31,14 @@ ingress:
       paths:
         - path: /
 
+resources:
+  limits:
+    cpu: 500m
+    memory: 300Mi
+  requests:
+    cpu: 250m
+    memory: 150Mi
+
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
