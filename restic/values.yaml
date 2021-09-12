@@ -11,8 +11,8 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
-# 1145 PM PST
-schedule: "45 6 * * *"
+# 1245 AM PST
+schedule: "45 7 * * *"
 
 successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 3
