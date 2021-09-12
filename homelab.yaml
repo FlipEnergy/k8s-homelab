@@ -75,7 +75,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.9.4
+    version: 10.9.5
     priority: -97
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
@@ -88,7 +88,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 15.7.1
+    version: 16.0.0
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
