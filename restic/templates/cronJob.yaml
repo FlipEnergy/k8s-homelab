@@ -52,7 +52,7 @@ spec:
                   echo
                   echo "Starting Backup for [${RESTIC_REPOSITORY}]"
                   echo
-                  restic backup -e /source/ytdl-data/video /source
+                  restic backup -e /source/ytdl-data /source
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic backup [${RESTIC_REPOSITORY}] failed!"

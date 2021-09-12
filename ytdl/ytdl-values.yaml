@@ -34,10 +34,10 @@ ingress:
 resources:
   limits:
     cpu: 1
-    memory: 500Mi
+    memory: 1500Mi
   requests:
     cpu: 500m
-    memory: 250Mi
+    memory: 1Gi
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
