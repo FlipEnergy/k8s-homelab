@@ -55,5 +55,5 @@ affinity:
           - key: app.kubernetes.io/name
             operator: In
             values:
-              - nextcloud
+              - postgresql
         topologyKey: kubernetes.io/hostname

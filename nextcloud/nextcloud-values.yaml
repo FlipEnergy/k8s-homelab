@@ -150,7 +150,7 @@ persistence:
 
 resources:
   limits:
-    cpu: 2
+    cpu: 1500m
     memory: 3Gi
   requests:
     cpu: 1
