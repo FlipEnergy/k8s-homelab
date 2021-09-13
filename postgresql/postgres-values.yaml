@@ -226,7 +226,7 @@ primary:
             - key: app.kubernetes.io/name
               operator: In
               values:
-                - duplicati
+                - nextcloud
           topologyKey: kubernetes.io/hostname
 
   ## Node labels for PostgreSQL primary pods assignment

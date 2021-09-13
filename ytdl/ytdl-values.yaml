@@ -13,14 +13,6 @@ env:
   # -- Specify the group ID the application will run as
   GID: "1000"
 
-# -- Configures service settings for the chart.
-# @default -- See values.yaml
-service:
-  main:
-    ports:
-      http:
-        port: 17442
-
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
   # @default -- See values.yaml
@@ -33,7 +25,7 @@ ingress:
 
 resources:
   limits:
-    cpu: 1
+    cpu: 1500m
     memory: 2Gi
   requests:
     cpu: 500m
@@ -52,3 +44,16 @@ persistence:
     storageClass: ytdl-subs
     accessMode: ReadWriteOnce
     size: 25Gi
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+              - nextcloud
+        topologyKey: kubernetes.io/hostname
