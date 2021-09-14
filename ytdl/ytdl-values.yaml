@@ -28,7 +28,7 @@ resources:
     cpu: 3
     memory: 4Gi
   requests:
-    cpu: 1
+    cpu: 2
     memory: 2Gi
 
 # -- Configure persistence settings for the chart under this key.
