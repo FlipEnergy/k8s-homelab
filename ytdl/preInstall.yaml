@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ytdl-config
+spec:
+  storageClassName: ytdl-config
+  capacity:
+    storage: 10Mi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/ZFS-3.6TB/storage/ytdl-data/config
+    server: truenas-1.tgp
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ytdl-subs
+spec:
+  storageClassName:  ytdl-subs
+  capacity:
+    storage: 25Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/ZFS-3.6TB/storage/ytdl-data/subscriptions
+    server: truenas-1.tgp
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: delete-old-vids
+  namespace: ytdl
+spec:
+  schedule: "30 10 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 600
+      template:
+        spec:
+          restartPolicy: Never
+          volumes:
+            - name: subscriptions
+              persistentVolumeClaim:
+                claimName: ytdl-youtubedl-material-subscriptions
+          containers:
+            - name: ytdl-clean
+              image: alpine
+              command:
+                - /bin/sh
+                - -c
+                - -e
+                - find /subs -type f -mtime +2 -print -delete
+              volumeMounts:
+                - mountPath: /subs
+                  name: subscriptions

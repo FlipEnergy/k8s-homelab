@@ -194,7 +194,7 @@ apps:
     priority: -98
     valuesFile: ytdl/ytdl-values.yaml
     hooks:
-      preInstall: ytdl/persistenceVolumes.yaml
+      preInstall: ytdl/preInstall.yaml
 
   # Backup
   restic:
