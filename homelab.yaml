@@ -97,7 +97,7 @@ apps:
     namespace: focal
     enabled: true
     chart: k8s-at-home/focalboard
-    version: 3.0.0
+    version: 3.0.1
     valuesFile: focalboard/focalboard-values.yaml
     secretsFile: focalboard/secret.focalboard-creds.yaml
 
@@ -106,7 +106,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 6.0.0
+    version: 6.0.1
     timeout: 360
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
@@ -117,7 +117,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
-    version: 9.0.0
+    version: 9.0.1
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
       preInstall: jellyfin/persistenceVolumes.yaml
@@ -127,7 +127,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-at-home/owncast
-    version: 3.0.0
+    version: 3.0.1
     valuesFile: owncast/owncast-values.yaml
     hooks:
       preInstall: owncast/persistenceVolume.yaml
@@ -150,7 +150,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 3.0.0
+    version: 3.0.1
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
@@ -160,7 +160,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 3.1.0
+    version: 3.1.1
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
@@ -171,7 +171,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 6.0.0
+    version: 6.0.1
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
