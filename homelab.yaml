@@ -23,7 +23,6 @@ namespaces:
   vaultwarden:
   wikijs:
   wireguard:
-  ytdl:
 
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
@@ -184,19 +183,6 @@ apps:
     version: 0.4.6
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
-
-  ytdl:
-    <<: *default
-    namespace: ytdl
-    enabled: true
-    chart: k8s-at-home/youtubedl-material
-    version: 4.0.0
-    priority: -98
-    valuesFile: ytdl/ytdl-values.yaml
-    hooks:
-      preInstall: ytdl/persistentVolumes.yaml
-      postInstall: ytdl/cleanup-cron.yaml
-      postUpgrade: ytdl/cleanup-cron.yaml
 
   # Backup
   restic:
