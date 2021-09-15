@@ -120,7 +120,7 @@ apps:
     version: 9.0.0
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
-      preInstall: jellyfin/persistenceVolume.yaml
+      preInstall: jellyfin/persistenceVolumes.yaml
 
   owncast:
     <<: *default
