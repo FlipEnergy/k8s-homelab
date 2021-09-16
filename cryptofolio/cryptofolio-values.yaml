@@ -26,7 +26,7 @@ resources:
 persistence:
   data:
     enabled: true
-    mountPath: /data
+    mountPath: /var/www/html/api/data
     accessMode: ReadWriteOnce
     storageClass: cryptofolio-data
     size: 100Mi
