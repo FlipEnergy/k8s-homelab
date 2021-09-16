@@ -15,10 +15,6 @@ securityContext:
 containerSecurityContext:
   enabled: false
 
-## PostgreSQL admin password (used when `postgresqlUsername` is not `postgres`)
-## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#creating-a-database-user-on-first-run (see note!)
-# postgresqlPostgresPassword:
-
 ## PostgreSQL user (has superuser privileges if username is `postgres`)
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
 ##
@@ -28,39 +24,6 @@ postgresqlUsername: postgres
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#setting-the-root-password-on-first-run
 ##
 # postgresqlPassword:
-
-## PostgreSQL password using existing secret
-## existingSecret: secret
-##
-
-## Mount PostgreSQL secret as a file instead of passing environment variable
-# usePasswordFile: false
-
-## Create a database
-## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md#creating-a-database-on-first-run
-##
-# postgresqlDatabase:
-
-## initdb scripts
-## Specify dictionary of scripts to be run at first boot
-## Alternatively, you can put your scripts under the files/docker-entrypoint-initdb.d directory
-##
-# initdbScripts:
-#   my_init_script.sh: |
-#      #!/bin/sh
-#      echo "Do something."
-
-## ConfigMap with scripts to be run at first boot
-## NOTE: This will override initdbScripts
-# initdbScriptsConfigMap:
-
-## Secret with scripts to be run at first boot (in case it contains sensitive information)
-## NOTE: This can work along initdbScripts or initdbScriptsConfigMap
-# initdbScriptsSecret:
-
-## Specify the PostgreSQL username and password to execute the initdb scripts
-# initdbUser:
-# initdbPassword:
 
 ## Maximum total connections
 ##
@@ -95,33 +58,6 @@ postgresqlStatementTimeout: 90s
 ##
 postgresqlPghbaRemoveFilters:
 
-## PostgreSQL service configuration
-##
-service:
-  ## PosgresSQL service type
-  ##
-  type: ClusterIP
-  # clusterIP: None
-  port: 5432
-
-  ## Specify the nodePort value for the LoadBalancer and NodePort service types.
-  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
-  ##
-  # nodePort:
-
-  ## Provide any additional annotations which may be required. Evaluated as a template.
-  ##
-  annotations: {}
-  ## Set the LoadBalancer service type to internal only.
-  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
-  ##
-  # loadBalancerIP:
-  ## Load Balancer sources. Evaluated as a template.
-  ## https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
-  ##
-  # loadBalancerSourceRanges:
-  # - 10.10.10.0/24
-
 ## PostgreSQL data Persistent Volume Storage Class
 ## If defined, storageClassName: <storageClass>
 ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -136,16 +72,6 @@ persistence:
   ## The value is evaluated as a template, so, for example, the name can depend on .Release or .Chart
   ##
   # existingClaim:
-
-  ## The path the volume will be mounted at, useful when using different
-  ## PostgreSQL images.
-  ##
-  mountPath: /bitnami/postgresql
-
-  ## The subdirectory of the volume to mount to, useful in dev environments
-  ## and one PV for multiple services.
-  ##
-  subPath: ''
 
   storageClass: postgresql
   accessModes:
@@ -169,11 +95,11 @@ updateStrategy:
 ##
 resources:
   limits:
-    cpu: 1500m
-    memory: 1Gi
+    cpu: '2'
+    memory: 2Gi
   requests:
-    cpu: 500m
-    memory: 500Mi
+    cpu: '1'
+    memory: 1Gi
 
 ##
 ## PostgreSQL Primary parameters
@@ -280,6 +206,33 @@ primary:
   # nodePort:
   # clusterIP:
 
+## Configure extra options for liveness probe
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes
+## @param startupProbe.enabled Enable startupProbe
+## @param startupProbe.initialDelaySeconds Initial delay seconds for startupProbe
+## @param startupProbe.periodSeconds Period seconds for startupProbe
+## @param startupProbe.timeoutSeconds Timeout seconds for startupProbe
+## @param startupProbe.failureThreshold Failure threshold for startupProbe
+## @param startupProbe.successThreshold Success threshold for startupProbe
+##
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 15
+  timeoutSeconds: 5
+  failureThreshold: 12
+  successThreshold: 1
+## Configure extra options for liveness probe
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
+## @param metrics.livenessProbe.enabled Enable livenessProbe
+## @param metrics.livenessProbe.initialDelaySeconds Initial delay seconds for livenessProbe
+## @param metrics.livenessProbe.periodSeconds Period seconds for livenessProbe
+## @param metrics.livenessProbe.timeoutSeconds Timeout seconds for livenessProbe
+## @param metrics.livenessProbe.failureThreshold Failure threshold for livenessProbe
+## @param metrics.livenessProbe.successThreshold Success threshold for livenessProbe
+##
+livenessProbe:
+  enabled: false
 ## Configure extra options for readiness probe
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ## @param readinessProbe.enabled Enable readinessProbe
