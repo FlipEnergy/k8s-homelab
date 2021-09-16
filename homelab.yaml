@@ -10,6 +10,7 @@ settings:
 
 namespaces:
   concourse:
+  cryptofolio:
   focal:
   freshrss:
   jellyfin:
@@ -91,6 +92,16 @@ apps:
     version: 16.0.0
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
+
+  cryptofolio:
+    <<: *default
+    namespace: cryptofolio
+    enabled: true
+    chart: k8s-at-home/cryptofolio
+    version: 1.0.1
+    valuesFile: cryptofolio/cryptofolio-values.yaml
+    hooks:
+      preInstall: cryptofolio/persistenceVolume.yaml
 
   focal:
     <<: *default

@@ -1,0 +1,32 @@
+# Override values for Cryptofolio
+
+image:
+  # -- image tag
+  tag: V.2.2.0
+
+env:
+  TZ: UTC
+
+ingress:
+  main:
+    enabled: true
+    hosts:
+      - host: crypto.tgp
+        paths:
+          - path: /
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 100Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi
+
+persistence:
+  data:
+    enabled: true
+    mountPath: /data
+    accessMode: ReadWriteOnce
+    storageClass: cryptofolio-data
+    size: 100Mi
