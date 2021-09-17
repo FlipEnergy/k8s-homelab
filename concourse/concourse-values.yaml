@@ -1027,6 +1027,7 @@ web:
     ##   kubernetes.io/tls-acme: 'true'
     ##
     annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
       nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
       nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
