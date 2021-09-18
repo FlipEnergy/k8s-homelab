@@ -72,6 +72,10 @@ spec:
                   fi
 
                   echo
+                  echo 'Unlocking just in case'
+                  restic unlock
+
+                  echo
                   echo 'Done!'
                   exit $status
               volumeMounts:

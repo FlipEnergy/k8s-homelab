@@ -20,9 +20,9 @@ schedule: "45 7 * * *"
 successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 3
 
-backoffLimit: 2
+backoffLimit: 1
 
-restartPolicy: OnFailure
+restartPolicy: Never
 
 podAnnotations: {}
 
