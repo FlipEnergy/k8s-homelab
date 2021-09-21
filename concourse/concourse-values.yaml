@@ -1130,7 +1130,7 @@ worker:
   ##
   resources:
     limits:
-      cpu: '2'
+      cpu: 1500m
       memory: 2Gi
     requests:
       cpu: 500m
@@ -1172,7 +1172,7 @@ worker:
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#inter-pod-affinity-and-anti-affinity-beta-feature
   ##
-  hardAntiAffinity: true
+  hardAntiAffinity: false
 
   ## Set of labels to use in the hard anti affinity rule.
   ##
@@ -1197,9 +1197,9 @@ worker:
   ##
   updateStrategy:
     type: RollingUpdate
-#    rollingUpdate:
-#      maxSurge: 25%
-#      maxUnavailable: 1
+    rollingUpdate:
+      maxSurge: 0%
+      maxUnavailable: 1
 
   ## Pod Management strategy (requires Kubernetes 1.7+)
   ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
