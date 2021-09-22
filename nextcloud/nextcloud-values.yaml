@@ -102,19 +102,12 @@ externalDatabase:
 ##
 cronjob:
   enabled: true
-  # Nexcloud image is used as default but only curl is needed
-  image:
-    repository: curlimages/curl
-    tag: latest
-    # pullPolicy: IfNotPresent
-    # pullSecrets:
-    #   - myRegistrKeySecretName
   # Every 5 minutes
   # Note: Setting this to any any other value than 5 minutes might
   #  cause issues with how nextcloud background jobs are executed
-  schedule: "*/15 * * * *"
+  schedule: "*/5 * * * *"
   annotations: {}
-  failedJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 0
   successfulJobsHistoryLimit: 1
   resources:
     limits:
@@ -150,7 +143,7 @@ persistence:
 
 resources:
   limits:
-    cpu: 1500m
+    cpu: 2
     memory: 3Gi
   requests:
     cpu: 1
@@ -160,18 +153,18 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity:
-  podAntiAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.kubernetes.io/name
-            operator: In
-            values:
-              - postgresql
-        topologyKey: kubernetes.io/hostname
+affinity: {}
+  # podAntiAffinity:
+  #   preferredDuringSchedulingIgnoredDuringExecution:
+  #   - weight: 100
+  #     podAffinityTerm:
+  #       labelSelector:
+  #         matchExpressions:
+  #         - key: app.kubernetes.io/name
+  #           operator: In
+  #           values:
+  #             - postgresql
+  #       topologyKey: kubernetes.io/hostname
 
 ## Liveness and readiness probe values
 ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
