@@ -37,16 +37,6 @@ persistence:
     size: 100Gi
     # Do not delete the pvc upon helm uninstall
     retain: false
-  nextcloud:
-    enabled: true
-    mountPath: /nextcloud
-    accessMode: ReadOnlyMany
-    # Persistent Volume Storage Class
-    storageClass: jellyfin-nextcloud
-    size: 500Gi
-    # Do not delete the pvc upon helm uninstall
-    retain: false
-
 
 podSecurityContext:
   runAsUser: 1000

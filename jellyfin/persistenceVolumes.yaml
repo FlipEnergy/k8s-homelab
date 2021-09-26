@@ -25,17 +25,3 @@ spec:
   nfs:
     path: /mnt/ZFS-3.6TB/storage/syncthing-data/music
     server: truenas-1.tgp
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: jellyfin-nextcloud
-spec:
-  storageClassName: jellyfin-nextcloud
-  capacity:
-    storage: 500Gi
-  accessModes:
-    - ReadOnlyMany
-  nfs:
-    path: /mnt/ZFS-3.6TB/storage/nextcloud-data/data/Newleaf88/files
-    server: truenas-1.tgp

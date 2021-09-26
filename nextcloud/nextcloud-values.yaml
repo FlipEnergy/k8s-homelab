@@ -146,7 +146,7 @@ resources:
     cpu: 2
     memory: 3Gi
   requests:
-    cpu: 1
+    cpu: 2
     memory: 1Gi
 
 nodeSelector: {}
