@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/storage/nextcloud-data
+    path: /mnt/ZFS-3.6TB/tank/nextcloud-data
     server: truenas-1.tgp
 ---
 apiVersion: v1

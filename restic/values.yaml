@@ -46,7 +46,7 @@ resources:
 persistence:
   source:
     storage: 3500Gi
-    nfsPath: /mnt/ZFS-3.6TB/storage
+    nfsPath: /mnt/ZFS-3.6TB/tank
     nfsServer: truenas-1.tgp
 
 nodeSelector: {}

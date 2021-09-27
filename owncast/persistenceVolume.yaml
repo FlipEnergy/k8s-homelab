@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/storage/owncast-config
+    path: /mnt/ZFS-3.6TB/tank/owncast-config
     server: truenas-1.tgp
