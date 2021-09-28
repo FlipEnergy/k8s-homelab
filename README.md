@@ -17,7 +17,5 @@ A lot of the charts I use are from [k8s-at-home](https://github.com/k8s-at-home/
 - Helm-diff https://github.com/databus23/helm-diff
 - Helmsman https://github.com/Praqma/helmsman
 
-# Bring all charts up according to helmsman file (Requires Docker and my secret key)
-```
-make
-```
+# My homelab setup
+![Homelab DIagram](https://pleasenoddos.com/img/homelab.jpg)
