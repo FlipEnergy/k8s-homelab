@@ -31,7 +31,7 @@ postgresqlUsername: postgres
 
 ## Maximum connections for the postgres user
 ##
-postgresqlPostgresConnectionLimit: 2
+postgresqlPostgresConnectionLimit: "2"
 
 ## Maximum connections for the created user
 ##
