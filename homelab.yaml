@@ -11,7 +11,6 @@ settings:
 namespaces:
   concourse:
   cryptofolio:
-  focal:
   freshrss:
   jellyfin:
   ingress-nginx:
@@ -102,15 +101,6 @@ apps:
     valuesFile: cryptofolio/cryptofolio-values.yaml
     hooks:
       preInstall: cryptofolio/persistenceVolume.yaml
-
-  focal:
-    <<: *default
-    namespace: focal
-    enabled: true
-    chart: k8s-at-home/focalboard
-    version: 3.0.1
-    valuesFile: focalboard/focalboard-values.yaml
-    secretsFile: focalboard/secret.focalboard-creds.yaml
 
   freshrss:
     <<: *default
