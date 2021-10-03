@@ -4,7 +4,7 @@
 #   in the peer section, add your subnet to the front and check Exclude private IPs.
 
 config:
-  externalHost: pleasenoddos.com
+  externalHost: 24.16.205.63
   vpn:
     cidr: "10.44.0.0/24"
   dns:
