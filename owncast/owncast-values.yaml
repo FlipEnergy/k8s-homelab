@@ -1,7 +1,7 @@
 # Override values for owncast.
 
 image:
-  tag: 0.0.9
+  tag: 0.0.10
   pullPolicy: IfNotPresent
 
 controller:

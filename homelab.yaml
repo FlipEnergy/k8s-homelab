@@ -75,7 +75,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.12.0
+    version: 10.12.2
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
@@ -118,7 +118,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
-    version: 9.0.1
+    version: 9.1.0
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
       preInstall: jellyfin/persistenceVolumes.yaml
@@ -151,7 +151,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 3.0.1
+    version: 3.1.0
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
