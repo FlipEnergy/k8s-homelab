@@ -5,8 +5,8 @@ controller:
   strategy: RollingUpdate
 
 image:
-  tag: 0.6.0
-  pullPolicy: IfNotPresent
+  tag: latest
+  pullPolicy: Always
 
 # See more environment variables in the whoogle documentation
 # https://github.com/benbusby/whoogle-search#environment-variables
