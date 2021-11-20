@@ -12,8 +12,9 @@ namespaces:
   concourse:
   cryptofolio:
   freshrss:
-  jellyfin:
   ingress-nginx:
+  jellyfin:
+  k8s-dashboard:
   kube-ops-view:
   nextcloud:
   owncast:
@@ -30,6 +31,7 @@ helmRepos:
   headlamp: https://kinvolk.github.io/headlamp/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
+  k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
   place1: https://place1.github.io/wg-access-server
   stable: https://charts.helm.sh/stable
@@ -60,14 +62,16 @@ apps:
     priority : -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
 
-  headlamp:
+  k8s-dashboard:
     <<: *default
-    namespace: kube-system
+    namespace: k8s-dashboard
     enabled: true
-    chart: headlamp/headlamp
-    version: 0.1.1
+    chart: k8s-dashboard/kubernetes-dashboard
+    version: 5.0.3
     priority : -199
-    valuesFile: headlamp/headlamp-values.yaml
+    valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
+    hooks:
+      postInstall: k8s-dashboard/dashboard-admin.yaml
 
   # Databases
   postgresql:

@@ -875,10 +875,10 @@ web:
   ##
   resources:
     limits:
-      cpu: 100m
+      cpu: 250m
       memory: 75Mi
     requests:
-      cpu: 50m
+      cpu: 250m
       memory: 50Mi
 
   ## Configure additional environment variables for the
@@ -903,7 +903,8 @@ web:
   ## Node selector for web nodes.
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    performance: low
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/
@@ -1130,10 +1131,10 @@ worker:
   ##
   resources:
     limits:
-      cpu: 1500m
+      cpu: 1
       memory: 2Gi
     requests:
-      cpu: 500m
+      cpu: 1
       memory: 1Gi
 
   ## Configure additional environment variables for the

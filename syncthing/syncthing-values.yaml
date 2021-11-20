@@ -23,7 +23,7 @@ resources:
     cpu: 500m
     memory: 1500Mi
   requests:
-    cpu: 50m
+    cpu: 500m
     memory: 750Mi
 
 persistence:
@@ -33,3 +33,6 @@ persistence:
     storageClass: syncthing
     accessMode: ReadWriteOnce
     size: 1Ti
+
+nodeSelector:
+  performance: low

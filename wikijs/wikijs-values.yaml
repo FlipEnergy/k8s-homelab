@@ -7,7 +7,7 @@ image:
   tag: 2.5.219
 
 controller:
-  strategy: RollingUpdate
+  strategy: Recreate
 
 env:
   # -- mysql, postgres, mariadb, mssql or sqlite
@@ -41,7 +41,8 @@ resources:
     cpu: 500m
     memory: 300Mi
   requests:
-    cpu: 250m
+    cpu: 500m
     memory: 150Mi
 
-nodeSelector: {}
+nodeSelector:
+  performance: medium

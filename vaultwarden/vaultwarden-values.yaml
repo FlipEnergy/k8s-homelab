@@ -63,10 +63,11 @@ podSecurityContext:
 
 resources:
   limits:
-    cpu: 100m
+    cpu: 250m
     memory: 100Mi
   requests:
     cpu: 50m
     memory: 50Mi
 
-nodeSelector: {}
+nodeSelector:
+  performance: medium

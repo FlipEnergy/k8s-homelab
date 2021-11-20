@@ -41,4 +41,5 @@ resources:
     cpu: 50m
     memory: 125Mi
 
-nodeSelector: {}
+nodeSelector:
+  performance: medium

@@ -19,10 +19,10 @@ ingress:
 
 resources:
   limits:
-    cpu: 100m
+    cpu: 250m
     memory: 100Mi
   requests:
-    cpu: 50m
+    cpu: 250m
     memory: 50Mi
 
 persistence:
@@ -32,3 +32,6 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: cryptofolio-data
     size: 100Mi
+
+nodeSelector:
+  performance: low

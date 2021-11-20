@@ -49,7 +49,8 @@ persistence:
     nfsPath: /mnt/ZFS-3.6TB/tank
     nfsServer: truenas-1.tgp
 
-nodeSelector: {}
+nodeSelector:
+  performance: low
 
 tolerations: []
 
