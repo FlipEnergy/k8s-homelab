@@ -101,7 +101,7 @@ apps:
     namespace: cryptofolio
     enabled: true
     chart: k8s-at-home/cryptofolio
-    version: 1.0.1
+    version: 1.1.0
     valuesFile: cryptofolio/cryptofolio-values.yaml
     hooks:
       preInstall: cryptofolio/persistenceVolume.yaml
@@ -132,7 +132,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-at-home/owncast
-    version: 3.0.1
+    version: 3.1.0
     valuesFile: owncast/owncast-values.yaml
     hooks:
       preInstall: owncast/persistenceVolume.yaml
@@ -155,7 +155,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 3.1.0
+    version: 3.2.0
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
