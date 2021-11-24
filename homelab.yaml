@@ -111,7 +111,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 6.0.1
+    version: 6.1.0
     timeout: 360
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
@@ -122,7 +122,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
-    version: 9.1.0
+    version: 9.2.0
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
       preInstall: jellyfin/persistenceVolumes.yaml
@@ -165,7 +165,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 3.2.1
+    version: 3.3.0
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
@@ -176,7 +176,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 6.0.1
+    version: 6.1.0
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
