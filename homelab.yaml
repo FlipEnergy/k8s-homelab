@@ -142,7 +142,7 @@ apps:
     namespace: nextcloud
     enabled: true
     chart: nextcloud/nextcloud
-    version: 2.9.2
+    version: 2.10.0
     timeout: 900
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
