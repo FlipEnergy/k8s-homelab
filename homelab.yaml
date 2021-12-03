@@ -142,7 +142,7 @@ apps:
     namespace: nextcloud
     enabled: true
     chart: nextcloud/nextcloud
-    version: 2.10.0
+    version: 2.10.2
     timeout: 900
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
@@ -165,7 +165,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 3.3.0
+    version: 3.3.1
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
