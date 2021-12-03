@@ -92,7 +92,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 16.1.2
+    version: 16.1.4
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
