@@ -4,10 +4,10 @@ image:
   # Override image
   repository: requarks/wiki
   pullPolicy: IfNotPresent
-  tag: 2.5.254
+  tag: 2.5.255
 
 controller:
-  strategy: Recreate
+  strategy: RollingUpdate
 
 env:
   # -- mysql, postgres, mariadb, mssql or sqlite
