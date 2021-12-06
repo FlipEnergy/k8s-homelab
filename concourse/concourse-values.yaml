@@ -1134,7 +1134,7 @@ worker:
       cpu: 1
       memory: 2Gi
     requests:
-      cpu: 1
+      cpu: 750m
       memory: 1Gi
 
   ## Configure additional environment variables for the
@@ -1173,7 +1173,7 @@ worker:
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#inter-pod-affinity-and-anti-affinity-beta-feature
   ##
-  hardAntiAffinity: false
+  hardAntiAffinity: true
 
   ## Set of labels to use in the hard anti affinity rule.
   ##
@@ -1182,7 +1182,8 @@ worker:
   ##   hardAntiAffinityLabels:
   ##     application: concourse
   ##
-  hardAntiAffinityLabels: {}
+  hardAntiAffinityLabels:
+    app: concourse-worker
 
   ## Time to allow the pod to terminate before being forcefully terminated. This should provide time for
   ## the worker to retire, i.e. drain its tasks. See https://concourse-ci.org/worker-internals.html for worker
