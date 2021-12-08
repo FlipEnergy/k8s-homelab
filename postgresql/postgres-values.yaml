@@ -58,11 +58,11 @@ persistence:
 ##
 resources:
   limits:
-    cpu: '2'
-    memory: 2Gi
+    cpu: 1900m
+    memory: 3Gi
   requests:
-    cpu: '2'
-    memory: 1Gi
+    cpu: 1800m
+    memory: 2Gi
 
 ##
 ## PostgreSQL Primary parameters
@@ -89,7 +89,7 @@ primary:
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    performance: medium
+    kubernetes.io/hostname: k8s-node-4
 
 ## Configure extra options for liveness probe
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#configure-probes

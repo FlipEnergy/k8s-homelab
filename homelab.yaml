@@ -41,7 +41,10 @@ appsTemplates:
     wait: true
 
 apps:
-  # Ingress
+  ###########
+  # Ingress #
+  ###########
+
   ingress-nginx:
     <<: *default
     namespace: ingress-nginx
@@ -52,7 +55,10 @@ apps:
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
-  # Monitoring
+  ##############
+  # Monitoring #
+  ##############
+
   kube-ops-view:
     <<: *default
     namespace: kube-ops-view
@@ -73,20 +79,27 @@ apps:
     hooks:
       postInstall: k8s-dashboard/dashboard-admin.yaml
 
-  # Databases
+  #############
+  # Databases #
+  #############
+
   postgresql:
     <<: *default
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.13.8
+    version: 10.13.11
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
       preInstall: postgresql/persistenceVolume.yaml
 
-  # Applications
+  ################
+  # Applications #
+  ################
+
+  # uses Postgres
   concourse:
     <<: *default
     namespace: concourse
@@ -137,6 +150,7 @@ apps:
     hooks:
       preInstall: owncast/persistenceVolume.yaml
 
+  # uses Postgres
   nextcloud:
     <<: *default
     namespace: nextcloud
@@ -171,6 +185,7 @@ apps:
     hooks:
       preInstall: vaultwarden/persistenceVolume.yaml
 
+  # uses Postgres
   wikijs:
     <<: *default
     namespace: wikijs
@@ -180,6 +195,7 @@ apps:
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
+  # uses Postgres
   wireguard:
     <<: *default
     namespace: wireguard
@@ -189,7 +205,10 @@ apps:
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
 
-  # Backup
+  ##########
+  # Backup #
+  ##########
+
   restic:
     <<: *default
     namespace: restic

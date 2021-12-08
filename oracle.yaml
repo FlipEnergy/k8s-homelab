@@ -24,7 +24,10 @@ appsTemplates:
     wait: true
 
 apps:
-  # Ingress
+  ###########
+  # Ingress #
+  ###########
+
   ingress-nginx:
     <<: *default
     namespace: ingress-nginx
@@ -37,7 +40,10 @@ apps:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
 
-  # Databases
+  #############
+  # Databases #
+  #############
+
   influxdb2:
     <<: *default
     namespace: influxdb2
@@ -48,7 +54,10 @@ apps:
     valuesFile: influxdb2/oracle/influxdb2-values.yaml
     secretsFile: influxdb2/oracle/secrets.influxdb2-creds.yaml
 
-  # Apps
+  ################
+  # Applications #
+  ################
+
   haste:
     <<: *default
     namespace: haste
