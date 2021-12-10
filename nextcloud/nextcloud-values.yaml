@@ -58,12 +58,6 @@ nextcloud:
       port: 587
       authtype: LOGIN
 
-  # Default config files
-  # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
-  # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/16.0/apache/config
-  defaultConfigs:
-    # Redis default configuration
-    redis.config.php: false
   # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
   # to NextCloud pods in Kubernetes. This can then be configured in External Storage
   extraVolumes:
@@ -196,3 +190,29 @@ startupProbe:
   timeoutSeconds: 5
   failureThreshold: 60
   successThreshold: 1
+
+##
+## Redis chart configuration
+## for more options see https://github.com/bitnami/charts/tree/master/bitnami/redis
+##
+
+redis:
+  enabled: true
+  ## @param architecture Redis&trade; architecture. Allowed values: `standalone` or `replication`
+  ##
+  architecture: standalone
+  auth:
+    enabled: true
+  master:
+    resources:
+      limits:
+        cpu: 1
+        memory: 3Gi
+      requests:
+        cpu: 1
+        memory: 3Gi
+    nodeSelector:
+      performance: medium
+      type: app
+  replica:
+    replicaCount: 0
