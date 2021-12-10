@@ -905,6 +905,7 @@ web:
   ##
   nodeSelector:
     performance: low
+    type: app
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/

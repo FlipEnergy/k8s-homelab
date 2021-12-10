@@ -36,3 +36,4 @@ persistence:
 
 nodeSelector:
   performance: low
+  type: app

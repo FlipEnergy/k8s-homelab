@@ -31,6 +31,7 @@ rbac:
 
 nodeSelector:
   performance: medium
+  type: app
 
 # pass env vars like this: helm [...] --set env.ENV_NAME=env_value,env.ENV_NAME2=env_value2
 env: {}

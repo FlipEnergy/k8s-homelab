@@ -38,3 +38,4 @@ persistence:
 
 nodeSelector:
   performance: medium
+  type: app

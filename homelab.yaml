@@ -88,7 +88,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.13.11
+    version: 10.13.14
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
@@ -105,7 +105,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 16.1.4
+    version: 16.1.6
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
@@ -154,7 +154,7 @@ apps:
   nextcloud:
     <<: *default
     namespace: nextcloud
-    enabled: true
+    enabled: false
     chart: nextcloud/nextcloud
     version: 2.10.2
     timeout: 900

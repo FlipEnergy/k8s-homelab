@@ -10,6 +10,7 @@ extraArgs:
 #
 nodeSelector:
   performance: low
+  type: app
 
 # Pod resource requests & limits
 resources:
@@ -70,3 +71,4 @@ metricsScraper:
 
   nodeSelector:
     performance: low
+    type: app
