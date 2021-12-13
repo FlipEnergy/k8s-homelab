@@ -28,13 +28,22 @@ persistence:
     size: 1Gi
     # Do not delete the pvc upon helm uninstall
     retain: false
-  media:
+  music:
     enabled: true
-    mountPath: /media
+    mountPath: /music
     accessMode: ReadWriteOnce
     # Persistent Volume Storage Class
     storageClass: jellyfin-music
     size: 100Gi
+    # Do not delete the pvc upon helm uninstall
+    retain: false
+  videos:
+    enabled: true
+    mountPath: /videos
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Class
+    storageClass: jellyfin-videos
+    size: 300Gi
     # Do not delete the pvc upon helm uninstall
     retain: false
 
