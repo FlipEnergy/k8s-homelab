@@ -4,7 +4,7 @@ image:
   # Override image
   repository: requarks/wiki
   pullPolicy: IfNotPresent
-  tag: 2.5.260
+  tag: 2.5.264
 
 controller:
   strategy: RollingUpdate
