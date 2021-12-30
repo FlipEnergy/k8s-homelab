@@ -50,6 +50,7 @@ persistence:
     nfsServer: truenas-1.tgp
 
 nodeSelector:
+  kubernetes.io/arch: amd64
   performance: medium
 
 tolerations: []

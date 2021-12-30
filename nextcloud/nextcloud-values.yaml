@@ -148,6 +148,7 @@ resources:
     memory: 1Gi
 
 nodeSelector:
+  kubernetes.io/arch: amd64
   performance: medium
   type: app
 
@@ -212,6 +213,7 @@ redis:
         cpu: 1
         memory: 3Gi
     nodeSelector:
+      kubernetes.io/arch: amd64
       performance: medium
       type: app
   replica:

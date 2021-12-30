@@ -9,6 +9,7 @@ extraArgs:
 # Ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
 nodeSelector:
+  # kubernetes.io/arch: arm64
   performance: low
   type: app
 
@@ -70,5 +71,6 @@ metricsScraper:
       memory: 50Mi
 
   nodeSelector:
+    # kubernetes.io/arch: arm64
     performance: low
     type: app
