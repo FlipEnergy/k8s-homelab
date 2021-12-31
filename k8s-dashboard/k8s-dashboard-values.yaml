@@ -9,7 +9,7 @@ extraArgs:
 # Ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
 nodeSelector:
-  # kubernetes.io/arch: arm64
+  kubernetes.io/arch: arm64
   performance: low
   type: app
 
@@ -17,10 +17,10 @@ nodeSelector:
 resources:
   limits:
     cpu: 200m
-    memory: 200Mi
+    memory: 100Mi
   requests:
     cpu: 100m
-    memory: 200Mi
+    memory: 50Mi
 
 ingress:
   # If true, Kubernetes Dashboard Ingress will be created.
@@ -63,14 +63,14 @@ metricsScraper:
     tag: v1.0.7
 
   resources:
-    requests:
-      cpu: 100m
-      memory: 50Mi
     limits:
+      cpu: 200m
+      memory: 75Mi
+    requests:
       cpu: 100m
       memory: 50Mi
 
   nodeSelector:
-    # kubernetes.io/arch: arm64
+    kubernetes.io/arch: arm64
     performance: low
     type: app

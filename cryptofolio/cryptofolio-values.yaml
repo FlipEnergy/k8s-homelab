@@ -20,7 +20,7 @@ ingress:
 resources:
   limits:
     cpu: 250m
-    memory: 100Mi
+    memory: 75Mi
   requests:
     cpu: 250m
     memory: 50Mi
@@ -34,6 +34,6 @@ persistence:
     size: 100Mi
 
 nodeSelector:
-  # kubernetes.io/arch: arm64
+  kubernetes.io/arch: arm64
   performance: low
   type: app
