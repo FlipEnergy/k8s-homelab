@@ -105,7 +105,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 16.1.10
+    version: 16.1.12
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
@@ -179,7 +179,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 3.3.2
+    version: 4.0.0
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
