@@ -114,7 +114,7 @@ apps:
     namespace: cryptofolio
     enabled: true
     chart: k8s-at-home/cryptofolio
-    version: 1.1.0
+    version: 1.2.0
     valuesFile: cryptofolio/cryptofolio-values.yaml
     hooks:
       preInstall: cryptofolio/persistenceVolume.yaml
@@ -124,7 +124,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 6.1.0
+    version: 6.2.0
     timeout: 360
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
@@ -135,7 +135,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
-    version: 9.2.0
+    version: 9.3.0
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
       preInstall: jellyfin/persistenceVolumes.yaml
@@ -145,7 +145,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-at-home/owncast
-    version: 3.1.0
+    version: 3.2.0
     valuesFile: owncast/owncast-values.yaml
     hooks:
       preInstall: owncast/persistenceVolume.yaml
@@ -169,7 +169,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 3.2.0
+    version: 3.3.0
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
@@ -191,7 +191,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 6.1.0
+    version: 6.2.0
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
