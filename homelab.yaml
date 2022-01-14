@@ -73,7 +73,7 @@ apps:
     namespace: k8s-dashboard
     enabled: true
     chart: k8s-dashboard/kubernetes-dashboard
-    version: 5.0.5
+    version: 5.0.6
     priority : -199
     valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
     hooks:
@@ -105,7 +105,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 16.1.12
+    version: 16.1.15
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
