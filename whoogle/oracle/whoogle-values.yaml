@@ -5,7 +5,7 @@ controller:
   strategy: RollingUpdate
 
 image:
-  tag: 0.7.1
+  tag: 0.7.0
   # pullPolicy: Always
 
 # See more environment variables in the whoogle documentation
