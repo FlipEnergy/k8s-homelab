@@ -73,7 +73,7 @@ apps:
     namespace: k8s-dashboard
     enabled: true
     chart: k8s-dashboard/kubernetes-dashboard
-    version: 5.1.1
+    version: 5.1.3
     priority : -199
     valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
     hooks:
@@ -105,7 +105,7 @@ apps:
     namespace: concourse
     enabled: true
     chart: concourse/concourse
-    version: 16.1.16
+    version: 16.1.18
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
 
@@ -156,7 +156,7 @@ apps:
     namespace: nextcloud
     enabled: true
     chart: nextcloud/nextcloud
-    version: 2.11.3
+    version: 2.12.0
     timeout: 900
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
