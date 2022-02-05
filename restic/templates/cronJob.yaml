@@ -26,7 +26,6 @@ spec:
               securityContext:
               {{- toYaml .Values.securityContext | nindent 16 }}
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-              imagePullPolicy: {{ default "IfNotPresent" .Values.image.pullPolicy }}
               command: ["/bin/sh"]
               args:
                 - -c
