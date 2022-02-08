@@ -49,7 +49,7 @@ apps:
     namespace: influxdb2
     enabled: true
     chart: influxdata/influxdb2
-    version: 2.0.8
+    version: 2.0.9
     priority : -99
     valuesFile: influxdb2/oracle/influxdb2-values.yaml
     secretsFile: influxdb2/oracle/secrets.influxdb2-creds.yaml
