@@ -65,11 +65,3 @@ apps:
     chart: k8s-at-home/haste-server
     version: 3.2.0
     valuesFile: hastebin/oracle/hastebin-values.yaml
-
-  whoogle:
-    <<: *default
-    namespace: whoogle
-    enabled: true
-    chart: k8s-at-home/whoogle
-    version: 3.2.0
-    valuesFile: whoogle/oracle/whoogle-values.yaml
