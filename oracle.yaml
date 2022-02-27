@@ -12,7 +12,6 @@ namespaces:
   haste:
   influxdb2:
   ingress-nginx:
-  whoogle:
 
 helmRepos:
   influxdata: https://helm.influxdata.com/
