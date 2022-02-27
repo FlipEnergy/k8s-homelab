@@ -16,10 +16,10 @@ nodeSelector:
 # Pod resource requests & limits
 resources:
   limits:
-    cpu: 500m
+    cpu: 1
     memory: 100Mi
   requests:
-    cpu: 400m
+    cpu: 1
     memory: 50Mi
 
 ingress:
