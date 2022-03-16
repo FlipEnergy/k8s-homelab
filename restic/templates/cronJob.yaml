@@ -37,11 +37,11 @@ spec:
 
                   echo "Listing snapshots for [${RESTIC_REPOSITORY}]"
                   echo
-                  restic snapshots
+                  restic --no-cache snapshots
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic repository [${RESTIC_REPOSITORY}] does not exists. Running restic init"
-                    restic init
+                    restic --no-cache init
                     if [ $? != 0 ]; then
                       echo "Restic repository [${RESTIC_REPOSITORY}] failed to init"
                       exit 1
@@ -52,7 +52,7 @@ spec:
                   echo
                   echo "Starting Backup for [${RESTIC_REPOSITORY}]"
                   echo
-                  time restic --verbose backup --exclude-file /source/restic-exclude.txt /source
+                  time restic --no-cache --verbose backup --exclude-file /source/restic-exclude.txt /source
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic backup [${RESTIC_REPOSITORY}] failed!"
@@ -64,7 +64,7 @@ spec:
 
                   echo
                   echo "Starting snapshot clean up for [${RESTIC_REPOSITORY}]"
-                  time restic forget --group-by paths,tags --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 2 --prune
+                  time restic --no-cache forget --group-by paths,tags --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --keep-yearly 2 --prune
                   if [ $? != 0 ]; then
                     echo
                     echo "Restic clean up for [${RESTIC_REPOSITORY}] failed!"
@@ -73,7 +73,7 @@ spec:
 
                   echo
                   echo 'Unlocking just in case'
-                  restic unlock
+                  restic --no-cache unlock
 
                   echo
                   echo 'Done!'
