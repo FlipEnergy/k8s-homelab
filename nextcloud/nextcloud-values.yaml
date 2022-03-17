@@ -2,7 +2,6 @@
 
 image:
   repository: nextcloud
-  tag: 22.2.5-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
