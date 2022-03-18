@@ -4,6 +4,7 @@ metadata:
   name: syncthing
 spec:
   storageClassName: syncthing
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 1Ti
   accessModes:

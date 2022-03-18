@@ -4,6 +4,7 @@ metadata:
   name: jellyfin-config
 spec:
   storageClassName: jellyfin-config
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 1Gi
   accessModes:
@@ -18,6 +19,7 @@ metadata:
   name: jellyfin-music
 spec:
   storageClassName: jellyfin-music
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 100Gi
   accessModes:
@@ -32,6 +34,7 @@ metadata:
   name: jellyfin-videos
 spec:
   storageClassName: jellyfin-videos
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 300Gi
   accessModes:

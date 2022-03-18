@@ -4,6 +4,7 @@ metadata:
   name: freshrss-data
 spec:
   storageClassName: freshrss-data
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 100Mi
   accessModes:
