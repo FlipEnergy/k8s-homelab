@@ -77,7 +77,8 @@ apps:
     priority : -199
     valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
     hooks:
-      postInstall: k8s-dashboard/dashboard-admin.yaml
+      postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
+      preUpgrade: *k8s-dash-admin
 
   #############
   # Databases #
@@ -88,21 +89,23 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 10.14.0
+    version: 11.1.9
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
     hooks:
-      preInstall: postgresql/persistenceVolume.yaml
+      preInstall: &pg-pv postgresql/persistenceVolume.yaml
+      preUpgrade: *pg-pv
+
 
   ################
   # Applications #
   ################
 
-  # uses Postgres
   concourse:
     <<: *default
     namespace: concourse
+    group: uses-pg
     enabled: true
     chart: concourse/concourse
     version: 16.1.21
@@ -117,7 +120,8 @@ apps:
     version: 1.2.0
     valuesFile: cryptofolio/cryptofolio-values.yaml
     hooks:
-      preInstall: cryptofolio/persistenceVolume.yaml
+      preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
+      preUpgrade: *crypto-pv
 
   freshrss:
     <<: *default
@@ -128,7 +132,8 @@ apps:
     timeout: 360
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
-      preInstall: freshrss/persistenceVolume.yaml
+      preInstall: &freshrss-pv freshrss/persistenceVolume.yaml
+      preUpgrade: *freshrss-pv
 
   jellyfin:
     <<: *default
@@ -138,7 +143,8 @@ apps:
     version: 9.3.0
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
-      preInstall: jellyfin/persistenceVolumes.yaml
+      preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
+      preUpgrade: *jellyfin-pv
 
   owncast:
     <<: *default
@@ -148,12 +154,13 @@ apps:
     version: 3.2.0
     valuesFile: owncast/owncast-values.yaml
     hooks:
-      preInstall: owncast/persistenceVolume.yaml
+      preInstall: &owncast-pv owncast/persistenceVolume.yaml
+      preUpgrade: *owncast-pv
 
-  # uses Postgres
   nextcloud:
     <<: *default
     namespace: nextcloud
+    group: uses-pg
     enabled: true
     chart: nextcloud/nextcloud
     version: 2.13.1
@@ -162,7 +169,8 @@ apps:
     valuesFile: nextcloud/nextcloud-values.yaml
     secretsFile: nextcloud/secret.nextcloud-creds.yaml
     hooks:
-      preInstall: nextcloud/preInstall.yaml
+      preInstall: &nextcloud-hooks nextcloud/preHooks.yaml
+      preUpgrade: *nextcloud-hooks
 
   syncthing:
     <<: *default
@@ -183,22 +191,23 @@ apps:
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
-      preInstall: vaultwarden/persistenceVolume.yaml
+      preInstall: &vaultwarden-pv vaultwarden/persistenceVolume.yaml
+      preUpgrade: *vaultwarden-pv
 
-  # uses Postgres
   wikijs:
     <<: *default
     namespace: wikijs
+    group: uses-pg
     enabled: true
     chart: k8s-at-home/wikijs
     version: 6.2.0
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
-  # uses Postgres
   wireguard:
     <<: *default
     namespace: wireguard
+    group: uses-pg
     enabled: true
     chart: place1/wg-access-server
     version: 0.4.6
