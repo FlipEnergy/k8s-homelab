@@ -6,7 +6,7 @@ metadata:
 
 settings:
   kubeContext: homelab
-  globalMaxHistory: 2
+  globalMaxHistory: 1
 
 namespaces:
   concourse:
@@ -28,7 +28,6 @@ namespaces:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
-  headlamp: https://kinvolk.github.io/headlamp/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-dashboard: https://kubernetes.github.io/dashboard
@@ -50,7 +49,7 @@ apps:
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 3.34.0 # Do not upgrade to > 4.0.0 as it drops support for ingress v1beta1
+    version: 4.0.18
     priority : -200
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
@@ -62,7 +61,7 @@ apps:
   kube-ops-view:
     <<: *default
     namespace: kube-ops-view
-    enabled: true
+    enabled: false
     chart: stable/kube-ops-view
     version: 1.2.4
     priority : -199
@@ -96,7 +95,6 @@ apps:
     hooks:
       preInstall: &pg-pv postgresql/persistenceVolume.yaml
       preUpgrade: *pg-pv
-
 
   ################
   # Applications #
@@ -188,6 +186,7 @@ apps:
     enabled: true
     chart: k8s-at-home/vaultwarden
     version: 4.0.1
+    priority: -99
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
     hooks:
@@ -208,7 +207,7 @@ apps:
     <<: *default
     namespace: wireguard
     group: uses-pg
-    enabled: true
+    enabled: false
     chart: place1/wg-access-server
     version: 0.4.6
     valuesFile: wireguard/wireguard-values.yaml

@@ -11,7 +11,6 @@ extraArgs:
 nodeSelector:
   kubernetes.io/arch: arm64
   performance: low
-  type: app
 
 # Pod resource requests & limits
 resources:
@@ -58,10 +57,6 @@ metricsScraper:
   ## Wether to enable dashboard-metrics-scraper
   enabled: true
 
-  image:
-    repository: kubernetesui/metrics-scraper
-    tag: v1.0.7
-
   resources:
     limits:
       cpu: 200m
@@ -73,4 +68,3 @@ metricsScraper:
   nodeSelector:
     kubernetes.io/arch: arm64
     performance: low
-    type: app

@@ -906,7 +906,6 @@ web:
   nodeSelector:
     kubernetes.io/arch: amd64
     performance: low
-    type: app
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/
@@ -1154,7 +1153,6 @@ worker:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
-    type: app
 
   ## Additional affinities to add to the worker pods.
   ## Useful if you prefer to run workers on non-spot instances, for example.

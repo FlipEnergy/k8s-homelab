@@ -148,8 +148,7 @@ resources:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: medium
-  type: app
+  performance: high
 
 tolerations: []
 
@@ -214,6 +213,5 @@ redis:
     nodeSelector:
       kubernetes.io/arch: amd64
       performance: medium
-      type: app
   replica:
     replicaCount: 0

@@ -181,8 +181,7 @@ primary:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
-    performance: medium
-    type: database
+    performance: high
 
   ## @param primary.updateStrategy.type PostgreSQL Primary statefulset strategy type
   ## @param primary.updateStrategy.rollingUpdate PostgreSQL Primary statefulset rolling update configuration parameters

@@ -47,7 +47,7 @@ persistence:
   source:
     storage: 3500Gi
     nfsPath: /mnt/ZFS-3.6TB/tank
-    nfsServer: truenas-1.tgp
+    nfsServer: truenas-1
 
 nodeSelector:
   kubernetes.io/arch: amd64

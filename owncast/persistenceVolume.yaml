@@ -11,4 +11,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/ZFS-3.6TB/tank/owncast-config
-    server: truenas-1.tgp
+    server: truenas-1

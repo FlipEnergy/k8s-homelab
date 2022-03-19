@@ -72,4 +72,3 @@ resources:
 nodeSelector:
   kubernetes.io/arch: amd64
   performance: medium
-  type: app

@@ -36,4 +36,3 @@ persistence:
 nodeSelector:
   kubernetes.io/arch: arm64
   performance: low
-  type: app
