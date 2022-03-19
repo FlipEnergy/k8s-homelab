@@ -47,7 +47,7 @@ persistence:
     # Do not delete the pvc upon helm uninstall
     retain: false
 
-podSecurityContext:
+securityContext:
   runAsUser: 1000
   runAsNonRoot: true
 

@@ -60,7 +60,7 @@ persistence:
     accessMode: ReadWriteOnce
     size: 50Mi
 
-podSecurityContext:
+securityContext:
   runAsUser: 1000
   runAsNonRoot: true
 
