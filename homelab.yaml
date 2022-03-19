@@ -200,7 +200,7 @@ apps:
     group: uses-pg
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 6.2.0
+    version: 6.2.1
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
