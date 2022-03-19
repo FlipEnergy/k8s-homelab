@@ -45,7 +45,10 @@ ingress:
             pathType: Prefix
             service:
               port: 8080
-    tls: []
+          - path: /notifications/hub
+            pathType: Prefix
+            service:
+              port: 3012
 
 persistence:
   data:
