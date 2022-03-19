@@ -207,9 +207,9 @@ apps:
     <<: *default
     namespace: wireguard
     group: uses-pg
-    enabled: false
-    chart: place1/wg-access-server
-    version: 0.4.6
+    enabled: true
+    chart: ./wireguard/wg-access-server
+    version: 0.4.7
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
 
