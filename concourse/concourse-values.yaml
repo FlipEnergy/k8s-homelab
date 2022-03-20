@@ -1153,6 +1153,7 @@ worker:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
+    performance: medium
 
   ## Additional affinities to add to the worker pods.
   ## Useful if you prefer to run workers on non-spot instances, for example.
