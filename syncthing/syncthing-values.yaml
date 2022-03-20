@@ -14,9 +14,9 @@ ingress:
     annotations:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
-    - host: syncthing.tgp
-      paths:
-        - path: /
+      - host: syncthing.tgp
+        paths:
+          - path: /
 
 resources:
   limits:

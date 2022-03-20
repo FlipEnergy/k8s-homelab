@@ -32,8 +32,6 @@ helmRepos:
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
-  place1: https://place1.github.io/wg-access-server
-  stable: https://charts.helm.sh/stable
 
 appsTemplates:
   default: &default
@@ -61,9 +59,9 @@ apps:
   kube-ops-view:
     <<: *default
     namespace: kube-ops-view
-    enabled: false
-    chart: stable/kube-ops-view
-    version: 1.2.4
+    enabled: true
+    chart: ./kube-ops-view/chart
+    version: 1.0.0
     priority : -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
 
@@ -208,7 +206,7 @@ apps:
     namespace: wireguard
     group: uses-pg
     enabled: true
-    chart: ./wireguard/wg-access-server
+    chart: ./wireguard/chart
     version: 0.4.7
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
@@ -221,6 +219,6 @@ apps:
     <<: *default
     namespace: restic
     enabled: true
-    chart: ./restic
+    chart: ./restic/chart
     version: 0.1.0
     secretsFile: restic/secret.restic-creds.yaml

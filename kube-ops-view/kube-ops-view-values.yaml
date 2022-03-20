@@ -1,12 +1,3 @@
-replicaCount: 1
-image:
-  tag: 20.4.0
-
-service:
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 8080
-
 resources:
   limits:
     cpu: 200m
@@ -16,28 +7,15 @@ resources:
     memory: 75Mi
 
 ingress:
-  enabled: true
-  path: /
-  hostname: kube.pleasenoddos.com
-  annotations:
+  main:
+    enabled: true
+    annotations:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  tls: []
-
-rbac:
-  # If true, create & use RBAC resources
-  create: true
-  # Ignored if rbac.create is true
-  serviceAccountName: default
+    hosts:
+      - host: kube.pleasenoddos.com
+        paths:
+          - path: /
 
 nodeSelector:
   kubernetes.io/arch: amd64
   performance: medium
-
-# pass env vars like this: helm [...] --set env.ENV_NAME=env_value,env.ENV_NAME2=env_value2
-env: {}
-
-# Add securityContext
-securityContext: {}
-
-# Add securityContext at pod level:
-podSecurityContext: {}
