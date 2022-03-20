@@ -1,8 +1,5 @@
 # Override values for Nextcloud
 
-image:
-  repository: nextcloud
-
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##
@@ -140,10 +137,10 @@ persistence:
 
 resources:
   limits:
-    cpu: 2
+    cpu: 4
     memory: 3Gi
   requests:
-    cpu: 2
+    cpu: 4
     memory: 1Gi
 
 nodeSelector:
