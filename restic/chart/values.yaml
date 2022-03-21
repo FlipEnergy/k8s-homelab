@@ -18,7 +18,7 @@ fullnameOverride: ""
 schedule: "45 7 * * *"
 
 successfulJobsHistoryLimit: 1
-failedJobsHistoryLimit: 3
+failedJobsHistoryLimit: 1
 
 backoffLimit: 1
 
