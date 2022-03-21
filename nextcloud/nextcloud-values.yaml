@@ -210,5 +210,7 @@ redis:
     nodeSelector:
       kubernetes.io/arch: amd64
       performance: medium
+    persistence:
+      enabled: false
   replica:
     replicaCount: 0
