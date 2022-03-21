@@ -55,6 +55,7 @@ nodeSelector:
 
 jobNodeSelector:
   kubernetes.io/arch: amd64
+  performance: low
 
 tolerations: []
 
