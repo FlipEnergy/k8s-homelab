@@ -90,7 +90,7 @@ spec:
                   value: {{ quote $value }}
                 {{- end }}
               {{- end }}
-          {{- with .Values.nodeSelector }}
+          {{- with .Values.jobNodeSelector }}
           nodeSelector:
             {{- toYaml . | nindent 12 }}
           {{- end }}

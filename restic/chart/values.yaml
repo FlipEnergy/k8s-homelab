@@ -51,7 +51,10 @@ persistence:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: medium
+  performance: high
+
+jobNodeSelector:
+  kubernetes.io/arch: amd64
 
 tolerations: []
 
