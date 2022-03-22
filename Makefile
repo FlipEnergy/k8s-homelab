@@ -1,5 +1,4 @@
 context := homelab
-syncthing_namespace := syncthing
 
 deploy:
 	kubectl --context homelab get configmap -n kube-system coredns -o json | sed 's+/etc/resolv.conf+10.69.1.1+' | kubectl --context homelab apply -f -

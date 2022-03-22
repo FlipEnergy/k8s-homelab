@@ -4,7 +4,6 @@ metadata:
   name: owncast
 spec:
   storageClassName: owncast
-  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 10Mi
   accessModes:

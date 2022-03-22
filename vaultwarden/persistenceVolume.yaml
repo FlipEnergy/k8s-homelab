@@ -4,7 +4,6 @@ metadata:
   name: vaultwarden
 spec:
   storageClassName: vaultwarden
-  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 50Mi
   accessModes:

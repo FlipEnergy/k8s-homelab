@@ -148,10 +148,10 @@ primary:
   ##
   resources:
     limits:
-      cpu: 2900m
+      cpu: 2
       memory: 2Gi
     requests:
-      cpu: 2800m
+      cpu: 2
       memory: 2Gi
 
   ## Pod Security Context

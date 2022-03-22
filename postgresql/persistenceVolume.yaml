@@ -4,7 +4,6 @@ metadata:
   name: postgresql
 spec:
   storageClassName: postgresql
-  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 10Gi
   accessModes:

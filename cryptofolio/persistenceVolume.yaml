@@ -4,7 +4,6 @@ metadata:
   name: cryptofolio-data
 spec:
   storageClassName: cryptofolio-data
-  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 100Mi
   accessModes:
