@@ -40,6 +40,10 @@ securityContext:
   runAsUser: 1000
   runAsNonRoot: true
 
+phpClientHttpsFix:
+  enabled: true
+  protocol: https
+
 nextcloud:
   host: cloud.pleasenoddos.com
   containerPort: 8080
@@ -72,9 +76,7 @@ nextcloud:
 
   ##
   ## Extra environment variables
-  extraEnv:
-    - name: OVERWRITEPROTOCOL
-      value: https
+  # extraEnv:
 
 internalDatabase:
   enabled: false
