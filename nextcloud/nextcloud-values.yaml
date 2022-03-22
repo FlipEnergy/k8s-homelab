@@ -141,9 +141,9 @@ persistence:
 resources:
   limits:
     cpu: 4
-    memory: 3Gi
+    memory: 2Gi
   requests:
-    cpu: 4
+    cpu: 2
     memory: 1Gi
 
 nodeSelector:

@@ -1,9 +1,9 @@
 resources:
   limits:
-    cpu: 200m
+    cpu: 500m
     memory: 150Mi
   requests:
-    cpu: 150m
+    cpu: 20m
     memory: 75Mi
 
 ingress:
@@ -18,4 +18,4 @@ ingress:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: medium
+  performance: low

@@ -27,10 +27,10 @@ strategy:
 
 resources:
   limits:
-    cpu: 250m
+    cpu: 500m
     memory: 500Mi
   requests:
-    cpu: 250m
+    cpu: 200m
     memory: 125Mi
 
 nodeSelector:

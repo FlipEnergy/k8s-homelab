@@ -1,6 +1,6 @@
 image:
   # -- image tag
-  tag: 10.7.6
+  # tag: 10.7.7
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -56,7 +56,7 @@ resources:
     cpu: 1
     memory: 2Gi
   requests:
-    cpu: 1
+    cpu: 500m
     memory: 1536Mi
 
 nodeSelector:
