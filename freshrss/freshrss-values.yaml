@@ -37,4 +37,4 @@ persistence:
     size: 100Mi
 
 nodeSelector:
-  performance: medium
+  performance: low

@@ -40,7 +40,7 @@ resources:
     cpu: 3
     memory: 500Mi
   requests:
-    cpu: 3
+    cpu: 1
     memory: 300Mi
 
 persistence:
