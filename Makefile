@@ -1,7 +1,6 @@
 context := homelab
 
 deploy:
-	kubectl --context homelab get configmap -n kube-system coredns -o json | sed 's+/etc/resolv.conf+10.69.69.1+' | kubectl --context homelab apply -f -
 	sops -d ingress-nginx/secret.default-ssl-certs.yaml | kubectl --context $(context) -n default apply -f -
 	docker run --rm -it \
 	-v $$(pwd):/k8s-homelab \

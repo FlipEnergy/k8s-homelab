@@ -10,7 +10,7 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/ZFS-3.6TB/tank/jellyfin-config
-    server: truenas-1
+    server: truenas-1.tgp
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -24,7 +24,7 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/ZFS-3.6TB/tank/syncthing-data/music
-    server: truenas-1
+    server: truenas-1.tgp
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -38,4 +38,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/ZFS-3.6TB/tank/cold-storage/Videos
-    server: truenas-1
+    server: truenas-1.tgp

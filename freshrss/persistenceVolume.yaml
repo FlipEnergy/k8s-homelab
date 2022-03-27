@@ -10,4 +10,4 @@ spec:
     - ReadWriteOnce
   nfs:
     path: /mnt/ZFS-3.6TB/tank/freshrss-data
-    server: truenas-1
+    server: truenas-1.tgp
