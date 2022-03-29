@@ -60,7 +60,7 @@ apps:
     <<: *default
     namespace: kube-ops-view
     enabled: true
-    chart: ./kube-ops-view/chart
+    chart: k8s-at-home/kube-ops-view
     version: 1.0.0
     priority : -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
@@ -183,7 +183,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 4.0.1
+    version: 4.1.0
     priority: -99
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
