@@ -23,7 +23,7 @@ diagnosticMode:
 ## @param image.debug Specify if debug values should be set
 ##
 image:
-  tag: 11.14.0-debian-10-r17
+  tag: 14.2.0-debian-10-r50
 
 ## @param architecture PostgreSQL architecture (`standalone` or `replication`)
 ##

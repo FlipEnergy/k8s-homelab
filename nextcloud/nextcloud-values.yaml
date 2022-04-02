@@ -1,5 +1,11 @@
 # Override values for Nextcloud
 
+## Official nextcloud image version
+## ref: https://hub.docker.com/r/library/nextcloud/tags/
+##
+image:
+  tag: 23.0.3-apache
+
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ##

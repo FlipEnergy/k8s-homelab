@@ -47,7 +47,7 @@ apps:
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 4.0.18
+    version: 4.0.19
     priority : -200
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
@@ -86,7 +86,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 11.1.9
+    version: 11.1.14
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
