@@ -51,3 +51,9 @@ persistence:
     enabled: true
     storageClass: paperless-media
     size: 3Gi
+  # -- Configure volume to monitor for new documents.
+  # @default -- See values.yaml
+  consume:
+    enabled: true
+    storageClass: paperless-consume
+    size: 3Gi
