@@ -1,0 +1,45 @@
+# Override values for redis
+
+## @section Redis&trade; common configuration parameters
+## https://github.com/bitnami/bitnami-docker-redis#configuration
+##
+
+## @param architecture Redis&trade; architecture. Allowed values: `standalone` or `replication`
+##
+architecture: standalone
+## Redis&trade; Authentication parameters
+## ref: https://github.com/bitnami/bitnami-docker-redis#setting-the-server-password-on-first-run
+##
+auth:
+  ## @param auth.enabled Enable password authentication
+  ##
+  enabled: true
+
+## @section Redis&trade; master configuration parameters
+##
+
+master:
+  ## Redis&trade; master resource requests and limits
+  ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ## @param master.resources.limits The resources limits for the Redis&trade; master containers
+  ## @param master.resources.requests The requested resources for the Redis&trade; master containers
+  ##
+  resources:
+    limits:
+      cpu: 1
+      memory: 1Gi
+    requests:
+      cpu: 1
+      memory: 1Gi
+  ## @param master.nodeSelector Node labels for Redis&trade; master pods assignment
+  ## ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector:
+    kubernetes.io/arch: amd64
+  ## Persistence parameters
+  ## ref: https://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  persistence:
+    ## @param master.persistence.enabled Enable persistence on Redis&trade; master nodes using Persistent Volume Claims
+    ##
+    enabled: false

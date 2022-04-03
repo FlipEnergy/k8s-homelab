@@ -20,6 +20,7 @@ namespaces:
   owncast:
   paperless:
   postgresql:
+  redis:
   restic:
   syncthing:
   vaultwarden:
@@ -94,6 +95,16 @@ apps:
     hooks:
       preInstall: &pg-pv postgresql/persistenceVolume.yaml
       preUpgrade: *pg-pv
+
+  redis:
+    <<: *default
+    namespace: redis
+    enabled: true
+    chart: bitnami/redis
+    version: 16.8.1
+    priority: -100
+    valuesFile: redis/redis-values.yaml
+    secretsFile: redis/secret.redis-creds.yaml
 
   ################
   # Applications #

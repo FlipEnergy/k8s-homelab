@@ -80,10 +80,6 @@ nextcloud:
       subPath: 000-default.conf
       readOnly: true
 
-  ##
-  ## Extra environment variables
-  # extraEnv:
-
 internalDatabase:
   enabled: false
 
@@ -197,31 +193,3 @@ startupProbe:
   timeoutSeconds: 5
   failureThreshold: 60
   successThreshold: 1
-
-##
-## Redis chart configuration
-## for more options see https://github.com/bitnami/charts/tree/master/bitnami/redis
-##
-
-redis:
-  enabled: true
-  ## @param architecture Redis&trade; architecture. Allowed values: `standalone` or `replication`
-  ##
-  architecture: standalone
-  auth:
-    enabled: true
-  master:
-    resources:
-      limits:
-        cpu: 1
-        memory: 3Gi
-      requests:
-        cpu: 1
-        memory: 3Gi
-    nodeSelector:
-      kubernetes.io/arch: amd64
-      performance: medium
-    persistence:
-      enabled: false
-  replica:
-    replicaCount: 0
