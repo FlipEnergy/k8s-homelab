@@ -80,6 +80,12 @@ nextcloud:
       subPath: 000-default.conf
       readOnly: true
 
+  ##
+  ## Extra environment variables
+  extraEnv:
+    - name: REDIS_HOST
+      value: redis-master.redis
+
 internalDatabase:
   enabled: false
 

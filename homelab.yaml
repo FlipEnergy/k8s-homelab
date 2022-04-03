@@ -104,7 +104,6 @@ apps:
     version: 16.8.1
     priority: -100
     valuesFile: redis/redis-values.yaml
-    secretsFile: redis/secret.redis-creds.yaml
 
   ################
   # Applications #
@@ -183,12 +182,12 @@ apps:
   paperless:
     <<: *default
     namespace: paperless
-    enabled: false
+    enabled: true
     chart: k8s-at-home/paperless
     version: 8.6.0
     valuesFile: paperless/paperless-values.yaml
     hooks:
-      preInstall: &paperless-pv paperless/persistenceVolume.yaml
+      preInstall: &paperless-pv paperless/persistenceVolumes.yaml
       preUpgrade: *paperless-pv
 
   syncthing:

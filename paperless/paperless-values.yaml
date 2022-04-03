@@ -5,63 +5,53 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
-image:
-  # -- image repository
-  repository: ghcr.io/paperless-ngx/paperless-ngx
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-  # -- image tag
-  # @default -- chart.appVersion
-  tag:
-
 # -- See the following files for additional environment variables:
 # https://github.com/paperless-ngx/paperless-ngx/tree/main/docker/compose/
 # https://github.com/paperless-ngx/paperless-ngx/blob/main/paperless.conf.example
 # @default -- See below
 env:
-  # -- Project name
-  COMPOSE_PROJECT_NAME: paperless
-  # -- Redis to use
-  PAPERLESS_REDIS:
-  # -- Database host to use
-  PAPERLESS_DBHOST:
-  # -- Port to use
-  PAPERLESS_PORT: 8000
+  PAPERLESS_REDIS: redis://redis-master.redis/1
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
   # @default -- See values.yaml
   main:
-    enabled: false
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+      - host: paperless.tgp
+        paths:
+          - path: /
+
+resources:
+  limits:
+    cpu: 1
+    memory: 500Mi
+  requests:
+    cpu: 500m
+    memory: 250Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64
+  performance: medium
 
 persistence:
   # -- Configure persistence for data.
   # @default -- See values.yaml
   data:
     enabled: true
-    storageClass: paperless
+    storageClass: paperless-data
     size: 100Mi
   # -- Configure persistence for media.
   # @default -- See values.yaml
   media:
-    enabled: false
-    mountPath: /usr/src/paperless/media
-    accessMode: ReadWriteOnce
-    emptyDir:
-      enabled: false
+    enabled: true
+    storageClass: paperless-media
+    size: 3Gi
   # -- Configure volume to monitor for new documents.
   # @default -- See values.yaml
   consume:
-    enabled: false
-    mountPath: /usr/src/paperless/consume
-    accessMode: ReadWriteOnce
-    emptyDir:
-      enabled: false
-
-# -- Enable and configure redis subchart under this key.
-#    For more options see [redis chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/redis)
-# @default -- See values.yaml
-redis:
-  enabled: false
-  auth:
-    enabled: false
+    enabled: true
+    storageClass: paperless-consume
+    size: 3Gi

@@ -13,7 +13,7 @@ architecture: standalone
 auth:
   ## @param auth.enabled Enable password authentication
   ##
-  enabled: true
+  enabled: false
 
 ## @section Redis&trade; master configuration parameters
 ##
@@ -31,11 +31,14 @@ master:
     requests:
       cpu: 1
       memory: 1Gi
+
   ## @param master.nodeSelector Node labels for Redis&trade; master pods assignment
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
+    performance: high
+
   ## Persistence parameters
   ## ref: https://kubernetes.io/docs/user-guide/persistent-volumes/
   ##
