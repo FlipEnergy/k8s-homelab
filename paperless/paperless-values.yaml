@@ -13,7 +13,6 @@ env:
   PAPERLESS_REDIS: redis://redis-master.redis/1
   PAPERLESS_CONSUMER_RECURSIVE: true
   PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: true
-  PAPERLESS_CONSUMER_POLLING: 3600
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
