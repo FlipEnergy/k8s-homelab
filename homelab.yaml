@@ -18,6 +18,7 @@ namespaces:
   kube-ops-view:
   nextcloud:
   owncast:
+  paperless:
   postgresql:
   restic:
   syncthing:
@@ -167,6 +168,17 @@ apps:
     hooks:
       preInstall: &nextcloud-hooks nextcloud/preHooks.yaml
       preUpgrade: *nextcloud-hooks
+
+  paperless:
+    <<: *default
+    namespace: paperless
+    enabled: false
+    chart: k8s-at-home/paperless
+    version: 8.6.0
+    valuesFile: paperless/paperless-values.yaml
+    hooks:
+      preInstall: &paperless-pv paperless/persistenceVolume.yaml
+      preUpgrade: *paperless-pv
 
   syncthing:
     <<: *default
