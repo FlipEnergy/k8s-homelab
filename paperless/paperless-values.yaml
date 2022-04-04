@@ -14,6 +14,8 @@ env:
   PAPERLESS_CONSUMER_RECURSIVE: true
   PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS: true
   PAPERLESS_CONSUMER_POLLING: 300
+  PAPERLESS_TASK_WORKERS: 2
+  PAPERLESS_THREADS_PER_WORKER: 1
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -29,7 +31,7 @@ ingress:
 
 resources:
   limits:
-    cpu: 3
+    cpu: 2
     memory: 2Gi
   requests:
     cpu: 500m
