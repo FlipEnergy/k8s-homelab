@@ -33,9 +33,9 @@ metadata:
 spec:
   storageClassName: paperless-consume
   capacity:
-    storage: 3Gi
+    storage: 100Mi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/tank/syncthing-data/Misc/Importants
+    path: /mnt/ZFS-3.6TB/tank/paperless-data/consume
     server: truenas-1.tgp

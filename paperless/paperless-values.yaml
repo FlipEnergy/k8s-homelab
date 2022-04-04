@@ -59,4 +59,4 @@ persistence:
   consume:
     enabled: true
     storageClass: paperless-consume
-    size: 3Gi
+    size: 100Mi
