@@ -1,4 +1,5 @@
 context := homelab
+action := --apply
 
 deploy:
 	sops -d ingress-nginx/secret.default-ssl-certs.yaml | kubectl --context $(context) -n default apply -f -
@@ -8,7 +9,7 @@ deploy:
 	-v ~/.gnupg:/root/.gnupg \
 	-w /k8s-homelab \
 	praqma/helmsman:latest \
-	helmsman $(options) -p 3 --show-diff --apply -f ${context}.yaml
+	helmsman $(options) -p 3 --show-diff -f ${context}.yaml
 
 destroy:
 	docker run --rm -it \
