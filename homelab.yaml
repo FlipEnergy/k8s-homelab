@@ -88,7 +88,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 11.1.16
+    version: 11.1.19
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
@@ -101,7 +101,7 @@ apps:
     namespace: redis
     enabled: true
     chart: bitnami/redis
-    version: 16.8.4
+    version: 16.8.5
     priority: -100
     valuesFile: redis/redis-values.yaml
 
@@ -170,7 +170,7 @@ apps:
     group: uses-pg
     enabled: true
     chart: nextcloud/nextcloud
-    version: 2.13.2
+    version: 2.14.0
     timeout: 900
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
