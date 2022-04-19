@@ -9,6 +9,7 @@ settings:
   globalMaxHistory: 1
 
 namespaces:
+  amd-gpu:
   concourse:
   cryptofolio:
   freshrss:
@@ -28,6 +29,7 @@ namespaces:
   wireguard:
 
 helmRepos:
+  amd-gpu-helm: https://radeonopencompute.github.io/k8s-device-plugin/
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
@@ -40,6 +42,20 @@ appsTemplates:
     wait: true
 
 apps:
+  #######
+  # GPU #
+  #######
+
+  amd-gpu:
+    <<: *default
+    namespace: amd-gpu
+    enabled: true
+    chart: amd-gpu-helm/amd-gpu
+    version: 0.2.0
+    priority : -200
+    timeout: 900
+    valuesFile: amd-gpu/amd-gpu-values.yaml
+
   ###########
   # Ingress #
   ###########
