@@ -49,7 +49,7 @@ apps:
   amd-gpu:
     <<: *default
     namespace: amd-gpu
-    enabled: true
+    enabled: false
     chart: amd-gpu-helm/amd-gpu
     version: 0.2.0
     priority : -200
