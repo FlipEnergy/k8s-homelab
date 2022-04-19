@@ -998,8 +998,6 @@ web:
       ##
       NodePort:
 
-
-
     prometheus:
       ## Additional Labels to be added to the web service.
       ##
@@ -1082,7 +1080,7 @@ worker:
 
   ## Number of replicas.
   ##
-  replicas: 2
+  replicas: 3
 
   ## Array of extra containers to run alongside the Concourse worker
   ## container.

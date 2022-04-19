@@ -1,3 +1,5 @@
+# Override values for JellyFin.
+
 # image:
   # -- image tag
   # tag: 10.7.7
@@ -62,3 +64,4 @@ resources:
 nodeSelector:
   kubernetes.io/arch: amd64
   performance: medium
+  gpu: medium

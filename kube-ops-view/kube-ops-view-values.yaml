@@ -1,3 +1,8 @@
+# Override values for kube-ops-view.
+
+controller:
+  strategy: RollingUpdate
+
 resources:
   limits:
     cpu: 500m

@@ -37,7 +37,7 @@ master:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
-    performance: high
+    performance: medium
 
   ## Persistence parameters
   ## ref: https://kubernetes.io/docs/user-guide/persistent-volumes/
