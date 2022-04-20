@@ -1,9 +1,0 @@
-## Override values for amd-gpu
-nfd:
-  enabled: true
-
-namespace: amd-gpu
-
-node_selector:
-  feature.node.kubernetes.io/pci-0300_1002.present: "true"
-  gpu: 'true'

@@ -42,20 +42,6 @@ appsTemplates:
     wait: true
 
 apps:
-  #######
-  # GPU #
-  #######
-
-  amd-gpu:
-    <<: *default
-    namespace: amd-gpu
-    enabled: false
-    chart: amd-gpu-helm/amd-gpu
-    version: 0.2.0
-    priority : -200
-    timeout: 900
-    valuesFile: amd-gpu/amd-gpu-values.yaml
-
   ###########
   # Ingress #
   ###########

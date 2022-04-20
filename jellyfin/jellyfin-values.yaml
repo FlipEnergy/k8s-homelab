@@ -64,4 +64,3 @@ resources:
 nodeSelector:
   kubernetes.io/arch: amd64
   performance: medium
-  # gpu: 'true'
