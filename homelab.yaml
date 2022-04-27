@@ -9,7 +9,6 @@ settings:
   globalMaxHistory: 1
 
 namespaces:
-  amd-gpu:
   concourse:
   cryptofolio:
   freshrss:
@@ -29,7 +28,6 @@ namespaces:
   wireguard:
 
 helmRepos:
-  amd-gpu-helm: https://radeonopencompute.github.io/k8s-device-plugin/
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
