@@ -180,7 +180,6 @@ primary:
   ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
   ##
   nodeSelector:
-    kubernetes.io/arch: amd64
     performance: high
 
   ## @param primary.updateStrategy.type PostgreSQL Primary statefulset strategy type

@@ -34,5 +34,4 @@ persistence:
     size: 100Mi
 
 nodeSelector:
-  kubernetes.io/arch: arm64
   performance: low

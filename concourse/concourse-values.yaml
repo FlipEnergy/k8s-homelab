@@ -904,7 +904,6 @@ web:
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
   nodeSelector:
-    kubernetes.io/arch: amd64
     performance: low
 
   ## Service configuration.
@@ -1150,7 +1149,6 @@ worker:
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
   ##
   nodeSelector:
-    kubernetes.io/arch: amd64
 
   ## Additional affinities to add to the worker pods.
   ## Useful if you prefer to run workers on non-spot instances, for example.

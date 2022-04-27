@@ -36,7 +36,6 @@ master:
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    kubernetes.io/arch: amd64
     performance: medium
 
   ## Persistence parameters
