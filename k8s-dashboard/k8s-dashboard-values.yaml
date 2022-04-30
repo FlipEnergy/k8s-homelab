@@ -42,10 +42,10 @@ settings:
   clusterName: "Homelab"
   # Max number of items that can be displayed on each list page
   itemsPerPage: 25
-  ## Number of seconds between every auto-refresh of logs
-  # logsAutoRefreshTimeInterval: 5
-  ## Number of seconds between every auto-refresh of every resource. Set 0 to disable
-  # resourceAutoRefreshTimeInterval: 5
+  # Number of seconds between every auto-refresh of logs
+  logsAutoRefreshTimeInterval: 3
+  # Number of seconds between every auto-refresh of every resource. Set 0 to disable
+  resourceAutoRefreshTimeInterval: 3
   ## Hide all access denied warnings in the notification panel
   # disableAccessDeniedNotifications: false
 
