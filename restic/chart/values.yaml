@@ -38,10 +38,10 @@ env:
 resources:
   limits:
     cpu: 3
-    memory: 500Mi
+    memory: 2Gi
   requests:
     cpu: 1
-    memory: 300Mi
+    memory: 1Gi
 
 persistence:
   source:
