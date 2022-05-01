@@ -35,6 +35,9 @@ securityContext:
 env:
   RESTIC_PROGRESS_FPS: 1
 
+secret:
+  RESTIC_PASSWORD: placeholder
+
 resources:
   limits:
     cpu: 3

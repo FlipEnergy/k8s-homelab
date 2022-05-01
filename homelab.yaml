@@ -170,7 +170,7 @@ apps:
     group: uses-pg
     enabled: true
     chart: nextcloud/nextcloud
-    version: 2.14.1
+    version: 2.14.2
     timeout: 900
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml

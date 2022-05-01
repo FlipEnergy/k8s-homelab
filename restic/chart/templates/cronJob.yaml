@@ -83,6 +83,9 @@ spec:
                   name: source
               resources:
                 {{- toYaml .Values.resources | nindent 16 }}
+              envFrom:
+                - secretRef:
+                    name: {{ include "restic.fullname" . }}
               {{- with .Values.env }}
               env:
                 {{- range $name, $value := . }}
