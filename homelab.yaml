@@ -63,7 +63,7 @@ apps:
     namespace: kube-ops-view
     enabled: true
     chart: k8s-at-home/kube-ops-view
-    version: 1.0.0
+    version: 1.1.0
     priority : -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
 
@@ -124,7 +124,7 @@ apps:
     namespace: cryptofolio
     enabled: true
     chart: k8s-at-home/cryptofolio
-    version: 1.2.0
+    version: 1.3.0
     valuesFile: cryptofolio/cryptofolio-values.yaml
     hooks:
       preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
@@ -135,7 +135,7 @@ apps:
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
-    version: 6.2.0
+    version: 6.3.0
     timeout: 360
     valuesFile: freshrss/freshrss-values.yaml
     hooks:
@@ -147,7 +147,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
-    version: 9.3.0
+    version: 9.4.0
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
@@ -158,7 +158,7 @@ apps:
     namespace: owncast
     enabled: true
     chart: k8s-at-home/owncast
-    version: 3.2.0
+    version: 3.3.0
     valuesFile: owncast/owncast-values.yaml
     hooks:
       preInstall: &owncast-pv owncast/persistenceVolume.yaml
@@ -184,7 +184,7 @@ apps:
     namespace: paperless
     enabled: true
     chart: k8s-at-home/paperless
-    version: 8.6.0
+    version: 8.8.0
     valuesFile: paperless/paperless-values.yaml
     secretsFile: paperless/secret.paperless-key.yaml
     hooks:
@@ -196,7 +196,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 3.3.0
+    version: 3.4.0
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
@@ -206,7 +206,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 4.1.0
+    version: 4.2.0
     priority: -99
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
@@ -220,7 +220,7 @@ apps:
     group: uses-pg
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 6.2.1
+    version: 6.3.0
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
 
