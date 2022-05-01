@@ -892,9 +892,9 @@ web:
   ##
   env:
     - name: CONCOURSE_ENABLE_ACROSS_STEP
-      value: true
+      value: "true"
     - name: CONCOURSE_ENABLE_PIPELINE_INSTANCES
-      value: true
+      value: "true"
 
   ## Configure the security context for the web containers.
   ## Example:
