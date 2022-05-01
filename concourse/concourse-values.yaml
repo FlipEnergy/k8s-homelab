@@ -134,7 +134,7 @@ concourse:
 
     ## Enable in-memory cache for secrets.
     ##
-    secretCacheEnabled: false
+    secretCacheEnabled: true
 
     ## If the cache is enabled, secret values will be cached for not longer
     ## than this duration (it can be less, if underlying secret lease time
@@ -352,7 +352,7 @@ concourse:
       ## Enable the use of Kubernetes Secrets as the credential provider for
       ## concourse pipelines.
       ##
-      enabled: true
+      enabled: false
 
       ## Prefix to use for Kubernetes namespaces under which secrets will be looked up.
       ## Defaults to the Release (https://helm.sh/docs/glossary/#release) name
