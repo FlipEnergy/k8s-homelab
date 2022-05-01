@@ -891,6 +891,10 @@ web:
   ##     value: "debug"
   ##
   env:
+    - name: CONCOURSE_ENABLE_ACROSS_STEP
+      value: true
+    - name: CONCOURSE_ENABLE_PIPELINE_INSTANCES
+      value: true
 
   ## Configure the security context for the web containers.
   ## Example:
