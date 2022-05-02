@@ -6,9 +6,6 @@ image:
   pullPolicy: IfNotPresent
   tag: 2.5.280
 
-controller:
-  strategy: RollingUpdate
-
 env:
   # -- mysql, postgres, mariadb, mssql or sqlite
   DB_TYPE: postgres
