@@ -1083,7 +1083,7 @@ worker:
 
   ## Number of replicas.
   ##
-  replicas: 3
+  replicas: 2
 
   ## Array of extra containers to run alongside the Concourse worker
   ## container.
@@ -1133,10 +1133,10 @@ worker:
   ##
   resources:
     limits:
-      cpu: 1
+      cpu: 2
       memory: 2Gi
     requests:
-      cpu: 750m
+      cpu: 1
       memory: 1Gi
 
   ## Configure additional environment variables for the
@@ -1169,7 +1169,16 @@ worker:
   ##               values:
   ##                 - "true"
   ##
-  additionalAffinities: {}
+  additionalAffinities:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+              - key: performance
+                operator: NotIn
+                values:
+                  - high
 
   ## Whether the workers should be forced to run on separate nodes.
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
