@@ -113,7 +113,12 @@ cronjob:
   annotations: {}
   failedJobsHistoryLimit: 0
   successfulJobsHistoryLimit: 1
-  resources: {}
+  resources:
+    limits:
+      memory: 10Mi
+    requests:
+      cpu: 10m
+      memory: 10Mi
   nodeSelector:
     performance: low
 
@@ -143,6 +148,7 @@ persistence:
 
 resources:
   limits:
+    cpu: 4
     memory: 2Gi
   requests:
     cpu: 2
