@@ -40,7 +40,6 @@ secret:
 
 resources:
   limits:
-    cpu: 3
     memory: 2Gi
   requests:
     cpu: 1

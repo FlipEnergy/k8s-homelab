@@ -13,11 +13,8 @@ nodeSelector:
 
 # Pod resource requests & limits
 resources:
-  limits:
-    cpu: 2
-    memory: 100Mi
   requests:
-    cpu: 1
+    cpu: 500m
     memory: 50Mi
 
 ingress:
@@ -58,8 +55,7 @@ metricsScraper:
 
   resources:
     limits:
-      cpu: 200m
-      memory: 75Mi
+      memory: 100Mi
     requests:
       cpu: 100m
       memory: 50Mi
