@@ -22,8 +22,8 @@ diagnosticMode:
 ## @param image.pullSecrets Specify image pull secrets
 ## @param image.debug Specify if debug values should be set
 ##
-image:
-  tag: 14.2.0-debian-10-r50
+# image:
+#   tag: 14.2.0-debian-10-r50
 
 ## @param architecture PostgreSQL architecture (`standalone` or `replication`)
 ##
