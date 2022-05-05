@@ -147,7 +147,7 @@ apps:
     <<: *default
     namespace: ihatemoney
     enabled: true
-    chart: ./ihatemoney
+    chart: k8s-at-home/ihatemoney
     version: 1.0.0
     timeout: 360
     valuesFile: ihatemoney/ihatemoney-values.yaml
