@@ -32,6 +32,8 @@ persistence:
     storageClass: syncthing
     accessMode: ReadWriteOnce
     size: 1Ti
+    # Do not delete the pvc upon helm uninstall
+    retain: true
 
 nodeSelector:
   performance: low

@@ -31,6 +31,8 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: cryptofolio-data
     size: 100Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
 
 nodeSelector:
   performance: low

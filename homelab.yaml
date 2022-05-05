@@ -13,6 +13,7 @@ namespaces:
   cryptofolio:
   freshrss:
   ingress-nginx:
+  ihatemoney:
   jellyfin:
   k8s-dashboard:
   kube-ops-view:
@@ -141,6 +142,19 @@ apps:
     hooks:
       preInstall: &freshrss-pv freshrss/persistenceVolume.yaml
       preUpgrade: *freshrss-pv
+
+  ihatemoney:
+    <<: *default
+    namespace: ihatemoney
+    enabled: true
+    chart: ./ihatemoney
+    version: 1.0.0
+    timeout: 360
+    valuesFile: ihatemoney/ihatemoney-values.yaml
+    secretsFile: ihatemoney/secret.ihatemoney-creds.yaml
+    hooks:
+      preInstall: &ihatemoney-pv ihatemoney/persistenceVolume.yaml
+      preUpgrade: *ihatemoney-pv
 
   jellyfin:
     <<: *default

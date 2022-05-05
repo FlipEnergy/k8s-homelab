@@ -32,6 +32,8 @@ persistence:
     storageClass: owncast
     accessMode: ReadWriteOnce
     size: 10Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
 
 resources:
   limits:

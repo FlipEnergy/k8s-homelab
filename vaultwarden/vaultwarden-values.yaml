@@ -59,6 +59,8 @@ persistence:
     storageClass: vaultwarden
     accessMode: ReadWriteOnce
     size: 50Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
 
 securityContext:
   runAsUser: 1000
