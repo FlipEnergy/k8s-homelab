@@ -4,10 +4,6 @@
 # -- environment variables. See more environment variables in the [ihatemoney documentation](https://ihatemoney.readthedocs.io/en/latest/configuration.html).
 # @default -- See below
 env:
-  # SECRET_KEY:
-  MAIL_SERVER: smtp.gmail.com
-  MAIL_PORT: 587
-  MAIL_USE_SSL: 'True'
   ACTIVATE_ADMIN_DASHBOARD: 'True'
 
 ingress:
