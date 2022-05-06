@@ -1,64 +1,53 @@
 context: oracle
-
 metadata:
   maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
   description: Helmman DSF for Oracle homelab K8s
-
 settings:
   kubeContext: oracle
   globalMaxHistory: 2
-
 namespaces:
   haste:
   influxdb2:
   ingress-nginx:
-
 helmRepos:
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
-
 appsTemplates:
   default: &default
     wait: true
-
 apps:
   ###########
   # Ingress #
   ###########
-
   ingress-nginx:
-    <<: *default
+    !!merge <<: *default
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
     version: 4.1.0
-    priority : -200
+    priority: -200
     timeout: 900
     valuesFiles:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
-
   #############
   # Databases #
   #############
-
   influxdb2:
-    <<: *default
+    !!merge <<: *default
     namespace: influxdb2
     enabled: true
     chart: influxdata/influxdb2
     version: 2.0.12
-    priority : -99
+    priority: -99
     valuesFile: influxdb2/oracle/influxdb2-values.yaml
     secretsFile: influxdb2/oracle/secrets.influxdb2-creds.yaml
-
   ################
   # Applications #
   ################
-
   haste:
-    <<: *default
+    !!merge <<: *default
     namespace: haste
     enabled: true
     chart: k8s-at-home/haste-server
