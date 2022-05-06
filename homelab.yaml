@@ -76,7 +76,7 @@ apps:
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
-    version: 11.1.26
+    version: 11.1.28
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/secret.postgresql-creds.yaml
