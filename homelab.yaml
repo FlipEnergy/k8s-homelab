@@ -1,13 +1,10 @@
 context: homelab
-
 metadata:
   maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
   description: Helmman DSF for homelab K8s
-
 settings:
   kubeContext: homelab
   globalMaxHistory: 1
-
 namespaces:
   concourse:
   cryptofolio:
@@ -27,7 +24,6 @@ namespaces:
   vaultwarden:
   wikijs:
   wireguard:
-
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
@@ -35,18 +31,15 @@ helmRepos:
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
-
 appsTemplates:
   default: &default
     wait: true
-
 apps:
   ###########
   # Ingress #
   ###########
-
   ingress-nginx:
-    <<: *default
+    !!merge <<: *default
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
@@ -54,22 +47,19 @@ apps:
     priority: -200
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
-
   ##############
   # Monitoring #
   ##############
-
   kube-ops-view:
-    <<: *default
+    !!merge <<: *default
     namespace: kube-ops-view
     enabled: true
     chart: k8s-at-home/kube-ops-view
     version: 1.1.3
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
-
   k8s-dashboard:
-    <<: *default
+    !!merge <<: *default
     namespace: k8s-dashboard
     enabled: true
     chart: k8s-dashboard/kubernetes-dashboard
@@ -79,13 +69,11 @@ apps:
     hooks:
       postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
       preUpgrade: *k8s-dash-admin
-
   #############
   # Databases #
   #############
-
   postgresql:
-    <<: *default
+    !!merge <<: *default
     namespace: postgresql
     enabled: true
     chart: bitnami/postgresql
@@ -96,22 +84,19 @@ apps:
     hooks:
       preInstall: &pg-pv postgresql/persistenceVolume.yaml
       preUpgrade: *pg-pv
-
   redis:
-    <<: *default
+    !!merge <<: *default
     namespace: redis
     enabled: true
     chart: bitnami/redis
     version: 16.8.7
     priority: -100
     valuesFile: redis/redis-values.yaml
-
   ################
   # Applications #
   ################
-
   concourse:
-    <<: *default
+    !!merge <<: *default
     namespace: concourse
     group: uses-pg
     enabled: true
@@ -119,9 +104,8 @@ apps:
     version: 16.1.21
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/secret.concourse-creds.yaml
-
   cryptofolio:
-    <<: *default
+    !!merge <<: *default
     namespace: cryptofolio
     enabled: true
     chart: k8s-at-home/cryptofolio
@@ -130,9 +114,8 @@ apps:
     hooks:
       preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
       preUpgrade: *crypto-pv
-
   freshrss:
-    <<: *default
+    !!merge <<: *default
     namespace: freshrss
     enabled: true
     chart: k8s-at-home/freshrss
@@ -142,9 +125,8 @@ apps:
     hooks:
       preInstall: &freshrss-pv freshrss/persistenceVolume.yaml
       preUpgrade: *freshrss-pv
-
   ihatemoney:
-    <<: *default
+    !!merge <<: *default
     namespace: ihatemoney
     enabled: true
     chart: k8s-at-home/ihatemoney
@@ -155,9 +137,8 @@ apps:
     hooks:
       preInstall: &ihatemoney-pv ihatemoney/persistenceVolume.yaml
       preUpgrade: *ihatemoney-pv
-
   jellyfin:
-    <<: *default
+    !!merge <<: *default
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
@@ -166,9 +147,8 @@ apps:
     hooks:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
       preUpgrade: *jellyfin-pv
-
   owncast:
-    <<: *default
+    !!merge <<: *default
     namespace: owncast
     enabled: true
     chart: k8s-at-home/owncast
@@ -177,9 +157,8 @@ apps:
     hooks:
       preInstall: &owncast-pv owncast/persistenceVolume.yaml
       preUpgrade: *owncast-pv
-
   nextcloud:
-    <<: *default
+    !!merge <<: *default
     namespace: nextcloud
     group: uses-pg
     enabled: true
@@ -192,9 +171,8 @@ apps:
     hooks:
       preInstall: &nextcloud-hooks nextcloud/preHooks.yaml
       preUpgrade: *nextcloud-hooks
-
   paperless:
-    <<: *default
+    !!merge <<: *default
     namespace: paperless
     enabled: true
     chart: k8s-at-home/paperless
@@ -204,9 +182,8 @@ apps:
     hooks:
       preInstall: &paperless-pv paperless/persistenceVolumes.yaml
       preUpgrade: *paperless-pv
-
   syncthing:
-    <<: *default
+    !!merge <<: *default
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
@@ -214,9 +191,8 @@ apps:
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
-
   vaultwarden:
-    <<: *default
+    !!merge <<: *default
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
@@ -227,9 +203,8 @@ apps:
     hooks:
       preInstall: &vaultwarden-pv vaultwarden/persistenceVolume.yaml
       preUpgrade: *vaultwarden-pv
-
   wikijs:
-    <<: *default
+    !!merge <<: *default
     namespace: wikijs
     group: uses-pg
     enabled: true
@@ -237,9 +212,8 @@ apps:
     version: 6.3.1
     valuesFile: wikijs/wikijs-values.yaml
     secretsFile: wikijs/secret.wikijs-creds.yaml
-
   wireguard:
-    <<: *default
+    !!merge <<: *default
     namespace: wireguard
     group: uses-pg
     enabled: true
@@ -247,13 +221,11 @@ apps:
     version: 0.4.7
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/secrets.wireguard-creds.yaml
-
   ##########
   # Backup #
   ##########
-
   restic:
-    <<: *default
+    !!merge <<: *default
     namespace: restic
     enabled: true
     chart: ./restic/chart
