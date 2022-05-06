@@ -8,7 +8,7 @@ deploy:
 	-v ~/.gnupg:/root/.gnupg \
 	-w /k8s-homelab \
 	praqma/helmsman:latest \
-	helmsman $(options) -p 3 -show-diff ${action} -f ${context}.yaml
+	helmsman $(options) -p 3 -show-diff $(action) -f $(context).yaml
 
 destroy: action := -destroy
 destroy: deploy
