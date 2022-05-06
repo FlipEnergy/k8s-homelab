@@ -51,7 +51,7 @@ apps:
     enabled: true
     chart: ingress-nginx/ingress-nginx
     version: 4.1.0
-    priority : -200
+    priority: -200
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
 
@@ -65,7 +65,7 @@ apps:
     enabled: true
     chart: k8s-at-home/kube-ops-view
     version: 1.1.3
-    priority : -199
+    priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
 
   k8s-dashboard:
@@ -74,7 +74,7 @@ apps:
     enabled: true
     chart: k8s-dashboard/kubernetes-dashboard
     version: 5.4.1
-    priority : -199
+    priority: -199
     valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
     hooks:
       postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
