@@ -176,7 +176,7 @@ apps:
     namespace: paperless
     enabled: true
     chart: k8s-at-home/paperless
-    version: 8.8.1
+    version: 8.8.2
     valuesFile: paperless/paperless-values.yaml
     secretsFile: paperless/secret.paperless-key.yaml
     hooks:
