@@ -142,7 +142,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: k8s-at-home/jellyfin
-    version: 9.4.1
+    version: 9.4.2
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
