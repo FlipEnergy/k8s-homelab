@@ -130,7 +130,7 @@ apps:
     namespace: ihatemoney
     enabled: true
     chart: k8s-at-home/ihatemoney
-    version: 1.0.0
+    version: 1.0.1
     timeout: 360
     valuesFile: ihatemoney/ihatemoney-values.yaml
     secretsFile: ihatemoney/secret.ihatemoney-creds.yaml
