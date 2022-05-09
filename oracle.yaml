@@ -51,5 +51,5 @@ apps:
     namespace: haste
     enabled: true
     chart: k8s-at-home/haste-server
-    version: 3.3.1
+    version: 3.3.2
     valuesFile: hastebin/oracle/hastebin-values.yaml
