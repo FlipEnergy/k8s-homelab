@@ -187,7 +187,7 @@ apps:
     namespace: syncthing
     enabled: true
     chart: k8s-at-home/syncthing
-    version: 3.4.1
+    version: 3.4.2
     valuesFile: syncthing/syncthing-values.yaml
     hooks:
       preInstall: syncthing/persistenceVolume.yaml
