@@ -47,7 +47,7 @@ probes:
     # -- Enable the startup probe
     enabled: true
     # -- Set this to `true` if you wish to specify your own startupProbe
-    custom: true
+    custom: false
     # -- The spec field contains the values for the default startupProbe.
     # If you selected `custom: true`, this field holds the definition of the startupProbe.
     # @default -- See below
