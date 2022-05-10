@@ -23,7 +23,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/tank/syncthing-data/music
+    path: /mnt/ZFS-3.6TB/tank/cold-storage/Music
     server: truenas-1.tgp
 ---
 apiVersion: v1

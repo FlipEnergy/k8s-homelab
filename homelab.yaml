@@ -20,7 +20,6 @@ namespaces:
   postgresql:
   redis:
   restic:
-  syncthing:
   vaultwarden:
   wikijs:
   wireguard:
@@ -182,15 +181,6 @@ apps:
     hooks:
       preInstall: &paperless-pv paperless/persistenceVolumes.yaml
       preUpgrade: *paperless-pv
-  syncthing:
-    !!merge <<: *default
-    namespace: syncthing
-    enabled: true
-    chart: k8s-at-home/syncthing
-    version: 3.4.2
-    valuesFile: syncthing/syncthing-values.yaml
-    hooks:
-      preInstall: syncthing/persistenceVolume.yaml
   vaultwarden:
     !!merge <<: *default
     namespace: vaultwarden
