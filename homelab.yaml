@@ -186,7 +186,7 @@ apps:
     namespace: vaultwarden
     enabled: true
     chart: k8s-at-home/vaultwarden
-    version: 4.2.2
+    version: 4.2.3
     priority: -99
     valuesFile: vaultwarden/vaultwarden-values.yaml
     secretsFile: vaultwarden/secrets.vaultwarden-creds.yaml
