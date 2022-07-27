@@ -6,7 +6,7 @@
 #
 
 image:
-  tag: 1.25.1
+  tag: 1.25.2
 
 controller:
   strategy: RollingUpdate
