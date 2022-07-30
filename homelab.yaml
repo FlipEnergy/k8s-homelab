@@ -8,6 +8,7 @@ settings:
 namespaces:
   concourse:
   cryptofolio:
+  dokuwiki:
   freshrss:
   ingress-nginx:
   ihatemoney:
@@ -113,6 +114,16 @@ apps:
     hooks:
       preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
       preUpgrade: *crypto-pv
+  dokuwiki:
+    !!merge <<: *default
+    namespace: dokuwiki
+    enabled: true
+    chart: k8s-at-home/dokuwiki
+    version: 1.1.2
+    valuesFile: dokuwiki/dokuwiki-values.yaml
+    hooks:
+      preInstall: &dokuwiki-pv dokuwiki/persistenceVolume.yaml
+      preUpgrade: *dokuwiki-pv
   freshrss:
     !!merge <<: *default
     namespace: freshrss

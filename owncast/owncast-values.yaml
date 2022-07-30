@@ -29,7 +29,7 @@ ingress:
 persistence:
   config:
     enabled: true
-    storageClass: owncast
+    storageClass: owncast-config
     accessMode: ReadWriteOnce
     size: 10Mi
     # Do not delete the pvc upon helm uninstall

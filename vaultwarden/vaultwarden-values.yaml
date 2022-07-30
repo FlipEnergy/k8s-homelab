@@ -56,7 +56,7 @@ persistence:
     emptydir:
       enabled: false
     mountPath: /data
-    storageClass: vaultwarden
+    storageClass: vaultwarden-data
     accessMode: ReadWriteOnce
     size: 50Mi
     # Do not delete the pvc upon helm uninstall
