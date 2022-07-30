@@ -107,6 +107,9 @@ externalDatabase:
 ##
 cronjob:
   enabled: true
+  image:
+    repository: curlimages/curl
+    tag: latest
   # Every 5 minutes
   # Note: Setting this to any any other value than 5 minutes might
   #  cause issues with how nextcloud background jobs are executed
