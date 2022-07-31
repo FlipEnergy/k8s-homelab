@@ -168,8 +168,15 @@ apps:
     valuesFile: nextcloud/nextcloud-values.yaml
     secretsFile: nextcloud/secret.nextcloud-creds.yaml
     hooks:
-      preInstall: &nextcloud-hooks nextcloud/preHooks.yaml
-      preUpgrade: *nextcloud-hooks
+      preInstall: &nextcloud-prehooks nextcloud/preHooks.yaml
+      preUpgrade: *nextcloud-prehooks
+  nextcloud-news-updater:
+    !!merge <<: *default
+    namespace: nextcloud
+    enabled: true
+    chart: ./nextcloud-news-updater/chart
+    version: 0.1.0
+    secretsFile: nextcloud-news-updater/secret.nextcloud-news-updater-creds.yaml
   paperless:
     !!merge <<: *default
     namespace: paperless
