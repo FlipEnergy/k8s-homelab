@@ -1176,7 +1176,7 @@ worker:
               - key: performance
                 operator: NotIn
                 values:
-                  - high
+                  - low
 
   ## Whether the workers should be forced to run on separate nodes.
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
