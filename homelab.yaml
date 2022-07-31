@@ -8,7 +8,6 @@ settings:
 namespaces:
   concourse:
   cryptofolio:
-  freshrss:
   ingress-nginx:
   ihatemoney:
   jellyfin:
@@ -113,17 +112,6 @@ apps:
     hooks:
       preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
       preUpgrade: *crypto-pv
-  freshrss:
-    !!merge <<: *default
-    namespace: freshrss
-    enabled: true
-    chart: k8s-at-home/freshrss
-    version: 6.3.2
-    timeout: 360
-    valuesFile: freshrss/freshrss-values.yaml
-    hooks:
-      preInstall: &freshrss-pv freshrss/persistenceVolume.yaml
-      preUpgrade: *freshrss-pv
   ihatemoney:
     !!merge <<: *default
     namespace: ihatemoney
