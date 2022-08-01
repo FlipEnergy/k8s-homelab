@@ -1082,7 +1082,7 @@ worker:
 
   ## Number of replicas.
   ##
-  replicas: 2
+  replicas: 3
 
   ## Array of extra containers to run alongside the Concourse worker
   ## container.
@@ -1150,7 +1150,7 @@ worker:
   ## Node selector for the worker nodes.
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
   ##
-  nodeSelector:
+  nodeSelector: {}
 
   ## Additional affinities to add to the worker pods.
   ## Useful if you prefer to run workers on non-spot instances, for example.
@@ -1169,20 +1169,19 @@ worker:
   ##
   additionalAffinities:
     nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          preference:
-            matchExpressions:
-              - key: performance
-                operator: NotIn
-                values:
-                  - low
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: performance
+              operator: NotIn
+              values:
+                - low
 
   ## Whether the workers should be forced to run on separate nodes.
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#inter-pod-affinity-and-anti-affinity-beta-feature
   ##
-  hardAntiAffinity: true
+  hardAntiAffinity: false
 
   ## Set of labels to use in the hard anti affinity rule.
   ##

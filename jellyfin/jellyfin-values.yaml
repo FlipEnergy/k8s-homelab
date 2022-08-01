@@ -39,15 +39,6 @@ persistence:
     size: 100Gi
     # Do not delete the pvc upon helm uninstall
     retain: true
-  videos:
-    enabled: true
-    mountPath: /videos
-    accessMode: ReadWriteOnce
-    # Persistent Volume Storage Class
-    storageClass: jellyfin-videos
-    size: 300Gi
-    # Do not delete the pvc upon helm uninstall
-    retain: true
 
 securityContext:
   runAsUser: 1000
@@ -57,7 +48,7 @@ resources:
   limits:
     memory: 2Gi
   requests:
-    cpu: 500m
+    cpu: 200m
     memory: 1Gi
 
 nodeSelector:

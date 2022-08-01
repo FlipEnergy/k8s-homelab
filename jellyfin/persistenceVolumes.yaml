@@ -25,17 +25,3 @@ spec:
   nfs:
     path: /mnt/ZFS-3.6TB/tank/cold-storage/Music
     server: truenas-1.tgp
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: jellyfin-videos
-spec:
-  storageClassName: jellyfin-videos
-  capacity:
-    storage: 300Gi
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    path: /mnt/ZFS-3.6TB/tank/cold-storage/Videos
-    server: truenas-1.tgp
