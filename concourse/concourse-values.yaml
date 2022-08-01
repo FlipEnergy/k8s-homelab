@@ -1135,7 +1135,7 @@ worker:
       memory: 2Gi
     requests:
       cpu: 1
-      memory: 1Gi
+      memory: 1500Mi
 
   ## Configure additional environment variables for the
   ## worker container(s)
