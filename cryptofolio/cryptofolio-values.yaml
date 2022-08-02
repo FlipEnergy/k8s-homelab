@@ -1,9 +1,5 @@
 # Override values for Cryptofolio
 
-image:
-  # -- image tag
-  tag: V.2.2.0
-
 env:
   TZ: UTC
 
