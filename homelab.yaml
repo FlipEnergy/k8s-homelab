@@ -193,7 +193,7 @@ apps:
     namespace: wikijs
     enabled: true
     chart: k8s-at-home/wikijs
-    version: 6.3.2
+    version: 6.4.2
     valuesFile: wikijs/wikijs-values.yaml
     hooks:
       preInstall: &wikijs-pv wikijs/persistenceVolume.yaml
