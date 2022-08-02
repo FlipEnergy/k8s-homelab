@@ -53,7 +53,7 @@ apps:
     namespace: kube-ops-view
     enabled: true
     chart: k8s-at-home/kube-ops-view
-    version: 1.1.4
+    version: 1.2.2
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
   k8s-dashboard:
