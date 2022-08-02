@@ -35,3 +35,7 @@ resources:
 nodeSelector:
   kubernetes.io/arch: amd64
   performance: high
+
+persistence:
+  enabled: true
+  storageClass: wireguard-data

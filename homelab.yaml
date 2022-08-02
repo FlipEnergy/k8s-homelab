@@ -201,12 +201,14 @@ apps:
   wireguard:
     !!merge <<: *default
     namespace: wireguard
-    group: uses-pg
     enabled: true
     chart: ./wireguard/chart
     version: 0.4.7
     valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/wireguard-secrets.yaml
+    hooks:
+      preInstall: &wireguard-pv wireguard/persistenceVolume.yaml
+      preUpgrade: *wireguard-pv
   ##########
   # Backup #
   ##########
