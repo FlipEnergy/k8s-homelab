@@ -191,12 +191,13 @@ apps:
   wikijs:
     !!merge <<: *default
     namespace: wikijs
-    group: uses-pg
     enabled: true
     chart: k8s-at-home/wikijs
     version: 6.3.2
     valuesFile: wikijs/wikijs-values.yaml
-    secretsFile: wikijs/secret.wikijs-creds.yaml
+    hooks:
+      preInstall: &wikijs-pv wikijs/persistenceVolume.yaml
+      preUpgrade: *wikijs-pv
   wireguard:
     !!merge <<: *default
     namespace: wireguard
