@@ -22,6 +22,8 @@ spec:
         - name: source
           persistentVolumeClaim:
             claimName: {{ include "restic.fullname" . }}-source
+        - name: cache
+          emptyDir: {}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 12 }}
       containers:
@@ -36,6 +38,8 @@ spec:
           volumeMounts:
             - mountPath: /source
               name: source
+            - mountPath: /.cache
+              name: cache
           envFrom:
             - secretRef:
                 name: {{ include "restic.fullname" . }}
