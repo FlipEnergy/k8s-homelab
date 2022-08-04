@@ -9,5 +9,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/ZFS-3.6TB/tank/vaultwarden-data
+    path: /mnt/ZFS-SSD-460GB/SSD-tank/vaultwarden-data
     server: truenas-1.tgp
