@@ -6,7 +6,7 @@ securityContext:
   
 env:
   - name: INFLUXD_SESSION_LENGTH
-    value: 525600 # 1 year
+    value: "525600" # 1 year
 
 ## Allow executing custom init scripts
 ## If the container finds any files with the .sh extension inside of the
