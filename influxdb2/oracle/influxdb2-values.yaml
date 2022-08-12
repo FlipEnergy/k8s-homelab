@@ -3,6 +3,22 @@
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
+  
+env:
+  - name: INFLUXD_SESSION_LENGTH
+    value: 525600 # 1 year
+
+## Allow executing custom init scripts
+## If the container finds any files with the .sh extension inside of the
+## /docker-entrypoint-initdb.d folder, it will execute them.
+## When multiple scripts are present, they will be executed in lexical sort order by name.
+## For more details see Custom Initialization Scripts in https://hub.docker.com/_/influxdb
+initScripts:
+  enabled: true
+  scripts:
+    init.sh: |+
+      #!/bin/bash
+      influx apply --force yes -u https://gist.githubusercontent.com/FlipEnergy/1ee2959e83043913611ce66872f2e213/raw/262909834100e258772e4bbef906af9ce281fac5/system_dashboard.json
 
 ## Persist data to a persistent volume
 ##
