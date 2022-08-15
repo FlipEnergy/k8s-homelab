@@ -9,8 +9,10 @@ namespaces:
   haste:
   influxdb2:
   ingress-nginx:
+  kubebot:
 helmRepos:
   influxdata: https://helm.influxdata.com/
+  infracloudio: https://charts.botkube.io/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
 appsTemplates:
@@ -31,6 +33,20 @@ apps:
     valuesFiles:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
+  ##############
+  # Monitoring #
+  ##############
+  kubebot:
+    !!merge <<: *default
+    namespace: kubebot
+    enabled: true
+    chart: infracloudio/botkube
+    version: 0.12.4
+    priority: -199
+    valuesFiles:
+      - kubebot/kubebot-values.yaml
+      - kubebot/oracle/kubebot-values.yaml
+    secretsFile: kubebot/kubebot-secrets.yaml
   #############
   # Databases #
   #############

@@ -1,0 +1,9 @@
+# Override values for BotKube in oracle
+
+config:
+  # Setting to support multiple clusters
+  settings:
+    # Cluster name to differentiate incoming messages
+    clustername: oracle
+
+nodeSelector: {}
