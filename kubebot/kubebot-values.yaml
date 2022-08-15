@@ -1,0 +1,37 @@
+# Override values for BotKube.
+
+# set one of the log levels- info, warn, debug, error, fatal, panic
+logLevel: warn
+
+# Communication settings
+communications:
+  # Settings for Discord
+  discord:
+    enabled: true
+    notiftype: short                            # Change notification type short/long you want to receive. notiftype is optional and Default notification type is short (if not specified)
+
+config:
+  # Check true if you want to receive recommendations
+  # about the best practices for the created resource
+  recommendations: true
+
+  # Setting to support multiple clusters
+  settings:
+    # Cluster name to differentiate incoming messages
+    clustername: homelab
+    # Kubectl executor configs
+    kubectl:
+      # Set true to enable kubectl commands execution
+      enabled: true
+      restrictAccess: true
+
+resources:
+  limits:
+   memory: 128Mi
+  requests:
+   cpu: 200m
+   memory: 128Mi
+
+
+nodeSelector:
+  performance: low
