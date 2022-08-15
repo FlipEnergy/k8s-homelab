@@ -13,7 +13,7 @@ namespaces:
   jellyfin:
   k8s-dashboard:
   kube-ops-view:
-  kubebot:
+  botkube:
   nextcloud:
   owncast:
   paperless:
@@ -69,17 +69,17 @@ apps:
     hooks:
       postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
       preUpgrade: *k8s-dash-admin
-  kubebot:
+  botkube:
     !!merge <<: *default
-    namespace: kubebot
+    namespace: botkube
     enabled: true
     chart: infracloudio/botkube
     version: 0.12.4
     priority: -199
     valuesFiles:
-      - kubebot/kubebot-values.yaml
-      - kubebot/homelab/kubebot-values.yaml
-    secretsFile: kubebot/kubebot-secrets.yaml
+      - botkube/botkube-values.yaml
+      - botkube/homelab/botkube-values.yaml
+    secretsFile: botkube/botkube-secrets.yaml
   #############
   # Databases #
   #############
