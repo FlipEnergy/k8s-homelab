@@ -20,6 +20,7 @@ namespaces:
   postgresql:
   redis:
   restic:
+  soft-serve-git:
   vaultwarden:
   wikijs:
   wireguard:
@@ -189,6 +190,12 @@ apps:
     hooks:
       preInstall: &paperless-pv paperless/persistenceVolumes.yaml
       preUpgrade: *paperless-pv
+  soft-serve-git:
+    !!merge <<: *default
+    namespace: soft-serve-git
+    enabled: true
+    chart: ./soft-serve/chart
+    version: 0.1.0
   vaultwarden:
     !!merge <<: *default
     namespace: vaultwarden
