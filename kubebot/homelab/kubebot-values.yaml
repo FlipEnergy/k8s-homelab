@@ -1,7 +1,10 @@
-# Override values for BotKube in oracle
+# Override values for BotKube in homelab
 
 config:
   # Setting to support multiple clusters
   settings:
     # Cluster name to differentiate incoming messages
-    clustername: oracle
+    clustername: homelab
+
+nodeSelector:
+  performance: low

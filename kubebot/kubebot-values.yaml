@@ -200,8 +200,6 @@ config:
 
   # Setting to support multiple clusters
   settings:
-    # Cluster name to differentiate incoming messages
-    clustername: homelab
     # Kubectl executor configs
     kubectl:
       # Set true to enable kubectl commands execution
@@ -214,7 +212,3 @@ resources:
   requests:
    cpu: 200m
    memory: 128Mi
-
-
-nodeSelector:
-  performance: low

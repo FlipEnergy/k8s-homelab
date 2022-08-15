@@ -76,7 +76,9 @@ apps:
     chart: infracloudio/botkube
     version: 0.12.4
     priority: -199
-    valuesFile: kubebot/kubebot-values.yaml
+    valuesFiles:
+      - kubebot/kubebot-values.yaml
+      - kubebot/homelab/kubebot-values.yaml
     secretsFile: kubebot/kubebot-secrets.yaml
   #############
   # Databases #
