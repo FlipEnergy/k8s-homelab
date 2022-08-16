@@ -64,7 +64,7 @@ apps:
     namespace: k8s-dashboard
     enabled: true
     chart: k8s-dashboard/kubernetes-dashboard
-    version: 5.8.0
+    version: 5.9.0
     priority: -199
     valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
     hooks:
