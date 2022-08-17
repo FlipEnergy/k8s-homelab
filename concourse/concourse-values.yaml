@@ -894,6 +894,8 @@ web:
       value: "true"
     - name: CONCOURSE_ENABLE_PIPELINE_INSTANCES
       value: "true"
+    - name: CONCOURSE_AUTH_DURATION
+      value: "720h"
 
   ## Configure the security context for the web containers.
   ## Example:
@@ -1070,7 +1072,7 @@ worker:
   ## Using Deployment leads to ephemeral workers. Meaning workers do not
   ## share state between restarts
   ##
-  kind: Deployment
+  kind: StatefulSet
 
   ## Override the components name (defaults to worker).
   ##
@@ -1207,9 +1209,10 @@ worker:
   ##
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 0%
-      maxUnavailable: 1
+    # Uncomment for Deployment
+    # rollingUpdate:
+    #   maxSurge: 0%
+    #   maxUnavailable: 1
 
   ## Pod Management strategy (requires Kubernetes 1.7+)
   ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
