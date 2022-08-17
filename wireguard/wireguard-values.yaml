@@ -9,6 +9,8 @@ config:
     cidr: "10.44.0.0/24"
   dns:
     enabled: true
+    upstream:
+      - 10.69.0.1
 
 wireguard:
   service:
