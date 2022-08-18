@@ -113,7 +113,7 @@ apps:
     group: uses-pg
     enabled: true
     chart: concourse/concourse
-    version: 17.0.24
+    version: 17.0.25
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   cryptofolio:
