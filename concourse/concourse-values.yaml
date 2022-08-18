@@ -1072,7 +1072,7 @@ worker:
   ## Using Deployment leads to ephemeral workers. Meaning workers do not
   ## share state between restarts
   ##
-  kind: StatefulSet
+  kind: Deployment
 
   ## Override the components name (defaults to worker).
   ##
@@ -1209,10 +1209,9 @@ worker:
   ##
   updateStrategy:
     type: RollingUpdate
-    # Uncomment for Deployment
-    # rollingUpdate:
-    #   maxSurge: 0%
-    #   maxUnavailable: 1
+    rollingUpdate:
+      maxSurge: 0%
+      maxUnavailable: 1
 
   ## Pod Management strategy (requires Kubernetes 1.7+)
   ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
