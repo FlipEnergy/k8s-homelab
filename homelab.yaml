@@ -23,7 +23,6 @@ namespaces:
   restic:
   soft-serve-git:
   vaultwarden:
-  wikijs:
   wireguard:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
@@ -220,16 +219,6 @@ apps:
     hooks:
       preInstall: &vaultwarden-pv vaultwarden/persistenceVolume.yaml
       preUpgrade: *vaultwarden-pv
-  wikijs:
-    !!merge <<: *default
-    namespace: wikijs
-    enabled: true
-    chart: k8s-at-home/wikijs
-    version: 6.4.2
-    valuesFile: wikijs/wikijs-values.yaml
-    hooks:
-      preInstall: &wikijs-pv wikijs/persistenceVolume.yaml
-      preUpgrade: *wikijs-pv
   wireguard:
     !!merge <<: *default
     namespace: wireguard
