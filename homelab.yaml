@@ -8,6 +8,7 @@ settings:
 namespaces:
   concourse:
   cryptofolio:
+  flatnotes:
   ingress-nginx:
   ihatemoney:
   jellyfin:
@@ -126,6 +127,17 @@ apps:
     hooks:
       preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
       preUpgrade: *crypto-pv
+  flatnotes:
+    !!merge <<: *default
+    namespace: flatnotes
+    enabled: true
+    chart: ./flatnotes/chart
+    version: 0.1.0
+    valuesFile: flatnotes/flatnotes-values.yaml
+    secretsFile: flatnotes/flatnotes-secrets.yaml
+    hooks:
+      preInstall: &flatnotes-pv flatnotes/persistenceVolume.yaml
+      preUpgrade: *flatnotes-pv
   ihatemoney:
     !!merge <<: *default
     namespace: ihatemoney
