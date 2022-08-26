@@ -14,11 +14,10 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
-command: [ "pipenv", "run", "python", "-m", "uvicorn", "main:app", "--app-dir", "flatnotes", "--host", "0.0.0.0", "--port", "8080" ]
-
 # -- environment variables. See more environment variables in the [flatnotes documentation](https://github.com/Dullage/flatnotes).
 # @default -- See below
 env:
+  PORT: "8080"
   FLATNOTES_USERNAME: "user"
   FLATNOTES_PASSWORD: "changeMe!"
   FLATNOTES_SECRET_KEY: "aLongRandomSeriesOfCharacters"
