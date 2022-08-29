@@ -1,7 +1,8 @@
 # Override values for BotKube in oracle
 
-config:
-  # Setting to support multiple clusters
-  settings:
-    # Cluster name to differentiate incoming messages
-    clustername: oracle
+## Global BotKube configuration.
+settings:
+  # -- Cluster name to differentiate incoming messages.
+  clusterName: oracle
+  # -- If true, notifies about new BotKube releases.
+  upgradeNotifier: false

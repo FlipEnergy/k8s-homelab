@@ -1,10 +1,11 @@
 # Override values for BotKube in homelab
 
-config:
-  # Setting to support multiple clusters
-  settings:
-    # Cluster name to differentiate incoming messages
-    clustername: homelab
+## Global BotKube configuration.
+settings:
+  # -- Cluster name to differentiate incoming messages.
+  clusterName: homelab
 
+# -- Node labels for BotKube Pod assignment.
+# [Ref doc](https://kubernetes.io/docs/user-guide/node-selection/).
 nodeSelector:
   performance: low

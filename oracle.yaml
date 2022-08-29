@@ -41,7 +41,7 @@ apps:
     namespace: botkube
     enabled: true
     chart: infracloudio/botkube
-    version: 0.12.4
+    version: 0.13.0
     priority: -199
     valuesFiles:
       - botkube/botkube-values.yaml
