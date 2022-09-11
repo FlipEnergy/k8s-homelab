@@ -9,6 +9,7 @@ namespaces:
   haste:
   influxdb2:
   ingress-nginx:
+  libreddit:
   botkube:
 helmRepos:
   influxdata: https://helm.influxdata.com/
@@ -69,3 +70,10 @@ apps:
     chart: k8s-at-home/haste-server
     version: 3.4.2
     valuesFile: hastebin/oracle/hastebin-values.yaml
+  libreddit:
+    !!merge <<: *default
+    namespace: libreddit
+    enabled: true
+    chart: ./libreddit/chart
+    version: 0.1.0
+    valuesFile: libreddit/oracle/libreddit-values.yaml
