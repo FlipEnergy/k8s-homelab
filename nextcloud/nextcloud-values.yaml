@@ -115,7 +115,7 @@ cronjob:
   #  cause issues with how nextcloud background jobs are executed
   schedule: "*/5 * * * *"
   annotations: {}
-  failedJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   resources:
     limits:
