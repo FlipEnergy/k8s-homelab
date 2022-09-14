@@ -86,6 +86,10 @@ nextcloud:
   extraEnv:
     - name: REDIS_HOST
       value: redis-master.redis
+    - name: PHP_MEMORY_LIMIT
+      value: 4G
+    - name: PHP_UPLOAD_LIMIT
+      value: 20G
 
 internalDatabase:
   enabled: false
@@ -115,7 +119,7 @@ cronjob:
   #  cause issues with how nextcloud background jobs are executed
   schedule: "*/5 * * * *"
   annotations: {}
-  failedJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 0
   successfulJobsHistoryLimit: 1
   resources:
     limits:
@@ -152,10 +156,10 @@ persistence:
 
 resources:
   limits:
-    memory: 2Gi
+    memory: 4Gi
   requests:
     cpu: 2
-    memory: 1Gi
+    memory: 2Gi
 
 nodeSelector:
   kubernetes.io/arch: amd64
