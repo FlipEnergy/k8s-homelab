@@ -5,6 +5,11 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
+image:
+  # -- image tag
+  # @default -- chart.appVersion
+  tag: 1.9.0
+
 # -- See the following files for additional environment variables:
 # https://github.com/paperless-ngx/paperless-ngx/tree/main/docker/compose/
 # https://github.com/paperless-ngx/paperless-ngx/blob/main/paperless.conf.example
