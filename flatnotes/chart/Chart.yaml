@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: v1.0.4
+appVersion: v2.0.0
 description: flatnotes helm package
 name: flatnotes
 version: 0.1.0
