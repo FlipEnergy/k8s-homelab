@@ -1,0 +1,21 @@
+apiVersion: v2
+appVersion: v0.16.1
+description: stash helm package
+name: stash
+version: 0.1.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - stash
+sources:
+  - https://github.com/stashapp/stash
+maintainers:
+  - name: Dennis Zhang
+    email: dennis.zhang.nrg@gmail.com
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts/
+    version: 0.1.0
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Initial version

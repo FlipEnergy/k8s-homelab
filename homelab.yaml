@@ -22,6 +22,7 @@ namespaces:
   redis:
   restic:
   soft-serve-git:
+  stash:
   vaultwarden:
   wireguard:
 helmRepos:
@@ -195,6 +196,16 @@ apps:
     enabled: true
     chart: ./soft-serve/chart
     version: 0.1.0
+  stash:
+    !!merge <<: *default
+    namespace: stash
+    enabled: true
+    chart: ./stash/chart
+    version: 0.1.0
+    valuesFile: stash/stash-values.yaml
+    hooks:
+      preInstall: &stash-pv stash/persistenceVolume.yaml
+      preUpgrade: *stash-pv
   vaultwarden:
     !!merge <<: *default
     namespace: vaultwarden

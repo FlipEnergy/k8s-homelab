@@ -1,0 +1,34 @@
+# Override values for stash
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    hosts:
+      - host: stash.tgp
+        paths:
+          - path: /
+
+persistence:
+  data:
+    enabled: true
+    mountPath: /data
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Clas
+    storageClass: stash-data
+    size: 500Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
+
+resources:
+  limits:
+    memory: 300Mi
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+nodeSelector:
+  kubernetes.io/arch: amd64
+  performance: medium
