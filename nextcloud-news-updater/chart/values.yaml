@@ -27,15 +27,9 @@ securityContext:
   runAsNonRoot: true
   runAsUser: 1000
 
-resources:
-  limits:
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+resources: {}
 
-nodeSelector:
-  performance: low
+nodeSelector: {}
 
 tolerations: []
 

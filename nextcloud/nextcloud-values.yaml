@@ -122,13 +122,10 @@ cronjob:
   failedJobsHistoryLimit: 0
   successfulJobsHistoryLimit: 1
   resources:
-    limits:
-      memory: 10Mi
     requests:
       cpu: 10m
-      memory: 10Mi
-  nodeSelector:
-    performance: low
+  nodeSelector: {}
+    # performance: low
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

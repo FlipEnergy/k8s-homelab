@@ -1,0 +1,4 @@
+# Override values for nextcloud-news-updater.
+
+nodeSelector: {}
+  # performance: low

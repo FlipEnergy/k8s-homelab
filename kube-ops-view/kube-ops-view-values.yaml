@@ -3,12 +3,7 @@
 controller:
   strategy: RollingUpdate
 
-resources:
-  limits:
-    memory: 100Mi
-  requests:
-    cpu: 100m
-    memory: 50Mi
+resources: {}
 
 ingress:
   main:
@@ -22,4 +17,4 @@ ingress:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: low
+  # performance: low

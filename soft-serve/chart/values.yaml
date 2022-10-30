@@ -31,22 +31,13 @@ service:
   type: ClusterIP
   port: 22
 
-resources:
-  limits:
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+resources: {}
 
-nodeSelector:
-  performance: low
+nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
 
 persistence:
-  data:
-    storage: 1Gi
-    nfsPath: /mnt/ZFS-3.6TB/tank/soft-serve-data
-    nfsServer: truenas-1.tgp
+  data: {}

@@ -1,0 +1,10 @@
+# Override values for soft-serve.
+
+nodeSelector: {}
+  # performance: low
+
+persistence:
+  data:
+    storage: 1Gi
+    nfsPath: /mnt/ZFS-3.6TB/tank/soft-serve-data
+    nfsServer: truenas-1.tgp

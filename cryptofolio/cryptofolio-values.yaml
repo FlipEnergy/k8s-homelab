@@ -13,12 +13,7 @@ ingress:
         paths:
           - path: /
 
-resources:
-  limits:
-    memory: 75Mi
-  requests:
-    cpu: 100m
-    memory: 50Mi
+resources: {}
 
 persistence:
   data:
@@ -30,5 +25,5 @@ persistence:
     # Do not delete the pvc upon helm uninstall
     retain: true
 
-nodeSelector:
-  performance: low
+nodeSelector: {}
+  # performance: low

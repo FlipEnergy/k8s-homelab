@@ -184,6 +184,7 @@ apps:
     enabled: true
     chart: ./nextcloud-news-updater/chart
     version: 0.1.0
+    valuesFile: nextcloud-news-updater/nextcloud-news-updater-values.yaml
     secretsFile: nextcloud-news-updater/nextcloud-news-updater-secrets.yaml
   paperless:
     !!merge <<: *default
@@ -204,6 +205,7 @@ apps:
     enabled: true
     chart: ./soft-serve/chart
     version: 0.1.0
+    valuesFile: soft-serve/soft-serve-values.yaml
   stash:
     !!merge <<: *default
     namespace: stash
@@ -250,4 +252,5 @@ apps:
     enabled: true
     chart: ./restic/chart
     version: 0.1.0
+    valuesFile: restic/restic-values.yaml
     secretsFile: restic/restic-secrets.yaml

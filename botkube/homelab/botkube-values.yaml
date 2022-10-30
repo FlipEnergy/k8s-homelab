@@ -7,5 +7,5 @@ settings:
 
 # -- Node labels for BotKube Pod assignment.
 # [Ref doc](https://kubernetes.io/docs/user-guide/node-selection/).
-nodeSelector:
-  performance: low
+nodeSelector: {}
+  # performance: low

@@ -873,12 +873,7 @@ web:
   ## Configure resource requests and limits.
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources:
-    limits:
-      memory: 75Mi
-    requests:
-      cpu: 250m
-      memory: 50Mi
+  resources: {}
 
   ## Configure additional environment variables for the
   ## web containers.
@@ -908,8 +903,8 @@ web:
   ## Node selector for web nodes.
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
-  nodeSelector:
-    performance: low
+  nodeSelector: {}
+    # performance: low
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/

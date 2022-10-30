@@ -8,14 +8,11 @@ extraArgs:
 # Node labels for pod assignment
 # Ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
-nodeSelector:
-  performance: low
+nodeSelector: {}
+  # performance: low
 
 # Pod resource requests & limits
-resources:
-  requests:
-    cpu: 100m
-    memory: 50Mi
+resources: {}
 
 ingress:
   # If true, Kubernetes Dashboard Ingress will be created.
@@ -53,12 +50,7 @@ metricsScraper:
   ## Wether to enable dashboard-metrics-scraper
   enabled: true
 
-  resources:
-    limits:
-      memory: 100Mi
-    requests:
-      cpu: 100m
-      memory: 50Mi
+  resources: {}
 
-  nodeSelector:
-    performance: low
+  nodeSelector: {}
+    # performance: low

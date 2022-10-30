@@ -38,38 +38,15 @@ env:
 secret:
   RESTIC_PASSWORD: placeholder
 
-resources:
-  limits:
-    memory: 2Gi
-  requests:
-    cpu: 1
-    memory: 1Gi
+resources: {}
 
 persistence:
-  source:
-    storage: 3500Gi
-    nfsPath: /mnt/ZFS-3.6TB/tank
-    nfsServer: truenas-1.tgp
+  source: {}
 
-nodeSelector:
-  kubernetes.io/arch: amd64
-  performance: high
+nodeSelector: {}
 
-jobNodeSelector:
-  kubernetes.io/arch: amd64
-  performance: high
+jobNodeSelector: {}
 
 tolerations: []
 
-affinity:
-  podAntiAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-                - postgresql
-          topologyKey: kubernetes.io/hostname
+affinity: {}
