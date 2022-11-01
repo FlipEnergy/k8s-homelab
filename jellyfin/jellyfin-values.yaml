@@ -2,7 +2,7 @@
 
 image:
   # -- image tag
-  tag: 10.8.6
+  tag: 10.8.7
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
