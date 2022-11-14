@@ -103,7 +103,7 @@ apps:
     namespace: redis
     enabled: true
     chart: bitnami/redis
-    version: 17.3.6
+    version: 17.3.10
     priority: -100
     valuesFile: redis/redis-values.yaml
   ################
