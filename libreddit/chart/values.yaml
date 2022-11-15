@@ -10,7 +10,7 @@ image:
   repository: spikecodes/libreddit
   # -- image tag
   # @default -- chart.appVersion
-  tag: arm
+  tag: armv7
   # -- image pull policy
   pullPolicy: Always
 
