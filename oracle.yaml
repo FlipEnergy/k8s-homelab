@@ -10,10 +10,8 @@ namespaces:
   influxdb2:
   ingress-nginx:
   libreddit:
-  botkube:
 helmRepos:
   influxdata: https://helm.influxdata.com/
-  infracloudio: https://charts.botkube.io/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
 appsTemplates:
@@ -34,20 +32,6 @@ apps:
     valuesFiles:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
-  ##############
-  # Monitoring #
-  ##############
-  botkube:
-    !!merge <<: *default
-    namespace: botkube
-    enabled: true
-    chart: infracloudio/botkube
-    version: 0.13.0
-    priority: -199
-    valuesFiles:
-      - botkube/botkube-values.yaml
-      - botkube/oracle/botkube-values.yaml
-    secretsFile: botkube/botkube-secrets.yaml
   #############
   # Databases #
   #############
