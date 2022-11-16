@@ -14,7 +14,6 @@ namespaces:
   jellyfin:
   k8s-dashboard:
   kube-ops-view:
-  botkube:
   nextcloud:
   owncast:
   paperless:
@@ -28,7 +27,6 @@ namespaces:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   concourse: https://concourse-charts.storage.googleapis.com/
-  infracloudio: https://charts.botkube.io/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-dashboard: https://kubernetes.github.io/dashboard
@@ -71,17 +69,6 @@ apps:
     hooks:
       postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
       preUpgrade: *k8s-dash-admin
-  botkube:
-    !!merge <<: *default
-    namespace: botkube
-    enabled: true
-    chart: infracloudio/botkube
-    version: 0.13.0
-    priority: -199
-    valuesFiles:
-      - botkube/botkube-values.yaml
-      - botkube/homelab/botkube-values.yaml
-    secretsFile: botkube/botkube-secrets.yaml
   #############
   # Databases #
   #############
