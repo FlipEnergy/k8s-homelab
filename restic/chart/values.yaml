@@ -43,7 +43,8 @@ resources: {}
 persistence:
   source: {}
 
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/arch: amd64
 
 jobNodeSelector: {}
 

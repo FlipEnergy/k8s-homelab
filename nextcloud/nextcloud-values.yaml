@@ -124,8 +124,8 @@ cronjob:
   resources:
     requests:
       cpu: 10m
-  nodeSelector: {}
-    # performance: low
+  nodeSelector:
+    kubernetes.io/arch: arm64
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

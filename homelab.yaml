@@ -41,9 +41,10 @@ apps:
   ingress-nginx:
     !!merge <<: *default
     namespace: ingress-nginx
+    group: foundation
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 4.3.0
+    version: 4.4.0
     priority: -200
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
@@ -53,6 +54,7 @@ apps:
   kube-ops-view:
     !!merge <<: *default
     namespace: kube-ops-view
+    group: foundation
     enabled: true
     chart: k8s-at-home/kube-ops-view
     version: 1.2.2
@@ -61,6 +63,7 @@ apps:
   k8s-dashboard:
     !!merge <<: *default
     namespace: k8s-dashboard
+    group: foundation
     enabled: true
     chart: k8s-dashboard/kubernetes-dashboard
     version: 6.0.0
@@ -78,7 +81,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: bitnami/postgresql
-    version: 11.9.11
+    version: 11.9.13
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/postgresql-secrets.yaml
@@ -90,7 +93,7 @@ apps:
     namespace: redis
     enabled: true
     chart: bitnami/redis
-    version: 17.3.10
+    version: 17.3.11
     priority: -100
     valuesFile: redis/redis-values.yaml
   ################

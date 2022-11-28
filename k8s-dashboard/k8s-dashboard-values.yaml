@@ -8,8 +8,9 @@ extraArgs:
 # Node labels for pod assignment
 # Ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
-nodeSelector: {}
-  # performance: low
+nodeSelector:
+  kubernetes.io/arch: amd64
+  performance: low
 
 # Pod resource requests & limits
 resources: {}
@@ -52,5 +53,6 @@ metricsScraper:
 
   resources: {}
 
-  nodeSelector: {}
-    # performance: low
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: low
