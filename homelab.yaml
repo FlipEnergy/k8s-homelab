@@ -47,7 +47,9 @@ apps:
     version: 4.4.0
     priority: -200
     timeout: 900
-    valuesFile: ingress-nginx/ingress-nginx-values.yaml
+    valuesFiles:
+      - ingress-nginx/ingress-nginx-values.yaml
+      - ingress-nginx/homelab/ingress-nginx-values.yaml
   ##############
   # Monitoring #
   ##############

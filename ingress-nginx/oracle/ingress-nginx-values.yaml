@@ -3,8 +3,6 @@
 ##
 
 controller:
-  nodeSelector: {}
-
   service:
     ## List of IP addresses at which the default backend service is available
     ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
