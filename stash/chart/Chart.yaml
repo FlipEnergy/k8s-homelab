@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: v0.17.2
+appVersion: v0.18.0
 description: stash helm package
 name: stash
 version: 0.1.0
