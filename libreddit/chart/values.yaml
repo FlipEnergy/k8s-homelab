@@ -14,6 +14,9 @@ image:
   # -- image pull policy
   pullPolicy: Always
 
+controller:
+  strategy: RollingUpdate
+
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
