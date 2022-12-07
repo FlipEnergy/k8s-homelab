@@ -169,6 +169,8 @@ apps:
     hooks:
       preInstall: &nextcloud-prehooks nextcloud/preHooks.yaml
       preUpgrade: *nextcloud-prehooks
+      postInstall: &webcron nextcloud/webcron.yaml
+      postUpgrade: *webcron
   nextcloud-news-updater:
     !!merge <<: *default
     namespace: nextcloud

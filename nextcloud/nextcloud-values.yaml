@@ -106,12 +106,6 @@ externalDatabase:
   ## Database name
   database: nextcloud
 
-## Cronjob to execute Nextcloud background tasks
-## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#cron
-##
-cronjob:
-  enabled: true
-
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
