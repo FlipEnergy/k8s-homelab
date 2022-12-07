@@ -4,7 +4,7 @@
 ## ref: https://hub.docker.com/r/library/nextcloud/tags/
 ##
 image:
-  tag: 24.0.5-apache
+  tag: 25.0.1-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
