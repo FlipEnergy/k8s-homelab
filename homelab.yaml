@@ -144,17 +144,6 @@ apps:
     hooks:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
       preUpgrade: *jellyfin-pv
-  owncast:
-    !!merge <<: *default
-    namespace: owncast
-    group: uses-nfs
-    enabled: true
-    chart: k8s-at-home/owncast
-    version: 3.4.2
-    valuesFile: owncast/owncast-values.yaml
-    hooks:
-      preInstall: &owncast-pv owncast/persistenceVolume.yaml
-      preUpgrade: *owncast-pv
   nextcloud:
     !!merge <<: *default
     namespace: nextcloud
