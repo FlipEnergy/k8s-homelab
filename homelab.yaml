@@ -145,6 +145,14 @@ apps:
     hooks:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
       preUpgrade: *jellyfin-pv
+  jf-discrod-bot:
+    !!merge <<: *default
+    namespace: jellyfin
+    enabled: true
+    chart: bjw-s/app-template
+    version: 1.2.0
+    valuesFile: jellyfin-discord-bot/jf-discrod-bot-values.yaml
+    secretsFile: jellyfin-discord-bot/secret.jf-discord-bot-secrets.yaml
   nextcloud:
     !!merge <<: *default
     namespace: nextcloud
