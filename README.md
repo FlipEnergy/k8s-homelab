@@ -3,9 +3,8 @@ Just repo that holds stuff for my personal homelab k8s environment. There's a lo
 
 A lot of the charts I use are from [k8s-at-home](https://github.com/k8s-at-home/charts) and I'm now also a contributer there.
 
-# Publicly accessable services
+# Publicly accessable services that I don't mind you use
 - check out my website which has info and posts about my homelab: https://pleasenoddos.com
-- Watch my stream at https://stream.pleasenoddos.com
 - paste stuff with haste at https://haste.pleasenoddos.com
 - use the alternate reddit frontend at https://reddit.pleasenoddos.com
 
