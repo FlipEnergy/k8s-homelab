@@ -26,6 +26,7 @@ namespaces:
   wireguard:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
+  bjw-s: https://bjw-s.github.io/helm-charts
   concourse: https://concourse-charts.storage.googleapis.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
@@ -126,8 +127,8 @@ apps:
     namespace: flatnotes
     group: uses-nfs
     enabled: true
-    chart: ./flatnotes/chart
-    version: 0.1.0
+    chart: bjw-s/app-template
+    version: 1.2.0
     valuesFile: flatnotes/flatnotes-values.yaml
     secretsFile: flatnotes/flatnotes-secrets.yaml
     hooks:
@@ -194,8 +195,8 @@ apps:
     namespace: stash
     group: uses-nfs
     enabled: true
-    chart: ./stash/chart
-    version: 0.1.0
+    chart: bjw-s/app-template
+    version: 1.2.0
     valuesFile: stash/stash-values.yaml
     hooks:
       preInstall: &stash-pv stash/persistenceVolume.yaml

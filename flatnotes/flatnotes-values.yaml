@@ -1,8 +1,26 @@
 # Override values for flatnotes
 
+image:
+  # -- image repository
+  repository: dullage/flatnotes
+  # -- image tag
+  # @default -- chart.appVersion
+  tag: v2.1.0
+  # -- image pull policy
+  pullPolicy: IfNotPresent
+
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
+
+env:
+  PORT: "8080"
+
+service:
+  main:
+    ports:
+      http:
+        port: 8080
 
 ingress:
   main:

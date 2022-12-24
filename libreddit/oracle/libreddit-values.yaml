@@ -1,5 +1,29 @@
 # Override values for libreddit.
 
+image:
+  # -- image repository
+  repository: spikecodes/libreddit
+  # -- image tag
+  # @default -- chart.appVersion
+  tag: armv7
+  # -- image pull policy
+  pullPolicy: Always
+
+controller:
+  strategy: RollingUpdate
+
+securityContext:
+  runAsUser: 1000
+  runAsNonRoot: true
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  main:
+    ports:
+      http:
+        port: 8080
+
 ingress:
   main:
     enabled: true
