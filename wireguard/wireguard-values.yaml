@@ -36,7 +36,7 @@ resources:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: high
+  performance: medium
 
 persistence:
   enabled: true

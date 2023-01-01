@@ -905,7 +905,7 @@ web:
   ##
   nodeSelector:
     kubernetes.io/arch: amd64
-    performance: low
+    performance: medium
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/

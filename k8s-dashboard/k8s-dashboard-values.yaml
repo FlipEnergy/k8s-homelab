@@ -10,7 +10,7 @@ extraArgs:
 #
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: low
+  performance: medium
 
 # Pod resource requests & limits
 resources: {}
@@ -55,4 +55,4 @@ metricsScraper:
 
   nodeSelector:
     kubernetes.io/arch: amd64
-    performance: low
+    performance: medium
