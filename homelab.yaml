@@ -32,15 +32,12 @@ helmRepos:
   k8s-at-home: https://k8s-at-home.com/charts/
   k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
-appsTemplates:
-  default: &default
-    wait: true
 apps:
   ###########
   # Ingress #
   ###########
   ingress-nginx:
-    !!merge <<: *default
+    wait: true
     namespace: ingress-nginx
     group: foundation
     enabled: true
@@ -55,7 +52,7 @@ apps:
   # Monitoring #
   ##############
   kube-ops-view:
-    !!merge <<: *default
+    wait: true
     namespace: kube-ops-view
     group: foundation
     enabled: true
@@ -64,7 +61,7 @@ apps:
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
   k8s-dashboard:
-    !!merge <<: *default
+    wait: true
     namespace: k8s-dashboard
     group: foundation
     enabled: true
@@ -79,7 +76,7 @@ apps:
   # Databases #
   #############
   postgresql:
-    !!merge <<: *default
+    wait: true
     namespace: postgresql
     group: uses-nfs
     enabled: true
@@ -92,7 +89,7 @@ apps:
       preInstall: &pg-pv postgresql/persistenceVolume.yaml
       preUpgrade: *pg-pv
   redis:
-    !!merge <<: *default
+    wait: true
     namespace: redis
     enabled: true
     chart: bitnami/redis
@@ -103,7 +100,7 @@ apps:
   # Applications #
   ################
   concourse:
-    !!merge <<: *default
+    wait: true
     namespace: concourse
     group: uses-nfs
     enabled: true
@@ -112,7 +109,7 @@ apps:
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   cryptofolio:
-    !!merge <<: *default
+    wait: true
     namespace: cryptofolio
     group: uses-nfs
     enabled: true
@@ -123,7 +120,7 @@ apps:
       preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
       preUpgrade: *crypto-pv
   flatnotes:
-    !!merge <<: *default
+    wait: true
     namespace: flatnotes
     group: uses-nfs
     enabled: true
@@ -135,7 +132,7 @@ apps:
       preInstall: &flatnotes-pv flatnotes/persistenceVolume.yaml
       preUpgrade: *flatnotes-pv
   jellyfin:
-    !!merge <<: *default
+    wait: true
     namespace: jellyfin
     group: uses-nfs
     enabled: true
@@ -146,7 +143,7 @@ apps:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
       preUpgrade: *jellyfin-pv
   jf-discord-bot:
-    !!merge <<: *default
+    wait: true
     namespace: jellyfin
     enabled: true
     chart: bjw-s/app-template
@@ -154,7 +151,7 @@ apps:
     valuesFile: jellyfin-discord-bot/jf-discord-bot-values.yaml
     secretsFile: jellyfin-discord-bot/secret.jf-discord-bot-secrets.yaml
   nextcloud:
-    !!merge <<: *default
+    wait: true
     namespace: nextcloud
     group: uses-nfs
     enabled: true
@@ -170,7 +167,7 @@ apps:
       postInstall: &webcron nextcloud/webcron.yaml
       postUpgrade: *webcron
   nextcloud-news-updater:
-    !!merge <<: *default
+    wait: true
     namespace: nextcloud
     group: uses-nfs
     enabled: true
@@ -179,7 +176,7 @@ apps:
     valuesFile: nextcloud-news-updater/nextcloud-news-updater-values.yaml
     secretsFile: nextcloud-news-updater/nextcloud-news-updater-secrets.yaml
   paperless:
-    !!merge <<: *default
+    wait: true
     namespace: paperless
     group: uses-nfs
     enabled: true
@@ -191,7 +188,7 @@ apps:
       preInstall: &paperless-pv paperless/persistenceVolumes.yaml
       preUpgrade: *paperless-pv
   soft-serve-git:
-    !!merge <<: *default
+    wait: true
     namespace: soft-serve-git
     group: uses-nfs
     enabled: true
@@ -199,7 +196,7 @@ apps:
     version: 0.1.0
     valuesFile: soft-serve/soft-serve-values.yaml
   stash:
-    !!merge <<: *default
+    wait: true
     namespace: stash
     group: uses-nfs
     enabled: true
@@ -210,7 +207,7 @@ apps:
       preInstall: &stash-pv stash/persistenceVolume.yaml
       preUpgrade: *stash-pv
   vaultwarden:
-    !!merge <<: *default
+    wait: true
     namespace: vaultwarden
     group: uses-nfs
     enabled: true
@@ -223,7 +220,7 @@ apps:
       preInstall: &vaultwarden-pv vaultwarden/persistenceVolume.yaml
       preUpgrade: *vaultwarden-pv
   wireguard:
-    !!merge <<: *default
+    wait: true
     namespace: wireguard
     group: uses-nfs
     enabled: true
@@ -238,7 +235,7 @@ apps:
   # Backup #
   ##########
   restic:
-    !!merge <<: *default
+    wait: true
     namespace: restic
     group: uses-nfs
     enabled: true

@@ -15,15 +15,12 @@ helmRepos:
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
-appsTemplates:
-  default: &default
-    wait: true
 apps:
   ###########
   # Ingress #
   ###########
   ingress-nginx:
-    !!merge <<: *default
+    wait: true
     namespace: ingress-nginx
     enabled: true
     chart: ingress-nginx/ingress-nginx
@@ -37,7 +34,7 @@ apps:
   # Databases #
   #############
   influxdb2:
-    !!merge <<: *default
+    wait: true
     namespace: influxdb2
     enabled: true
     chart: influxdata/influxdb2
@@ -49,14 +46,14 @@ apps:
   # Applications #
   ################
   haste:
-    !!merge <<: *default
+    wait: true
     namespace: haste
     enabled: true
     chart: k8s-at-home/haste-server
     version: 3.4.2
     valuesFile: hastebin/oracle/hastebin-values.yaml
   libreddit:
-    !!merge <<: *default
+    wait: true
     namespace: libreddit
     enabled: true
     chart: bjw-s/app-template
