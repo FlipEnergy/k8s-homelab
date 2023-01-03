@@ -5,6 +5,6 @@
   ],
   "helmsman": {
     "enabled": true,
-    "fileMatch": ["^(homelab|oracle).yaml$"]
+    "fileMatch": ["(^|/)(homelab|oracle)\\.yaml$"]
   }
 }

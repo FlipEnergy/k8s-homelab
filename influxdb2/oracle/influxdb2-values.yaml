@@ -3,7 +3,7 @@
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
-  
+
 env:
   - name: INFLUXD_SESSION_LENGTH
     value: "525600" # 1 year
