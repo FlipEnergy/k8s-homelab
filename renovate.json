@@ -4,6 +4,7 @@
     "config:base"
   ],
   "helmsman": {
+    "enabled": true,
     "fileMatch": ["^(homelab|oracle).yaml$"]
   }
 }
