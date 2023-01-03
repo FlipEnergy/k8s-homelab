@@ -125,7 +125,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: bjw-s/app-template
-    version: 1.2.0
+    version: 1.2.1
     valuesFile: flatnotes/flatnotes-values.yaml
     secretsFile: flatnotes/flatnotes-secrets.yaml
     hooks:
