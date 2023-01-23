@@ -3,6 +3,13 @@
   "extends": [
     "config:base"
   ],
+  "helm-values": {
+    "enabled": true,
+    "fileMatch": [
+      "(^|/)values\\.yaml$",
+      "(^|/).*-values\\.yaml$",
+    ],
+  }
   "helmsman": {
     "enabled": true,
     "fileMatch": ["homelab.yaml", "oracle.yaml"]
