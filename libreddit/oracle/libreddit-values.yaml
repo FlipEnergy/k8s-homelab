@@ -2,7 +2,7 @@
 
 image:
   # -- image repository
-  repository: spikecodes/libreddit
+  repository: libreddit/libreddit
   # -- image tag
   # @default -- chart.appVersion
   tag: armv7
