@@ -7,7 +7,6 @@ controller:
   config:
     http-snippet: |
       client_max_body_size 1G;
-      proxy_cache_path /tmp/nginx_cache levels=1:2 keys_zone=mattermost_cache:10m max_size=3g inactive=120m use_temp_path=off;
 
   # -- Process Ingress objects without ingressClass annotation/ingressClassName field
   # Overrides value for --watch-ingress-without-class flag of the controller binary
