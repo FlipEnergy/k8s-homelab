@@ -6,6 +6,8 @@
 #
 
 image:
+  # -- image repository
+  repository: ghcr.io/paperless-ngx/paperless-ngx
   # -- image tag
   # @default -- chart.appVersion
   tag: 1.12.2

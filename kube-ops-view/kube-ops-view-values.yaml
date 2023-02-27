@@ -1,6 +1,8 @@
 # Override values for kube-ops-view.
 
 image:
+  # -- image repository
+  repository: hjacobs/kube-ops-view
   # -- image tag
   # @default -- chart.appVersion
   tag: 23.2.0

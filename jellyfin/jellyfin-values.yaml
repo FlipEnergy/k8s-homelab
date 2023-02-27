@@ -1,6 +1,8 @@
 # Override values for JellyFin.
 
 image:
+  # -- image repository
+  repository: jellyfin/jellyfin
   # -- image tag
   tag: 10.8.9
 
