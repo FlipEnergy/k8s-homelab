@@ -12,6 +12,11 @@ image:
 controller:
   strategy: RollingUpdate
 
+
+env:
+  LIBREDDIT_DEFAULT_THEME: dark
+  LIBREDDIT_DEFAULT_USE_HLS: 'on'
+
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
