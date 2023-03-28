@@ -7,7 +7,7 @@
     "enabled": true,
     "fileMatch": [
       "(^|/)values\\.yaml$",
-      "(^|/).*-values\\.yaml$",
+      "(^|/).*-values\\.yaml$"
     ],
   },
   "helmsman": {
