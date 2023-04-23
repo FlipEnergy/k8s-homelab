@@ -142,7 +142,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: nextcloud/nextcloud
-    version: 3.5.9
+    version: 3.5.10
     timeout: 900
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
