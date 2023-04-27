@@ -7,28 +7,68 @@ settings:
   globalMaxHistory: 1
 namespaces:
   concourse:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   cryptofolio:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   descheduler:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   flatnotes:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
+  goldilocks:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   ingress-nginx:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   ihatemoney:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   jellyfin:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   kube-ops-view:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   nextcloud:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   owncast:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   paperless:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   postgresql:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   redis:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   restic:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   soft-serve-git:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   stash:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   vaultwarden:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   wireguard:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   bjw-s: https://bjw-s.github.io/helm-charts
   concourse: https://concourse-charts.storage.googleapis.com/
   descheduler: https://kubernetes-sigs.github.io/descheduler/
+  fairwinds-stable: https://charts.fairwinds.com/stable
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   nextcloud: https://nextcloud.github.io/helm/
@@ -92,6 +132,12 @@ apps:
     enabled: true
     chart: descheduler/descheduler
     version: 0.26.1
+  goldilocks:
+    namespace: goldilocks
+    enabled: true
+    chart: fairwinds-stable/goldilocks
+    version: 6.5.5
+    valuesFile: goldilocks/goldilocks-values.yaml
   ################
   # Applications #
   ################
