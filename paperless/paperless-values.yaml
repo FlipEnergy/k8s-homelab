@@ -42,8 +42,8 @@ resources:
   limits:
     memory: 2Gi
   requests:
-    cpu: 100m
-    memory: 500Mi
+    cpu: 15m
+    memory: 700Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64

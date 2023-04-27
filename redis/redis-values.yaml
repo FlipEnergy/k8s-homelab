@@ -26,16 +26,16 @@ master:
   ##
   resources:
     limits:
-      memory: 1Gi
+      memory: 400Mi
     requests:
-      cpu: 1
-      memory: 1Gi
+      cpu: 300m
+      memory: 100Mi
 
   ## @param master.nodeSelector Node labels for Redis&trade; master pods assignment
   ## ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
   nodeSelector:
-    performance: medium
+    performance: high
 
   ## Persistence parameters
   ## ref: https://kubernetes.io/docs/user-guide/persistent-volumes/

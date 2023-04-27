@@ -29,10 +29,10 @@ strategy:
 
 resources:
   limits:
-    memory: 500Mi
+    memory: 300Mi
   requests:
-    cpu: 200m
-    memory: 125Mi
+    cpu: 15m
+    memory: 100Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64

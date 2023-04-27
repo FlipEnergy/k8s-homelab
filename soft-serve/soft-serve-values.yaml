@@ -8,3 +8,10 @@ persistence:
     storage: 1Gi
     nfsPath: /mnt/ZFS-3.6TB/tank/soft-serve-data
     nfsServer: truenas-1.tgp
+
+resources:
+  requests:
+    cpu: 15m
+    memory: 100Mi
+  limits:
+    memory: 600Mi

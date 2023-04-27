@@ -121,7 +121,7 @@ apps:
     namespace: redis
     enabled: true
     chart: bitnami/redis
-    version: 17.9.5
+    version: 17.10.1
     priority: -100
     valuesFile: redis/redis-values.yaml
   ###############
@@ -134,7 +134,7 @@ apps:
     version: 0.26.1
   goldilocks:
     namespace: goldilocks
-    enabled: true
+    enabled: false
     chart: fairwinds-stable/goldilocks
     version: 6.5.5
     valuesFile: goldilocks/goldilocks-values.yaml

@@ -46,10 +46,10 @@ persistence:
 
 resources:
   limits:
-    memory: 300Mi
+    memory: 200Mi
   requests:
-    cpu: 100m
-    memory: 150Mi
+    cpu: 15m
+    memory: 100Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64

@@ -48,10 +48,10 @@ securityContext:
 
 resources:
   limits:
-    memory: 2Gi
+    memory: 500Mi
   requests:
-    cpu: 200m
-    memory: 1Gi
+    cpu: 15m
+    memory: 250Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64
