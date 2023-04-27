@@ -8,6 +8,7 @@ settings:
 namespaces:
   concourse:
   cryptofolio:
+  descheduler:
   flatnotes:
   ingress-nginx:
   ihatemoney:
@@ -27,6 +28,7 @@ helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   bjw-s: https://bjw-s.github.io/helm-charts
   concourse: https://concourse-charts.storage.googleapis.com/
+  descheduler: https://kubernetes-sigs.github.io/descheduler/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
   nextcloud: https://nextcloud.github.io/helm/
@@ -82,6 +84,14 @@ apps:
     version: 17.9.5
     priority: -100
     valuesFile: redis/redis-values.yaml
+  ###############
+  # Maintenance #
+  ###############
+  descheduler:
+    namespace: descheduler
+    enabled: true
+    chart: descheduler/descheduler
+    version: 0.26.1
   ################
   # Applications #
   ################
@@ -95,7 +105,6 @@ apps:
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   cryptofolio:
-    wait: true
     namespace: cryptofolio
     group: uses-nfs
     enabled: true
@@ -129,7 +138,6 @@ apps:
       preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
       preUpgrade: *jellyfin-pv
   jf-discord-bot:
-    wait: true
     namespace: jellyfin
     enabled: true
     chart: bjw-s/app-template
@@ -182,7 +190,6 @@ apps:
     version: 0.1.0
     valuesFile: soft-serve/soft-serve-values.yaml
   stash:
-    wait: true
     namespace: stash
     group: uses-nfs
     enabled: true
@@ -221,7 +228,6 @@ apps:
   # Backup #
   ##########
   restic:
-    wait: true
     namespace: restic
     group: uses-nfs
     enabled: true
