@@ -1,7 +1,4 @@
 # Override values for descheduler
 
-# daily noon PST
-schedule: "0 19 * * *"
-
 deschedulerPolicy:
   nodeSelector: "performance=medium,performance=low"
