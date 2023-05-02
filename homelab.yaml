@@ -228,14 +228,6 @@ apps:
     hooks:
       preInstall: &paperless-pv paperless/persistenceVolumes.yaml
       preUpgrade: *paperless-pv
-  soft-serve-git:
-    wait: true
-    namespace: soft-serve-git
-    group: uses-nfs
-    enabled: true
-    chart: ./soft-serve/chart
-    version: 0.1.0
-    valuesFile: soft-serve/soft-serve-values.yaml
   stash:
     namespace: stash
     group: uses-nfs
