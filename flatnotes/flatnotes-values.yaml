@@ -9,6 +9,20 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
+
+# command found here: https://github.com/Dullage/flatnotes/blob/master/entrypoint.sh#L32
+command: ["python"]
+args:
+  - -m
+  - uvicorn
+  - main:app
+  - --app-dir
+  - flatnotes
+  - --host
+  - "0.0.0.0"
+  - --port
+  - "8080"
+
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
