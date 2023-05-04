@@ -5,16 +5,13 @@ image:
   repository: dullage/flatnotes
   # -- image tag
   # @default -- chart.appVersion
-  tag: v2.2.0
+  tag: v3.0.0
   # -- image pull policy
   pullPolicy: IfNotPresent
 
 securityContext:
   runAsUser: 1000
   runAsNonRoot: true
-
-env:
-  PORT: "8080"
 
 service:
   main:
@@ -36,7 +33,7 @@ ingress:
 persistence:
   data:
     enabled: true
-    mountPath: /app/data
+    mountPath: /data
     accessMode: ReadWriteOnce
     # Persistent Volume Storage Clas
     storageClass: flatnotes-data
