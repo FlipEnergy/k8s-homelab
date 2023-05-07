@@ -15,10 +15,10 @@ service:
 
 resources:
   limits:
-    memory: 200Mi
+    memory: 400Mi
   requests:
     cpu: 15m
-    memory: 145Mi
+    memory: 600Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64
