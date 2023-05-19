@@ -14,7 +14,7 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
-schedule: "0 */8 * * *"
+schedule: "0 */12 * * *"
 
 successfulJobsHistoryLimit: 1
 failedJobsHistoryLimit: 1
