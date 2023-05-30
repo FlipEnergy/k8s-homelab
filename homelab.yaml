@@ -82,7 +82,7 @@ apps:
     group: foundation
     enabled: true
     chart: ingress-nginx/ingress-nginx
-    version: 4.6.1
+    version: 4.7.0
     priority: -200
     timeout: 900
     valuesFiles:
