@@ -57,5 +57,5 @@ apps:
     namespace: libreddit
     enabled: true
     chart: bjw-s/app-template
-    version: 1.5.0
+    version: 1.5.1
     valuesFile: libreddit/oracle/libreddit-values.yaml
