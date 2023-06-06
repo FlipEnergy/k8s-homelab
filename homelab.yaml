@@ -137,7 +137,7 @@ apps:
     namespace: goldilocks
     enabled: false
     chart: fairwinds-stable/goldilocks
-    version: 6.6.0
+    version: 6.7.0
     valuesFile: goldilocks/goldilocks-values.yaml
   ################
   # Applications #
