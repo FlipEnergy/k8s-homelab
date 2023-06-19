@@ -8,6 +8,7 @@ spec:
     storage: 500Mi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/stash-data
     server: truenas-1.tgp

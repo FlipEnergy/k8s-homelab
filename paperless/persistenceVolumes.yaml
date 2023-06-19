@@ -8,6 +8,7 @@ spec:
     storage: 100Mi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/paperless-data/data
     server: truenas-1.tgp
@@ -22,6 +23,7 @@ spec:
     storage: 3Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/paperless-data/media
     server: truenas-1.tgp
@@ -36,6 +38,7 @@ spec:
     storage: 100Mi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/paperless-data/consume
     server: truenas-1.tgp

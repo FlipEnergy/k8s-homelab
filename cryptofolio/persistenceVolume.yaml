@@ -8,6 +8,7 @@ spec:
     storage: 100Mi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/cryptofolio-data
     server: truenas-1.tgp

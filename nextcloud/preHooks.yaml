@@ -8,6 +8,7 @@ spec:
     storage: 3Ti
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/nextcloud-data
     server: truenas-1.tgp
