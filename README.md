@@ -6,7 +6,6 @@ A lot of the charts I use are from [k8s-at-home](https://github.com/k8s-at-home/
 # Publicly accessable services that I don't mind you use
 - check out my website which has info and posts about my homelab: https://pleasenoddos.com
 - paste stuff with haste at https://haste.pleasenoddos.com
-- use the alternate reddit frontend at https://reddit.pleasenoddos.com
 
 # Requirements
 - Kubectl
