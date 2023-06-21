@@ -9,7 +9,6 @@ namespaces:
   haste:
   influxdb2:
   ingress-nginx:
-  libreddit:
 helmRepos:
   bjw-s: https://bjw-s.github.io/helm-charts
   influxdata: https://helm.influxdata.com/
@@ -52,10 +51,3 @@ apps:
     chart: k8s-at-home/haste-server
     version: 3.4.2
     valuesFile: hastebin/oracle/hastebin-values.yaml
-  libreddit:
-    wait: true
-    namespace: libreddit
-    enabled: false
-    chart: bjw-s/app-template
-    version: 1.5.1
-    valuesFile: libreddit/oracle/libreddit-values.yaml
