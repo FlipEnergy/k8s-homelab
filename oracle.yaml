@@ -55,7 +55,7 @@ apps:
   libreddit:
     wait: true
     namespace: libreddit
-    enabled: true
+    enabled: false
     chart: bjw-s/app-template
     version: 1.5.1
     valuesFile: libreddit/oracle/libreddit-values.yaml
