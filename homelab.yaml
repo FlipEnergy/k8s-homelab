@@ -30,6 +30,9 @@ namespaces:
   jellyfin:
     labels:
       goldilocks.fairwinds.com/enabled: true
+  k8s-dashboard:
+    labels:
+      goldilocks.fairwinds.com/enabled: true
   kube-ops-view:
     labels:
       goldilocks.fairwinds.com/enabled: true
@@ -71,6 +74,7 @@ helmRepos:
   fairwinds-stable: https://charts.fairwinds.com/stable
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
+  k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
 apps:
   ###########
@@ -100,6 +104,18 @@ apps:
     version: 1.2.2
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
+  k8s-dashboard:
+    wait: true
+    namespace: k8s-dashboard
+    group: foundation
+    enabled: true
+    chart: k8s-dashboard/kubernetes-dashboard
+    version: 6.0.8
+    priority: -199
+    valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
+    hooks:
+      postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
+      preUpgrade: *k8s-dash-admin
   #############
   # Databases #
   #############
