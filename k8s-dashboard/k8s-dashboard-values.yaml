@@ -10,10 +10,15 @@ extraArgs:
 #
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: medium
+  performance: low
 
 # Pod resource requests & limits
-resources: {}
+resources:
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limits:
+    memory: 200Mi
 
 ingress:
   # If true, Kubernetes Dashboard Ingress will be created.
@@ -49,10 +54,11 @@ settings:
 ## refs: https://github.com/kubernetes-sigs/dashboard-metrics-scraper
 metricsScraper:
   ## Wether to enable dashboard-metrics-scraper
-  enabled: true
+  enabled: false
 
-  resources: {}
-
-  nodeSelector:
-    kubernetes.io/arch: amd64
-    performance: low
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      memory: 200Mi
