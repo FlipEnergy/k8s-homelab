@@ -33,7 +33,7 @@ ingress:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 100m
     hosts:
-      - host: stash.tgp
+      - host: stash.pleasenoddos.com
         paths:
           - path: /
 

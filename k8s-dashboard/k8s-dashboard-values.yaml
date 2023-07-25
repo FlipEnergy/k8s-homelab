@@ -34,7 +34,7 @@ ingress:
   # Must be provided if Ingress is enabled
   #
   hosts:
-    - k8s-dashboard.tgp
+    - k8s-dashboard.pleasenoddos.com
 
 # Global dashboard settings
 settings:

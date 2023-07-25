@@ -21,7 +21,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   hosts:
-    - wireguard.tgp
+    - wireguard.pleasenoddos.com
   tls: []
 
 strategy:

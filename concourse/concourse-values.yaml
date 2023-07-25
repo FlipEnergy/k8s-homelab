@@ -183,7 +183,7 @@ concourse:
     ##
     ## Example: http://ci.concourse-ci.org
     ##
-    externalUrl: http://concourse.tgp
+    externalUrl: http://concourse.pleasenoddos.com
 
     encryption:
       ## Enable encryption of pipeline configuration. Encryption keys can be set via secrets
@@ -1047,7 +1047,7 @@ web:
     ##   - concourse.domain.com
     ##
     hosts:
-      - concourse.tgp
+      - concourse.pleasenoddos.com
 
     ## TLS configuration.
     ## Secrets must be manually created in the namespace.

@@ -23,7 +23,7 @@ env:
   PAPERLESS_CONSUMER_POLLING: 300
   PAPERLESS_TASK_WORKERS: 2
   PAPERLESS_THREADS_PER_WORKER: 1
-  PAPERLESS_URL: https://paperless.tgp
+  PAPERLESS_URL: https://paperless.pleasenoddos.com
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -34,7 +34,7 @@ ingress:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 50M
     hosts:
-      - host: paperless.tgp
+      - host: paperless.pleasenoddos.com
         paths:
           - path: /
 
