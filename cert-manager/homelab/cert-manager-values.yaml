@@ -1,0 +1,19 @@
+# Override Values for cert-manager
+nodeSelector:
+  kubernetes.io/arch: amd64
+  performance: low
+
+webhook:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: low
+
+cainjector:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: low
+
+startupapicheck:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: low

@@ -6,11 +6,14 @@ settings:
   kubeContext: oracle
   globalMaxHistory: 2
 namespaces:
+  cert-manager:
   haste:
   influxdb2:
   ingress-nginx:
+  kube-ops-view:
 helmRepos:
   bjw-s: https://bjw-s.github.io/helm-charts
+  cert-manager: https://charts.jetstack.io
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-at-home: https://k8s-at-home.com/charts/
@@ -29,6 +32,19 @@ apps:
     valuesFiles:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
+  ##############
+  # Monitoring #
+  ##############
+  kube-ops-view:
+    wait: true
+    namespace: kube-ops-view
+    enabled: true
+    chart: k8s-at-home/kube-ops-view
+    version: 1.2.2
+    priority: -199
+    valuesFiles:
+    - kube-ops-view/kube-ops-view-values.yaml
+    - kube-ops-view/oracle/kube-ops-view-values.yaml
   #############
   # Databases #
   #############
@@ -41,6 +57,16 @@ apps:
     priority: -99
     valuesFile: influxdb2/oracle/influxdb2-values.yaml
     secretsFile: influxdb2/oracle/influxdb2-secrets.yaml
+  ###############
+  # Maintenance #
+  ###############
+  cert-manager:
+    namespace: cert-manager
+    enabled: true
+    chart: cert-manager/cert-manager
+    version: 1.12.3
+    priority: -199
+    valuesFile: cert-manager/cert-manager-values.yaml
   ################
   # Applications #
   ################

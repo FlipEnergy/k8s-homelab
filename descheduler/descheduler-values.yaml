@@ -4,4 +4,4 @@
 schedule: "0 12 * * *"
 
 deschedulerPolicy:
-  nodeSelector: "performance=medium,performance=low"
+  nodeSelector: "performance=medium"

@@ -1,0 +1,11 @@
+# Override values for kube-ops-view in oracle
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+      - host: kube2.pleasenoddos.com
+        paths:
+          - path: /

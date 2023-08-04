@@ -6,6 +6,7 @@ settings:
   kubeContext: homelab
   globalMaxHistory: 1
 namespaces:
+  cert-manager:
   concourse:
   cryptofolio:
   descheduler:
@@ -28,6 +29,7 @@ namespaces:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
   bjw-s: https://bjw-s.github.io/helm-charts
+  cert-manager: https://charts.jetstack.io
   concourse: https://concourse-charts.storage.googleapis.com/
   descheduler: https://kubernetes-sigs.github.io/descheduler/
   fairwinds-stable: https://charts.fairwinds.com/stable
@@ -108,6 +110,15 @@ apps:
     chart: descheduler/descheduler
     version: 0.27.1
     valuesFile: descheduler/descheduler-values.yaml
+  cert-manager:
+    namespace: cert-manager
+    enabled: true
+    chart: cert-manager/cert-manager
+    version: 1.12.3
+    priority: -199
+    valuesFiles:
+      - cert-manager/cert-manager-values.yaml
+      - cert-manager/homelab/cert-manager-values.yaml
   ################
   # Applications #
   ################
