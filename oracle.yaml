@@ -32,19 +32,6 @@ apps:
     valuesFiles:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
-  ##############
-  # Monitoring #
-  ##############
-  kube-ops-view:
-    wait: true
-    namespace: kube-ops-view
-    enabled: true
-    chart: k8s-at-home/kube-ops-view
-    version: 1.2.2
-    priority: -199
-    valuesFiles:
-      - kube-ops-view/kube-ops-view-values.yaml
-      - kube-ops-view/oracle/kube-ops-view-values.yaml
   #############
   # Databases #
   #############
