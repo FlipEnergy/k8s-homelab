@@ -43,8 +43,8 @@ apps:
     version: 1.2.2
     priority: -199
     valuesFiles:
-    - kube-ops-view/kube-ops-view-values.yaml
-    - kube-ops-view/oracle/kube-ops-view-values.yaml
+      - kube-ops-view/kube-ops-view-values.yaml
+      - kube-ops-view/oracle/kube-ops-view-values.yaml
   #############
   # Databases #
   #############

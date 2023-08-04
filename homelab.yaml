@@ -64,7 +64,9 @@ apps:
     chart: k8s-at-home/kube-ops-view
     version: 1.2.2
     priority: -199
-    valuesFile: kube-ops-view/kube-ops-view-values.yaml
+    valuesFiles:
+      - kube-ops-view/kube-ops-view-values.yaml
+      - kube-ops-view/homelab/kube-ops-view-values.yaml
   k8s-dashboard:
     wait: true
     namespace: k8s-dashboard
