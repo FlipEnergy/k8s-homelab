@@ -7,11 +7,16 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - host: crypto.pleasenoddos.com
         paths:
           - path: /
+    tls:
+      - secretName: crypto-tls
+        hosts:
+          - crypto.pleasenoddos.com
 
 resources:
   requests:

@@ -13,6 +13,7 @@
 ingress:
   enabled: true
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-homelab"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
@@ -42,6 +43,10 @@ ingress:
       location ~ ^/(?:autotest|occ|issue|indie|db_|console) {
         deny all;
       }
+  tls:
+    - secretName: nextcloud-tls
+      hosts:
+        - cloud.pleasenoddos.com
 
 securityContext:
   runAsUser: 1000

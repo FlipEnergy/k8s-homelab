@@ -31,12 +31,17 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 50M
     hosts:
       - host: paperless.pleasenoddos.com
         paths:
           - path: /
+    tls:
+      - secretName: paperless-tls
+        hosts:
+          - paperless.pleasenoddos.com
 
 resources:
   limits:

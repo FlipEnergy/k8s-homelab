@@ -12,6 +12,7 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
       nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
@@ -20,6 +21,10 @@ ingress:
       - host: jelly.pleasenoddos.com
         paths:
           - path: /
+    tls:
+      - secretName: jellyfin-tls
+        hosts:
+          - jelly.pleasenoddos.com
 
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml

@@ -27,6 +27,7 @@ ingress:
 
   # Kubernetes Dashboard Ingress annotations
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-homelab"
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 
@@ -35,6 +36,13 @@ ingress:
   #
   hosts:
     - k8s-dashboard.pleasenoddos.com
+  ## Kubernetes Dashboard Ingress TLS configuration
+  ## Secrets must be manually created in the namespace
+  #
+  tls:
+    - secretName: kubernetes-dashboard-tls
+      hosts:
+        - k8s-dashboard.pleasenoddos.com
 
 # Global dashboard settings
 settings:

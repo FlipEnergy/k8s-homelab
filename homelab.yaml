@@ -110,6 +110,13 @@ apps:
     chart: descheduler/descheduler
     version: 0.27.1
     valuesFile: descheduler/descheduler-values.yaml
+  cert-manager-secrets:
+    namespace: cert-manager
+    enabled: true
+    chart: ./cert-manager/cert-manager-secrets/chart
+    version: 0.1.0
+    priority: -198
+    secretsFile: cert-manager/cert-manager-secrets/cert-manager-secrets.yaml
   cert-manager:
     namespace: cert-manager
     enabled: true
@@ -119,6 +126,9 @@ apps:
     valuesFiles:
       - cert-manager/cert-manager-values.yaml
       - cert-manager/homelab/cert-manager-values.yaml
+    hooks:
+      postInstall: &cert-manager-postInstall cert-manager/ClusterIssuer.yaml
+      postUpgrade: *cert-manager-postInstall
   ################
   # Applications #
   ################

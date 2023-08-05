@@ -35,6 +35,7 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - host: bitwarden.pleasenoddos.com
@@ -51,6 +52,10 @@ ingress:
             pathType: Prefix
             service:
               port: 3012
+    tls:
+      - secretName: bitwarden-tls
+        hosts:
+          - bitwarden.pleasenoddos.com
 
 persistence:
   data:

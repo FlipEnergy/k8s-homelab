@@ -30,12 +30,17 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 100m
     hosts:
       - host: stash.pleasenoddos.com
         paths:
           - path: /
+    tls:
+      - secretName: stash-tls
+        hosts:
+          - stash.pleasenoddos.com
 
 persistence:
   data:

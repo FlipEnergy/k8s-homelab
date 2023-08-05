@@ -47,6 +47,13 @@ apps:
   ###############
   # Maintenance #
   ###############
+  cert-manager-secrets:
+    namespace: cert-manager
+    enabled: true
+    chart: ./cert-manager/cert-manager-secrets/chart
+    version: 0.1.0
+    priority: -198
+    secretsFile: cert-manager/cert-manager-secrets/cert-manager-secrets.yaml
   cert-manager:
     namespace: cert-manager
     enabled: true
@@ -54,6 +61,9 @@ apps:
     version: 1.12.3
     priority: -199
     valuesFile: cert-manager/cert-manager-values.yaml
+    hooks:
+      postInstall: &cert-manager-postInstall cert-manager/ClusterIssuer.yaml
+      postUpgrade: *cert-manager-postInstall
   ################
   # Applications #
   ################

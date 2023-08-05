@@ -44,9 +44,10 @@ resources:
 ingress:
   enabled: true
   tls: true
-  # secretName: my-tls-cert # only needed if tls above is true
+  secretName: influxdb2-tls
   hostname: influx.pleasenoddos.com
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-homelab"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"

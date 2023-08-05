@@ -21,11 +21,16 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - host: kube.pleasenoddos.com
         paths:
           - path: /
+    tls:
+      - secretName: kube-ops-view-tls
+        hosts:
+          - kube.pleasenoddos.com
 
 nodeSelector:
   kubernetes.io/arch: amd64

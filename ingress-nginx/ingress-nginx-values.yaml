@@ -12,10 +12,3 @@ controller:
   # Overrides value for --watch-ingress-without-class flag of the controller binary
   # Defaults to false
   watchIngressWithoutClass: true
-
-  ## Additional command line arguments to pass to nginx-ingress-controller
-  ## E.g. to specify the default SSL certificate you can use
-  ## extraArgs:
-  ##   default-ssl-certificate: "<namespace>/<secret_name>"
-  extraArgs:
-    default-ssl-certificate: "default/letsencrypt-tls"

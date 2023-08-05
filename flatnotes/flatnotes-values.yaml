@@ -37,12 +37,17 @@ ingress:
   main:
     enabled: true
     annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 100m
     hosts:
       - host: notes.pleasenoddos.com
         paths:
           - path: /
+    tls:
+      - secretName: flatnotes-tls
+        hosts:
+          - notes.pleasenoddos.com
 
 persistence:
   data:
