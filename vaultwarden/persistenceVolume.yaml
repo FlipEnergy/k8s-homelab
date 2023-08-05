@@ -10,5 +10,5 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
   nfs:
-    path: /mnt/ZFS-SSD-460GB/SSD-tank/vaultwarden-data
+    path: /mnt/ZFS-3.6TB/tank/vaultwarden-data
     server: truenas-1.tgp
