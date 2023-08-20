@@ -1,15 +1,19 @@
 # Override Values for cert-manager
 nodeSelector:
   kubernetes.io/arch: amd64
+  performance: med
 
 webhook:
   nodeSelector:
     kubernetes.io/arch: amd64
+    performance: med
 
 cainjector:
   nodeSelector:
     kubernetes.io/arch: amd64
+    performance: med
 
 startupapicheck:
   nodeSelector:
     kubernetes.io/arch: amd64
+    performance: med

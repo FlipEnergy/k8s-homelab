@@ -10,6 +10,7 @@ extraArgs:
 #
 nodeSelector:
   kubernetes.io/arch: amd64
+  performance: med
 
 # Pod resource requests & limits
 resources:
