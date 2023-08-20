@@ -37,4 +37,3 @@ persistence:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: low
