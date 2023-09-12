@@ -120,7 +120,7 @@ apps:
     namespace: cert-manager
     enabled: true
     chart: cert-manager/cert-manager
-    version: v1.12.4
+    version: v1.13.0
     priority: -199
     valuesFiles:
       - cert-manager/cert-manager-values.yaml
