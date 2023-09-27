@@ -85,7 +85,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: bitnami/postgresql
-    version: 12.8.3
+    version: 12.12.10
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
     secretsFile: postgresql/postgresql-secrets.yaml
