@@ -4,7 +4,7 @@ image:
   # -- image repository
   repository: jellyfin/jellyfin
   # -- image tag
-  tag: 10.8.11
+  tag: 10.8.12
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
