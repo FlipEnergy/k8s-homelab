@@ -1,22 +1,25 @@
 # Override values for stash
+controllers:
+  main:
+    containers:
+     main:
+      image:
+        # -- image repository
+        repository: stashapp/stash
+        # -- image tag
+        # @default -- chart.appVersion
+        tag: v0.23.1
+        # -- image pull policy
+        pullPolicy: IfNotPresent
 
-image:
-  # -- image repository
-  repository: stashapp/stash
-  # -- image tag
-  # @default -- chart.appVersion
-  tag: v0.23.1
-  # -- image pull policy
-  pullPolicy: IfNotPresent
-
-# -- environment variables. See more environment variables in the [stash documentation](https://github.com/stashapp/stash).
-# @default -- See below
-env:
-  STASH_CONFIG_FILE: /data/config/config.yml
-  STASH_STASH: /data/stash/
-  STASH_GENERATED: /data/generated/
-  STASH_METADATA: /data/metadata/
-  STASH_CACHE: /tmp/cache/
+      # -- environment variables. See more environment variables in the [stash documentation](https://github.com/stashapp/stash).
+      # @default -- See below
+      env:
+        STASH_CONFIG_FILE: /data/config/config.yml
+        STASH_STASH: /data/stash/
+        STASH_GENERATED: /data/generated/
+        STASH_METADATA: /data/metadata/
+        STASH_CACHE: /tmp/cache/
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -37,6 +40,9 @@ ingress:
       - host: stash.pleasenoddos.com
         paths:
           - path: /
+            service:
+              name: main
+              port: http
     tls:
       - secretName: stash-tls
         hosts:
