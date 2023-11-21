@@ -2,24 +2,36 @@
 controllers:
   main:
     containers:
-     main:
-      image:
-        # -- image repository
-        repository: stashapp/stash
-        # -- image tag
-        # @default -- chart.appVersion
-        tag: v0.23.1
-        # -- image pull policy
-        pullPolicy: IfNotPresent
+      main:
+        image:
+          # -- image repository
+          repository: stashapp/stash
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: v0.23.1
+          # -- image pull policy
+          pullPolicy: IfNotPresent
 
-      # -- environment variables. See more environment variables in the [stash documentation](https://github.com/stashapp/stash).
-      # @default -- See below
-      env:
-        STASH_CONFIG_FILE: /data/config/config.yml
-        STASH_STASH: /data/stash/
-        STASH_GENERATED: /data/generated/
-        STASH_METADATA: /data/metadata/
-        STASH_CACHE: /tmp/cache/
+        # -- environment variables. See more environment variables in the [stash documentation](https://github.com/stashapp/stash).
+        # @default -- See below
+        env:
+          STASH_CONFIG_FILE: /data/config/config.yml
+          STASH_STASH: /data/stash/
+          STASH_GENERATED: /data/generated/
+          STASH_METADATA: /data/metadata/
+          STASH_CACHE: /tmp/cache/
+
+        resources:
+          limits:
+            memory: 600Mi
+          requests:
+            cpu: 15m
+            memory: 100Mi
+
+defaultPodOptions:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: medium
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -58,14 +70,3 @@ persistence:
     size: 500Mi
     # Do not delete the pvc upon helm uninstall
     retain: true
-
-resources:
-  limits:
-    memory: 600Mi
-  requests:
-    cpu: 15m
-    memory: 100Mi
-
-nodeSelector:
-  kubernetes.io/arch: amd64
-  performance: medium

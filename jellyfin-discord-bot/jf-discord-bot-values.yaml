@@ -1,25 +1,29 @@
 # Override values for jellyfin-discord-bot
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: ghcr.io/manuel-rw/jellyfin-discord-music-bot
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
 
-image:
-  # -- image repository
-  repository: ghcr.io/manuel-rw/jellyfin-discord-music-bot
-  # -- image tag
-  # @default -- chart.appVersion
-  tag: latest
-  # -- image pull policy
-  pullPolicy: Always
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 15m
+            memory: 145Mi
+
+defaultPodOptions:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: medium
 
 service:
   main:
     enabled: false
-
-resources:
-  limits:
-    memory: 200Mi
-  requests:
-    cpu: 15m
-    memory: 145Mi
-
-nodeSelector:
-  kubernetes.io/arch: amd64
-  performance: medium

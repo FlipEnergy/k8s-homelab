@@ -1,31 +1,44 @@
 # Override values for flatnotes
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: dullage/flatnotes
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: v3.5.0
+          # -- image pull policy
+          pullPolicy: IfNotPresent
 
-image:
-  # -- image repository
-  repository: dullage/flatnotes
-  # -- image tag
-  # @default -- chart.appVersion
-  tag: v3.5.0
-  # -- image pull policy
-  pullPolicy: IfNotPresent
+        # command found here: https://github.com/Dullage/flatnotes/blob/master/entrypoint.sh#L32
+        command: ["python"]
+        args:
+          - -m
+          - uvicorn
+          - main:app
+          - --app-dir
+          - flatnotes
+          - --host
+          - "0.0.0.0"
+          - --port
+          - "8080"
 
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 15m
+            memory: 100Mi
 
-# command found here: https://github.com/Dullage/flatnotes/blob/master/entrypoint.sh#L32
-command: ["python"]
-args:
-  - -m
-  - uvicorn
-  - main:app
-  - --app-dir
-  - flatnotes
-  - --host
-  - "0.0.0.0"
-  - --port
-  - "8080"
-
-securityContext:
-  runAsUser: 1000
-  runAsNonRoot: true
+defaultPodOptions:
+  securityContext:
+    runAsUser: 1000
+    runAsNonRoot: true
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: medium
 
 service:
   main:
@@ -44,6 +57,9 @@ ingress:
       - host: notes.pleasenoddos.com
         paths:
           - path: /
+            service:
+              name: main
+              port: http
     tls:
       - secretName: flatnotes-tls
         hosts:
@@ -59,14 +75,3 @@ persistence:
     size: 500Mi
     # Do not delete the pvc upon helm uninstall
     retain: true
-
-resources:
-  limits:
-    memory: 200Mi
-  requests:
-    cpu: 15m
-    memory: 100Mi
-
-nodeSelector:
-  kubernetes.io/arch: amd64
-  performance: medium
