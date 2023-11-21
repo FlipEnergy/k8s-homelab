@@ -5,7 +5,7 @@ image:
   repository: dullage/flatnotes
   # -- image tag
   # @default -- chart.appVersion
-  tag: v3.3.0
+  tag: v3.5.0
   # -- image pull policy
   pullPolicy: IfNotPresent
 
