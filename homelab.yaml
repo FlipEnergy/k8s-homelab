@@ -33,7 +33,6 @@ helmRepos:
   descheduler: https://kubernetes-sigs.github.io/descheduler/
   fairwinds-stable: https://charts.fairwinds.com/stable
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
-  k8s-at-home: https://k8s-at-home.com/charts/
   k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
 apps:
@@ -60,7 +59,7 @@ apps:
     namespace: kube-ops-view
     group: foundation
     enabled: true
-    chart: k8s-at-home/kube-ops-view
+    chart: ./kube-ops-view/kube-ops-view
     version: 1.2.2
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
@@ -144,7 +143,7 @@ apps:
     namespace: cryptofolio
     group: uses-nfs
     enabled: true
-    chart: k8s-at-home/cryptofolio
+    chart: ./cryptofolio/cryptofolio
     version: 1.4.2
     valuesFile: cryptofolio/cryptofolio-values.yaml
     hooks:
@@ -167,7 +166,7 @@ apps:
     namespace: jellyfin
     group: uses-nfs
     enabled: true
-    chart: k8s-at-home/jellyfin
+    chart: ./jellyfin/jellyfin
     version: 9.5.3
     valuesFile: jellyfin/jellyfin-values.yaml
     hooks:
@@ -220,7 +219,7 @@ apps:
     namespace: vaultwarden
     group: uses-nfs
     enabled: true
-    chart: k8s-at-home/vaultwarden
+    chart: ./vaultwarden/vaultwarden
     version: 5.3.2
     priority: -99
     valuesFile: vaultwarden/vaultwarden-values.yaml

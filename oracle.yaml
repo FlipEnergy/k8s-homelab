@@ -16,7 +16,6 @@ helmRepos:
   cert-manager: https://charts.jetstack.io
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
-  k8s-at-home: https://k8s-at-home.com/charts/
 apps:
   ###########
   # Ingress #
@@ -71,6 +70,6 @@ apps:
     wait: true
     namespace: haste
     enabled: true
-    chart: k8s-at-home/haste-server
+    chart: ./hastebin/haste-server
     version: 3.4.2
     valuesFile: hastebin/oracle/hastebin-values.yaml
