@@ -106,7 +106,7 @@ apps:
     namespace: descheduler
     enabled: true
     chart: descheduler/descheduler
-    version: 0.28.0
+    version: 0.28.1
     valuesFile: descheduler/descheduler-values.yaml
   cert-manager-secrets:
     namespace: cert-manager
