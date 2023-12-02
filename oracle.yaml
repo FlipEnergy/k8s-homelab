@@ -17,9 +17,9 @@ helmRepos:
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
 apps:
-  ###########
-  # Ingress #
-  ###########
+  ##############
+  # foundation #
+  ##############
   ingress-nginx:
     wait: true
     namespace: ingress-nginx
@@ -31,6 +31,26 @@ apps:
     valuesFiles:
       - ingress-nginx/ingress-nginx-values.yaml
       - ingress-nginx/oracle/ingress-nginx-values.yaml
+  cert-manager-secrets:
+    namespace: cert-manager
+    group: foundation
+    enabled: true
+    chart: ./cert-manager/cert-manager-secrets/chart
+    version: 0.1.0
+    priority: -198
+    secretsFile: cert-manager/cert-manager-secrets/cert-manager-secrets.yaml
+  cert-manager:
+    namespace: cert-manager
+    group: foundation
+    enabled: true
+    chart: cert-manager/cert-manager
+    version: v1.13.2
+    priority: -199
+    valuesFile: cert-manager/cert-manager-values.yaml
+    hooks:
+      postInstall: &cert-manager-postInstall cert-manager/ClusterIssuer.yaml
+      postUpgrade: *cert-manager-postInstall
+
   #############
   # Databases #
   #############
@@ -43,26 +63,6 @@ apps:
     priority: -99
     valuesFile: influxdb2/oracle/influxdb2-values.yaml
     secretsFile: influxdb2/oracle/influxdb2-secrets.yaml
-  ###############
-  # Maintenance #
-  ###############
-  cert-manager-secrets:
-    namespace: cert-manager
-    enabled: true
-    chart: ./cert-manager/cert-manager-secrets/chart
-    version: 0.1.0
-    priority: -198
-    secretsFile: cert-manager/cert-manager-secrets/cert-manager-secrets.yaml
-  cert-manager:
-    namespace: cert-manager
-    enabled: true
-    chart: cert-manager/cert-manager
-    version: v1.13.2
-    priority: -199
-    valuesFile: cert-manager/cert-manager-values.yaml
-    hooks:
-      postInstall: &cert-manager-postInstall cert-manager/ClusterIssuer.yaml
-      postUpgrade: *cert-manager-postInstall
   ################
   # Applications #
   ################
