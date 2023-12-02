@@ -12,16 +12,13 @@ namespaces:
   descheduler:
   flatnotes:
   ingress-nginx:
-  ihatemoney:
   jellyfin:
   k8s-dashboard:
   kube-ops-view:
   nextcloud:
-  owncast:
   postgresql:
   redis:
   restic:
-  soft-serve-git:
   stash:
   vaultwarden:
   wireguard:
