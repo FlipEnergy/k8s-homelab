@@ -8,7 +8,7 @@ controllers:
           repository: dullage/flatnotes
           # -- image tag
           # @default -- chart.appVersion
-          tag: v3.6.0
+          tag: v3.6.1
           # -- image pull policy
           pullPolicy: IfNotPresent
 
