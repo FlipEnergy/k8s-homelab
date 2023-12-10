@@ -175,7 +175,7 @@ apps:
     namespace: jellyfin
     enabled: true
     chart: bjw-s/app-template
-    version: 2.3.0
+    version: 2.4.0
     valuesFile: jellyfin-discord-bot/jf-discord-bot-values.yaml
     secretsFile: jellyfin-discord-bot/secret.jf-discord-bot-secrets.yaml
   nextcloud:
