@@ -49,7 +49,7 @@ ingress:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 100m
     hosts:
-      - host: stash.pleasenoddos.com
+      - host: stash.computersbarely.work
         paths:
           - path: /
             service:
@@ -58,7 +58,7 @@ ingress:
     tls:
       - secretName: stash-tls
         hosts:
-          - stash.pleasenoddos.com
+          - stash.computersbarely.work
 
 persistence:
   data:

@@ -183,7 +183,7 @@ concourse:
     ##
     ## Example: http://ci.concourse-ci.org
     ##
-    externalUrl: http://concourse.pleasenoddos.com
+    externalUrl: http://concourse.computersbarely.work
 
     encryption:
       ## Enable encryption of pipeline configuration. Encryption keys can be set via secrets
@@ -1045,7 +1045,7 @@ web:
     ##   - concourse.domain.com
     ##
     hosts:
-      - concourse.pleasenoddos.com
+      - concourse.computersbarely.work
 
     ## TLS configuration.
     ## Secrets must be manually created in the namespace.
@@ -1057,7 +1057,7 @@ web:
     tls:
       - secretName: concourse-tls
         hosts:
-          - concourse.pleasenoddos.com
+          - concourse.computersbarely.work
 
 ## Configuration values for Concourse Worker components.
 ## For more information regarding the characteristics of

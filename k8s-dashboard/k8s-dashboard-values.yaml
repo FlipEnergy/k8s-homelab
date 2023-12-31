@@ -34,14 +34,14 @@ ingress:
   # Must be provided if Ingress is enabled
   #
   hosts:
-    - k8s-dashboard.pleasenoddos.com
+    - k8s.computersbarely.work
   ## Kubernetes Dashboard Ingress TLS configuration
   ## Secrets must be manually created in the namespace
   #
   tls:
     - secretName: kubernetes-dashboard-tls
       hosts:
-        - k8s-dashboard.pleasenoddos.com
+        - k8s.computersbarely.work
 
 # Global dashboard settings
 settings:

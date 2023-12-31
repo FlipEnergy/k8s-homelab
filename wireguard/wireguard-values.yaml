@@ -22,11 +22,11 @@ ingress:
     cert-manager.io/cluster-issuer: "letsencrypt-homelab"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   hosts:
-    - wireguard.pleasenoddos.com
+    - wireguard.computersbarely.work
   tls:
     - secretName: wireguard-tls
       hosts:
-        - wireguard.pleasenoddos.com
+        - wireguard.computersbarely.work
 
 strategy:
   type: RollingUpdate

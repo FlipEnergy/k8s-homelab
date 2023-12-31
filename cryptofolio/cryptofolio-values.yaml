@@ -10,13 +10,13 @@ ingress:
       cert-manager.io/cluster-issuer: "letsencrypt-homelab"
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
-      - host: crypto.pleasenoddos.com
+      - host: crypto.computersbarely.work
         paths:
           - path: /
     tls:
       - secretName: crypto-tls
         hosts:
-          - crypto.pleasenoddos.com
+          - crypto.computersbarely.work
 
 resources:
   requests:
