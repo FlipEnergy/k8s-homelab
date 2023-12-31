@@ -1,0 +1,35 @@
+# Override values for cloudflareddns
+
+# https://hotio.dev/containers/cloudflareddns/
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: hotio/cloudflareddns
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: release-20231228194642
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        env:
+          PUID: 1000
+          PGID: 1000
+          LOG_LEVEL: 2
+
+        resources:
+          limits:
+            memory: 100Mi
+          requests:
+            memory: 50Mi
+
+defaultPodOptions:
+  nodeSelector:
+    kubernetes.io/arch: amd64
+    performance: medium
+
+service:
+  main:
+    enabled: false

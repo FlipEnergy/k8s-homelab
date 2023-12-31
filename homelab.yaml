@@ -7,6 +7,7 @@ settings:
   globalMaxHistory: 1
 namespaces:
   cert-manager:
+  cloudflareddns:
   concourse:
   cryptofolio:
   descheduler:
@@ -28,7 +29,6 @@ helmRepos:
   cert-manager: https://charts.jetstack.io
   concourse: https://concourse-charts.storage.googleapis.com/
   descheduler: https://kubernetes-sigs.github.io/descheduler/
-  fairwinds-stable: https://charts.fairwinds.com/stable
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   k8s-dashboard: https://kubernetes.github.io/dashboard
   nextcloud: https://nextcloud.github.io/helm/
@@ -69,6 +69,15 @@ apps:
     hooks:
       postInstall: &cert-manager-postInstall cert-manager/ClusterIssuer.yaml
       postUpgrade: *cert-manager-postInstall
+  cf-ddns:
+    namespace: cloudflareddns
+    group: foundation
+    enabled: true
+    chart: bjw-s/app-template
+    version: 2.3.0
+    priority: -199
+    valuesFile: cf-ddns/cf-ddns-values.yaml
+    secretsFile: cf-ddns/cf-ddns-secrets.yaml
   ##############
   # Monitoring #
   ##############
