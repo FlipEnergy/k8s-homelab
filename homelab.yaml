@@ -188,13 +188,12 @@ apps:
     valuesFile: jellyfin-discord-bot/jf-discord-bot-values.yaml
     secretsFile: jellyfin-discord-bot/secret.jf-discord-bot-secrets.yaml
   nextcloud:
-    wait: true
+    wait: false
     namespace: nextcloud
     group: uses-nfs
     enabled: true
     chart: nextcloud/nextcloud
-    version: 3.5.22
-    timeout: 900
+    version: 3.5.19
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
     secretsFile: nextcloud/nextcloud-secrets.yaml

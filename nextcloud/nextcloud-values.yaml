@@ -90,8 +90,6 @@ nextcloud:
   ##
   ## Extra environment variables
   extraEnv:
-    - name: REDIS_HOST
-      value: redis-master.redis
     - name: PHP_MEMORY_LIMIT
       value: 4G
     - name: PHP_UPLOAD_LIMIT
@@ -145,7 +143,7 @@ resources:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  # performance: high
+  performance: high
 
 tolerations: []
 
@@ -180,7 +178,7 @@ readinessProbe:
   failureThreshold: 10
   successThreshold: 1
 startupProbe:
-  enabled: true
+  enabled: false
   initialDelaySeconds: 30
   periodSeconds: 30
   timeoutSeconds: 5
