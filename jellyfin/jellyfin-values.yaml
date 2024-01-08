@@ -53,11 +53,11 @@ securityContext:
 
 resources:
   limits:
-    memory: 800Mi
+    memory: 700Mi
   requests:
     cpu: 15m
     memory: 500Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: high
+  # performance: high

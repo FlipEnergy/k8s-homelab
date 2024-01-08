@@ -15,11 +15,11 @@ persistence:
 
 nodeSelector:
   kubernetes.io/arch: amd64
-  performance: high
+  # performance: high
 
 jobNodeSelector:
   kubernetes.io/arch: amd64
-  performance: high
+  # performance: high
 
 affinity:
   podAntiAffinity:

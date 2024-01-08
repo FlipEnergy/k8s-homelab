@@ -179,7 +179,7 @@ primary:
   ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
   ##
   nodeSelector:
-    performance: high
+    # performance: high
 
   ## @param primary.updateStrategy.type PostgreSQL Primary statefulset strategy type
   ## @param primary.updateStrategy.rollingUpdate PostgreSQL Primary statefulset rolling update configuration parameters

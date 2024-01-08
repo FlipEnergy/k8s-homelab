@@ -31,12 +31,12 @@ ingress:
 strategy:
   type: RollingUpdate
 
-resources:
-  limits:
-    memory: 300Mi
-  requests:
-    cpu: 15m
-    memory: 100Mi
+resources: {}
+  # limits:
+  #   memory: 300Mi
+  # requests:
+  #   cpu: 15m
+  #   memory: 100Mi
 
 nodeSelector:
   kubernetes.io/arch: amd64

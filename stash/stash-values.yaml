@@ -21,12 +21,12 @@ controllers:
           STASH_METADATA: /data/metadata/
           STASH_CACHE: /tmp/cache/
 
-        resources:
-          limits:
-            memory: 600Mi
-          requests:
-            cpu: 15m
-            memory: 100Mi
+        resources: {}
+          # limits:
+          #   memory: 600Mi
+          # requests:
+          #   cpu: 15m
+          #   memory: 100Mi
 
 defaultPodOptions:
   nodeSelector:

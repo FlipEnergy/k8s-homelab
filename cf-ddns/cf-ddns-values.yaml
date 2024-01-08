@@ -19,11 +19,11 @@ controllers:
           PGID: 1000
           LOG_LEVEL: 2
 
-        resources:
-          limits:
-            memory: 100Mi
-          requests:
-            memory: 50Mi
+        resources: {}
+          # limits:
+          #   memory: 100Mi
+          # requests:
+          #   memory: 50Mi
 
 defaultPodOptions:
   nodeSelector:

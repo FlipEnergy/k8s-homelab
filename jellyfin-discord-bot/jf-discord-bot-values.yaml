@@ -12,12 +12,12 @@ controllers:
           # -- image pull policy
           pullPolicy: Always
 
-        resources:
-          limits:
-            memory: 200Mi
-          requests:
-            cpu: 15m
-            memory: 145Mi
+        resources: {}
+          # limits:
+          #   memory: 200Mi
+          # requests:
+          #   cpu: 15m
+          #   memory: 145Mi
 
 defaultPodOptions:
   nodeSelector:

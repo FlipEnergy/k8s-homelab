@@ -13,12 +13,12 @@ nodeSelector:
   performance: medium
 
 # Pod resource requests & limits
-resources:
-  requests:
-    cpu: 100m
-    memory: 100Mi
-  limits:
-    memory: 200Mi
+resources: {}
+  # requests:
+  #   cpu: 100m
+  #   memory: 100Mi
+  # limits:
+  #   memory: 200Mi
 
 ingress:
   # If true, Kubernetes Dashboard Ingress will be created.

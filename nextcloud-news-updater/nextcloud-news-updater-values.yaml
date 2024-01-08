@@ -3,9 +3,9 @@
 nodeSelector:
   kubernetes.io/arch: amd64
 
-resources:
-  requests:
-    cpu: 15m
-    memory: 20Mi
-  limits:
-    memory: 50Mi
+resources: {}
+  # requests:
+  #   cpu: 15m
+  #   memory: 20Mi
+  # limits:
+  #   memory: 50Mi
