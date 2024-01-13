@@ -37,7 +37,6 @@ defaultPodOptions:
     runAsUser: 1000
     runAsNonRoot: true
   nodeSelector:
-    kubernetes.io/arch: amd64
     performance: medium
 
 service:

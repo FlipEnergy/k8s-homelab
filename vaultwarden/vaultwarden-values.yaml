@@ -81,5 +81,4 @@ resources:
     memory: 100Mi
 
 nodeSelector:
-  kubernetes.io/arch: amd64
   performance: medium

@@ -1,7 +1,8 @@
 # Override values for nextcloud-news-updater.
 
 nodeSelector:
-  kubernetes.io/arch: amd64
+  performance: medium
+
 
 resources: {}
   # requests:

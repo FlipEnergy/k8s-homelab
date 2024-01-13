@@ -58,6 +58,4 @@ resources:
     cpu: 15m
     memory: 500Mi
 
-nodeSelector:
-  kubernetes.io/arch: amd64
-  performance: high
+nodeSelector: {}

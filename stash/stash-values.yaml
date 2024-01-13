@@ -30,7 +30,6 @@ controllers:
 
 defaultPodOptions:
   nodeSelector:
-    kubernetes.io/arch: amd64
     performance: medium
 
 # -- Configures service settings for the chart.

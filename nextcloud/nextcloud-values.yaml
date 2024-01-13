@@ -54,7 +54,6 @@ phpClientHttpsFix:
 
 nextcloud:
   host: cloud.pleasenoddos.com
-  containerPort: 8080
 
   mail:
     enabled: true
@@ -65,22 +64,6 @@ nextcloud:
       secure: tls
       port: 587
       authtype: LOGIN
-
-  # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
-  # to NextCloud pods in Kubernetes. This can then be configured in External Storage
-  extraVolumes:
-    - name: apache-conf
-      configMap:
-        name: nextcloud-apache2-conf
-  extraVolumeMounts:
-    - name: apache-conf
-      mountPath: /etc/apache2/ports.conf
-      subPath: ports.conf
-      readOnly: true
-    - name: apache-conf
-      mountPath: /etc/apache2/sites-enabled/000-default.conf
-      subPath: 000-default.conf
-      readOnly: true
 
   ##
   ## Extra environment variables
@@ -136,9 +119,7 @@ resources:
     cpu: 2
     memory: 2Gi
 
-nodeSelector:
-  kubernetes.io/arch: amd64
-  performance: high
+nodeSelector: {}
 
 tolerations: []
 

@@ -6,5 +6,4 @@ controller:
   # -- Node labels for controller pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector:
-    kubernetes.io/arch: amd64
+  nodeSelector: {}
