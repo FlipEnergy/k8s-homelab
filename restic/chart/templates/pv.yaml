@@ -8,7 +8,6 @@ spec:
     storage: {{ .Values.persistence.source.storage }}
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: {{ .Values.persistence.source.nfsPath }}
     server: {{ .Values.persistence.source.nfsServer }}

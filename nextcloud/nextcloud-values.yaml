@@ -48,11 +48,6 @@ ingress:
       hosts:
         - cloud.pleasenoddos.com
 
-securityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
-  runAsNonRoot: true
-
 phpClientHttpsFix:
   enabled: true
   protocol: https
@@ -148,17 +143,6 @@ nodeSelector:
 tolerations: []
 
 affinity: {}
-  # podAntiAffinity:
-  #   preferredDuringSchedulingIgnoredDuringExecution:
-  #   - weight: 100
-  #     podAffinityTerm:
-  #       labelSelector:
-  #         matchExpressions:
-  #         - key: app.kubernetes.io/name
-  #           operator: In
-  #           values:
-  #             - postgresql
-  #       topologyKey: kubernetes.io/hostname
 
 ## Liveness and readiness probe values
 ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes

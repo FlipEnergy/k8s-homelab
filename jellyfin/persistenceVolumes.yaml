@@ -8,7 +8,6 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/jellyfin-config
     server: truenas-1.tgp
@@ -23,7 +22,6 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
   nfs:
     path: /mnt/ZFS-3.6TB/tank/cold-storage/Music
     server: truenas-1.tgp
