@@ -200,8 +200,8 @@ apps:
     hooks:
       preInstall: &nextcloud-prehooks nextcloud/preHooks.yaml
       preUpgrade: *nextcloud-prehooks
-      postInstall: &webcron nextcloud/webcron.yaml
-      postUpgrade: *webcron
+      postInstall: &crons nextcloud/crons.yaml
+      postUpgrade: *crons
   nextcloud-news-updater:
     wait: true
     namespace: nextcloud

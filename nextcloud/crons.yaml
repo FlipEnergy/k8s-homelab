@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nextcloud-webcron
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 0
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: webcron
+              image: curlimages/curl:latest
+              imagePullPolicy: IfNotPresent
+              command: ["curl"]
+              args:
+                - --fail
+                - -L
+                - https://cloud.pleasenoddos.com/cron.php
+          restartPolicy: Never
+# ---
+# apiVersion: batch/v1
+# kind: CronJob
+# metadata:
+#   name: nextcloud-preview-gen
+# spec:
+#   schedule: "*/10 * * * *"
+#   concurrencyPolicy: Forbid
+#   failedJobsHistoryLimit: 0
+#   successfulJobsHistoryLimit: 1
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           containers:
+#             - name: preview-gen
+#               image: curlimages/curl:latest
+#               imagePullPolicy: IfNotPresent
+#               command: ["curl"]
+#               args:
+#                 - --fail
+#                 - -L
+#                 - https://cloud.pleasenoddos.com/cron.php
+#           restartPolicy: Never

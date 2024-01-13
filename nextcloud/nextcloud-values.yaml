@@ -68,19 +68,25 @@ nextcloud:
   # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
   # to NextCloud pods in Kubernetes. This can then be configured in External Storage
   extraVolumes:
-    - name: entrypoint
+    - name: extra-mounts
       configMap:
         name: nextcloud-extra-mounts
         defaultMode: 0777
   extraVolumeMounts:
-    - name: entrypoint
+    - name: extra-mounts
       mountPath: /entrypoint.sh
       subPath: entrypoint.sh
+      readOnly: true
+    - name: extra-mounts
+      mountPath: /var/www/html/config/previews.config.php
+      subPath: previews.config.php
       readOnly: true
 
   ##
   ## Extra environment variables
   extraEnv:
+    - name: REDIS_HOST
+      value: redis-master.redis
     - name: PHP_MEMORY_LIMIT
       value: 4G
     - name: PHP_UPLOAD_LIMIT
@@ -132,7 +138,8 @@ resources:
     cpu: 2
     memory: 2Gi
 
-nodeSelector: {}
+nodeSelector:
+  performance: high
 
 tolerations: []
 

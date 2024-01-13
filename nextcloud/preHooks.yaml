@@ -17,6 +17,29 @@ kind: ConfigMap
 metadata:
   name: nextcloud-extra-mounts
 data:
+  previews.config.php: |
+    <?php
+      $CONFIG = array(
+        'enable_previews' => true,
+        'enabledPreviewProviders' => [
+          'OC\Preview\BMP',
+          'OC\Preview\GIF',
+          'OC\Preview\JPEG',
+          'OC\Preview\Krita',
+          'OC\Preview\MarkDown',
+          'OC\Preview\MP3',
+          'OC\Preview\OpenDocument',
+          'OC\Preview\PNG',
+          'OC\Preview\TXT',
+          'OC\Preview\XBitmap',
+          'OC\Preview\Movie',
+          'OC\Preview\MKV',
+          'OC\Preview\MP4',
+          'OC\Preview\AVI',
+          'OC\Preview\PDF'
+        ]
+      );
+
   # https://github.com/nextcloud/docker/blob/master/28/apache/entrypoint.sh
   entrypoint.sh: |
     #!/bin/sh
@@ -96,6 +119,16 @@ data:
         fi
         unset "$fileVar"
     }
+
+    # Dennis: Add my user to work with my NFS
+    echo "Adding user dennis"
+    useradd -u 1000 dennis
+
+    # Dennis: Install depedencies for previews
+    apt-get update && apt-get install -y ffmpeg imagemagick ghostscript
+
+    # Dennis: update rights for ImageMagick
+    sed -i 's/rights="none" pattern="PDF"/rights="read|write" pattern="PDF"/g' /etc/ImageMagick-6/policy.xml
 
     if expr "$1" : "apache" 1>/dev/null; then
         if [ -n "${APACHE_DISABLE_REWRITE_IP+x}" ]; then
@@ -187,8 +220,8 @@ data:
                     run_as 'php /var/www/html/occ app:list' | sed -n "/Enabled:/,/Disabled:/p" > /tmp/list_before
                 fi
                 if [ "$(id -u)" = 0 ]; then
-                    # Dennis: Modified by me
-                    rsync_options="-rlDog --chown 1000:1000"
+                    # Dennis: owned by my user
+                    rsync_options="-rlDog --chown dennis:dennis"
                 else
                     rsync_options="-rlD"
                 fi
