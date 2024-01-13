@@ -65,6 +65,19 @@ nextcloud:
       port: 587
       authtype: LOGIN
 
+  # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
+  # to NextCloud pods in Kubernetes. This can then be configured in External Storage
+  extraVolumes:
+    - name: entrypoint
+      configMap:
+        name: nextcloud-extra-mounts
+        defaultMode: 0777
+  extraVolumeMounts:
+    - name: entrypoint
+      mountPath: /entrypoint.sh
+      subPath: entrypoint.sh
+      readOnly: true
+
   ##
   ## Extra environment variables
   extraEnv:
