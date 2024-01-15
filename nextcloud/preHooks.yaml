@@ -12,6 +12,37 @@ spec:
     path: /mnt/ZFS-3.6TB/tank/nextcloud-data
     server: truenas-1.tgp
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-exec-runner
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - list
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - pods/exec
+    verbs:
+      - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-exec-runner
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pod-exec-runner
+subjects:
+  - kind: ServiceAccount
+    name: default
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:

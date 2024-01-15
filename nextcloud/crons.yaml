@@ -21,27 +21,32 @@ spec:
                 - -L
                 - https://cloud.pleasenoddos.com/cron.php
           restartPolicy: Never
-# ---
-# apiVersion: batch/v1
-# kind: CronJob
-# metadata:
-#   name: nextcloud-preview-gen
-# spec:
-#   schedule: "*/10 * * * *"
-#   concurrencyPolicy: Forbid
-#   failedJobsHistoryLimit: 0
-#   successfulJobsHistoryLimit: 1
-#   jobTemplate:
-#     spec:
-#       template:
-#         spec:
-#           containers:
-#             - name: preview-gen
-#               image: curlimages/curl:latest
-#               imagePullPolicy: IfNotPresent
-#               command: ["curl"]
-#               args:
-#                 - --fail
-#                 - -L
-#                 - https://cloud.pleasenoddos.com/cron.php
-#           restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nextcloud-preview-gen
+spec:
+  schedule: "*/10 * * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 0
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          automountServiceAccountToken: true
+          serviceAccount: default
+          serviceAccountName: default
+          containers:
+            - name: preview-gen
+              image: bitnami/kubectl:latest
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-c"]
+              args:
+                - |-
+                  pod=$(kubectl get pods -l app.kubernetes.io/name=nextcloud -o jsonpath='{.items[0].metadata.name}' -n nextcloud)
+
+                  echo "Found pod: ${pod}"
+                  kubectl exec ${pod} -- su -p dennis -s /bin/sh -c './occ -V && ./occ preview:pre-generate'
+          restartPolicy: Never
