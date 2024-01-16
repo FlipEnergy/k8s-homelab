@@ -1,0 +1,45 @@
+# Override values for stirling-pdf
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: frooodle/s-pdf
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: 0.20.0
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+
+service:
+  main:
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    hosts:
+      - host: pdf.pleasenoddos.com
+        paths:
+          - path: /
+            service:
+              name: main
+              port: http
+    tls:
+      - secretName: stirling-pdf-tls
+        hosts:
+          - pdf.pleasenoddos.com
