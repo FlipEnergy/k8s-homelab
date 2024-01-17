@@ -173,8 +173,9 @@ data:
         if [ "$uid" = '0' ]; then
             case "$1" in
                 apache2*)
-                    user="${APACHE_RUN_USER:-www-data}"
-                    group="${APACHE_RUN_GROUP:-www-data}"
+                    # Dennis: Update to my user since I own the configs for occ to work
+                    user="${APACHE_RUN_USER:-dennis}"
+                    group="${APACHE_RUN_GROUP:-dennis}"
 
                     # strip off any '#' symbol ('#1000' is valid syntax for Apache)
                     user="${user#'#'}"
