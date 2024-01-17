@@ -147,16 +147,6 @@ apps:
     version: 17.2.1
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
-  cryptofolio:
-    namespace: cryptofolio
-    group: uses-nfs
-    enabled: true
-    chart: ./cryptofolio/cryptofolio
-    version: 1.4.2
-    valuesFile: cryptofolio/cryptofolio-values.yaml
-    hooks:
-      preInstall: &crypto-pv cryptofolio/persistenceVolume.yaml
-      preUpgrade: *crypto-pv
   flatnotes:
     wait: true
     namespace: flatnotes
