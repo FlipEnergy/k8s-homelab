@@ -72,6 +72,7 @@ data:
       );
 
   # https://github.com/nextcloud/docker/blob/master/28/apache/entrypoint.sh
+  # last updated 2024-02-06, https://github.com/nextcloud/docker/commit/e0ed07cfbfe58a272ad64b94bdfc4e9eb2305f4e
   entrypoint.sh: |
     #!/bin/sh
     set -eu
@@ -362,5 +363,11 @@ data:
 
         run_path before-starting
     fi
+
+    echo "⚠️⚠️⚠️"
+    echo "This image is maintained by community volunteers and designed for expert use."
+    echo "For quick and easy deployment that supports the full set of Nextcloud Hub features, use the Nextcloud All-in-One docker container maintained by Nextcloud GmbH."
+    echo "See https://github.com/nextcloud/all-in-one#nextcloud-all-in-one"
+    echo "⚠️⚠️⚠️ "
 
     exec "$@"
