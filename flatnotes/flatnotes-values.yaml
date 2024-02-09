@@ -12,6 +12,7 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
 
+        # Command override to avoid chmods
         # command found here: https://github.com/Dullage/flatnotes/blob/master/entrypoint.sh#L32
         command: ["python"]
         args:
@@ -19,7 +20,7 @@ controllers:
           - uvicorn
           - main:app
           - --app-dir
-          - flatnotes
+          - server
           - --host
           - "0.0.0.0"
           - --port
