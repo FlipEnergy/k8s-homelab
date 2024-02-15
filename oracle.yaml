@@ -76,5 +76,5 @@ apps:
     namespace: stirling-pdf
     enabled: true
     chart: bjw-s/app-template
-    version: 2.5.0
+    version: 2.6.0
     valuesFile: stirling-pdf/stirling-pdf-values.yaml
