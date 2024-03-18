@@ -4,9 +4,9 @@ dependencies:
   version: 4.5.2
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
-  version: 16.5.0
+  version: 17.0.0
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
   version: 14.0.1
-digest: sha256:912698d356c18b67311500ce0a12b62c917eda13cbee2cae2b775683789c50ed
-generated: "2024-03-05T20:22:16.11329935Z"
+digest: sha256:45d74530b204e3047fc8e9286bc678cc6830e03dcd2e26759141416ef5bcdcee
+generated: "2024-03-18T16:41:41.6542646Z"
