@@ -27,6 +27,17 @@ controllers:
           # requests:
           #   cpu: 15m
           #   memory: 100Mi
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
+
 
 defaultPodOptions:
   nodeSelector:
@@ -36,6 +47,7 @@ defaultPodOptions:
 # @default -- See values.yaml
 service:
   main:
+    controller: main
     ports:
       http:
         port: 9999
@@ -52,7 +64,7 @@ ingress:
         paths:
           - path: /
             service:
-              name: main
+              identifier: main
               port: http
     tls:
       - secretName: stash-tls
@@ -62,7 +74,6 @@ ingress:
 persistence:
   data:
     enabled: true
-    mountPath: /data
     accessMode: ReadWriteOnce
     # Persistent Volume Storage Clas
     storageClass: stash-data

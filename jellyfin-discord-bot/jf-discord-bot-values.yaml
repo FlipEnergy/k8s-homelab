@@ -18,6 +18,17 @@ controllers:
           # requests:
           #   cpu: 15m
           #   memory: 145Mi
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
+
 
 defaultPodOptions:
   nodeSelector:
@@ -26,3 +37,4 @@ defaultPodOptions:
 service:
   main:
     enabled: false
+    controller: main

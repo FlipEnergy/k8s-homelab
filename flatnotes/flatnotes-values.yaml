@@ -42,6 +42,7 @@ defaultPodOptions:
 
 service:
   main:
+    controller: main
     ports:
       http:
         port: 8080
@@ -58,7 +59,7 @@ ingress:
         paths:
           - path: /
             service:
-              name: main
+              identifier: main
               port: http
     tls:
       - secretName: flatnotes-tls
@@ -68,7 +69,6 @@ ingress:
 persistence:
   data:
     enabled: true
-    mountPath: /data
     accessMode: ReadWriteOnce
     # Persistent Volume Storage Clas
     storageClass: flatnotes-data
