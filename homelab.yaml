@@ -61,7 +61,7 @@ apps:
     group: foundation
     enabled: true
     chart: cert-manager/cert-manager
-    version: v1.14.4
+    version: v1.14.5
     priority: -199
     valuesFiles:
       - cert-manager/cert-manager-values.yaml
