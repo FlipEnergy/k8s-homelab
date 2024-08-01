@@ -231,10 +231,12 @@ apps:
     enabled: true
     chart: ./wireguard/chart
     version: 0.4.7
-    valuesFile: wireguard/wireguard-values.yaml
+    valuesFiles:
+      - wireguard/wireguard-values.yaml
+      - wireguard/homelab/wireguard-values.yaml
     secretsFile: wireguard/wireguard-secrets.yaml
     hooks:
-      preInstall: &wireguard-pv wireguard/persistenceVolume.yaml
+      preInstall: &wireguard-pv wireguard/homelab/persistenceVolume.yaml
       preUpgrade: *wireguard-pv
   ##########
   # Backup #

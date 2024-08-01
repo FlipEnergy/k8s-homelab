@@ -3,30 +3,9 @@
 # Note: on your phone, to allow chromecast to work and allow access to your local network,
 #   in the peer section, add your subnet to the front and check Exclude private IPs.
 
-config:
-  externalHost: wg.pleasenoddos.com
-  vpn:
-    cidr: "10.44.0.0/24"
-  dns:
-    enabled: true
-    upstream:
-      - 10.69.0.1
-
 wireguard:
   service:
     type: LoadBalancer
-
-ingress:
-  enabled: true
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-homelab"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-  hosts:
-    - wireguard.computersbarely.work
-  tls:
-    - secretName: wireguard-tls
-      hosts:
-        - wireguard.computersbarely.work
 
 strategy:
   type: RollingUpdate
@@ -37,10 +16,3 @@ resources: {}
   # requests:
   #   cpu: 15m
   #   memory: 100Mi
-
-nodeSelector:
-  performance: medium
-
-persistence:
-  enabled: true
-  storageClass: wireguard-data

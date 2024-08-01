@@ -1,0 +1,16 @@
+# wg-access-server config
+
+config:
+  externalHost: wgc.pleasenoddos.com
+  vpn:
+    cidr: "10.45.0.0/24"
+  dns:
+    enabled: true
+    upstream:
+      - 1.1.1.1
+
+ingress:
+  enabled: false
+
+persistence:
+  enabled: true

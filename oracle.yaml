@@ -11,6 +11,7 @@ namespaces:
   influxdb2:
   ingress-nginx:
   stirling-pdf:
+  wireguard:
 helmRepos:
   bjw-s: https://bjw-s.github.io/helm-charts
   cert-manager: https://charts.jetstack.io
@@ -78,3 +79,13 @@ apps:
     chart: bjw-s/app-template
     version: 3.2.1
     valuesFile: stirling-pdf/stirling-pdf-values.yaml
+  wireguard:
+    wait: true
+    namespace: wireguard
+    enabled: true
+    chart: ./wireguard/chart
+    version: 0.4.7
+    valuesFiles:
+      - wireguard/wireguard-values.yaml
+      - wireguard/oracle/wireguard-values.yaml
+    secretsFile: wireguard/wireguard-secrets.yaml
