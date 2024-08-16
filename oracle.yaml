@@ -45,7 +45,7 @@ apps:
     group: foundation
     enabled: true
     chart: cert-manager/cert-manager
-    version: v1.15.2
+    version: v1.15.3
     priority: -199
     valuesFile: cert-manager/cert-manager-values.yaml
     hooks:
