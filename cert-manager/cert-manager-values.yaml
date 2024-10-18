@@ -2,7 +2,7 @@
 
 installCRDs: true
 
-cluster-resource-namespace: cert-manager
+clusterResourceNamespace: cert-manager
 
 # Comma separated string with host and port of the recursive nameservers cert-manager should query
 dns01RecursiveNameservers: 1.1.1.1:53
