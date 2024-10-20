@@ -19,14 +19,6 @@ dependencies:
   - name: common
     repository: https://library-charts.k8s-at-home.com
     version: 4.5.2
-  - name: mariadb
-    version: 19.1.0
-    repository: https://charts.bitnami.com/bitnami
-    condition: mariadb.enabled
-  - name: postgresql
-    version: 15.3.2
-    repository: https://charts.bitnami.com/bitnami
-    condition: postgresql.enabled
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
