@@ -628,7 +628,7 @@ concourse:
 
     ## Minimum level of logs to see. Possible options: debug, info, error.
     ##
-    logLevel: info
+    logLevel: error
 
     ## Maximum number of containers which can be swept in parallel.
     ##
@@ -741,7 +741,7 @@ concourse:
     baggageclaim:
       ## Minimum level of logs to see. Possible values: debug, info, error
       ##
-      logLevel: info
+      logLevel: error
 
       ## IP address on which to listen for API traffic.
       ##
@@ -895,7 +895,7 @@ web:
     - name: CONCOURSE_ENABLE_PIPELINE_INSTANCES
       value: "true"
     - name: CONCOURSE_AUTH_DURATION
-      value: "720h"
+      value: "2200h"
 
   ## Configure the security context for the web containers.
   ## Example:
