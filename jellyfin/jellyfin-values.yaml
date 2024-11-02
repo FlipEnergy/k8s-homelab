@@ -6,6 +6,10 @@ image:
   # -- image tag
   tag: 10.10.0
 
+env:
+  JELLYFIN_playlists__allowDuplicates: "False"
+  JELLYFIN_PublishedServerUrl: "all=https://jelly.pleasenoddos.com"
+
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
   # @default -- See values.yaml
