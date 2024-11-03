@@ -164,7 +164,7 @@ apps:
     wait: true
     namespace: jellyfin
     group: uses-nfs
-    enabled: true
+    enabled: false
     chart: ./jellyfin/jellyfin
     version: 9.5.3
     valuesFile: jellyfin/jellyfin-values.yaml
@@ -173,7 +173,7 @@ apps:
       preUpgrade: *jellyfin-pv
   jf-discord-bot:
     namespace: jellyfin
-    enabled: true
+    enabled: false
     chart: bjw-s/app-template
     version: 3.5.1
     valuesFile: jellyfin-discord-bot/jf-discord-bot-values.yaml
