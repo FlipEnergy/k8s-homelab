@@ -1,0 +1,79 @@
+#
+# This chart inherits from a common library chart. You can check the default values/options here:
+# https://github.com/bjw-s/helm-charts/blob/main/charts/library/common/values.yaml
+#
+
+image:
+  # -- image repository
+  repository: deluan/navidrome
+  # -- image tag
+  tag: 0.53.3
+
+# -- environment variables. See [navidrome docs](https://www.navidrome.org/docs/usage/configuration-options/#environment-variables) for more details.
+# @default -- See below
+env:
+  # -- Log level. Useful for troubleshooting
+  ND_LOGLEVEL: error
+  # -- How long Navidrome will wait before closing web ui idle sessions
+  ND_SESSIONTIMEOUT: 168h
+  # -- Enables transcoding configuration in the UI
+  ND_ENABLETRANSCODINGCONFIG: "false"
+  # -- Folder where your music library is stored
+  ND_MUSICFOLDER: /music
+  # -- Enable extra endpoint with Prometheus metrics
+  ND_PROMETHEUS_ENABLED: "false"
+  # -- Enable sharing
+  ND_ENABLESHARING: "false"
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    hosts:
+      - host: navidrome.pleasenoddos.com
+        paths:
+          - path: /
+    tls:
+      - secretName: navidrome-tls
+        hosts:
+          - navidrome.pleasenoddos.com
+
+persistence:
+  config:
+    enabled: true
+    mountPath: /data
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Class
+    storageClass: navidrome-config
+    size: 1Gi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
+  music:
+    enabled: true
+    mountPath: /music
+    accessMode: ReadOnlyMany
+    # Persistent Volume Storage Class
+    storageClass: navidrome-music
+    size: 100Gi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
+
+securityContext:
+  runAsUser: 1000
+  runAsNonRoot: true
+
+resources:
+  limits:
+    memory: 700Mi
+  requests:
+    cpu: 15m
+    memory: 500Mi
+
+nodeSelector: {}

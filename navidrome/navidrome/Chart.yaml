@@ -1,0 +1,18 @@
+---
+apiVersion: v2
+appVersion: latest
+description: Navidrome is an open source web-based music collection server and streamer
+name: navidrome
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - navidrome
+  - music
+  - streaming
+sources:
+  - https://github.com/deluan/navidrome
+  - https://hub.docker.com/r/deluan/navidrome
+dependencies:
+  - name: common
+    repository: https://library-charts.k8s-at-home.com
+    version: 4.5.2
