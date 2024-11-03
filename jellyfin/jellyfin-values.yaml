@@ -4,7 +4,7 @@ image:
   # -- image repository
   repository: jellyfin/jellyfin
   # -- image tag
-  tag: 10.10.0
+  tag: 10.10.1
 
 env:
   JELLYFIN_playlists__allowDuplicates: "False"
