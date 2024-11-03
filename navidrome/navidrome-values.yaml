@@ -26,6 +26,7 @@ env:
   ND_ENABLESHARING: "false"
   ND_ENABLESTARRATING: "false"
   ND_DEFAULTTHEME: "Nuclear"
+  ND_BASEURL: "https://navidrome.pleasenoddos.com"
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
