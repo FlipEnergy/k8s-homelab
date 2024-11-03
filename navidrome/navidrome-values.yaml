@@ -24,6 +24,8 @@ env:
   ND_PROMETHEUS_ENABLED: "false"
   # -- Enable sharing
   ND_ENABLESHARING: "false"
+  ND_ENABLESTARRATING: "false"
+  ND_DEFAULTTHEME: "Nuclear"
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
