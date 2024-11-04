@@ -13,7 +13,6 @@ namespaces:
   descheduler:
   flatnotes:
   ingress-nginx:
-  jellyfin:
   k8s-dashboard:
   kube-ops-view:
   navidrome:
@@ -160,24 +159,6 @@ apps:
     hooks:
       preInstall: &flatnotes-pv flatnotes/persistenceVolume.yaml
       preUpgrade: *flatnotes-pv
-  jellyfin:
-    wait: true
-    namespace: jellyfin
-    group: uses-nfs
-    enabled: false
-    chart: ./jellyfin/jellyfin
-    version: 9.5.3
-    valuesFile: jellyfin/jellyfin-values.yaml
-    hooks:
-      preInstall: &jellyfin-pv jellyfin/persistenceVolumes.yaml
-      preUpgrade: *jellyfin-pv
-  jf-discord-bot:
-    namespace: jellyfin
-    enabled: false
-    chart: bjw-s/app-template
-    version: 3.5.1
-    valuesFile: jellyfin-discord-bot/jf-discord-bot-values.yaml
-    secretsFile: jellyfin-discord-bot/secret.jf-discord-bot-secrets.yaml
   navidrome:
     wait: true
     namespace: navidrome
