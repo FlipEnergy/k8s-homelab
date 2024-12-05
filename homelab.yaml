@@ -9,7 +9,6 @@ namespaces:
   cert-manager:
   cloudflareddns:
   concourse:
-  cryptofolio:
   descheduler:
   flatnotes:
   ingress-nginx:
