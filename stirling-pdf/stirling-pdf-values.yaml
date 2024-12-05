@@ -8,7 +8,7 @@ controllers:
           repository: frooodle/s-pdf
           # -- image tag
           # @default -- chart.appVersion
-          tag: 0.35.1
+          tag: 0.36.0
           # -- image pull policy
           pullPolicy: IfNotPresent
 
