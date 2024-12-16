@@ -86,7 +86,7 @@ apps:
     group: foundation
     enabled: true
     chart: ./kube-ops-view/kube-ops-view
-    version: 1.2.2
+    version: 1.2.4
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
   k8s-dashboard:
