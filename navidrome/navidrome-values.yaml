@@ -7,7 +7,7 @@ image:
   # -- image repository
   repository: deluan/navidrome
   # -- image tag
-  tag: 0.53.3
+  tag: 0.54.0
 
 # -- environment variables. See [navidrome docs](https://www.navidrome.org/docs/usage/configuration-options/#environment-variables) for more details.
 # @default -- See below
