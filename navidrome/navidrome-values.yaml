@@ -9,6 +9,9 @@ image:
   # -- image tag
   tag: 0.54.4
 
+controller:
+  replicas: 2
+
 # -- environment variables. See [navidrome docs](https://www.navidrome.org/docs/usage/configuration-options/#environment-variables) for more details.
 # @default -- See below
 env:
@@ -27,6 +30,7 @@ env:
   ND_ENABLESTARRATING: "false"
   ND_DEFAULTTHEME: "Nuclear"
   ND_BASEURL: "https://navidrome.pleasenoddos.com"
+  ND_SCANSCHEDULE: "@every 1h"
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -79,4 +83,5 @@ resources:
     cpu: 15m
     memory: 500Mi
 
-nodeSelector: {}
+nodeSelector:
+  performance: medium
