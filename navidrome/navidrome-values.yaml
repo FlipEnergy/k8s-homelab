@@ -9,9 +9,6 @@ image:
   # -- image tag
   tag: 0.54.4
 
-controller:
-  replicas: 2
-
 # -- environment variables. See [navidrome docs](https://www.navidrome.org/docs/usage/configuration-options/#environment-variables) for more details.
 # @default -- See below
 env:
