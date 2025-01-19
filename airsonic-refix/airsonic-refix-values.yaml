@@ -1,0 +1,50 @@
+# Override values for flatnotes
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: tamland/airsonic-refix
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 15m
+            memory: 100Mi
+
+defaultPodOptions:
+  nodeSelector:
+    performance: medium
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    hosts:
+      - host: music.pleasenoddos.com
+        paths:
+          - path: /
+            service:
+              identifier: main
+              port: http
+    tls:
+      - secretName: airsonic-refix-tls
+        hosts:
+          - music.pleasenoddos.com
