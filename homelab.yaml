@@ -172,7 +172,7 @@ apps:
     wait: true
     namespace: navidrome
     group: uses-nfs
-    enabled: true
+    enabled: false
     chart: ./navidrome/navidrome
     version: 1.0.0
     valuesFile: navidrome/navidrome-values.yaml
