@@ -11,6 +11,7 @@ namespaces:
   concourse:
   descheduler:
   flatnotes:
+  gonic:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
@@ -158,6 +159,15 @@ apps:
     hooks:
       preInstall: &flatnotes-pv flatnotes/persistenceVolume.yaml
       preUpgrade: *flatnotes-pv
+  gonic:
+    wait: true
+    namespace: gonic
+    enabled: true
+    chart: ./gonic/gonic
+    version: 1.0.0
+    valuesFile: gonic/gonic-values.yaml
+    hooks:
+      preInstall: gonic/persistenceVolumes.yaml
   navidrome:
     wait: true
     namespace: navidrome

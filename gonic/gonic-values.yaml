@@ -1,0 +1,72 @@
+image:
+  # -- image pull policy
+  pullPolicy: Always
+  # -- image tag
+  tag: v0.16.4
+
+podSecurityContext:
+  fsGroup: 1000
+  runAsUser: 1000
+
+# -- environment variables. See more environment variables in the [gonic documentation](https://github.com/sentriz/gonic#configuration-options)
+# @default -- See below
+env:
+  GONIC_LISTEN_ADDR: 0.0.0.0:4747
+  GONIC_SCAN_INTERVAL: 60
+  GONIC_MUSIC_PATH: /music
+  GONIC_PLAYLISTS_PATH: /data/playlists
+  GONIC_DB_PATH: /data/db
+  GONIC_CACHE_PATH: /data/cache
+
+service:
+  main:
+    ports:
+      http:
+        port: 4747
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+      - host: gonic.pleasenoddos.com
+        paths:
+          - path: /
+    tls:
+      - secretName: gonic-tls
+        hosts:
+          - gonic.pleasenoddos.com
+
+resources:
+  limits:
+    cpu: '1'
+    memory: 1Gi
+  requests:
+    cpu: 50m
+    memory: 250Mi
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  data:
+    enabled: true
+    mountPath: /data
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Class
+    storageClass: gonic-data
+    size: 500Mi
+    # Do not delete the pvc upon helm uninstall
+    skipuninstall: true
+  music:
+    enabled: true
+    mountPath: /music
+    accessMode: ReadOnlyMany
+    # Persistent Volume Storage Class
+    storageClass: gonic-music
+    size: 100Gi
+    # Do not delete the pvc upon helm uninstall
+    skipuninstall: true
