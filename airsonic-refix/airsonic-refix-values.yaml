@@ -19,10 +19,6 @@ controllers:
             cpu: 15m
             memory: 100Mi
 
-defaultPodOptions:
-  nodeSelector:
-    performance: medium
-
 service:
   main:
     controller: main

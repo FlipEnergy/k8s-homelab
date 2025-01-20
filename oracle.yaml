@@ -6,6 +6,7 @@ settings:
   kubeContext: oracle
   globalMaxHistory: 2
 namespaces:
+  airsonic-refix:
   cert-manager:
   haste:
   influxdb2:
@@ -66,6 +67,13 @@ apps:
   ################
   # Applications #
   ################
+  airsonic-refix:
+    wait: true
+    namespace: airsonic-refix
+    enabled: true
+    chart: bjw-s/app-template
+    version: 3.6.1
+    valuesFile: airsonic-refix/airsonic-refix-values.yaml
   haste:
     wait: true
     namespace: haste
