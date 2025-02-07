@@ -144,7 +144,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: concourse/concourse
-    version: 18.0.0
+    version: 18.0.1
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   flatnotes:
