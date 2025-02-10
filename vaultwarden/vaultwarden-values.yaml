@@ -8,7 +8,7 @@
 image:
   # -- image repository
   repository: vaultwarden/server
-  tag: 1.33.1
+  tag: 1.33.2
 
 controller:
   strategy: RollingUpdate
