@@ -15,7 +15,6 @@ namespaces:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
-  navidrome:
   nextcloud:
   postgresql:
   redis:
@@ -168,17 +167,6 @@ apps:
     valuesFile: gonic/gonic-values.yaml
     hooks:
       preInstall: gonic/persistenceVolumes.yaml
-  navidrome:
-    wait: true
-    namespace: navidrome
-    group: uses-nfs
-    enabled: false
-    chart: ./navidrome/navidrome
-    version: 1.0.0
-    valuesFile: navidrome/navidrome-values.yaml
-    hooks:
-      preInstall: &navidrome-pv navidrome/persistenceVolumes.yaml
-      preUpgrade: *navidrome-pv
   nextcloud:
     wait: false
     namespace: nextcloud
