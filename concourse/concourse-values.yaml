@@ -1,13 +1,49 @@
-## Override values for Concourse Helm Chart.
+## Default values for Concourse Helm Chart.
 ## This is a YAML-formatted file.
 ## Declare variables to be passed into your templates.
+
+## Provide a name in place of `concourse` for `app:` labels
+##
+nameOverride:
+
+## Provide a name to substitute for the full names of resources
+## ps.: You should also change the postgresql.fullnameOverride if you're using
+## that chart dependency
+##
+fullnameOverride:
+
+## Concourse image to use in both Web and Worker containers.
+##
+image: concourse/concourse
 
 ## Concourse image tag.
 ## ps.: release candidates are published under `concourse/concourse-rc` instead
 ##      of `concourse/concourse`.
 ## Ref: https://hub.docker.com/r/concourse/concourse/tags/
 ##
-# imageTag:
+# imageTag: "7.12.1"
+
+## Specific image digest to use in place of a tag.
+## Ref: https://kubernetes.io/docs/concepts/configuration/overview/#container-images
+##
+imageDigest:
+
+## Specify a imagePullPolicy regarding the fetching of container images.
+## Ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+imagePullPolicy: IfNotPresent
+
+## Array of imagePullSecrets to allow pulling the Concourse image from private registries.
+## ps.: secrets must be manually created in the namespace.
+## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+##
+## Example:
+##
+##   imagePullSecrets:
+##    - myRegistryKeySecretName
+##
+imagePullSecrets: []
+
 
 ## Configuration values for the Concourse application (worker and web components).
 ## The values specified here are almost direct references to the flags under the
@@ -38,6 +74,30 @@ concourse:
     ##
     componentRunnerInterval:
 
+    ## Default timeout of a get step.
+    ##
+    ## Example: 10m
+    ##
+    defaultGetTimeout:
+
+    ## Default timeout of a put step.
+    ##
+    ## Example: 30m
+    ##
+    defaultPutTimeout:
+
+    ## Default timeout of a task step.
+    ##
+    ## Example: 8h
+    ##
+    defaultTaskTimeout:
+
+    ## Work will be distributed to other ATCs when this number of go routines is reached.
+    ##
+    ## Example: 50000
+    ##
+    numGoroutineThreshold:
+
     ## The maximum number of open connections for the API connection pool.
     ##
     apiMaxConns:
@@ -51,17 +111,31 @@ concourse:
     ##
     enableGlobalResources: true
 
-    ## Enable automatic rerunning of builds when worker disappears
+    ## Enable automatic rerunning of builds when worker disappears.
     ##
-    enableBuildRerunWhenWorkerDisappears: false
+    enableBuildRerunWhenWorkerDisappears: true
 
     ## Enable the experimental across step to be used in jobs. The API is subject to change.
     ##
     enableAcrossStep: false
 
-    ## Enable skip checking not-in-use resources.
+    ## Enable the creation of instanced pipelines.
     ##
-    enableSkipCheckingNotInUseResources: false
+    enablePipelineInstances: false
+
+    ## Enable P2P volume streaming between all wokrers.
+    ## By default all volume streming goes through the web nodes.
+    ## NOTE: All workers must be on the same LAN network.
+    ##
+    enablep2pVolumeStreaming: false
+
+    ## Enable caching streamed resource volumes on the destination worker.
+    ##
+    enableCacheStreamedVolumes: false
+
+    ## Enable web UI and API endpoint for resource causality.
+    ##
+    enableResourceCausality: false
 
     ## Maximum number of jobs to be scheduling at the same time.
     ##
@@ -71,10 +145,6 @@ concourse:
     ## to be scheduled.
     ##
     lidarScannerInterval:
-
-    ## Interval on which the resource checker runs any scheduled checks.
-    ##
-    lidarCheckerInterval:
 
     ## Limit the number of concurrent requests to an API endpoint.
     ##
@@ -221,13 +291,17 @@ concourse:
     ##
     globalResourceCheckTimeout: 1h
 
+    ## Time limit on P2P volume streaming
+    ##
+    p2pVolumeStreamingTimeout:
+
     ## Maximum number of checks that can be started per second. If not
     ## specified, # this will be calculated as (# of resources)/(resource
     ## checking interval). # -1 value will remove this maximum limit of checks
     ## per second.
     maxChecksPerSecond: 0
 
-    ## Interval on which to check for new versions of resources.
+    ## Interval on which to check for new versions of resource types.
     ##
     resourceCheckingInterval: 1m
 
@@ -246,13 +320,51 @@ concourse:
     ##
     baseResourceTypeDefaults: ""
 
-    ## Compression to use when streaming artifacts (values: zstd, gzip)
+    ## Compression to use when streaming artifacts (values: zstd, gzip, raw)
     ##
     streamingArtifactsCompression:
 
+    ## Internal volume streaming size limitation in MB. In case of small limitation
+    ## needed, float can be used like 0.01.
+    streamingSizeLimitation:
+
     ## Method by which a worker is selected during container placement.
-    ## Possible values: volume-locality | random | fewest-build-containers| limit-active-tasks
+    ## Possible values: volume-locality | random | fewest-build-containers | limit-active-tasks | limit-active-containers | limit-active-volumes
     containerPlacementStrategy: volume-locality
+
+    ## Instead of specifying a single placement strategy, configure a chain of
+    ## them to be applied in order.
+    ##
+    ## If set, takes priority over containerPlacementStrategy.
+    ##
+    ## Possible values: volume-locality | fewest-build-containers | limit-active-tasks | limit-active-containers | limit-active-volumes
+    containerPlacementStrategies: []
+
+    ## A second method by which a worker is selected during container placement
+    ## that is only used for get and nested check steps.
+    ## Possible values: random | fewest-build-containers | limit-active-tasks | limit-active-containers | limit-active-volumes
+    noInputContainerPlacementStrategy:
+
+    ## Instead of specifying a single placement strategy, configure a chain of
+    ## them to be applied in order.
+    ##
+    ## If set, takes priority over noInputContainerPlacementStrategy.
+    ##
+    ## Possible values: fewest-build-containers | limit-active-tasks | limit-active-containers | limit-active-volumes
+    noInputContainerPlacementStrategies: []
+
+    ## A third method by which a worker is selected during container placement
+    ## that is only used for resource check steps.
+    ## Possible values: random | fewest-build-containers | limit-active-tasks | limit-active-containers | limit-active-volumes
+    checkContainerPlacementStrategy:
+
+    ## Instead of specifying a single placement strategy, configure a chain of
+    ## them to be applied in order.
+    ##
+    ## If set, takes priority over checkContainerPlacementStrategy.
+    ##
+    ## Possible values: fewest-build-containers | limit-active-tasks | limit-active-containers | limit-active-volumes
+    checkContainerPlacementStrategies: []
 
     ## Maximum allowed number of active build tasks per worker.
     ##
@@ -264,6 +376,28 @@ concourse:
     ## ref: https://concourse-ci.org/container-placement.html#limit-active-tasks-strategy
     ##
     limitActiveTasks:
+
+    ## Maximum allowed number of active containers per worker.
+    ##
+    ## Has effect only when containerPlacementStrategy is set to use
+    ## limit-active-containers placement strategy.
+    ##
+    ## ps.: 0 means no limit.
+    ##
+    ## ref: https://concourse-ci.org/container-placement.html#limit-active-containers-strategy
+    ##
+    limitActiveContainers:
+
+    ## Maximum allowed number of active volumes per worker.
+    ##
+    ## Has effect only when containerPlacementStrategy is set to use
+    ## limit-active-volumes placement strategy.
+    ##
+    ## ps.: 0 means no limit.
+    ##
+    ## ref: https://concourse-ci.org/container-placement.html#limit-active-volumes-strategy
+    ##
+    limitActiveVolumes:
 
     ## How long to wait for requests to Garden to complete. 0 means no timeout.
     ##
@@ -286,7 +420,6 @@ concourse:
     ## Log cluster name.
     ##
     logClusterName:
-
 
     ## Interval on which to run build tracking.
     ##
@@ -315,6 +448,17 @@ concourse:
     ## Default maximum memory per task, 0 means unlimited.
     ##
     defaultTaskMemoryLimit:
+
+    ## DB notification bus queue size, default is 10000. If UI often misses loading
+    ## running build logs, then consider to increase the queue size.
+    dbNotificationBusQueueSize: 10000
+
+    ## The number of days after which a pipeline will be automatically paused #
+    ## if none of its jobs have run in less than the given number of days. A #
+    ## value of zero disables this component. If not set the component is
+    ## disabled by default.
+    ##
+    pausePipelinesAfter:
 
     ## Network address of this web node, reachable by other web nodes. Used for forwarded worker addresses. (default: $POD_IP)
     ##
@@ -348,6 +492,12 @@ concourse:
       ##
       database: concourse
 
+      ## Whether to use the binary_parameter option from the lib/pq driver that
+      ## Concourse uses to connect to PostgreSQL
+      ##
+      binaryParameter: false
+
+
     kubernetes:
       ## Enable the use of Kubernetes Secrets as the credential provider for
       ## concourse pipelines.
@@ -379,9 +529,425 @@ concourse:
       ##
       configPath:
 
+    ## Configuration for using AWS SSM as a credential manager.
+    ## Ref: https://concourse-ci.org/creds.html#asm
+    ##
+    awsSecretsManager:
+      ## Enable the use of AWS Secrets Manager for credential management.
+      ##
+      enabled: false
+
+      ## AWS region to use when reading from Secrets Manager
+      ##
+      region:
+
+      ## Configure authentication using an access key and secret key. If disabled, IAM role auth is assumed.
+      ## Session Token can also be enabled, if required.
+      keyAuth:
+        enabled: true
+        useSessionToken: false
+
+      ## pipeline-specific template for Secrets Manager parameters, defaults to: /concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}}
+      ##
+      pipelineSecretTemplate: /concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}}
+
+      ## team-specific template for Secrets Manager parameters, defaults to: /concourse/{{.Team}}/{{.Secret}}
+      ##
+      teamSecretTemplate: /concourse/{{.Team}}/{{.Secret}}
+
+      ## top level template for Secrets Manager shared parameters, defaults to: /concourse/{{.Secret}}
+      ##
+      sharedSecretTemplate: /concourse/{{.Secret}}
+
+    ## Configuration for using AWS SSM as a credential manager.
+    ## Ref: https://concourse-ci.org/creds.html#ssm
+    ##
+    awsSsm:
+      ## Enable the use of AWS SSM.
+      ##
+      enabled: false
+
+      ## AWS region to use when reading from SSM
+      ##
+      region:
+
+      ## Configure authentication using an access key and secret key. If disabled, IAM role auth is assumed.
+      ## Session Token can also be enabled, if required.
+      keyAuth:
+        enabled: true
+        useSessionToken: false
+
+      ## pipeline-specific template for SSM parameters, defaults to: /concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}}
+      ##
+      pipelineSecretTemplate: /concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}}
+
+      ## team-specific template for SSM parameters, defaults to: /concourse/{{.Team}}/{{.Secret}}
+      ##
+      teamSecretTemplate: /concourse/{{.Team}}/{{.Secret}}
+
+      ## Path under which to lookup shared credentials.
+      ##
+      sharedPath:
+
+    ## Configuration for using Vault as a credential manager.
+    ## Ref: https://concourse-ci.org/creds.html#vault
+    ##
+    vault:
+      ## Enable the use of Vault as a credential manager.
+      ##
+      enabled: false
+
+      ## URL pointing to vault addr (i.e. http://vault:8200).
+      ##
+      url:
+
+      ## Disable Vault SRV lookup when vault url not including port.
+      ## When vault url includes port, SRV lookup is diabled and this value has no impart.
+      ##
+      disable_srv_lookup: false
+
+      ## Vault namespace to use for authentication and secret lookup.
+      ##
+      namespace:
+
+      ## Vault path under which to namespace credentials lookup.
+      ##
+      pathPrefix: /concourse
+
+      ## Path under which to lookup shared credentials.
+      ##
+      sharedPath:
+
+      ## Path templates to use for credential lookup.
+      ##
+      ## Example: ["/{{.Team}}/{{.Pipeline}}/{{.Secret}}", "/{{.Team}}/{{.Secret}}"]
+      lookupTemplates: []
+
+      ## if the Vault server is using a self-signed certificate, set this to true,
+      ## and provide a value for the cert in secrets (field `vault-ca-cert`).
+      ##
+      useCaCert: false
+
+      ## Vault authentication backend, leave this blank if using an initial periodic token.
+      ## Currently supported backends: token, approle, cert.
+      ##
+      authBackend: ""
+
+      ## Path to file containing a Vault authentication token. This is particularly useful in
+      ## combination with the Vault Agent sidecar.
+      ##
+      ## Example: /vault/secrets/token
+      ##
+      tokenPath: ""
+
+      ## if the Vault authentication backend requires params from secrets, set this to true,
+      ## and provide a value in secrets (field `vault-client-auth-param`).
+      ##
+      useAuthParam:
+
+      ## Path to a directory of PEMEncoded CA cert files to verify the vault server SSL cert.
+      ##
+      caPath:
+
+      ## If set, is used to set the SNI host when connecting via TLS.
+      ##
+      serverName:
+
+      ## Enable insecure SSL verification.
+      ##
+      insecureSkipVerify: false
+
+      ## Time after which to force a reLogin. If not set, the token will just be continuously renewed.
+      ##
+      authBackendMaxTtl:
+
+      ## The maximum time between retries when logging in or reAuthing a secret.
+      ##
+      retryMax: 5m
+
+      ## The initial time between retries when logging in or reAuthing a secret.
+      ##
+      retryInitial: 1s
+
+      ## The maximum time to wait to authenticate with Vault.
+      ##
+      loginTimeout:
+
+      ## The maximum time to wait for Vault queries to resolve.
+      ##
+      queryTimeout:
+
+    ## Configuration for using Credhub as a credential manager.
+    ## Ref: https://concourse-ci.org/credhub-credential-manager.html
+    ##
+    credhub:
+      ## Enable the use of Credhub as a credential manager.
+      ##
+      enabled: false
+
+      ## CredHub server address used to access secrets
+      ## Example: https://credhub.example.com
+      ##
+      url:
+
+      ## Path under which to namespace credential lookup. (default: /concourse)
+      ##
+      pathPrefix:
+
+      ## Enables using a CA Certificate
+      ##
+      useCaCert: false
+
+      ## Enables insecure SSL verification.
+      ##
+      insecureSkipVerify: false
+
+      ## Configures the way that the Concourse authenticates against CredHub
+      ## - secrets: makes use of `client-id` and `client-secret`
+      ## - mtls: leverages client certificates
+      ##
+      authenticationMode: "secrets"
+
+    ## Configuration for using Conjur as a credential manager.
+    ## Ref: https://concourse-ci.org/conjur-credential-manager.html
+    ##
+    conjur:
+      ## Enable the use of Conjur as a credential manager
+      enabled: false
+
+      # URL of the Conjur instance.
+      applianceUrl:
+
+      # Path used to to locate pipeline-level secret
+      pipelineSecretTemplate: concourse/{{.Team}}/{{.Pipeline}}/{{.Secret}}
+
+      # Path used to locate team-level secret
+      teamSecretTemplate: concourse/{{.Team}}/{{.Secret}}
+
+      # Path used to locate a vault or safe-level secret
+      secretTemplate: concourse/{{.Secret}}
+
+    tracing:
+      ## Service name to attach to traces as metadata.
+      #
+      ## Example: "web"
+      ##
+      serviceName:
+
+      ## Attributes to attach to traces as metadata.
+      #
+      ## Example:
+      ##   environment: ci
+      ##
+      attributes:
+
+      ## Jaeger's HTTP-based Thrift collector endpoint.
+      #
+      ## Example: "http://jaeger:14268/api/traces"
+      ##
+      jaegerEndpoint:
+
+      ## Tags to include to components
+      ##
+      ## Example: "foo:bar,caz:zaz"
+      ##
+      jaegerTags:
+
+      ## Name of the service being traced
+      ##
+      ## Example: "web"
+      ##
+      jaegerService:
+
+      ## GCP's Project ID
+      ##
+      ## Example: "my-projectid"
+      ##
+      stackdriverProjectId:
+
+      ## Honeycomb.io API Key
+      ##
+      honeycombApiKey:
+
+      ## Name of dataset
+      ##
+      ## Example: "web"
+      ##
+      honeycombDataset:
+
+      ## OTLP address to send traces to
+      ##
+      ## Example: "otel-collector:55680"
+      ##
+      otlpAddress:
+
+      ## Headers to attach to each tracing message
+      ##
+      ## Example:
+      ##   lightstep-access-token: mysupersecrettoken
+      ##
+      otlpHeaders:
+
+      ## Whether to use TLS for the OTLP connection
+      ##
+      otlpUseTls:
+
+    metrics:
+      ## Host string to attach to emitted metrics.
+      ##
+      hostName:
+
+      ## A key-value attribute to attach to emitted metrics.
+      ##
+      attribute:
+
+      ## Enable capturing of error log metrics.
+      ##
+      captureErrorMetrics: false
+
+      ## The size of the buffer used in emitting event metrics.
+      ##
+      bufferSize:
+
+    datadog:
+      enabled: false
+
+      ## Use IP of node the pod is scheduled on, overrides `agentHost`
+      ##
+      agentHostUseHostIP: false
+
+      ## Datadog agent host to expose dogstatsd metrics
+      ##
+      agentHost: 127.0.0.1
+
+      ## Datadog agent port to expose dogstatsd metrics
+      ##
+      agentPort: 8125
+
+      ## Datadog agent unix domain socket (uds) filepath to expose dogstatsd metrics
+      ## e.g. /tmp/datadog.socket
+      ##
+      agentUdsFilepath:
+
+      ## Prefix for all metrics to easily find them in Datadog
+      ##
+      prefix: "concourse.ci"
+
+    influxdb:
+      enabled: false
+
+      ## Number of points to batch together when emitting to InfluxDB
+      ##
+      batchSize:
+
+      ## The duration to wait before emitting a batch of points to InfluxDB,
+      ## disregarding # the batch size.
+      ##
+      batchDuration:
+
+      ## InfluxDB server address to emit points to.
+      ## Example: http://127.0.0.1:8086
+      ##
+      url:
+
+      ## InfluxDB database to write points to.
+      ##
+      database: concourse
+
+      ## InfluxDB server username.
+      ##
+      username:
+
+      ## Skip SSL verification when emitting to InfluxDB.
+      ##
+      insecureSkipVerify: false
+
     ## Emit metrics to logs instead of an actual metrics system.
     ##
     emitToLogs: false
+
+    newrelic:
+      enabled: false
+
+      ## New Relic Insights Insert API base Url
+      ## For configuring EU data centers refer to:
+      ## https://docs.newrelic.com/docs/using-new-relic/welcome-new-relic/getting-started/introduction-eu-region-data-center#endpoints
+      ## For default values refer to: https://github.com/concourse/concourse/blob/bc2ff0c9a606814a0a5d6338f44d5cd942b74456/atc/metric/emitter/newrelic.go#L43
+      ##
+      url:
+
+      ## New Relic Account ID
+      ##
+      accountId:
+
+      ## New Relic Insights API Key
+      ##
+      apiKey:
+
+      ## An optional prefix for emitted New Relic events
+      ##
+      servicePrefix:
+
+      ## Number of events to batch together before emitting
+      ##
+      batchSize:
+
+      ## Length of time to wait between emitting until all currently batched events are emitted
+      ## Example: 60s
+      ##
+      batchDuration:
+
+      ## Disables compression of the batch before sending it
+      ##
+      disableCompression:
+
+    prometheus:
+      enabled: false
+
+      ## IP to listen on to expose Prometheus metrics.
+      ##
+      bindIp: "0.0.0.0"
+
+      ## Port to listen on to expose Prometheus metrics.
+      ##
+      bindPort: 9391
+
+      ## If Prometheus operator is used, also create a servicemonitor object
+      serviceMonitor:
+        enabled: false
+        interval: "30s"
+        # Namespace the servicemonitor object should be in
+        namespace:
+
+        ## Additional Labels to be added to the servicemonitor.
+        ##
+        ##
+        ## Example:
+        ##   key1: "value1"
+        ##   key2: "value2"
+        ##
+        ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+        labels: {}
+
+        ## Relabel Metrics
+        ## https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+        ## Example that consolidates duplicate metrics when web is running in HA:
+        ## metricRelabelings:
+        ##   - regex: 'instance'
+        ##     action: labeldrop
+        ##   - regex: 'pod'
+        ##     action: labeldrop
+        metricRelabelings:
+
+    ## The value to set for X-Frame-Options. If omitted, the default value in
+    ## the Concourse binary is used.
+    ##
+    xFrameOptions:
+
+    ## The value to set for Content-Security-Policy header. If omitted, the default
+    ## value in the Concourse binary is used.
+    ##
+    contentSecurityPolicy:
 
     gc:
       ## Interval on which to perform garbage collection.
@@ -409,6 +975,38 @@ concourse:
       ##
       checkRecyclePeriod:
 
+      ## Period after which unused var_sources will get garbage collected
+      ##
+      varSourceRecyclePeriod:
+
+    syslog:
+      ## Enables the emission of build logs to external log ingesters through
+      ## using the syslog protocol.
+      ##
+      enabled: false
+
+      ## Client hostname with which the build logs will be sent to the syslog server.
+      ##
+      hostname: atc-syslog-drainer
+
+      ## Remote syslog server address with port (Example: 0.0.0.0:514).
+      ##
+      address:
+
+      ## Transport protocol for syslog messages (Currently supporting tcp, udp & tls).
+      ##
+      transport:
+
+      ## Interval over which checking is done for new build logs to send to syslog server
+      ## (duration measurement units are s/m/h; eg. 30s/30m/1h)
+      drainInterval: 30s
+
+      ## If the syslog server is using a self-signed certificate, set this to true,
+      ## and provide a value for the cert in secrets (`syslog-ca-cert`).
+      ##
+      useCaCert: false
+
+    opa:
       ## Open Policy Agent policy check endpoint.
       ##
       ## Example: https://opa.example.com:8181/v1/data/concourse/allow
@@ -420,6 +1018,26 @@ concourse:
       ## Example: 5s for 5 seconds
       ##
       timeout:
+
+      result:
+        ## Name of key in the Open Policy Agent result to check if the action is allowed.
+        ##
+        ## Example: result.allowed
+        ##
+        allowedKey:
+
+        ## Name of key in the Open Policy Agent result to check if it should hard block and fail, or soft block and emit warning on failure.
+        ##
+        ## Example: result.block
+        ##
+        shouldBlockKey:
+
+        ## Name of key in the Open Policy Agent result to extract the messages from.
+        ##
+        ## Example: result.reasons
+        ##
+        messagesKey:
+
 
     policyCheck:
       ## Array of HTTP methods to filter through policy checking.
@@ -460,6 +1078,17 @@ concourse:
       ## The value must be specified as Go duration values (e.g.: 30m or 24h).
       duration: 24h
 
+      ## The connector to use for password authentication for `fly login -u ... -p ...`.
+      ## Either "local" or "ldap". Defaults to "local".
+      passwordConnector:
+
+      # Define how to display user ID for each authentication connector.
+      # Format is <connector>:<fieldname>. Valid field names are user_id,
+      # name, username and email, where name maps to claims field username,
+      # and username maps to claims field preferred username.
+      #
+      userIDFieldPerConnector: ""
+
       mainTeam:
 
         ## Configuration file for specifying the main teams params.
@@ -481,6 +1110,445 @@ concourse:
         ## that the users were added (`secrets.localUsers`).
         ##
         localUser: "FlipEnergy"
+
+        ## Authentication (Main Team) (CloudFoundry)
+        ##
+        cf:
+          ## Comma-separated allow list of CloudFoundry users.
+          ##
+          user:
+
+          ## Comma-separated allow list of CloudFoundry orgs.
+          ##
+          org:
+
+          ## Comma-separated allow list of CloudFoundry spaces for users with any role.
+          ##
+          spaceWithAnyRole:
+
+          ## Comma-separated allow list of CloudFoundry spaces for users with the 'developer' role.
+          ##
+          spaceWithDeveloperRole:
+
+          ## Comma-separated allow list of CloudFoundry spaces for users with the 'auditor' role.
+          ##
+          spaceWithAuditorRole:
+
+          ## Comma-separated allow list of CloudFoundry spaces for users with the 'manager' role.
+          ##
+          spaceWithManagerRole:
+
+          ## (Deprecated) Comma-separated allow list of CloudFoundry spaces for users with the 'developer' role.
+          ##
+          space:
+
+          ## (Deprecated) Comma-separated allow list of CloudFoundry space guids.
+          ##
+          spaceGuid:
+
+        ## Authentication (Main Team) (Bitbucket Cloud)
+        ##
+        bitbucketCloud:
+
+          ## Comma-separated allow list of Bitbucket Cloud users.
+          ##
+          user:
+
+          ## Comma-separated allow list of Bitbucket Cloud teams.
+          ##
+          team:
+
+        ## Authentication (Main Team) (GitHub)
+        ##
+        github:
+          ## Comma-separated allow list of GitHub users.
+          ##
+          user:
+
+          ## Comma-separated allow list of GitHub orgs.
+          ##
+          org:
+
+          ## Comma-separated allow list of GitHub teams.
+          ##
+          team:
+
+        ## Authentication (Main Team) (GitLab)
+        ##
+        gitlab:
+
+          ## Comma-separated allow list of GitLab users.
+          ##
+          user:
+
+          ## Comma-separated allow list of GitLab groups.
+          ##
+          group:
+
+        ## Authentication (Main Team) (LDAP)
+        ##
+        ldap:
+          ## Comma-separated allow list of LDAP users.
+          ##
+          user:
+
+          ## Comma-separated allow list of LDAP groups.
+          ##
+          group:
+
+        ## Authentication (Main Team) (SAML)
+        ##
+        saml:
+          ## Comma-separated allow list of SAML users.
+          ##
+          user:
+
+          ## Comma-separated allow list of SAML groups.
+          ##
+          group:
+
+        ## Authentication (Main Team) (OAuth2)
+        ##
+        oauth:
+          ## Comma-separated allow list of OAuth2 users.
+          ##
+          user:
+
+          ## Comma-separated allow list of OAuth2 groups.
+          ##
+          group:
+
+        ## Authentication (Main Team) (OIDC)
+        ##
+        oidc:
+
+          ## Comma-separated allow list of OIDC users.
+          ##
+          user:
+
+          ## Comma-separated allow list of OIDC groups.
+          ##
+          group:
+
+        ## Authentication (Main Team) (Microsoft Login)
+        ##
+        microsoft:
+
+          ## Comma-separated allow list of Microsoft users.
+          ##
+          user:
+
+          ## Comma-separated allow list of Microsoft groups.
+          ##
+          group:
+
+      ## Authentication (CloudFoundry)
+      ##
+      cf:
+        enabled: false
+
+        ## (Required) The base API URL of your CF deployment. It will use this information to discover information
+        ## about the authentication provider.
+        ##
+        ## Example: https://api.run.pivotal.io
+        ##
+        apiUrl:
+
+        ## CA Certificate
+        ##
+        useCaCert: false
+
+        ## Skip SSL validation
+        ##
+        skipSslValidation: false
+
+      ## Authentication (GitHub)
+      ##
+      github:
+        enabled: false
+
+        ## Hostname of GitHub Enterprise deployment (No scheme, No trailing slash)
+        ##
+        host:
+
+        ## CA certificate of GitHub Enterprise deployment
+        ##
+        useCaCert: false
+
+      ## Authentication (BitbucketCloud)
+      ##
+      bitbucketCloud:
+        enabled: false
+
+      ## Authentication (GitLab)
+      gitlab:
+        enabled: false
+
+        ## Hostname of Gitlab Enterprise deployment (Include scheme, No trailing slash)
+        ##
+        host:
+
+      ## Authentication (LDAP)
+      ldap:
+        enabled: false
+
+        ## The auth provider name displayed to users on the login page
+        ##
+        displayName:
+
+        ## (Required) The host and optional port of the LDAP server. If port isn't supplied, it will be guessed
+        ## based on the TLS configuration. 389 or 636.
+        ##
+        host:
+
+        ## (Required) Bind DN for searching LDAP users and groups. Typically this is a readOnly user.
+        ##
+        bindDn:
+
+        ## (Required) Bind Password for the user specified by 'bindDn'
+        ##
+        bindPw:
+
+        ## Required if LDAP host does not use TLS.
+        ##
+        insecureNoSsl:
+
+        ## Skip certificate verification
+        ##
+        insecureSkipVerify:
+
+        ## Start on insecure port, then negotiate TLS
+        ##
+        startTls:
+
+        ## CA certificate
+        ##
+        useCaCert:
+
+        ## BaseDN to start the search from. For example 'cn=users,dc=example,dc=com'
+        ##
+        userSearchBaseDn:
+
+        ## Optional filter to apply when searching the directory. For example '(objectClass=person)'
+        ##
+        userSearchFilter:
+
+        ## Attribute to match against the inputted username. This will be translated and combined with the other
+        ## filter as '(<attr>=<username>)'.
+        ##
+        userSearchUsername:
+
+        ## The prompt when logging in through the UI when concourse.web.auth.passwordConnector is set to "ldap".
+        ## Defaults to 'Username'.
+        usernamePrompt:
+
+        ## Can either be: 'sub'  search the whole sub tree or 'one' - only search one level. Defaults to 'sub'.
+        ##
+        userSearchScope:
+
+        ## A mapping of attributes on the user entry to claims. Defaults to 'uid'.
+        ##
+        userSearchIdAttr:
+
+        ## A mapping of attributes on the user entry to claims. Defaults to 'mail'.
+        ##
+        userSearchEmailAttr:
+
+        ## A mapping of attributes on the user entry to claims.
+        ##
+        userSearchNameAttr:
+
+        ## BaseDN to start the search from. For example 'cn=groups,dc=example,dc=com'
+        ##
+        groupSearchBaseDn:
+
+        ## Optional filter to apply when searching the directory. For example '(objectClass=posixGroup)'
+        ##
+        groupSearchFilter:
+
+        ## Can either be: 'sub'  search the whole sub tree or 'one' - only search one level. Defaults to 'sub'.
+        ##
+        groupSearchScope:
+
+        ## Adds an additional requirement to the filter that an attribute in the group match the user's attribute value. The exact filter being added is: (<groupAttr>=<userAttr value>)
+        ##
+        groupSearchUserAttr:
+
+        ## Adds an additional requirement to the filter that an attribute in the group match the user's attribute value. The exact filter being added is: (<groupAttr>=<userAttr value>)
+        ##
+        groupSearchGroupAttr:
+
+        ## The attribute of the group that represents its name.
+        ##
+        groupSearchNameAttr:
+
+      ## Authentication (SAML)
+      saml:
+        enabled: false
+
+        ## The auth provider name displayed to users on the login page
+        ##
+        displayName:
+
+        ## (Required) SSO URL used for POST value.
+        ##
+        ssoURL:
+
+        ## Issuer value expected in the SAML response.
+        ##
+        ssoIssuer:
+
+        ## Manually specify Concourse's Issuer value.
+        ##
+        ## When provided Concourse will include this as the Issuer value during AuthnRequest.
+        ## If not provided, will default to the redirect URI when evaluating
+        ## AudienceRestriction elements in the response.
+        entityIssuer:
+
+        ## Name of the username attribute in the returned assertions to map to ID token claims (default: name)
+        ##
+        usernameAttr:
+
+        ## Name of the email attribute in the returned assertions to map to ID token claims (default: email)
+        ##
+        emailAttr:
+
+        ## Name of the groups attribute in the returned assertions to map to ID token claims (default: groups)
+        ##
+        groupsAttr:
+
+        ## Delimiter for splitting groups returned as a single string.
+        ##
+        ## By default, multiple groups are assumed to be represented as multiple
+        ## attributes with the same name.
+        ##
+        ## If "groupsDelim" is provided groups are assumed to be represented as a
+        ## single attribute and the delimiter is used to split the attribute's value
+        ## into multiple groups.
+        groupsDelim:
+
+        ## Requested format of the NameID.
+        ##
+        ## The NameID value is is mapped to the user ID of the user. This can be an
+        ## abbreviated form of the full URI with just the last component. For example,
+        ## if this value is set to "emailAddress" the format will resolve to:
+        ##
+        ##     urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+        ##
+        ## If no value is specified, this value defaults to:
+        ##
+        ##     urn:oasis:names:tc:SAML:2.0:nameid-format:persistent
+        ##
+        nameIDPolicyFormat:
+
+        ## Skip signature verification. If false, you must provide secrets.samlCaCert.
+        ##
+        insecureSkipVerify: false
+
+      ## Authentication (OAuth2)
+      ##
+      oauth:
+        enabled: false
+
+        ## The auth provider name displayed to users on the login page
+        ##
+        displayName:
+
+        ## (Required) Authorization URL
+        ##
+        authUrl:
+
+        ## (Required) Token URL
+        ##
+        tokenUrl:
+
+        ## UserInfo URL
+        ##
+        userinfoUrl:
+
+        ## Any additional scopes that need to be requested during authorization
+        ##
+        scope:
+
+        ## The groups key indicates which claim to use to map external groups to Concourse teams.
+        ##
+        groupsKey:
+
+        ## CA Certificate
+        ##
+        useCaCert:
+
+        ## Skip SSL validation
+        ##
+        skipSslValidation:
+
+        ## The user id key indicates which claim to use to map an external user id to a
+        ## Concourse user id.
+        ##
+        userIdKey: user_id
+
+        ## The user name key indicates which claim to use to map an external user name to a
+        ## Concourse user name.
+        ##
+        userNameKey: user_name
+
+      ## Authentication (OIDC)
+      oidc:
+        enabled: false
+
+        ## The auth provider name displayed to users on the login page
+        ##
+        displayName:
+
+        ## (Required) An OIDC issuer URL that will be used to discover provider configuration using the .wellKnown/openid-configuration
+        ##
+        issuer:
+
+        ## Any additional scopes that need to be requested during authorization
+        ##
+        scope:
+
+        ## The groups key indicates which claim to use to map external groups to Concourse teams
+        ##
+        groupsKey:
+
+        ## CA Certificate
+        ##
+        useCaCert:
+
+        ## Skip SSL validation
+        ##
+        skipSslValidation:
+
+        ## Ignore the email_verified claim from the upstream provider, treating all users as if email_verified were true
+        ##
+        skipEmailVerifiedValidation:
+
+        ## The user name key indicates which claim to use to map an external user name to a
+        ## Concourse user name.
+        ##
+        userNameKey: username
+
+        ## Disable OIDC groups claim fetching
+        ##
+        disableGroups:
+
+        ## Disable OIDC connector to query the UserInfo endpoint
+        ##
+        disableGetUserInfo:
+
+      ## Authentication (Microsoft)
+      microsoft:
+        enabled: false
+
+        # Microsoft Tenant limitation (common, consumers, organizations, tenant name or tenant uuid)
+        tenant:
+
+        # Allowed Active Directory Groups
+        groups:
+
+        # Only fetch security groups
+        onlySecurityGroups:
 
     tsa:
       ## Enable this flag in order to customize the `client_id` and
@@ -527,6 +1595,15 @@ concourse:
       ## How long to wait for requests to Garden to complete. 0 means no timeout.
       ##
       gardenRequestTimeout:
+
+    letsEncrypt:
+      ## Automatically configure TLS certificates via Let's Encrypt/ACME.
+      ##
+      enabled: false
+
+      ## URL of the ACME CA directory endpoint.
+      ##
+      acmeURL:
 
   worker:
     ## Signal to send to the worker container when shutting down.
@@ -705,8 +1782,14 @@ concourse:
       ## Path to a config file to use for the Containerd daemon.
       config:
 
-      ## Enable a proxy DNS server for Garden
+      ## Enable a proxy DNS server for Garden. Note: this implicitly turns on container access to host network.
       dnsProxyEnable:
+
+      ## MTU size for container network interfaces. Defaults to the MTU of the interface used for outbound access by the host
+      mtu:
+
+      ## IP address to use to reach container's mapped ports. Autodetected if not specified.
+      externalIP:
 
       ## List of DNS server IP addresses to use instead of automatically determined servers.
       ## Example:
@@ -722,16 +1805,43 @@ concourse:
       ##   - 2.2.2.2
       restrictedNetworks: []
 
+      ## Allows containers to reach host network.
+      allowHostAccess:
+
       ## Maximum container capacity. 0 means no limit. Defaults to 250.
       maxContainers:
 
-      ## Network range to use for dynamically allocated container subnets, defaults to "10.80.0.0/16"
-      ##
+      ## Network range to use for dynamically allocated container subnets
+      ## defaults to "10.80.0.0/16"
       networkPool:
+
+      ## Enable and configure IPv6 for containers on the worker
+      ipv6:
+
+        ## Enables IPv6 networking in the Containerd CNI
+        enabled: false
+
+        ## Network range to use for dynamically allocated container
+        ## subnets, defaults to "fd9c:31a6:c759::/64"
+        pool:
+
+        ## Disables masquerading of container traffic with the workers address
+        disableMasquerade:
 
       ## Time to wait for requests to Containerd to complete. 0 means no timeout.
       requestTimeout:
 
+      ## Path to a dumb init executable, defaults to /usr/local/concourse/bin/init
+      initBin:
+
+      ## Path to the oci hooks dir, defaults to none
+      ociHooksDir:
+
+      ## Path to a seccomp filter override, defaults to a restrictive default set
+      seccompProfile:
+
+      ## Path to CNI network plugins, defaults to /usr/local/concourse/bin
+      cniPluginsDir:
 
     ## API endpoint of an externally managed Garden server to use instead of
     ## running the embedded Garden server.
@@ -770,7 +1880,7 @@ concourse:
       ## Driver to use for managing volumes.
       ## Possible values: detect, naive, btrfs, and overlay.
       ##
-      driver: btrfs
+      driver: detect
 
       ## Path to btrfs binary
       ##
@@ -788,6 +1898,81 @@ concourse:
       ##
       reapInterval: 10s
 
+      ## 4 for IPv4 and 6 for IPv6
+      ##
+      p2pInterfaceFamily:
+
+      ## Regular expression to match a network interface for p2p streaming
+      ## e.g. "eth0"
+      ##
+      p2pInterfaceNamePattern:
+
+    tracing:
+      ## Service name to attach to traces as metadata.
+      #
+      ## Example: "worker"
+      ##
+      serviceName:
+
+      ## Attributes to attach to traces as metadata.
+      #
+      ## Example:
+      ##   environment: ci
+      ##
+      attributes:
+
+      ## Jaeger's HTTP-based Thrift collector endpoint.
+      #
+      ## Example: "http://jaeger:14268/api/traces"
+      ##
+      jaegerEndpoint:
+
+      ## Tags to include to components
+      ##
+      ## Example: "foo:bar,caz:zaz"
+      ##
+      jaegerTags:
+
+      ## Name of the service being traced
+      ##
+      ## Example: "worker"
+      ##
+      jaegerService:
+
+      ## GCP's Project ID
+      ##
+      ## Example: "my-projectid"
+      ##
+      stackdriverProjectId:
+
+      ## Honeycomb.io API Key
+      ##
+      honeycombApiKey:
+
+      ## Name of dataset
+      ##
+      ## Example: "web"
+      ##
+      honeycombDataset:
+
+      ## OTLP address to send traces to
+      ##
+      ## Example: "otel-collector:55680"
+      ##
+      otlpAddress:
+
+      ## Headers to attach to each tracing message
+      ##
+      ## Example:
+      ##   lightstep-access-token: mysupersecrettoken
+      ##
+      otlpHeaders:
+
+      ## Whether to use TLS for the OTLP connection
+      ##
+      otlpUseTls:
+
+
     ## Enable Horizontal Pod Autoscaling
     ## to use this, ephemeral worker with
     ## worker.kind: Deployment is recommended
@@ -804,6 +1989,16 @@ concourse:
       # for this to work you need to configure the metric eg. with prometheus adapter
 #      maxReplicas: 1
 #      minReplicas: 1
+#      behavior:
+#        scaleDown:
+#          stabilizationWindowSeconds: 1200
+#          selectPolicy: Min
+#          policies:
+#            - type: Percent
+#              value: 10
+#              periodSeconds: 300
+#        scaleUp:
+#          stabilizationWindowSeconds: 60
 #      builtInMetrics:
 #        - type: Resource
 #          resource:
@@ -846,6 +2041,37 @@ web:
   ##
   args: ["web"]
 
+  ## Array of extra containers to run alongside the Concourse Web
+  ## container.
+  ##
+  ## Example:
+  ## - name: myapp-container
+  ##   image: busybox
+  ##   command: ['sh', '-c', 'echo Hello && sleep 3600']
+  ##
+  sidecarContainers: []
+
+  ## Array of extra initContainers to run alongside the Concourse Web
+  ## container.
+  ##
+  ## Example:
+  ## - name: myapp-init-container
+  ##   image: busybox
+  ##   command: ['sh', '-c', 'echo Hello && sleep 3600']
+  ##
+  extraInitContainers: []
+
+  ## Pod priority class to assign to web pods.
+  ## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
+  priorityClassName:
+
+  ## Enable or disable the process namespace sharing for the web nodes.
+  ## This allows signaling the concourse process from a sidecar container.
+  ## eg.: signal concourse web to reload the team authorized keys file.
+  ##
+  ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/share-process-namespace/
+  ##
+  shareProcessNamespace: false
 
   ## Configures the liveness probe used to determine if the Web component is up.
   ## ps.: if you're upgrading Concourse from one version  to another, the probe will
@@ -875,10 +2101,8 @@ web:
   ##
   resources:
     requests:
-      cpu: 50m
-      memory: 100Mi
-    limits:
-      memory: 150Mi
+      cpu: "100m"
+      memory: "128Mi"
 
   ## Configure additional environment variables for the
   ## web containers.
@@ -897,6 +2121,7 @@ web:
     - name: CONCOURSE_AUTH_DURATION
       value: "2200h"
 
+
   ## Configure the security context for the web containers.
   ## Example:
   ##   capabilities:
@@ -905,11 +2130,131 @@ web:
   ##
   securityContext:
 
+  ## Where secrets should be mounted for the web container.
+  ##
+  keySecretsPath: "/concourse-keys"
+  teamSecretsPath: "/team-authorized-keys"
+  authSecretsPath: "/concourse-auth"
+  vaultSecretsPath: "/concourse-vault"
+  credhubSecretsPath: "/concourse-credhub"
+  postgresqlSecretsPath: "/concourse-postgresql"
+  syslogSecretsPath: "/concourse-syslog"
+  tlsSecretsPath: "/concourse-web-tls"
+  conjurSecretsPath: "/concourse-conjur"
+
+  ## Configure additional volumes for the
+  ## web container(s).
+  ##
+  ## Example:
+  ##
+  ##   - name: my-team-authorized-keys
+  ##     configMap:
+  ##       name: my-team-authorized-keys-config
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/storage/volumes/
+  ##
+  additionalVolumes: []
+
+  ## Configure additional volumeMounts for the
+  ## web container(s)
+  ##
+  ## Example:
+  ##
+  ##  - name: my-team-authorized-keys
+  ##    mountPath: /my-team-authorized-keys
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/storage/volumes/
+  ##
+  additionalVolumeMounts:
+
+  ## Additional affinities to add to the web pods.
+  ##
+  ## Example:
+  ##   nodeAffinity:
+  ##     preferredDuringSchedulingIgnoredDuringExecution:
+  ##       - weight: 50
+  ##         preference:
+  ##           matchExpressions:
+  ##             - key: spot
+  ##               operator: NotIn
+  ##               values:
+  ##                 - "true"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  additionalAffinities:
+
+  ## Additional Labels to be added to the web deployment.
+  ##
+  ## Example:
+  ##   key1: "value1"
+  ##   key2: "value2"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#web-application-with-a-database
+  ##
+  labels: {}
+
+  ## Additional Annotations to be added to the web deployment
+  ## Per Kubernetes spec, the values of each annotation must be a string.
+  ##
+  ## Example:
+  ##   key1: "value1"
+  ##   key2: "value2"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  deploymentAnnotations: {}
+
+  ## Additional Labels to be added to the web pods.
+  ##
+  ## Example:
+  ##   key1: "value1"
+  ##   key2: "value2"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/#web-application-with-a-database
+  ##
+  podLabels: {}
+
+  ## Annotations for the web nodes.
+  ##
+  ## Example:
+  ##   key1: "value1"
+  ##   key2: "value2"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  annotations: {}
+
   ## Node selector for web nodes.
   ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
   nodeSelector:
     performance: medium
+
+  ## Tolerations for the web nodes.
+  ##
+  ## Example:
+  ##   - key: "toleration=key"
+  ##     operator: "Equal"
+  ##     value: "value"
+  ##     effect: "NoSchedule"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+  ## Strategy for web deployment updates.
+  ##
+  ## Example:
+  ##
+  ##   strategy:
+  ##     type: RollingUpdate
+  ##     rollingUpdate:
+  ##       maxSurge: 1
+  ##       maxUnavailable: 25%
+  strategy: {}
 
   ## Service configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/services/
@@ -924,7 +2269,7 @@ web:
       ## When using `web.service.api.type: ClusterIP`, sets the user-specified cluster IP.
       ## Example: 172.217.1.174
       ##
-      clusterIP: None
+      clusterIP:
 
       ## When using `web.service.api.type: LoadBalancer`, sets the user-specified load balancer IP.
       ## Example: 172.217.1.174
@@ -961,6 +2306,15 @@ web:
       ##
       tlsNodePort:
 
+      ## When using thirdy party service mesh providers such as istio, port
+      ## name ovverrides can be set to meet the default `http` naming convention
+      ##
+      port:
+        name: atc
+
+      tlsPort:
+        name: atc-tls
+
     workerGateway:
       ## For minikube, set this to ClusterIP, elsewhere use LoadBalancer or NodePort
       ## Ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
@@ -970,7 +2324,7 @@ web:
       ## When using `web.service.workerGateway.type: ClusterIP`, sets the user-specified cluster IP.
       ## Example: 172.217.1.174
       ##
-      clusterIP: None
+      clusterIP:
 
       ## When using `web.service.workerGateway.type: LoadBalancer`, sets the user-specified load balancer IP.
       ## Example: 172.217.1.174
@@ -1002,6 +2356,8 @@ web:
       ##
       NodePort:
 
+
+
     prometheus:
       ## Additional Labels to be added to the web service.
       ##
@@ -1016,6 +2372,31 @@ web:
       ##
       ##
       annotations: {}
+
+      ## For minikube, set this to ClusterIP, elsewhere use LoadBalancer or NodePort
+      ## Ref: https://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
+      ##
+      type: ClusterIP
+
+      ## When using `web.service.prometheus.type: ClusterIP`, sets the user-specified cluster IP.
+      ## Example: 172.217.1.174
+      ##
+      clusterIP:
+
+      ## When using `web.service.prometheus.type: LoadBalancer`, sets the user-specified load balancer IP.
+      ## Example: 172.217.1.174
+      ##
+      loadBalancerIP:
+
+      ## When using `web.service.prometheus.type: LoadBalancer`, restrict access to the load balancer to particular IPs
+      ## Example:
+      ##   - 192.168.1.10/32
+      ##
+      loadBalancerSourceRanges:
+
+      ## When using `web.service.prometheus.type: NodePort`, sets the nodePort
+      ##
+      NodePort:
 
   ## Ingress configuration.
   ## Ref: https://kubernetes.io/docs/user-guide/ingress/
@@ -1036,12 +2417,19 @@ web:
       nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
 
     ## Hostnames.
-    ## Must be provided if Ingress is enabled.
-    ## Example:
-    ##   - concourse.domain.com
-    ##
+    ## Either `hosts` or `rulesOverride` must be provided if Ingress is enabled.
+    ## `hosts` sets up the Ingress with default rules per provided hostname.
     hosts:
       - concourse.computersbarely.work
+
+    ## Ingress class name
+    ## Should match the name of the IngressClass. If left unset, will select the default IngressClass.
+    ingressClassName:
+
+    ## Ingress rules override
+    ## Either `hosts` or `rulesOverride` must be provided if Ingress is enabled.
+    ## `rulesOverride` allows the user to define the full set of ingress rules, for more complex Ingress setups.
+    rulesOverride:
 
     ## TLS configuration.
     ## Secrets must be manually created in the namespace.
@@ -1117,7 +2505,7 @@ worker:
     failureThreshold: 5
     initialDelaySeconds: 10
     periodSeconds: 15
-    timeoutSeconds: 5
+    timeoutSeconds: 3
     httpGet:
       path: /
       port: worker-hc
@@ -1131,11 +2519,9 @@ worker:
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources:
-    limits:
-      memory: 1500Mi
     requests:
-      cpu: 200m
-      memory: 500Mi
+      cpu: "200m"
+      memory: "512Mi"
 
   ## Configure additional environment variables for the
   ## worker container(s)
@@ -1146,6 +2532,63 @@ worker:
   ##     value: "anything"
   ##
   env: []
+
+  ## For managing where secrets should be mounted for worker agents
+  ##
+  keySecretsPath: "/concourse-keys"
+
+  ## For managing where additional certs should be added into a worker.
+  ## You can add additional certs with secrets.workerAdditionalCerts
+  ##
+  certsPath: "/etc/ssl/certs"
+
+  ## Configure additional volumeMounts for the
+  ## worker container(s)
+  ##
+  ## Example:
+  ##   - name: concourse-baggageclaim
+  ##     mountPath: /baggageclaim
+  ##
+  additionalVolumeMounts: []
+
+  ## Additional ports to be added to worker pods
+  ## Example:
+  ##   - containerPort: 7788
+  ##     name: worker-bc
+  ##     protocol: TCP
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/
+  ##
+  additionalPorts: []
+
+  ## Additional Annotations to be added to the web deployment
+  ## Per Kubernetes spec, the values of each annotation must be a string.
+  ##
+  ## Example:
+  ##   key1: "value1"
+  ##   key2: "value2"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  deploymentAnnotations: {}
+
+  ## Additional Labels to be added to the worker pods.
+  ##
+  ## Example:
+  ##   key1: "value1"
+  ##   key2: "value2"
+  ##
+  ## Ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+  ##
+  labels: {}
+
+  ## Annotations to be added to the worker pods.
+  ##
+  ## Example:
+  ##
+  ##   iam.amazonaws.com/role: arn:aws:iam::123456789012:role/concourse
+  ##
+  annotations: {}
 
   ## Node selector for the worker nodes.
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
@@ -1167,15 +2610,28 @@ worker:
   ##               values:
   ##                 - "true"
   ##
-  additionalAffinities:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-            - key: performance
-              operator: NotIn
-              values:
-                - high
+  additionalAffinities: {}
+
+  ## Configure additional volumes for the
+  ## worker container(s).
+  ## Example:
+  ##
+  ##  - name: concourse-baggageclaim
+  ##    hostPath:
+  ##      path: /dev/nvme0n1
+  ##      type: BlockDevice
+  ##
+  ##
+  ## As a special exception, this allows taking over the `concourse-work-dir`
+  ## volume (from the default emptyDir) if `persistence.enabled` is false:
+  ##
+  ##   additionalVolumes:
+  ##     - name: concourse-work-dir
+  ##       hostPath:
+  ##         path: /mnt/locally-mounted-fast-disk/concourse
+  ##         type: DirectoryOrCreate
+  ##
+  additionalVolumes: []
 
   ## Whether the workers should be forced to run on separate nodes.
   ## This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred
@@ -1190,8 +2646,23 @@ worker:
   ##   hardAntiAffinityLabels:
   ##     application: concourse
   ##
-  hardAntiAffinityLabels:
-    app: concourse-worker
+  hardAntiAffinityLabels: {}
+
+  ## Tolerations for the worker nodes.
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  ## For example:
+  ##
+  ##   - key: "toleration=key"
+  ##     operator: "Equal"
+  ##     value: "value"
+  ##     effect: "NoSchedule"
+  ##
+  tolerations: []
+
+  ## Pod priority class to assign to worker pods.
+  ## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#pod-priority
+  priorityClassName:
 
   ## Time to allow the pod to terminate before being forcefully terminated. This should provide time for
   ## the worker to retire, i.e. drain its tasks. See https://concourse-ci.org/worker-internals.html for worker
@@ -1207,9 +2678,9 @@ worker:
   ##
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 0%
-      maxUnavailable: 1
+#    rollingUpdate:
+#      maxSurge: 25%
+#      maxUnavailable: 1
 
   ## Pod Management strategy (requires Kubernetes 1.7+)
   ## Ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
@@ -1236,8 +2707,36 @@ persistence:
   ##
   enabled: false
 
+  ## Worker Persistence configuration.
+  ##
+  worker:
+    ## concourse data Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    storageClass:
+
+    ## Persistent Volume Access Mode.
+    ##
+    accessMode: ReadWriteOnce
+
+    ## Persistent Volume Storage Size.
+    ##
+    size: 20Gi
+
+    # You can define additional selector for pvc
+    selector:
+    #   matchLabels:
+    #     app-volume: "concourse"
+
+    # Add labels to worker volumeClaimTemplate
+    labels: {}
+
 ## Configuration values for the postgresql dependency.
-## Ref: https://github.com/helm/charts/blob/master/stable/postgresql/README.md
+## Ref: https://artifacthub.io/packages/helm/bitnami/postgresql/11.9.8
 ##
 postgresql:
 
@@ -1250,6 +2749,64 @@ postgresql:
   ## Should be set to false if using the chart as a worker only deployment.
   ##
   enabled: false
+
+  ## Provide a name to substitute for the full name of postgresql resources
+  ## ps.: Resources will not be appended with "-postgresql"
+  ##
+  fullnameOverride:
+
+  auth:
+    ### PostgreSQL User to create.
+    ##
+    username: concourse
+
+    ## PostgreSQL Password for the new user.
+    ## If not set, a random 10 characters password will be used.
+    ##
+    password: concourse
+
+    ## PostgreSQL Database to create.
+    ##
+    database: concourse
+
+  ## Allows for setting a specific cluster ip for the PostgreSQL
+  ## service.
+  service:
+    clusterIP:
+
+  ## Configuration for the primary database of the PostgreSQL subchart,
+  ## i.e. the instance used by the web component.
+  ##
+  primary:
+
+    ## Persistent Volume Storage configuration for PostgreSQL.
+    ##
+    ## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes
+    ##
+    persistence:
+      ## Enable PostgreSQL persistence using Persistent Volume Claims.
+      ##
+      enabled: true
+
+      ## Persistent Volume Storage Class to be used by PersistentVolumes created
+      ## for PostgreSQL.
+      ##
+      ## If defined, storageClassName: <storageClass>
+      ## If set to "-", storageClassName: "", which disables dynamic provisioning
+      ## If undefined (the default) or set to null, no storageClassName spec is
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      ##   GKE, AWS & OpenStack)
+      ##
+      storageClass:
+
+      ## Persistent Volume Access Mode.
+      ##
+      accessModes:
+        - ReadWriteOnce
+
+      ## Persistent Volume Storage Size.
+      ##
+      size: 8Gi
 
 ## For Kubernetes RBAC support:
 ##

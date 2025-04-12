@@ -141,7 +141,7 @@ apps:
     wait: true
     namespace: concourse
     group: uses-nfs
-    enabled: false
+    enabled: true
     chart: concourse/concourse
     version: 18.1.1
     valuesFile: concourse/concourse-values.yaml
