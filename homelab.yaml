@@ -24,7 +24,7 @@ namespaces:
   wireguard:
 helmRepos:
   bitnami: https://charts.bitnami.com/bitnami
-  bjw-s: https://bjw-s.github.io/helm-charts
+  bjw-s: https://bjw-s-labs.github.io/helm-charts
   cert-manager: https://charts.jetstack.io
   concourse: https://concourse-charts.storage.googleapis.com/
   descheduler: https://kubernetes-sigs.github.io/descheduler/

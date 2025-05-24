@@ -14,7 +14,7 @@ namespaces:
   stirling-pdf:
   wireguard:
 helmRepos:
-  bjw-s: https://bjw-s.github.io/helm-charts
+  bjw-s: https://bjw-s-labs.github.io/helm-charts
   cert-manager: https://charts.jetstack.io
   influxdata: https://helm.influxdata.com/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
