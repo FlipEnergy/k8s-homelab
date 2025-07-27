@@ -161,6 +161,7 @@ apps:
   gonic:
     wait: true
     namespace: gonic
+    group: uses-nfs
     enabled: true
     chart: ./gonic/gonic
     version: 1.0.0
