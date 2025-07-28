@@ -197,7 +197,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: bjw-s/app-template
-    version: 4.1.2
+    version: 4.2.0
     valuesFile: stash/stash-values.yaml
     hooks:
       preInstall: &stash-pv stash/persistenceVolume.yaml
