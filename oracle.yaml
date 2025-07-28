@@ -85,7 +85,7 @@ apps:
     namespace: stirling-pdf
     enabled: true
     chart: bjw-s/app-template
-    version: 4.1.2
+    version: 4.2.0
     valuesFile: stirling-pdf/stirling-pdf-values.yaml
   wireguard:
     wait: true
