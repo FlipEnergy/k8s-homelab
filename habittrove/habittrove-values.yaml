@@ -1,0 +1,60 @@
+# Override values for habittrove
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: dohsimpson/habittrove
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: v0.2.29
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        resources: {}
+
+defaultPodOptions:
+  securityContext:
+    runAsUser: 1001
+    runAsNonRoot: true
+  nodeSelector:
+    performance: medium
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 3000
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    hosts:
+      - host: habit.pleasenoddos.com
+        paths:
+          - path: /
+            service:
+              identifier: main
+              port: http
+    tls:
+      - secretName: habittrove-tls
+        hosts:
+          - habit.pleasenoddos.com
+
+persistence:
+  data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Clas
+    storageClass: habittrove-data
+    size: 500Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
+    globalMounts:
+      - path: /app/data

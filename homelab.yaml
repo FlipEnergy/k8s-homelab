@@ -12,6 +12,7 @@ namespaces:
   descheduler:
   flatnotes:
   gonic:
+  habittrove:
   ingress-nginx:
   k8s-dashboard:
   kube-ops-view:
@@ -168,6 +169,18 @@ apps:
     valuesFile: gonic/gonic-values.yaml
     hooks:
       preInstall: gonic/persistenceVolumes.yaml
+  habittrove:
+    wait: true
+    namespace: habittrove
+    group: uses-nfs
+    enabled: true
+    chart: bjw-s/app-template
+    version: 4.2.0
+    valuesFile: habittrove/habittrove-values.yaml
+    secretsFile: habittrove/habittrove-secrets.yaml
+    hooks:
+      preInstall: &habittrove-pv habittrove/persistenceVolume.yaml
+      preUpgrade: *habittrove-pv
   nextcloud:
     wait: false
     namespace: nextcloud
