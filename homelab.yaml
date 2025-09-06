@@ -187,7 +187,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: nextcloud/nextcloud
-    version: 7.0.0
+    version: 7.0.4
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
     secretsFile: nextcloud/nextcloud-secrets.yaml
