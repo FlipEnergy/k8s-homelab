@@ -8,12 +8,12 @@ controllers:
       main:
         image:
           # -- image repository
-          repository: hotio/cloudflareddns
+          repository: ghcr.io/hotio/cloudflareddns
           # -- image tag
           # @default -- chart.appVersion
-          tag: release-20231228194642
+          tag: release
           # -- image pull policy
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
         env:
           PUID: 1000
           PGID: 1000
