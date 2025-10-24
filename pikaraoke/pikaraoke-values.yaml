@@ -47,7 +47,7 @@ controllers:
 
 defaultPodOptions:
   nodeSelector:
-    performance: medium
+    performance: high
 
 service:
   main:
