@@ -5,12 +5,27 @@ controllers:
       main:
         image:
           # -- image repository
-          repository: frooodle/s-pdf
+          repository: vicwomg/pikaraoke
           # -- image tag
           # @default -- chart.appVersion
-          tag: 1.5.0
+          tag: 1.13.0
           # -- image pull policy
           pullPolicy: IfNotPresent
+
+        # Command override to set params
+        # command found here: https://github.com/vicwomg/pikaraoke/blob/master/Dockerfile
+        command: ["poetry"]
+        args:
+          - run
+          - pikaraoke
+          - -d
+          - /data/
+          - --headless
+          - -l10
+          - --url
+          - https://karaoke.pleasenoddos.com
+          - --normalize-audio
+          - --complete-transcode-before-play
 
         resources:
           limits:
@@ -30,12 +45,16 @@ controllers:
               failureThreshold: 30
               periodSeconds: 5
 
+defaultPodOptions:
+  nodeSelector:
+    performance: medium
+
 service:
   main:
     controller: main
     ports:
       http:
-        port: 8080
+        port: 5555
 
 ingress:
   main:
@@ -45,13 +64,23 @@ ingress:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-body-size: 100m
     hosts:
-      - host: pdf.pleasenoddos.com
+      - host: karaoke.pleasenoddos.com
         paths:
           - path: /
             service:
               identifier: main
               port: http
     tls:
-      - secretName: stirling-pdf-tls
+      - secretName: pikaraoke-tls
         hosts:
-          - pdf.pleasenoddos.com
+          - karaoke.pleasenoddos.com
+
+persistence:
+  data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Clas
+    storageClass: pikaraoke-data
+    size: 10Gi
+    # Do not delete the pvc upon helm uninstall
+    retain: true

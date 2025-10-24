@@ -17,6 +17,7 @@ namespaces:
   k8s-dashboard:
   kube-ops-view:
   nextcloud:
+  pikaraoke:
   postgresql:
   redis:
   restic:
@@ -205,6 +206,16 @@ apps:
     version: 0.1.0
     valuesFile: nextcloud-news-updater/nextcloud-news-updater-values.yaml
     secretsFile: nextcloud-news-updater/nextcloud-news-updater-secrets.yaml
+  pikaraoke:
+    wait: true
+    namespace: pikaraoke
+    enabled: true
+    chart: bjw-s/app-template
+    version: 4.3.0
+    valuesFile: pikaraoke/pikaraoke-values.yaml
+    hooks:
+      preInstall: &pikaraoke-pv pikaraoke/persistenceVolume.yaml
+      preUpgrade: *pikaraoke-pv
   stash:
     namespace: stash
     group: uses-nfs

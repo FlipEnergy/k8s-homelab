@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pikaraoke-data
+spec:
+  storageClassName: pikaraoke-data
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/ZFS-3.6TB/tank/pikaraoke-data
+    server: truenas-1.tgp
