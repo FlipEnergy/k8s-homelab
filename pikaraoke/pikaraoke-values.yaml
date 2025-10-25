@@ -25,7 +25,7 @@ controllers:
           - --url
           - https://karaoke.pleasenoddos.com
           - --normalize-audio
-          - --complete-transcode-before-play
+          # - --complete-transcode-before-play
 
         resources:
           limits:
