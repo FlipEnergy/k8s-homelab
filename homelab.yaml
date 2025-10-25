@@ -211,7 +211,7 @@ apps:
     namespace: pikaraoke
     enabled: true
     chart: bjw-s/app-template
-    version: 4.3.0
+    version: 4.4.0
     valuesFile: pikaraoke/pikaraoke-values.yaml
     secretsFile: pikaraoke/pikaraoke-secrets.yaml
     hooks:
