@@ -213,6 +213,7 @@ apps:
     chart: bjw-s/app-template
     version: 4.3.0
     valuesFile: pikaraoke/pikaraoke-values.yaml
+    secretsFile: pikaraoke/pikaraoke-secrets.yaml
     hooks:
       preInstall: &pikaraoke-pv pikaraoke/persistenceVolume.yaml
       preUpgrade: *pikaraoke-pv

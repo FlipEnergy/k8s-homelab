@@ -21,11 +21,12 @@ controllers:
           - -d
           - /data/
           - --headless
-          - -l10
+          - -l30
           - --url
           - https://karaoke.pleasenoddos.com
-          - --normalize-audio
-          # - --complete-transcode-before-play
+          - --disable-score
+          - --admin-password
+          - $(ADMIN_PASSWORD)
 
         resources:
           limits:
