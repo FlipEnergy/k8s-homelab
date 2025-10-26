@@ -41,14 +41,34 @@ nextcloud:
       port: 587
       authtype: LOGIN
 
+  extraInitContainers:
+    # create empty redis file for nextcloud entrypoint to override it
+    - name: init-redis-session-ini
+      image: busybox
+      command:
+        - sh
+        - -c
+        - |
+          touch /usr/local/etc/php/conf.d/redis-session.ini
+          chown -v 33:33 /usr/local/etc/php/conf.d/redis-session.ini
+      volumeMounts:
+        - name: nextcloud-redis-session-ini
+          mountPath: /usr/local/etc/php/conf.d
+
   # Extra mounts for the pods. Example shown is for connecting a legacy NFS volume
   # to NextCloud pods in Kubernetes. This can then be configured in External Storage
   extraVolumes:
+    - name: nextcloud-redis-session-ini
+      emptyDir: {}
     - name: extra-mounts
       configMap:
         name: nextcloud-extra-mounts
         defaultMode: 0777
+
   extraVolumeMounts:
+    - name: nextcloud-redis-session-ini
+      mountPath: "/usr/local/etc/php/conf.d/redis-session.ini" # fix permission denied error
+      subPath: redis-session.ini
     - name: extra-mounts
       mountPath: /entrypoint.sh
       subPath: entrypoint.sh

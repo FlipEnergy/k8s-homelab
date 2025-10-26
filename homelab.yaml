@@ -124,7 +124,7 @@ apps:
     namespace: redis
     enabled: true
     chart: bitnami/redis
-    version: 21.2.13
+    version: 23.2.1
     priority: -100
     valuesFile: redis/redis-values.yaml
   ###############
@@ -145,7 +145,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: concourse/concourse
-    version: 18.5.0
+    version: 19.0.1
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   flatnotes:
@@ -188,7 +188,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: nextcloud/nextcloud
-    version: 7.0.0
+    version: 8.5.1
     priority: -99
     valuesFile: nextcloud/nextcloud-values.yaml
     secretsFile: nextcloud/nextcloud-secrets.yaml
@@ -201,7 +201,7 @@ apps:
     wait: true
     namespace: nextcloud
     group: uses-nfs
-    enabled: true
+    enabled: false
     chart: ./nextcloud-news-updater/chart
     version: 0.1.0
     valuesFile: nextcloud-news-updater/nextcloud-news-updater-values.yaml
