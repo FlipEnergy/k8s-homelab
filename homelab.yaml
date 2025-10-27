@@ -201,7 +201,7 @@ apps:
     wait: true
     namespace: nextcloud
     group: uses-nfs
-    enabled: false
+    enabled: true
     chart: ./nextcloud-news-updater/chart
     version: 0.1.0
     valuesFile: nextcloud-news-updater/nextcloud-news-updater-values.yaml
@@ -209,6 +209,7 @@ apps:
   pikaraoke:
     wait: true
     namespace: pikaraoke
+    group: uses-nfs
     enabled: true
     chart: bjw-s/app-template
     version: 4.4.0
