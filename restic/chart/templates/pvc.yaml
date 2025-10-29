@@ -4,10 +4,26 @@ metadata:
   name: {{ include "restic.fullname" . }}-source
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadOnlyMany
   resources:
     requests:
       storage: {{ .Values.persistence.source.storage }}
   storageClassName: {{ include "restic.fullname" . }}-source
   volumeMode: Filesystem
   volumeName: {{ include "restic.fullname" . }}-source
+{{- range .Values.persistence.source.nfsSubDatasetPaths }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "restic.fullname" $ }}-source-{{ . }}
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: {{ $.Values.persistence.source.storage }}
+  storageClassName: {{ include "restic.fullname" $ }}-source-{{ . }}
+  volumeMode: Filesystem
+  volumeName: {{ include "restic.fullname" $ }}-source-{{ . }}
+{{- end }}

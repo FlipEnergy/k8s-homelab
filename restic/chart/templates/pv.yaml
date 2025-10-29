@@ -7,7 +7,23 @@ spec:
   capacity:
     storage: {{ .Values.persistence.source.storage }}
   accessModes:
-    - ReadWriteOnce
+    - ReadOnlyMany
   nfs:
     path: {{ .Values.persistence.source.nfsPath }}
     server: {{ .Values.persistence.source.nfsServer }}
+{{- range .Values.persistence.source.nfsSubDatasetPaths }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "restic.fullname" $ }}-source-{{ . }}
+spec:
+  storageClassName: {{ include "restic.fullname" $ }}-source-{{ . }}
+  capacity:
+    storage: {{ $.Values.persistence.source.storage }}
+  accessModes:
+    - ReadOnlyMany
+  nfs:
+    path: {{ $.Values.persistence.source.nfsPath }}/{{ . }}
+    server: {{ $.Values.persistence.source.nfsServer }}
+{{- end }}

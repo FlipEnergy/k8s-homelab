@@ -6,6 +6,8 @@ metadata:
     {{- include "restic.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       {{- include "restic.selectorLabels" . | nindent 6 }}
@@ -24,6 +26,11 @@ spec:
             claimName: {{ include "restic.fullname" . }}-source
         - name: cache
           emptyDir: {}
+      {{- range .Values.persistence.source.nfsSubDatasetPaths }}
+        - name: {{ . }}
+          persistentVolumeClaim:
+            claimName: {{ include "restic.fullname" $ }}-source-{{ . }}
+      {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 12 }}
       containers:
@@ -40,6 +47,10 @@ spec:
               name: source
             - mountPath: /.cache
               name: cache
+          {{- range .Values.persistence.source.nfsSubDatasetPaths }}
+            - mountPath: /source/{{ . }}
+              name: {{ . }}
+          {{- end }}
           envFrom:
             - secretRef:
                 name: {{ include "restic.fullname" . }}

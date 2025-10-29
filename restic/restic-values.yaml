@@ -10,8 +10,17 @@ resources:
 persistence:
   source:
     storage: 3500Gi
-    nfsPath: /mnt/ZFS-3.6TB/tank
     nfsServer: truenas-1.tgp
+    nfsPath: /mnt/ZFS-3.6TB/tank
+    nfsSubDatasetPaths:
+      - flatnotes-data
+      - gonic-data
+      - habittrove-data
+      - nextcloud-data
+      - postgresql-data
+      - stash-data
+      - vaultwarden-data
+      - wireguard-data
 
 nodeSelector:
   performance: high
