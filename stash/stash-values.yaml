@@ -8,7 +8,7 @@ controllers:
           repository: stashapp/stash
           # -- image tag
           # @default -- chart.appVersion
-          tag: v0.29.1
+          tag: v0.29.2
           # -- image pull policy
           pullPolicy: IfNotPresent
 
