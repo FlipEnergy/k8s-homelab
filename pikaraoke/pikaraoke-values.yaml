@@ -8,7 +8,7 @@ controllers:
           repository: vicwomg/pikaraoke
           # -- image tag
           # @default -- chart.appVersion
-          tag: 1.13.0
+          tag: 1.14.0
           # -- image pull policy
           pullPolicy: IfNotPresent
 
