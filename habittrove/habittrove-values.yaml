@@ -8,7 +8,7 @@ controllers:
           repository: dohsimpson/habittrove
           # -- image tag
           # @default -- chart.appVersion
-          tag: v0.2.29
+          tag: v0.2.30
           # -- image pull policy
           pullPolicy: IfNotPresent
 
