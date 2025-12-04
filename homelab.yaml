@@ -75,7 +75,7 @@ apps:
     group: foundation
     enabled: true
     chart: bjw-s/app-template
-    version: 4.4.0
+    version: 4.5.0
     priority: -199
     valuesFile: cf-ddns/cf-ddns-values.yaml
     secretsFile: cf-ddns/cf-ddns-secrets.yaml
