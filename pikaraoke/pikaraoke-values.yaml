@@ -14,10 +14,8 @@ controllers:
 
         # Command override to set params
         # command found here: https://github.com/vicwomg/pikaraoke/blob/master/Dockerfile
-        command: ["poetry"]
+        command: ["pikaraoke"]
         args:
-          - run
-          - pikaraoke
           - -d
           - /data/
           - --headless
