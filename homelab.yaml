@@ -102,7 +102,7 @@ apps:
     valuesFile: k8s-dashboard/k8s-dashboard-values.yaml
     hooks:
       postInstall: &k8s-dash-admin k8s-dashboard/dashboard-admin.yaml
-      preUpgrade: *k8s-dash-admin
+      postUpgrade: *k8s-dash-admin
   #############
   # Databases #
   #############

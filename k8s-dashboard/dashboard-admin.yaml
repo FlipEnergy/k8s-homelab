@@ -9,5 +9,13 @@ roleRef:
   name: cluster-admin
 subjects:
   - kind: ServiceAccount
-    name: k8s-dashboard-kubernetes-dashboard
+    name: k8s-dashboard-kubernetes-dashboard-api
     namespace: k8s-dashboard
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: api-sa-token
+  annotations:
+    kubernetes.io/service-account.name: k8s-dashboard-kubernetes-dashboard-api
+type: kubernetes.io/service-account-token
