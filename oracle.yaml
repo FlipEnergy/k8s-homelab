@@ -72,7 +72,7 @@ apps:
     namespace: airsonic-refix
     enabled: true
     chart: bjw-s/app-template
-    version: 4.6.0
+    version: 4.6.2
     valuesFile: airsonic-refix/airsonic-refix-values.yaml
   haste:
     wait: true
