@@ -95,7 +95,7 @@ apps:
     wait: true
     namespace: k8s-dashboard
     group: foundation
-    enabled: true
+    enabled: false
     chart: k8s-dashboard/kubernetes-dashboard
     version: 7.14.0
     priority: -199
