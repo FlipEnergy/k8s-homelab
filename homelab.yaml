@@ -13,6 +13,7 @@ namespaces:
   flatnotes:
   gonic:
   habittrove:
+  headlamp:
   ingress-nginx:
   kube-ops-view:
   nextcloud:
@@ -29,6 +30,7 @@ helmRepos:
   cert-manager: https://charts.jetstack.io
   concourse: https://concourse-charts.storage.googleapis.com/
   descheduler: https://kubernetes-sigs.github.io/descheduler/
+  headlamp: https://kubernetes-sigs.github.io/headlamp/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   nextcloud: https://nextcloud.github.io/helm/
 apps:
@@ -89,6 +91,14 @@ apps:
     version: 1.2.2
     priority: -199
     valuesFile: kube-ops-view/kube-ops-view-values.yaml
+  headlamp:
+    namespace: headlamp
+    group: foundation
+    enabled: true
+    chart: headlamp/headlamp
+    version: 0.40.0
+    priority: -199
+    valuesFile: headlamp/headlamp-values.yaml
   #############
   # Databases #
   #############

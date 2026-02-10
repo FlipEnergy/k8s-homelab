@@ -1,0 +1,33 @@
+# headlamp override values
+
+
+ingress:
+  # -- Enable ingress controller resource
+  enabled: true
+  # -- Annotations for Ingress resource
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+  # -- Hostname(s) for the Ingress resource
+  # Please refer to https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-v1/#IngressSpec for more information.
+  hosts:
+    - host: headlamp.computersbarely.work
+      paths:
+        - path: /
+          type: ImplementationSpecific
+  # -- Ingress TLS configuration
+  tls:
+    - secretName: headlamp-tls
+      hosts:
+        - headlamp.computersbarely.work
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limits:
+    memory: 200Mi
+
+nodeSelector:
+  performance: medium
