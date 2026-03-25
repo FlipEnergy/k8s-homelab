@@ -96,7 +96,7 @@ apps:
     group: foundation
     enabled: true
     chart: headlamp/headlamp
-    version: 0.40.0
+    version: 0.40.1
     priority: -199
     valuesFile: headlamp/headlamp-values.yaml
   #############
