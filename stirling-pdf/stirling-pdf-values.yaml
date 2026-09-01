@@ -5,7 +5,7 @@ controllers:
       main:
         image:
           # -- image repository
-          repository: frooodle/s-pdf
+          repository: docker.stirlingpdf.com/stirlingtools/stirling-pdf
           # -- image tag
           # @default -- chart.appVersion
           tag: 2.14.3
