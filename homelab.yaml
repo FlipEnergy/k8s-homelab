@@ -6,6 +6,7 @@ settings:
   kubeContext: homelab
   globalMaxHistory: 1
 namespaces:
+  airsonic-refix:
   cert-manager:
   cloudflareddns:
   concourse:
@@ -22,6 +23,7 @@ namespaces:
   redis:
   restic:
   stash:
+  stirling-pdf:
   vaultwarden:
   wireguard:
 helmRepos:
@@ -135,6 +137,13 @@ apps:
   ################
   # Applications #
   ################
+  airsonic-refix:
+    wait: true
+    namespace: airsonic-refix
+    enabled: true
+    chart: bjw-s/app-template
+    version: 5.1.0
+    valuesFile: airsonic-refix/airsonic-refix-values.yaml
   concourse:
     wait: true
     namespace: concourse
@@ -224,6 +233,12 @@ apps:
     hooks:
       preInstall: &stash-pv stash/persistenceVolume.yaml
       preUpgrade: *stash-pv
+  stirling-pdf:
+    namespace: stirling-pdf
+    enabled: true
+    chart: bjw-s/app-template
+    version: 5.1.0
+    valuesFile: stirling-pdf/stirling-pdf-values.yaml
   vaultwarden:
     wait: true
     namespace: vaultwarden
