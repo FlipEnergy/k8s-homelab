@@ -180,7 +180,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: bjw-s/app-template
-    version: 5.2.1
+    version: 5.3.0
     valuesFile: habittrove/habittrove-values.yaml
     secretsFile: habittrove/habittrove-secrets.yaml
     hooks:
