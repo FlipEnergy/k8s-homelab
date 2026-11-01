@@ -6,7 +6,6 @@ settings:
   kubeContext: homelab
   globalMaxHistory: 1
 namespaces:
-  airsonic-refix:
   cert-manager:
   cloudflareddns:
   concourse:
@@ -136,13 +135,6 @@ apps:
   ################
   # Applications #
   ################
-  airsonic-refix:
-    wait: true
-    namespace: airsonic-refix
-    enabled: true
-    chart: bjw-s/app-template
-    version: 5.3.0
-    valuesFile: airsonic-refix/airsonic-refix-values.yaml
   concourse:
     wait: true
     namespace: concourse
