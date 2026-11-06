@@ -1,0 +1,37 @@
+# Override values for discodrome
+
+# https://github.com/7eventy7/discodrome
+# Discord bot only: it makes outbound connections and listens on no ports.
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: 7eventy7/discodrome
+          # -- image tag
+          # @default -- chart.appVersion
+          tag: v1.1.0
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+
+        # Discord and Subsonic credentials/IDs are in discodrome-secrets.yaml
+        env:
+          SUBSONIC_SERVER: http://gonic.gonic.svc.cluster.local:4747
+
+        resources:
+          limits:
+            memory: 500Mi
+          requests:
+            cpu: 50m
+            memory: 150Mi
+
+defaultPodOptions:
+  nodeSelector:
+    performance: medium
+
+service:
+  main:
+    enabled: false
+    controller: main

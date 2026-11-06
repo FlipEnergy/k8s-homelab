@@ -10,6 +10,7 @@ namespaces:
   cloudflareddns:
   concourse:
   descheduler:
+  discodrome:
   flatnotes:
   gonic:
   habittrove:
@@ -144,6 +145,14 @@ apps:
     version: 19.0.3
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
+  discodrome:
+    wait: true
+    namespace: discodrome
+    enabled: true
+    chart: bjw-s/app-template
+    version: 5.3.0
+    valuesFile: discodrome/discodrome-values.yaml
+    secretsFile: discodrome/discodrome-secrets.yaml
   flatnotes:
     wait: true
     namespace: flatnotes
