@@ -1,5 +1,13 @@
 # Overrides for the bitnami postgresql chart (only values that differ from the chart defaults).
+global:
+  security:
+    # Required for the bitnamilegacy image below (not in the chart's image allowlist).
+    allowInsecureImages: true
+  # The pinned 16.x image predates the chart's FIPS support.
+  defaultFips: "off"
 image:
+  # Versioned bitnami tags were moved to bitnamilegacy in Aug 2025; same digest as the old docker.io/bitnami image.
+  repository: bitnamilegacy/postgresql
   tag: 16.4.0-debian-12-r16
 primary:
   livenessProbe:
@@ -23,9 +31,6 @@ primary:
     storageClass: postgresql-data
     size: 10Gi
 volumePermissions:
-  image:
-    repository: bitnami/bitnami-shell
-    tag: 11-debian-11-r136
   resources:
     limits: {}
     requests: {}
