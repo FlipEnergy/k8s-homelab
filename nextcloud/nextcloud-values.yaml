@@ -8,7 +8,7 @@
 ## Deploy each step and let `occ upgrade` finish before bumping to the next.
 image:
   repository: flipenergy/nextcloud
-  tag: 33.0.10-apache
+  tag: 35.0.2-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
