@@ -26,7 +26,6 @@ ingress:
 
 phpClientHttpsFix:
   enabled: true
-  protocol: https
 
 nextcloud:
   host: cloud.pleasenoddos.com
@@ -39,7 +38,6 @@ nextcloud:
       host: smtp.gmail.com
       secure: tls
       port: 587
-      authtype: LOGIN
 
   extraInitContainers:
     # create empty redis file for nextcloud entrypoint to override it
@@ -100,31 +98,12 @@ externalDatabase:
   type: postgresql
   ## Database host
   host: postgresql.postgresql
-  ## Database name
-  database: nextcloud
 
-## Enable persistence using Persistent Volume Claims
-## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-##
 persistence:
   # Nextcloud Data (/var/www/html)
   enabled: true
-  annotations: {}
-  # nextcloud data Persistent Volume Storage Class
-  # If defined, storageClassName: <storageClass>
-  # If set to "-", storageClassName: "", which disables dynamic provisioning
-  # If undefined (the default) or set to null, no storageClassName spec is
-  #   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  #   GKE, AWS & OpenStack)
-  #
+  # static NFS PV, see nextcloud/preHooks.yaml
   storageClass: nextcloud-data
-
-  ## A manually managed Persistent Volume and Claim
-  ## Requires persistence.enabled: true
-  ## If defined, PVC must be created manually before volume will be bound
-  # existingClaim:
-
-  accessMode: ReadWriteOnce
   size: 3Ti
 
 resources:
@@ -137,31 +116,16 @@ resources:
 nodeSelector:
   performance: high
 
-tolerations: []
-
-affinity: {}
-
 ## Liveness and readiness probe values
 ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
 ##
 livenessProbe:
   enabled: false
-  initialDelaySeconds: 10
-  periodSeconds: 10
   timeoutSeconds: 10
   failureThreshold: 6
-  successThreshold: 1
 readinessProbe:
-  enabled: true
-  initialDelaySeconds: 10
-  periodSeconds: 10
   timeoutSeconds: 10
   failureThreshold: 10
-  successThreshold: 1
 startupProbe:
-  enabled: false
-  initialDelaySeconds: 30
   periodSeconds: 30
-  timeoutSeconds: 5
   failureThreshold: 60
-  successThreshold: 1

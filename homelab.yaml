@@ -26,7 +26,6 @@ namespaces:
   vaultwarden:
   wireguard:
 helmRepos:
-  bitnami: https://charts.bitnami.com/bitnami
   bjw-s: https://bjw-s-labs.github.io/helm-charts
   cert-manager: https://charts.jetstack.io
   concourse: https://concourse-charts.storage.googleapis.com/
@@ -65,9 +64,7 @@ apps:
     chart: cert-manager/cert-manager
     version: v1.21.3
     priority: -199
-    valuesFiles:
-      - cert-manager/cert-manager-values.yaml
-      - cert-manager/homelab/cert-manager-values.yaml
+    valuesFile: cert-manager/cert-manager-values.yaml
     hooks:
       postInstall: &cert-manager-postInstall cert-manager/ClusterIssuer.yaml
       postUpgrade: *cert-manager-postInstall
@@ -108,7 +105,7 @@ apps:
     namespace: postgresql
     group: uses-nfs
     enabled: true
-    chart: bitnami/postgresql
+    chart: oci://registry-1.docker.io/bitnamicharts/postgresql
     version: 15.5.38
     priority: -100
     valuesFile: postgresql/postgres-values.yaml
@@ -120,7 +117,7 @@ apps:
     wait: true
     namespace: redis
     enabled: true
-    chart: bitnami/redis
+    chart: oci://registry-1.docker.io/bitnamicharts/redis
     version: 23.2.1
     priority: -100
     valuesFile: redis/redis-values.yaml
@@ -142,7 +139,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: concourse/concourse
-    version: 19.0.3
+    version: 20.3.3
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   discodrome:

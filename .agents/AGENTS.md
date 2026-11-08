@@ -20,8 +20,9 @@ Public domain `pleasenoddos.com`; internal/admin services on `computersbarely.wo
 
 - `homelab.yaml` is the Helmsman desired state file (DSF): namespaces, helm repos, and every app (chart, version, values, secrets, hooks, priority).
 - Deployed by CI: pushes to `main` trigger the `deploy-k8s-homelab` pipeline in the sibling `concourse-pipelines` repo (`helmsman -apply -f homelab.yaml`). Non-main branches get an automatic `-show-diff` pipeline, posted to Discord. **Opening a branch is the normal way to preview a change.**
-- Local: `make deploy` (= `helmsman -p 12 --show-diff --apply -f homelab.yaml`), `make destroy`. These mutate the live cluster — never run without explicit approval. For a dry run: `helmsman --show-diff -f homelab.yaml` (no `--apply`).
-- Requirements: kubectl, helm 3, sops, helm-secrets, helm-diff, helmsman.
+- Local: `make deploy` (= `mise exec -- helmsman -p 12 --show-diff --apply -f homelab.yaml`), `make destroy`. These mutate the live cluster — never run without explicit approval. For a dry run: `mise exec -- helmsman --show-diff -f homelab.yaml` (no `--apply`).
+- Tooling: CLI tools (helm 4, helmsman, kubectl, k9s, talosctl) are pinned in `mise.toml` and installed with mise — there are no system copies. Run them via `mise exec -- <tool>` (or with mise activated in the shell); a bare `helm`/`helmsman` may not be on PATH in a non-interactive shell. To bump a tool, change its version in `mise.toml`.
+- Setup: `make tools` runs `mise install` and installs the helm plugins helmsman needs (helm-diff, helm-secrets; versions pinned in the `Makefile`). sops is not managed by mise yet.
 
 ## Layout
 
