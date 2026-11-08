@@ -17,7 +17,7 @@ persistence:
       - gonic-data
       - habittrove-data
       - nextcloud-data
-      - postgresql-data
+      - postgresql-data-18
       - stash-data
       - vaultwarden-data
       - wireguard-data

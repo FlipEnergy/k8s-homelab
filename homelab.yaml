@@ -137,7 +137,7 @@ apps:
     wait: true
     namespace: concourse
     group: uses-nfs
-    enabled: false
+    enabled: true
     chart: concourse/concourse
     version: 20.3.3
     valuesFile: concourse/concourse-values.yaml
@@ -188,7 +188,7 @@ apps:
     wait: false
     namespace: nextcloud
     group: uses-nfs
-    enabled: false
+    enabled: true
     chart: nextcloud/nextcloud
     version: 8.5.1
     priority: -99

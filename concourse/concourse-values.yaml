@@ -15,6 +15,7 @@ concourse:
       createTeamNamespaces: false
       keepNamespaces: false
     auth:
+      duration: 2200h
       mainTeam:
         localUser: "FlipEnergy"
     tsa:
@@ -25,9 +26,6 @@ concourse:
     baggageclaim:
       logLevel: error
 web:
-  env:
-    - name: CONCOURSE_AUTH_DURATION
-      value: "2200h"
   nodeSelector:
     performance: medium
   ingress:
