@@ -61,6 +61,6 @@ Charts in use:
 ## Related repos
 
 - `concourse-pipelines` — deploys this repo (`k8s-homelab/` pipelines); Concourse itself runs from `concourse/` here.
-- `container-images` — builds `flipenergy/restic` and `flipenergy/nextcloud-news-updater` used here.
+- `container-images` — builds `flipenergy/restic`, `flipenergy/nextcloud-news-updater` and `flipenergy/nextcloud` used here. The nextcloud image bakes in the uid-1000 `dennis` user and preview deps; its tags mirror upstream (`<version>-apache`) and the `images-build` pipeline builds one job per Nextcloud major, so a new major needs a pipeline job before `nextcloud-values.yaml` can use it.
 - `tf-playground` — Cloudflare DNS for the hostnames used in ingresses.
 - `personal-website` — deployed to this cluster by CI, but not managed through `homelab.yaml`.

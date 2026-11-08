@@ -1,11 +1,14 @@
 # Override values for Nextcloud
 
-## Official nextcloud image version
-## ref: https://hub.docker.com/r/library/nextcloud/tags/
-##
-# image:
-#   repository: nextcloud
-#   tag: 25.0.4-apache
+## Official nextcloud image + my customizations (user dennis/uid 1000, preview deps),
+## built from FlipEnergy/container-images (nextcloud/); tags mirror upstream.
+## ref: https://hub.docker.com/r/flipenergy/nextcloud/tags
+## Nextcloud only upgrades one major version at a time (the entrypoint refuses
+## otherwise), so step through majors: 32 -> 33.0.10 -> 34.0.5 -> 35.0.2.
+## Deploy each step and let `occ upgrade` finish before bumping to the next.
+image:
+  repository: flipenergy/nextcloud
+  tag: 33.0.10-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
@@ -61,16 +64,11 @@ nextcloud:
     - name: extra-mounts
       configMap:
         name: nextcloud-extra-mounts
-        defaultMode: 0777
 
   extraVolumeMounts:
     - name: nextcloud-redis-session-ini
       mountPath: "/usr/local/etc/php/conf.d/redis-session.ini" # fix permission denied error
       subPath: redis-session.ini
-    - name: extra-mounts
-      mountPath: /entrypoint.sh
-      subPath: entrypoint.sh
-      readOnly: true
     - name: extra-mounts
       mountPath: /var/www/html/config/previews.config.php
       subPath: previews.config.php
