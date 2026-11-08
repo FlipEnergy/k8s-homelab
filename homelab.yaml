@@ -118,7 +118,7 @@ apps:
     namespace: redis
     enabled: true
     chart: oci://registry-1.docker.io/bitnamicharts/redis
-    version: 23.2.1
+    version: 23.2.12
     priority: -100
     valuesFile: redis/redis-values.yaml
   ###############
