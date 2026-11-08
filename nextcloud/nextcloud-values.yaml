@@ -4,11 +4,13 @@
 ## built from FlipEnergy/container-images (nextcloud/); tags mirror upstream.
 ## ref: https://hub.docker.com/r/flipenergy/nextcloud/tags
 ## Nextcloud only upgrades one major version at a time (the entrypoint refuses
-## otherwise), so step through majors: 32 -> 33.0.10 -> 34.0.5 -> 35.0.2.
-## Deploy each step and let `occ upgrade` finish before bumping to the next.
+## otherwise). For a new major: make sure images-build has a job for it, run
+## `occ app:update --all`, suspend the nextcloud cronjobs, then bump the tag.
+## The upgrade's rsync over NFS takes ~1h; liveness/startup probes are off so
+## the pod isn't restarted mid-upgrade.
 image:
   repository: flipenergy/nextcloud
-  tag: 34.0.5-apache
+  tag: 35.0.2-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
