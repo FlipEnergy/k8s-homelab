@@ -79,6 +79,10 @@ nextcloud:
   ##
   ## Extra environment variables
   extraEnv:
+    # base URL for links generated outside a web request (cron jobs, emails, occ);
+    # read by reverse-proxy.config.php (refreshed from the image on 2026-11-08)
+    - name: OVERWRITECLIURL
+      value: https://cloud.pleasenoddos.com
     - name: REDIS_HOST
       value: redis-master.redis
     - name: PHP_MEMORY_LIMIT
