@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: grocery-deals-data
+spec:
+  storageClassName: grocery-deals-data
+  capacity:
+    storage: 200Mi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/ZFS-3.6TB/tank/grocery-deals-data
+    server: truenas-1.tgp

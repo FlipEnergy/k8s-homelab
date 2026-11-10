@@ -1,0 +1,109 @@
+# Override values for grocery-deals
+controllers:
+  main:
+    # state lives in one JSON data dir; keep a single replica
+    replicas: 1
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: flipenergy/grocery-deals
+          # -- image tag
+          tag: latest
+          # -- image pull policy
+          pullPolicy: Always
+
+        env:
+          PORT: "8080"
+          DATA_DIR: /data
+          HOME: /tmp
+          REFRESH_HOURS: "6"
+          TZ_OFFSET_HOURS: "-8"
+          FETCH_MODE: auto
+          WEEE_ZIP: "98133"
+
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop: ["ALL"]
+
+        resources:
+          limits:
+            # headroom for headless Chromium
+            memory: 1Gi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /healthz
+                port: 8080
+              periodSeconds: 30
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /healthz
+                port: 8080
+              periodSeconds: 10
+
+defaultPodOptions:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  nodeSelector:
+    performance: medium
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-homelab"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+      - host: grocery.computersbarely.work
+        paths:
+          - path: /
+            service:
+              identifier: main
+              port: http
+    tls:
+      - secretName: grocery-deals-tls
+        hosts:
+          - grocery.computersbarely.work
+
+persistence:
+  data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    # Persistent Volume Storage Class
+    storageClass: grocery-deals-data
+    size: 200Mi
+    # Do not delete the pvc upon helm uninstall
+    retain: true
+    globalMounts:
+      - path: /data
+  tmp:
+    enabled: true
+    type: emptyDir
+    globalMounts:
+      - path: /tmp

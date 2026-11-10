@@ -13,6 +13,7 @@ namespaces:
   discodrome:
   flatnotes:
   gonic:
+  grocery-deals:
   habittrove:
   headlamp:
   ingress-nginx:
@@ -172,6 +173,17 @@ apps:
     valuesFile: gonic/gonic-values.yaml
     hooks:
       preInstall: gonic/persistenceVolumes.yaml
+  grocery-deals:
+    wait: true
+    namespace: grocery-deals
+    group: uses-nfs
+    enabled: true
+    chart: bjw-s/app-template
+    version: 5.3.0
+    valuesFile: grocery-deals/grocery-deals-values.yaml
+    hooks:
+      preInstall: &grocery-deals-pv grocery-deals/persistenceVolume.yaml
+      preUpgrade: *grocery-deals-pv
   habittrove:
     wait: true
     namespace: habittrove
