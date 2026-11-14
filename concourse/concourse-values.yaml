@@ -42,6 +42,7 @@ web:
           - concourse.computersbarely.work
 worker:
   kind: Deployment
+  replicas: 3
   # Talos only supports nftables: put iptables -> xtables-nft-multi links in
   # /usr/local/sbin, first on the image's PATH.
   extraInitContainers:
