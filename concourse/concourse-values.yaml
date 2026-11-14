@@ -55,12 +55,51 @@ worker:
       volumeMounts:
         - name: iptables-nft
           mountPath: /nft
+    # Talos drops CAP_SYS_MODULE and CAP_SYS_BOOT from every process, but Concourse
+    # requests them for privileged tasks, so runc fails with "unable to apply caps".
+    # Install a runc wrapper that strips them from the OCI spec. The shim finds runc
+    # via PATH, and /opt/containerd/bin comes before /usr/local/concourse/bin.
+    - name: runc-wrapper
+      image: busybox:1.38.0
+      command:
+        - sh
+        - -c
+        - printf '%s\n' "$WRAPPER" > /wrap/runc && chmod 755 /wrap/runc
+      env:
+        - name: WRAPPER
+          value: |
+            #!/bin/sh
+            strip() {
+              [ -f "$1" ] && sed -i -E \
+                -e 's/"CAP_SYS_(MODULE|BOOT)"[[:space:]]*,[[:space:]]*//g' \
+                -e 's/,[[:space:]]*"CAP_SYS_(MODULE|BOOT)"//g' "$1"
+            }
+            prev=""
+            for a in "$@"; do
+              case "$prev" in
+                --bundle|-b) strip "$a/config.json" ;;
+                --process|-p) strip "$a" ;;
+              esac
+              case "$a" in
+                --bundle=*) strip "${a#--bundle=}/config.json" ;;
+                --process=*) strip "${a#--process=}" ;;
+              esac
+              prev="$a"
+            done
+            exec /usr/local/concourse/bin/runc "$@"
+      volumeMounts:
+        - name: runc-wrapper
+          mountPath: /wrap
   additionalVolumes:
     - name: iptables-nft
+      emptyDir: {}
+    - name: runc-wrapper
       emptyDir: {}
   additionalVolumeMounts:
     - name: iptables-nft
       mountPath: /usr/local/sbin
+    - name: runc-wrapper
+      mountPath: /opt/containerd/bin
   resources:
     requests:
       cpu: "200m"
