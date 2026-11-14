@@ -42,6 +42,24 @@ web:
           - concourse.computersbarely.work
 worker:
   kind: Deployment
+  # Talos only supports nftables: put iptables -> xtables-nft-multi links in
+  # /usr/local/sbin, first on the image's PATH.
+  extraInitContainers:
+    - name: iptables-nft
+      image: busybox:1.37.0
+      command:
+        - sh
+        - -c
+        - for b in iptables iptables-save iptables-restore ip6tables ip6tables-save ip6tables-restore; do ln -sf /usr/sbin/xtables-nft-multi /nft/$b; done
+      volumeMounts:
+        - name: iptables-nft
+          mountPath: /nft
+  additionalVolumes:
+    - name: iptables-nft
+      emptyDir: {}
+  additionalVolumeMounts:
+    - name: iptables-nft
+      mountPath: /usr/local/sbin
   resources:
     requests:
       cpu: "200m"

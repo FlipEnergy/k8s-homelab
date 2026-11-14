@@ -12,3 +12,12 @@ controller:
   # Overrides value for --watch-ingress-without-class flag of the controller binary
   # Defaults to false
   watchIngressWithoutClass: true
+
+  # The cluster has no LoadBalancer implementation.
+  # Run the controller on every node and bind 80/443 on the node IPs instead.
+  # hostPort needs the ingress-nginx namespace at Pod Security "privileged" (see homelab.yaml).
+  kind: DaemonSet
+  hostPort:
+    enabled: true
+  service:
+    type: ClusterIP

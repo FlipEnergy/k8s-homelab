@@ -5,3 +5,6 @@
 app/
 config/
 .helmsman-tmp/
+
+# Talos generated machine configs / talosconfig (contain cluster secrets)
+talos/_out/

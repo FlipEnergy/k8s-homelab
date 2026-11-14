@@ -2,6 +2,11 @@
 
 clusterResourceNamespace: cert-manager
 
+# The chart installs and owns the cert-manager CRDs.
+crds:
+  enabled: true
+  keep: true # Uninstalling the release must not delete the CRDs (and every Certificate with them)
+
 # Comma separated string with host and port of the recursive nameservers cert-manager should query
 dns01RecursiveNameservers: 1.1.1.1:53
 

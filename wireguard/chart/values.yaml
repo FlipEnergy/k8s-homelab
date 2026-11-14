@@ -13,6 +13,10 @@ wireguard:
     privateKey: ""
   service:
     type: ClusterIP
+  # Bind UDP 51820 (or port) on the node the pod runs on.
+  hostPort:
+    enabled: false
+    port: 51820
 
 persistence:
   enabled: false

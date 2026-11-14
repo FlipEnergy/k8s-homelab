@@ -1,14 +1,18 @@
 context: homelab
 metadata:
   maintainer: Dennis Zhang (dennis.zhang.nrg@gmail.com)
-  description: Helmman DSF for homelab K8s
+  description: Helmsman DSF for homelab K8s (Talos Linux, see talos/)
 settings:
   kubeContext: homelab
   globalMaxHistory: 1
+# Helmsman requires every app's namespace to be listed, even for disabled apps.
+# Talos enforces the "baseline" Pod Security level by default.
 namespaces:
   cert-manager:
   cloudflareddns:
   concourse:
+    labels:
+      pod-security.kubernetes.io/enforce: privileged
   descheduler:
   discodrome:
   flatnotes:
@@ -17,6 +21,8 @@ namespaces:
   habittrove:
   headlamp:
   ingress-nginx:
+    labels:
+      pod-security.kubernetes.io/enforce: privileged
   kube-ops-view:
   nextcloud:
   pikaraoke:
@@ -26,6 +32,8 @@ namespaces:
   stash:
   vaultwarden:
   wireguard:
+    labels:
+      pod-security.kubernetes.io/enforce: privileged
 helmRepos:
   bjw-s: https://bjw-s-labs.github.io/helm-charts
   cert-manager: https://charts.jetstack.io
@@ -47,9 +55,7 @@ apps:
     version: 4.15.1
     priority: -200
     timeout: 900
-    valuesFiles:
-      - ingress-nginx/ingress-nginx-values.yaml
-      - ingress-nginx/homelab/ingress-nginx-values.yaml
+    valuesFile: ingress-nginx/ingress-nginx-values.yaml
   cert-manager-secrets:
     namespace: cert-manager
     group: foundation
@@ -261,13 +267,11 @@ apps:
     group: uses-nfs
     enabled: true
     chart: ./wireguard/chart
-    version: 0.4.7
-    valuesFiles:
-      - wireguard/wireguard-values.yaml
-      - wireguard/homelab/wireguard-values.yaml
+    version: 0.4.8
+    valuesFile: wireguard/wireguard-values.yaml
     secretsFile: wireguard/wireguard-secrets.yaml
     hooks:
-      preInstall: &wireguard-pv wireguard/homelab/persistenceVolume.yaml
+      preInstall: &wireguard-pv wireguard/persistenceVolume.yaml
       preUpgrade: *wireguard-pv
   ##########
   # Backup #

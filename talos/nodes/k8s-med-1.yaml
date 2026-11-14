@@ -1,0 +1,30 @@
+# Control plane node
+apiVersion: v1alpha1
+kind: HostnameConfig
+auto: off
+hostname: k8s-med-1
+---
+apiVersion: v1alpha1
+kind: LinkConfig
+name: eno1
+addresses:
+  - address: 10.69.69.101/16
+routes:
+  - gateway: 10.69.0.1
+---
+# Shared Kubernetes API VIP; add the same document to every control plane node.
+apiVersion: v1alpha1
+kind: Layer2VIPConfig
+name: 10.69.69.100
+link: eno1
+---
+apiVersion: v1alpha1
+kind: UnattendedInstallConfig
+provisioning:
+  diskSelector:
+    match: disk.wwid == "naa.5000c50073bcdf80"
+---
+apiVersion: v1alpha1
+kind: KubeNodeConfig
+labels:
+  performance: medium

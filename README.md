@@ -13,6 +13,3 @@ Most apps use the [bjw-s app-template](https://github.com/bjw-s-labs/helm-charts
 - Helm-secrets https://github.com/jkroepke/helm-secrets
 - Helm-diff https://github.com/databus23/helm-diff
 - Helmsman https://github.com/mkubaczyk/helmsman
-
-# My homelab setup
-![Homelab DIagram](https://pleasenoddos.com/img/homelab.jpg)

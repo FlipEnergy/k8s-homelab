@@ -12,7 +12,7 @@
   },
   "helmsman": {
     "enabled": true,
-    "fileMatch": ["homelab.yaml", "oracle.yaml"]
+    "fileMatch": ["homelab.yaml"]
   },
   "prConcurrentLimit": 30
 }

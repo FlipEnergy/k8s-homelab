@@ -1,0 +1,20 @@
+# Applied to every node (control plane and workers).
+# Image Factory schematic e09ed740...: nfs-utils, nfsd, nfsrahead
+#   https://factory.talos.dev/schematics/e09ed74014be60ea8b487d476a15dc94da2f2e4562df496396008121f19544e8
+# Keep the installer tag in sync with the talosctl version in ../../mise.toml.
+apiVersion: v1alpha1
+kind: UnattendedInstallConfig
+installer:
+  image: factory.talos.dev/metal-installer/e09ed74014be60ea8b487d476a15dc94da2f2e4562df496396008121f19544e8:v1.14.6
+provisioning:
+  wipe: true
+---
+# Needed by the Concourse worker runtime.
+machine:
+  sysctls:
+    user.max_user_namespaces: "11255"
+---
+apiVersion: v1alpha1
+kind: ResolverConfig
+nameservers:
+  - address: 10.69.0.1

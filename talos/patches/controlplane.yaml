@@ -1,0 +1,7 @@
+# Applied to control plane nodes only.
+# Small cluster: control plane nodes also run workloads, so drop the NoSchedule taint.
+apiVersion: v1alpha1
+kind: KubeNodeConfig
+taints:
+  node-role.kubernetes.io/control-plane:
+    $patch: delete
