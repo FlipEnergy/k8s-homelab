@@ -1,0 +1,10 @@
+# Override values for cloudflared.
+# The tunnel, its public hostnames and their DNS records are managed in
+# tf-playground (homelab/tunnel.tf). The token comes from cloudflared-secrets.yaml.
+
+image:
+  repository: cloudflare/cloudflared
+  tag: 2026.10.7
+
+nodeSelector:
+  performance: medium

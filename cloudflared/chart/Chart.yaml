@@ -1,0 +1,7 @@
+apiVersion: v2
+name: cloudflared
+description: Cloudflare Tunnel connector (remotely managed tunnel, token auth)
+type: application
+version: 0.1.0
+# Default image tag; the deployed tag is pinned in cloudflared-values.yaml.
+appVersion: "2026.10.7"

@@ -9,6 +9,7 @@ settings:
 # Talos enforces the "baseline" Pod Security level by default.
 namespaces:
   cert-manager:
+  cloudflared:
   cloudflareddns:
   concourse:
     labels:
@@ -84,6 +85,16 @@ apps:
     priority: -199
     valuesFile: cf-ddns/cf-ddns-values.yaml
     secretsFile: cf-ddns/cf-ddns-secrets.yaml
+  cloudflared:
+    wait: true
+    namespace: cloudflared
+    group: foundation
+    enabled: true
+    chart: ./cloudflared/chart
+    version: 0.1.0
+    priority: -199
+    valuesFile: cloudflared/cloudflared-values.yaml
+    secretsFile: cloudflared/cloudflared-secrets.yaml
   ##############
   # Monitoring #
   ##############

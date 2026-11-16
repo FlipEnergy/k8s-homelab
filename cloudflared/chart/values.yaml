@@ -1,0 +1,62 @@
+# Default values for cloudflared.
+
+# Run at least 2 replicas: each one is a separate tunnel connector, so
+# traffic keeps flowing while a pod restarts or a node drains.
+replicaCount: 2
+
+image:
+  repository: cloudflare/cloudflared
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+# Tunnel token for a remotely managed tunnel (ingress rules live in Cloudflare).
+# Set it through a sops secrets file; never in plain values.
+tunnelToken: ""
+
+# Edge transport: auto, quic or http2.
+protocol: auto
+
+# Port for cloudflared's metrics and /ready endpoint.
+metricsPort: 2000
+
+podAnnotations: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  runAsGroup: 65532
+  seccompProfile:
+    type: RuntimeDefault
+  # Lets cloudflared open unprivileged ICMP sockets (for ICMP proxying)
+  # without the "ping_group_range" warning.
+  sysctls:
+    - name: net.ipv4.ping_group_range
+      value: "65532 65532"
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: ["ALL"]
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 64Mi
+  limits:
+    memory: 256Mi
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+nodeSelector: {}
+
+tolerations: []
+
+# Defaults to preferring one replica per node when empty.
+affinity: {}
