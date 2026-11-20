@@ -10,7 +10,7 @@
 ## the pod isn't restarted mid-upgrade.
 image:
   repository: flipenergy/nextcloud
-  tag: 35.0.2-apache
+  tag: 35.0.3-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
