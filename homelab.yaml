@@ -31,6 +31,9 @@ namespaces:
   redis:
   restic:
   stash:
+  traefik:
+    labels:
+      pod-security.kubernetes.io/enforce: privileged
   vaultwarden:
   wireguard:
     labels:
@@ -43,6 +46,7 @@ helmRepos:
   headlamp: https://kubernetes-sigs.github.io/headlamp/
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   nextcloud: https://nextcloud.github.io/helm/
+  traefik: https://traefik.github.io/charts
 apps:
   ##############
   # foundation #
@@ -57,6 +61,16 @@ apps:
     priority: -200
     timeout: 900
     valuesFile: ingress-nginx/ingress-nginx-values.yaml
+  traefik:
+    wait: true
+    namespace: traefik
+    group: foundation
+    enabled: true
+    chart: traefik/traefik
+    version: 42.4.3
+    priority: -200
+    timeout: 900
+    valuesFile: traefik/traefik-values.yaml
   cert-manager-secrets:
     namespace: cert-manager
     group: foundation

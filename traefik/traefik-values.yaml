@@ -1,0 +1,75 @@
+## Traefik configuration
+## Ref: https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
+##
+
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+# One pod per node, like the previous ingress-nginx setup.
+deployment:
+  kind: DaemonSet
+
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 0
+
+# Serve every Ingress without an ingressClassName (all of ours) plus the
+# "traefik" IngressClass, which becomes the cluster default.
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+  name: traefik
+
+providers:
+  kubernetesIngress:
+    # The ClusterIP is useless in Ingress status; skip the status writes.
+    publishedService:
+      enabled: false
+
+# No dashboard: nothing needs it and it would be one more thing to protect.
+api:
+  dashboard: false
+
+ports:
+  web:
+    # Every Ingress used nginx's force-ssl-redirect, so redirect globally.
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  websecure:
+    # Nextcloud large uploads (WebDAV) depend on the settings below; Traefik
+    # itself sets no request body limit and doesn't buffer uploads.
+    http:
+      # Filenames may contain # ? % ; — WebDAV sends them percent-encoded in
+      # the path. Pin these explicitly, as defaults have changed between
+      # Traefik releases. Backslash and NUL stay at the default.
+      encodedCharacters:
+        allowEncodedSlash: true
+        allowEncodedSemicolon: true
+        allowEncodedPercent: true
+        allowEncodedQuestionMark: true
+        allowEncodedHash: true
+    # Traefik v3 defaults to a 60s read timeout (whole request, body
+    # included), which cuts off large uploads. Match the old nginx timeouts.
+    transport:
+      respondingTimeouts:
+        readTimeout: 3600s
+
+# The cluster has no LoadBalancer implementation; in-cluster clients
+# (cloudflared) use the Service.
+service:
+  spec:
+    type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    memory: 512Mi
