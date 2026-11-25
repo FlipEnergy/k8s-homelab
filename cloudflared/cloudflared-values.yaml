@@ -4,7 +4,7 @@
 
 image:
   repository: cloudflare/cloudflared
-  tag: 2026.10.7
+  tag: 2026.11.2
 
 nodeSelector:
   performance: medium
