@@ -157,7 +157,7 @@ apps:
     group: uses-nfs
     enabled: true
     chart: concourse/concourse
-    version: 20.3.3
+    version: 20.3.4
     valuesFile: concourse/concourse-values.yaml
     secretsFile: concourse/concourse-secrets.yaml
   discodrome:
