@@ -24,7 +24,7 @@ Public domain `pleasenoddos.com`; internal/admin services on `computersbarely.wo
 
 ## Deployment model
 
-- `homelab.yaml` is the Helmsman desired state file (DSF): namespaces, helm repos, and every app (chart, version, values, secrets, hooks, priority). It targets kube context `homelab`. Talos enforces Pod Security `baseline` by default; namespaces whose pods need more carry a `pod-security.kubernetes.io/enforce` label under `namespaces:`. There is no LoadBalancer implementation, so ingress-nginx and wireguard bind host ports.
+- `homelab.yaml` is the Helmsman desired state file (DSF): namespaces, helm repos, and every app (chart, version, values, secrets, hooks, priority). It targets kube context `homelab`. Talos enforces Pod Security `baseline` by default; namespaces whose pods need more carry a `pod-security.kubernetes.io/enforce` label under `namespaces:`. There is no LoadBalancer implementation, so Traefik and wireguard bind host ports.
 - Deployed by CI: pushes to `main` trigger the `deploy-k8s-homelab` pipeline in the sibling `concourse-pipelines` repo (`helmsman -apply -f homelab.yaml`). Non-main branches get an automatic `-show-diff` pipeline, posted to Discord. **Opening a branch is the normal way to preview a change.** Concourse itself runs in this cluster (`concourse` app); its worker needs Talos-specific settings (see `concourse/concourse-values.yaml` and `talos/patches/all.yaml`): iptables→nftables links, a `runc` wrapper that strips CAP_SYS_MODULE/CAP_SYS_BOOT (Talos blocks both, Concourse requests them for privileged tasks), and a user-namespace sysctl.
 - Local: `make deploy` (= `mise exec -- helmsman -p 12 --show-diff --apply -f homelab.yaml`), `make destroy`. These mutate the live cluster — never run without explicit approval. For a dry run: `mise exec -- helmsman --show-diff -f homelab.yaml` (no `--apply`).
 - Tooling: CLI tools (helm 4, helmsman, kubectl, k9s, talosctl) are pinned in `mise.toml` and installed with mise — there are no system copies. Run them via `mise exec -- <tool>` (or with mise activated in the shell); a bare `helm`/`helmsman` may not be on PATH in a non-interactive shell. To bump a tool, change its version in `mise.toml`.
@@ -42,11 +42,11 @@ One directory per app, named after the app/namespace:
 
 Charts in use:
 - Most apps: `bjw-s/app-template` (currently 5.3.0) — values use the `controllers.main.containers.main`, `service.main`, `ingress.main`, `persistence` schema.
-- Upstream charts: ingress-nginx, cert-manager, headlamp, descheduler, concourse, nextcloud, bitnami postgresql/redis.
+- Upstream charts: traefik, cert-manager, headlamp, descheduler, concourse, nextcloud, bitnami postgresql/redis.
 
 ## Conventions
 
-- Ingress: nginx with `cert-manager.io/cluster-issuer: "letsencrypt-homelab"` (DNS-01 via Cloudflare, `cert-manager/ClusterIssuer.yaml`) and `nginx.ingress.kubernetes.io/force-ssl-redirect: "true"`. TLS secret named `<app>-tls`.
+- Ingress: Traefik (`traefik/`, the default IngressClass; Ingresses leave `ingressClassName` unset) with `cert-manager.io/cluster-issuer: "letsencrypt-homelab"` (DNS-01 via Cloudflare, `cert-manager/ClusterIssuer.yaml`). TLS secret named `<app>-tls`. HTTP→HTTPS redirect, request body size and timeouts are set globally in `traefik/traefik-values.yaml`; per-app needs go in a Traefik `Middleware`, not `nginx.ingress.kubernetes.io/*` annotations (ignored).
 - Storage: static NFS `PersistentVolume`s on the NAS (copy an existing `persistenceVolume.yaml`). Apps that need it are in Helmsman `group: uses-nfs`.
 - Scheduling: `nodeSelector: performance: medium|high` on pods.
 - Pin image tags explicitly in values; set resource requests/limits.

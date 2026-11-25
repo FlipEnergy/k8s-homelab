@@ -7,7 +7,6 @@ ingress:
   # -- Annotations for Ingress resource
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-homelab"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 
   # -- Hostname(s) for the Ingress resource
   # Please refer to https://kubernetes.io/docs/reference/kubernetes-api/service-resources/ingress-v1/#IngressSpec for more information.

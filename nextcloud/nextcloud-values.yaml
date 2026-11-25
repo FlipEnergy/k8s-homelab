@@ -17,13 +17,10 @@ image:
 ##
 ingress:
   enabled: true
+  # Large uploads rely on Traefik's websecure settings (no body limit, read
+  # timeout, encoded path characters) in traefik/traefik-values.yaml.
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-homelab"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-body-size: 1G
   tls:
     - secretName: nextcloud-tls
       hosts:

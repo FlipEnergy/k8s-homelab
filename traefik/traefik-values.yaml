@@ -33,8 +33,12 @@ providers:
 api:
   dashboard: false
 
+# The cluster has no LoadBalancer implementation.
+# Run on every node and bind 80/443 on the node IPs instead.
+# hostPort needs the traefik namespace at Pod Security "privileged" (see homelab.yaml).
 ports:
   web:
+    hostPort: 80
     # Every Ingress used nginx's force-ssl-redirect, so redirect globally.
     http:
       redirections:
@@ -43,6 +47,7 @@ ports:
           scheme: https
           permanent: true
   websecure:
+    hostPort: 443
     # Nextcloud large uploads (WebDAV) depend on the settings below; Traefik
     # itself sets no request body limit and doesn't buffer uploads.
     http:
@@ -61,8 +66,7 @@ ports:
       respondingTimeouts:
         readTimeout: 3600s
 
-# The cluster has no LoadBalancer implementation; in-cluster clients
-# (cloudflared) use the Service.
+# In-cluster clients (cloudflared) use the Service.
 service:
   spec:
     type: ClusterIP

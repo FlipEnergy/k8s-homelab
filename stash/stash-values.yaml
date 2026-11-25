@@ -57,8 +57,6 @@ ingress:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt-homelab"
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/proxy-body-size: 100m
     hosts:
       - host: stash.computersbarely.work
         paths:

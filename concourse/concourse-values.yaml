@@ -32,8 +32,6 @@ web:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt-homelab"
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
     hosts:
       - concourse.computersbarely.work
     tls:
