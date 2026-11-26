@@ -20,6 +20,14 @@ controllers:
           STASH_GENERATED: /data/generated/
           STASH_METADATA: /data/metadata/
           STASH_CACHE: /tmp/cache/
+          # uid 1000 has no passwd entry in the image; stash needs these to find a home dir
+          USER: stash
+          HOME: /tmp
+
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
 
         resources: {}
           # limits:
@@ -40,6 +48,13 @@ controllers:
 
 
 defaultPodOptions:
+  # /data on the NAS is already owned by 1000:1000
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
   nodeSelector:
     performance: medium
 

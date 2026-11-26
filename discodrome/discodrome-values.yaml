@@ -5,6 +5,20 @@
 
 controllers:
   main:
+    # The bot writes bot.log, guild_properties.pickle and cache/ into its working
+    # directory /app, which the image leaves root-owned. Copy /app into an emptyDir
+    # so it can run as non-root.
+    initContainers:
+      copy-app:
+        image:
+          repository: 7eventy7/discodrome
+          tag: v1.1.0
+          pullPolicy: IfNotPresent
+        command: ["cp", "-a", "/app/.", "/work/"]
+        securityContext: &container-security
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
     containers:
       main:
         image:
@@ -23,6 +37,8 @@ controllers:
         env:
           SUBSONIC_SERVER: http://gonic.gonic.svc.cluster.local:4747
 
+        securityContext: *container-security
+
         resources:
           limits:
             memory: 500Mi
@@ -31,6 +47,12 @@ controllers:
             memory: 150Mi
 
 defaultPodOptions:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
   nodeSelector:
     performance: medium
 
@@ -38,3 +60,13 @@ service:
   main:
     enabled: false
     controller: main
+
+persistence:
+  app:
+    type: emptyDir
+    advancedMounts:
+      main:
+        copy-app:
+          - path: /work
+        main:
+          - path: /app
