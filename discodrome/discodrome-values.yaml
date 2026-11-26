@@ -16,7 +16,10 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
 
-        # Discord and Subsonic credentials/IDs are in discodrome-secrets.yaml
+        # Secret values come from the Secret built from discodrome-secrets.yaml
+        envFrom:
+          - secretRef:
+              identifier: main
         env:
           SUBSONIC_SERVER: http://gonic.gonic.svc.cluster.local:4747
 

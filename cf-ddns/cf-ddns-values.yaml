@@ -14,6 +14,10 @@ controllers:
           tag: release
           # -- image pull policy
           pullPolicy: Always
+        # Secret values come from the Secret built from cf-ddns-secrets.yaml
+        envFrom:
+          - secretRef:
+              identifier: main
         env:
           PUID: 1000
           PGID: 1000

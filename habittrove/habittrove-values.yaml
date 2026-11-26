@@ -12,6 +12,11 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
 
+        # Secret values come from the Secret built from habittrove-secrets.yaml
+        envFrom:
+          - secretRef:
+              identifier: main
+
         resources: {}
 
 defaultPodOptions:

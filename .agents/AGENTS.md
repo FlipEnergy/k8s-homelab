@@ -35,7 +35,7 @@ Public domain `pleasenoddos.com`; internal/admin services on `computersbarely.wo
 One directory per app, named after the app/namespace:
 
 - `<app>/<app>-values.yaml` — override values (plain).
-- `<app>/<app>-secrets.yaml` — **sops-encrypted** (PGP) values, passed via `secretsFile`. Edit only with `sops <file>`; never hand-edit `ENC[...]` blocks or commit decrypted content (`*.yaml.dec` is gitignored).
+- `<app>/<app>-secrets.yaml` — **sops-encrypted** (PGP) values, passed via `secretsFile`. Edit only with `sops <file>`; never hand-edit `ENC[...]` blocks or commit decrypted content (`*.yaml.dec` is gitignored). Secret values go into a Kubernetes Secret, never inline `env`: for app-template, put them under `secrets.main.stringData` and add `envFrom: [{secretRef: {identifier: main}}]` to the container in the values file.
 - `<app>/persistenceVolume.yaml` — a static NFS `PersistentVolume`, applied as a Helmsman `preInstall`/`preUpgrade` hook. The PV's `storageClassName` matches the `storageClass` in the app's values.
 - `talos/` — Talos Linux machine config for the cluster nodes: `patches/` + `nodes/<name>.yaml` layered onto configs generated from the sops-encrypted `talos-secrets.yaml`; `make -C talos ...` (see `talos/README.md`). Generated output in `talos/_out/` is git-ignored and holds cluster keys — don't read it. `make install`/`apply`/`bootstrap` change real machines — never run them without explicit approval.
 - `<app>/chart/` or `<app>/<app>/` — local Helm charts (gonic, kube-ops-view, vaultwarden use vendored `common-4.5.2.tgz` from the old k8s-at-home library; restic, wireguard, nextcloud-news-updater, cert-manager-secrets are hand-written).

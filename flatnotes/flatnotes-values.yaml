@@ -12,6 +12,11 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
 
+        # Secret values come from the Secret built from flatnotes-secrets.yaml
+        envFrom:
+          - secretRef:
+              identifier: main
+
         # Command override to avoid chmods
         # command found here: https://github.com/Dullage/flatnotes/blob/master/entrypoint.sh#L32
         command: ["python"]

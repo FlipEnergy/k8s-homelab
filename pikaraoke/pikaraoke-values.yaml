@@ -12,6 +12,11 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
 
+        # Secret values come from the Secret built from pikaraoke-secrets.yaml
+        envFrom:
+          - secretRef:
+              identifier: main
+
         # Command override to set params
         # command found here: https://github.com/vicwomg/pikaraoke/blob/master/Dockerfile
         command: ["pikaraoke"]
