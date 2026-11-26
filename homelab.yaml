@@ -53,7 +53,7 @@ apps:
     group: foundation
     enabled: true
     chart: traefik/traefik
-    version: 42.4.3
+    version: 43.0.0
     priority: -200
     timeout: 900
     valuesFile: traefik/traefik-values.yaml
