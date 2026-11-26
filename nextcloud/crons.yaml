@@ -48,5 +48,5 @@ spec:
                   pod=$(kubectl get pods -l app.kubernetes.io/name=nextcloud -o jsonpath='{.items[0].metadata.name}' -n nextcloud)
 
                   echo "Found pod: ${pod}"
-                  kubectl exec ${pod} -- su -p dennis -s /bin/sh -c './occ -V && ./occ preview:pre-generate'
+                  kubectl exec ${pod} -- sh -c './occ -V && ./occ preview:pre-generate'
           restartPolicy: Never

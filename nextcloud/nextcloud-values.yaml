@@ -10,7 +10,7 @@
 ## the pod isn't restarted mid-upgrade.
 image:
   repository: flipenergy/nextcloud
-  tag: 35.0.2-apache
+  tag: 35.0.3-apache
 
 ## Allowing use of ingress controllers
 ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/
@@ -43,14 +43,13 @@ nextcloud:
 
   extraInitContainers:
     # create empty redis file for nextcloud entrypoint to override it
+    # (runs as uid 1000 like the pod, so the file is writable by the entrypoint)
     - name: init-redis-session-ini
       image: busybox
       command:
         - sh
         - -c
-        - |
-          touch /usr/local/etc/php/conf.d/redis-session.ini
-          chown -v 33:33 /usr/local/etc/php/conf.d/redis-session.ini
+        - touch /usr/local/etc/php/conf.d/redis-session.ini
       volumeMounts:
         - name: nextcloud-redis-session-ini
           mountPath: /usr/local/etc/php/conf.d
@@ -72,6 +71,19 @@ nextcloud:
       mountPath: /var/www/html/config/previews.config.php
       subPath: previews.config.php
       readOnly: true
+
+  # Run as dennis (uid 1000), which owns the files on the NFS share. The entrypoint
+  # then skips its root-only steps (rsync --chown, su to the Apache user).
+  podSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
 
   ##
   ## Extra environment variables
